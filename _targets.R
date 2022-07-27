@@ -24,6 +24,15 @@ source("R/tar_save-files.R")
 # THE PIPELINE ----
 list(
   ## Knit xaringan slides ----
+  tar_files(xaringan_files, list.files(here_rel("slides"),
+                                       pattern = "\\.Rmd",
+                                       full.names = TRUE)),
+  tar_target(xaringan_slides,
+             render_xaringan(xaringan_files),
+             pattern = map(xaringan_files),
+             format = "file"),
+
+
   ## Create project folders and zip files ----
   ### Save any data files from packages ----
   tar_target(data_penguins,

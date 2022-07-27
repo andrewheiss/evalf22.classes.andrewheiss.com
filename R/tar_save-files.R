@@ -8,6 +8,16 @@ save_csv <- function(df, path) {
 }
 
 
+# Once again, we need to return the path to the rendered HTML file. In this
+# case, rmarkdown::render() *does* return a path, but it returns an absolute
+# path, which makes the targets pipline less portable. So we return our own path
+# to the HTML file instead.
+render_xaringan <- function(slide_path) {
+  rmarkdown::render(slide_path, "xaringan::moon_reader", quiet = TRUE)
+  return(paste0(tools::file_path_sans_ext(slide_path), ".html"))
+}
+
+
 # Zip a folder inside a parent folder
 #
 # The cd is necessary because zip assumes that it's working in the current
