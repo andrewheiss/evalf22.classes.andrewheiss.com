@@ -19,10 +19,16 @@ website:
   navbar:
     pinned: true
     right:
+      - syllabus.qmd
+      - schedule.qmd
       - text: "Content"
         file: content/index.qmd
       - text: "Example"
         file: example/index.qmd
+      - text: "Resources"
+        file: resource/index.qmd
+      - text: Slack
+      - text: RStudio.cloud
 
   sidebar:
     - title: "Content"
@@ -43,6 +49,12 @@ website:
           contents:
             - example/index.qmd
         - example/rstudio-tidyverse.qmd
+
+    - title: "Resources"
+      contents:
+        - section: "Overview"
+          contents:
+            - resource/index.qmd
 
 format:
   html:
