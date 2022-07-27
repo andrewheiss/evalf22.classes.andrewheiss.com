@@ -13,7 +13,11 @@ save_csv <- function(df, path) {
 # path, which makes the targets pipline less portable. So we return our own path
 # to the HTML file instead.
 render_xaringan <- function(slide_path) {
-  rmarkdown::render(slide_path, "xaringan::moon_reader", quiet = TRUE)
+  # crayon does weird things to R Markdown and xaringan output, so we need to
+  # disable it here. This is the same thing that tarchetypes::tar_render() does
+  # behind the scenes too.
+  withr::local_options(list(crayon.enabled = NULL))
+  rmarkdown::render(slide_path, quiet = TRUE)
   return(paste0(tools::file_path_sans_ext(slide_path), ".html"))
 }
 
