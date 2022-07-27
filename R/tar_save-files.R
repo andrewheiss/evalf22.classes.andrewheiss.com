@@ -24,11 +24,21 @@ render_xaringan <- function(slide_path) {
 
 # Use pagedown to convert xaringan HTML slides to PDF. Return a relative path to
 # the PDF to keep targets happy.
+#
+# Slides for sessions 10 and 14 are huge, so use chromote to convert them instead
 xaringan_to_pdf <- function(slide_path) {
   path_sans_ext <- tools::file_path_sans_ext(slide_path)
 
+  if (path_sans_ext %in% c("slides/10-slides",
+                           "slides/14-slides")) {
+    complex <- TRUE
+  } else {
+    complex <- FALSE
+  }
+
   renderthis::to_pdf(slide_path,
-                     to = paste0(path_sans_ext, ".pdf"))
+                     to = paste0(path_sans_ext, ".pdf"),
+                     complex_slides = complex)
 
   return(paste0(tools::file_path_sans_ext(slide_path), ".pdf"))
 }
