@@ -18,6 +18,20 @@ render_xaringan <- function(slide_path) {
 }
 
 
+# Use pagedown to convert xaringan HTML slides to PDF. Return a relative path to
+# the PDF to keep targets happy.
+xaringan_to_pdf <- function(slide_path) {
+  path_sans_ext <- tools::file_path_sans_ext(slide_path)
+
+  pagedown::chrome_print(slide_path,
+                         output = paste0(path_sans_ext, ".pdf"),
+                         options = list(printBackground = TRUE),
+                         wait = 10, timeout = 600)
+
+  return(paste0(tools::file_path_sans_ext(slide_path), ".pdf"))
+}
+
+
 # Zip a folder inside a parent folder
 #
 # The cd is necessary because zip assumes that it's working in the current

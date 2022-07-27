@@ -5,6 +5,8 @@ title: "evalf22"
 ```{r set-dependencies, include=FALSE}
 withr::with_dir(here::here(), {
   targets::tar_load(project_zips)
+  targets::tar_load(xaringan_slides)
+  targets::tar_load(xaringan_pdfs)
 })
 ```
 

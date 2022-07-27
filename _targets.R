@@ -23,7 +23,13 @@ source("R/tar_save-files.R")
 
 # THE PIPELINE ----
 list(
-  ## Knit xaringan slides ----
+  ## xaringan stuff ----
+  #
+  ### Knit xaringan slides ----
+  #
+  # Use dynamic branching to get a list of all .Rmd files in slides/ and knit them
+  #
+  # The main index.qmd page loads xaringan_slides as a target to link it as a dependency
   tar_files(xaringan_files, list.files(here_rel("slides"),
                                        pattern = "\\.Rmd",
                                        full.names = TRUE)),
@@ -32,18 +38,36 @@ list(
              pattern = map(xaringan_files),
              format = "file"),
 
+  ### Convert xaringan HTML slides to PDF ----
+  #
+  # Use dynamic branching to get a list of all knitted slide .html files and
+  # convert them to PDF with pagedown
+  #
+  # The main index.qmd page loads xaringan_pdfs as a target to link it as a dependency
+  tar_files(xaringan_html_files, {
+    xaringan_slides
+    list.files(here_rel("slides"),
+               pattern = "\\.html",
+               full.names = TRUE)
+  }),
 
-  ## Create project folders and zip files ----
+  tar_target(xaringan_pdfs,
+             xaringan_to_pdf(xaringan_html_files),
+             pattern = map(xaringan_html_files),
+             format = "file"),
+
+  ## Project folders ----
   ### Save any data files from packages ----
   tar_target(data_penguins,
              save_csv(tidyr::drop_na(palmerpenguins::penguins, body_mass_g),
                       here_rel("projects", "problem-set-2", "data", "penguins.csv"))),
-  ### Link all these data files into one dependency
+
+  # Link all these data files into one dependency
   tar_target(build_data, {
     data_penguins
   }),
 
-  ### Dynamic branching! ----
+  ### Zip up each project folder ----
   #
   # Get a list of all folders in the project folder, create dynamic branches,
   # then create a target for each that runs the custom zippy() function, which
