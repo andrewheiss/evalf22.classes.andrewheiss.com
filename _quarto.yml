@@ -46,6 +46,19 @@ website:
         - section: "Course content"
           contents:
             - content/01-content.qmd
+            - content/02-content.qmd
+            - content/03-content.qmd
+            - content/04-content.qmd
+            - content/05-content.qmd
+            - content/06-content.qmd
+            - content/07-content.qmd
+            - content/08-content.qmd
+            - content/09-content.qmd
+            - content/10-content.qmd
+            - content/11-content.qmd
+            - content/12-content.qmd
+            - content/13-content.qmd
+            - content/14-content.qmd
 
     - title: "Assignments"
       contents:

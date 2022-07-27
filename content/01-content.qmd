@@ -43,6 +43,10 @@ slide_buttons("/slides/01-slides")
 slide_tabs(slide_details, "/slides/01-slides.html")
 ```
 
+:::{.callout-tip}
+**Fun fact**: If you type <kbd>?</kbd> (or <kbd>shift</kbd> + <kbd>/</kbd>) while going through the slides, you can see a list of special slide-specific commands.
+:::
+
 
 ## Videos
 
@@ -65,7 +69,7 @@ Here are all the materials we'll use in class:
 - [Lab slides 2: Getting started with R and RStudio](/slides/01-class_02-getting-started.html) ([PDF](/slides/01-class_02-getting-started.pdf))
 
 
-````{verbatim include=FALSE}
+```{verbatim include=FALSE}
 Playlist: https://www.youtube.com/playlist?list=PLS6tnpTr39sHcnk9KcoQVzDywxWRzVWHC
 
 https://youtu.be/BIhz1dz5Vws
@@ -106,4 +110,4 @@ PMAP 8521 • (1) Evaluation and the causal revolution: (3) Class details
 Overview of how the class works
 
 Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/01-content/
-````
+```

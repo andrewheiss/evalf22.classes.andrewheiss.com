@@ -1,0 +1,143 @@
+---
+title: "Regression discontinuity I"
+date: "2022-03-24"
+---
+
+```{r slides-videos, echo=FALSE, include=FALSE}
+source(here::here("R", "slide-things.R"))
+source(here::here("R", "youtube-playlist.R"))
+
+playlist_id <- "PLS6tnpTr39sGYRrLn6OEoI5kry5gvJvdz"
+
+slide_details <- tibble::tribble(
+  ~youtube_id,   ~title, ~slide, ~active,
+  "EqSMG277wVI", "Introduction", "1", TRUE,
+  "vBDNcPHAGfg", "Arbitrary cutoffs and causal inference", "arbitrary-cutoffs", FALSE,
+  "ZijPafzc-wY", "Drawing lines and measuring gaps", "lines-gaps", FALSE,
+  "Or-VUzCZIBs", "Main RDD concerns", "main-concerns", FALSE
+)
+```
+
+## Readings
+
+- {{< fa book >}} Chapter 6 in *Impact Evaluation in Practice* [@wb-eval]
+- {{< fa book >}} Chapter 20 in *The Effect* [@Huntington-Klein:2021]
+
+### Regression discontinuity
+
+- The [example page on regression discontinuity](/example/rdd/) shows how to use R to analyze and estimate causal effects with regression discontinuity
+
+
+## Slides
+
+The slides for today's lesson are available online as an HTML file. Use the buttons below to open the slides either as an interactive website or as a static PDF (for printing or storing for later). You can also click in the slides below and navigate through them with your left and right arrow keys.
+
+```{r show-slide-tabs, echo=FALSE, results="asis"}
+slide_buttons("/slides/10-slides")
+slide_tabs(slide_details, "/slides/10-slides.html")
+```
+
+:::{.callout-tip}
+**Fun fact**: If you type <kbd>?</kbd> (or <kbd>shift</kbd> + <kbd>/</kbd>) while going through the slides, you can see a list of special slide-specific commands.
+:::
+
+
+## Videos
+
+```{r show-youtube-list, echo=FALSE, results="asis"}
+youtube_list(slide_details, playlist_id)
+```
+
+
+## In-class stuff
+
+Here are all the materials we'll use in class:
+
+- [**Week 10 FAQ slides**](/slides/10-class.html) ([PDF](/slides/10-class.pdf))
+- [Week 10 R code](/projects/week-10.zip) (on [RStudio.cloud](https://rstudio.cloud/spaces/205054/project/3787408))
+
+
+```{verbatim include=FALSE}
+Playlist: https://www.youtube.com/playlist?list=PLS6tnpTr39sGYRrLn6OEoI5kry5gvJvdz
+
+https://youtu.be/EqSMG277wVI
+PMAP 8521 • (10) Regression discontinuity I: (0) Introduction
+
+Introduction to the class session on regression discontinuity designs
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/10-content/
+
+
+https://youtu.be/vBDNcPHAGfg
+PMAP 8521 • (10) Regression discontinuity I: (1) Arbitrary cutoffs and causal inference
+
+Discussion of how arbitrary rules and cutoffs let us generate pseudo-treatment and control groups and find causal effects in observational data
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/10-content/
+
+  
+https://youtu.be/ZijPafzc-wY
+PMAP 8521 • (10) Regression discontinuity I: (2) Drawing lines and measuring gaps
+
+Discussion of how to draw lines in different ways around a discontinuity and how that influences the size of the gap
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/10-content/
+  
+  
+https://youtu.be/Or-VUzCZIBs
+PMAP 8521 • (10) Regression discontinuity I: (3) Main RDD concerns
+
+Discussion of the main assumptions for regression discontinuity design
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/10-content/
+  
+  
+https://www.youtube.com/playlist?list=PLS6tnpTr39sFCr8amjT2Ld_FE34i26a3S
+
+https://youtu.be/8CayGMcJoLY
+PMAP 8521 • Example: Regression discontinuity with R: 1: Getting started
+
+Demonstration of how to create a new RStudio project and get ready to analyze regression discontinuity data
+
+Download the data and see the polished code at https://evalf20.classes.andrewheiss.com/example/rdd/
+
+
+https://youtu.be/ViDChprm2IY
+PMAP 8521 • Example: Regression discontinuity with R: 2: Sharp or fuzzy?
+
+Demonstration of how to determine if a cutoff is sharp or fuzzy
+
+Download the data and see the polished code at https://evalf20.classes.andrewheiss.com/example/rdd/
+
+
+https://youtu.be/hqPVIt-72fY
+PMAP 8521 • Example: Regression discontinuity with R: 3: Checking for manipulation
+
+Demonstration of how to check for manipulation in the running variable near the cutpoint with a McCrary density test
+
+Download the data and see the polished code at https://evalf20.classes.andrewheiss.com/example/rdd/
+
+
+https://youtu.be/yYqO22l_jgc
+PMAP 8521 • Example: Regression discontinuity with R: 4: Finding discontinuity in outcome
+
+Demonstration of how to plot a discontinuity in an outcome based on a running variable and a cutpoint
+
+Download the data and see the polished code at https://evalf20.classes.andrewheiss.com/example/rdd/
+
+
+https://youtu.be/Por8Rd9QuBk
+PMAP 8521 • Example: Regression discontinuity with R: 5: Measuring the gap parametrically
+
+Demonstration of how to measure the gap at a discontinuity using parametric methods
+
+Download the data and see the polished code at https://evalf20.classes.andrewheiss.com/example/rdd/
+  
+
+https://youtu.be/lfBkAZLX_Z4
+PMAP 8521 • Example: Regression discontinuity with R: 6: Measuring the gap nonparametrically
+
+Demonstration of how to measure the gap at a discontinuity using nonparametric methods with rdrobust
+
+Download the data and see the polished code at https://evalf20.classes.andrewheiss.com/example/rdd/
+```

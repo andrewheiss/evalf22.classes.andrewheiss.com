@@ -1,0 +1,93 @@
+---
+title: "Choosing and planning ethical evaluations"
+date: "2022-04-14"
+---
+
+```{r slides-videos, echo=FALSE, include=FALSE}
+source(here::here("R", "slide-things.R"))
+source(here::here("R", "youtube-playlist.R"))
+
+playlist_id <- "PLS6tnpTr39sEkOTbIIpoXYu8czSTl1yIh"
+
+slide_details <- tibble::tribble(
+  ~youtube_id,   ~title, ~slide, ~active,
+  "rMUkZ4PSInY", "Introduction", "1", TRUE,
+  "n2Sbyx0hz6I", "Types of evaluations", "types-evaluations", FALSE,
+  "bXYPjwSl-Wg", "Model- and design-based inference", "model-design-inference", FALSE,
+  "XdWbgeeCwZ8", "Ethics and open science", "ethics-open-science", FALSE
+)
+```
+
+## Readings
+
+- {{< fa arrow-up-right-from-square >}} ["Generating random numbers"](/example/random-numbers/)
+- {{< fa arrow-up-right-from-square >}} ["The ultimate guide to generating synthetic data for causal inference"](/example/synthetic-data/)
+- {{< fa file-pdf >}} Paul Hünermund and Beyers Louw, ["On the Nuisance of Control Variables in Regression Analysis"](https://arxiv.org/abs/2005.10314) [@HunermundLouw:2020] (**click on the PDF link in the right sidebar**)
+- {{< fa file-pdf >}} ["Types of Evaluation,"](https://www.cdc.gov/std/Program/pupestd/Types%20of%20Evaluation.pdf) National Center for HIV/AIDS, Viral Hepatitis, STD, and TB Prevention, Centers for Disease Control (CDC)
+- {{< fa book >}} Chapters 11–13 in *Impact Evaluation in Practice* [@wb-eval]
+- {{< fa book >}} Chapter 15 in *The Effect* [@Huntington-Klein:2021] (skim this)
+
+
+## Slides
+
+The slides for today's lesson are available online as an HTML file. Use the buttons below to open the slides either as an interactive website or as a static PDF (for printing or storing for later). You can also click in the slides below and navigate through them with your left and right arrow keys.
+
+```{r show-slide-tabs, echo=FALSE, results="asis"}
+slide_buttons("/slides/13-slides")
+slide_tabs(slide_details, "/slides/13-slides.html")
+```
+
+:::{.callout-tip}
+**Fun fact**: If you type <kbd>?</kbd> (or <kbd>shift</kbd> + <kbd>/</kbd>) while going through the slides, you can see a list of special slide-specific commands.
+:::
+
+
+## Videos
+
+```{r show-youtube-list, echo=FALSE, results="asis"}
+youtube_list(slide_details, playlist_id)
+```
+
+
+## In-class stuff
+
+Here are all the materials we'll use in class:
+
+- [**Week 13 FAQ slides**](/slides/13-class.html) ([PDF](/slides/13-class.pdf))
+- [<i class="fab fa-r-project"></i> Live R script](https://www.dropbox.com/s/ezk2cujsx8lmval/synthetic-data.R)
+
+
+```{verbatim include=FALSE}
+Playlist: https://www.youtube.com/playlist?list=PLS6tnpTr39sEkOTbIIpoXYu8czSTl1yIh
+
+https://youtu.be/rMUkZ4PSInY
+PMAP 8521 • (13) Choosing and planning ethical evaluations: (0) Introduction
+
+Introduction to the class session on types of evaluations, types of causal inference, and ethical evaluations
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/13-content/
+
+
+https://youtu.be/n2Sbyx0hz6I
+PMAP 8521 • (13) Choosing and planning ethical evaluations: (1) Types of evaluations
+
+Brief overview of other types of evaluations, including needs assessment, monitoring, and cost-benefit analysis
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/13-content/
+
+  
+https://youtu.be/bXYPjwSl-Wg
+PMAP 8521 • (13) Choosing and planning ethical evaluations: (2) Model- and design-based inference
+
+Discussion of the difference between model- and design-based causal inference and how to know when to use different approaches
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/13-content/
+  
+  
+https://youtu.be/XdWbgeeCwZ8
+PMAP 8521 • (13) Choosing and planning ethical evaluations: (3) Ethics and open science
+
+Discussion of how to use best practices of open science and ethical research to undertake good, ethical evaluations
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/13-content/
+```

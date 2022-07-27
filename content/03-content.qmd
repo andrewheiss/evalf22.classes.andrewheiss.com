@@ -1,0 +1,92 @@
+---
+title: "Theories of change and logic models"
+date: "2022-01-27"
+---
+
+```{r slides-videos, echo=FALSE, include=FALSE}
+source(here::here("R", "slide-things.R"))
+source(here::here("R", "youtube-playlist.R"))
+
+playlist_id <- "PLS6tnpTr39sHjKJRcD-ebQUbcaFhc0cQH"
+
+slide_details <- tibble::tribble(
+  ~youtube_id,   ~title, ~slide, ~active,
+  "dwsCSqczNng", "Introduction", "1", TRUE,
+  "XkHUQJp5fh0", "Reproducibility", "reproducibility", FALSE,
+  "Uos8RumBrzE", "Program theories", "program-theories", FALSE,
+  "8CJ7M2dTmF4", "Logic models & results chains", "logic-models", FALSE
+)
+```
+
+## Readings
+
+- {{< fa book >}} Chapter 2 in *Impact Evaluation in Practice* [@wb-eval]
+- {{< fa book >}} Chapter 2 in *Evaluation: A Systematic Approach* [@RossiLipseyHenry:2019]. This is available on iCollege.
+- {{< fa book >}} Chapter 3 in *Evaluation: A Systematic Approach* [@RossiLipseyHenry:2019]. This is available on iCollege.
+
+
+## Slides
+
+The slides for today's lesson are available online as an HTML file. Use the buttons below to open the slides either as an interactive website or as a static PDF (for printing or storing for later). You can also click in the slides below and navigate through them with your left and right arrow keys.
+
+```{r show-slide-tabs, echo=FALSE, results="asis"}
+slide_buttons("/slides/03-slides")
+slide_tabs(slide_details, "/slides/03-slides.html")
+```
+
+:::{.callout-tip}
+**Fun fact**: If you type <kbd>?</kbd> (or <kbd>shift</kbd> + <kbd>/</kbd>) while going through the slides, you can see a list of special slide-specific commands.
+:::
+
+
+## Videos
+
+```{r show-youtube-list, echo=FALSE, results="asis"}
+youtube_list(slide_details, playlist_id)
+```
+
+
+## In-class stuff
+
+Here are all the materials we'll use in class:
+
+- [**Session 3 FAQ slides**](/slides/03-class.html) ([PDF](/slides/03-class.pdf))
+- [<i class="fab fa-r-project"></i> Live R script](https://www.dropbox.com/s/2fpzcybu3nvmwzl/live.R)
+- [<i class="fas fa-file-csv"></i> `atl-weather-2019.csv`](https://datavizs21.classes.andrewheiss.com/data/atl-weather-2019.csv)
+- [<i class="fas fa-file-csv"></i> `restaurant_inspections.csv`](https://vincentarelbundock.github.io/Rdatasets/csv/causaldata/restaurant_inspections.csv)
+
+
+```{verbatim include=FALSE}
+Playlist: https://www.youtube.com/playlist?list=PLS6tnpTr39sHjKJRcD-ebQUbcaFhc0cQH
+
+https://youtu.be/dwsCSqczNng
+PMAP 8521 • (3) Theories of change: (0) Introduction
+
+Introduction to the class session on theories of change
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/03-content/
+
+
+https://youtu.be/XkHUQJp5fh0
+PMAP 8521 • (3) Theories of change: (1) Reproducibility
+
+Discussion about the importance of reproducible data analysis practices
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/03-content/
+
+  
+https://youtu.be/Uos8RumBrzE
+PMAP 8521 • (3) Theories of change: (2) Program theories
+
+Discussion of program components, program impact theories, and the importance of basing programs on sound theories
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/03-content/
+
+
+https://youtu.be/8CJ7M2dTmF4
+PMAP 8521 • (3) Theories of change: (3) Logic models & results chains
+
+Discussion of results chains, logic models, and the difference between logic models and impact theories 
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/03-content/
+```

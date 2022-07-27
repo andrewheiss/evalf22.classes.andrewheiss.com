@@ -1,0 +1,104 @@
+---
+title: "Threats to validity"
+date: "2022-02-17"
+---
+
+```{r slides-videos, echo=FALSE, include=FALSE}
+source(here::here("R", "slide-things.R"))
+source(here::here("R", "youtube-playlist.R"))
+
+playlist_id <- "PLS6tnpTr39sFJtz7egfUASfhhz6zuj7GZ"
+
+slide_details <- tibble::tribble(
+  ~youtube_id,   ~title, ~slide, ~active,
+  "46v8l60nQnI", "Introduction", "1", TRUE,
+  "N4XYXuw_IA0", "Construct validity", "construct-validity", FALSE,
+  "IziQBDzUJ6E", "Statistical conclusion validity", "statistical-conclusion-validity", FALSE,
+  "ssz2DTfrGhw", "Internal validity", "internal-validity", FALSE,
+  "uK7YN6KTRT4", "External validity", "external-validity", FALSE
+)
+```
+
+
+## Readings
+
+- {{< fa file-pdf >}} Guido Imbens, "Statistical Significance, *p*-Values, and the Reporting of Uncertainty" [@Imbens:2021]. This is available on iCollege, and [it's also free here](https://doi.org/10.1257/jep.35.3.157).
+- {{< fa arrow-up-right-from-square >}} Randall Munroe, ["Significant"](https://xkcd.com/882/)
+- {{< fa arrow-up-right-from-square >}} Alexander Coppock, ["10 Things to Know About Statistical Power"](https://egap.org/resource/10-things-to-know-about-statistical-power/)
+- {{< fa trophy >}} Play around with FiveThirtyEight, ["Hack Your Way To Scientific Glory"](https://projects.fivethirtyeight.com/p-hacking/)
+- {{< fa book >}} Chapter 9 in *Impact Evaluation in Practice* [@wb-eval]
+- {{< fa book >}} Chapter 11 in *The Effect* [@Huntington-Klein:2021]
+
+
+## Slides
+
+The slides for today's lesson are available online as an HTML file. Use the buttons below to open the slides either as an interactive website or as a static PDF (for printing or storing for later). You can also click in the slides below and navigate through them with your left and right arrow keys.
+
+```{r show-slide-tabs, echo=FALSE, results="asis"}
+slide_buttons("/slides/06-slides")
+slide_tabs(slide_details, "/slides/06-slides.html")
+```
+
+:::{.callout-tip}
+**Fun fact**: If you type <kbd>?</kbd> (or <kbd>shift</kbd> + <kbd>/</kbd>) while going through the slides, you can see a list of special slide-specific commands.
+:::
+
+
+## Videos
+
+```{r show-youtube-list, echo=FALSE, results="asis"}
+youtube_list(slide_details, playlist_id)
+```
+
+
+## In-class stuff
+
+Here are all the materials we'll use in class:
+
+- [**Session 6 FAQ slides**](/slides/06-class.html) ([PDF](/slides/06-class.pdf))
+- [Zilch!](/resource/zilch/)
+- [<i class="fab fa-r-project"></i> Live R script](https://www.dropbox.com/s/akez7ssaiyt6um3/bayes-fun.R)
+- [<i class="fas fa-file-csv"></i> `restaurant_inspections.csv`](https://vincentarelbundock.github.io/Rdatasets/csv/causaldata/restaurant_inspections.csv)
+
+```{verbatim include=FALSE}
+Playlist: https://www.youtube.com/playlist?list=PLS6tnpTr39sFJtz7egfUASfhhz6zuj7GZ
+
+https://youtu.be/46v8l60nQnI
+PMAP 8521 • (6) Threats to validity: (0) Introduction
+
+Introduction to the class session on threats to validity
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/06-content/
+
+
+https://youtu.be/N4XYXuw_IA0
+PMAP 8521 • (6) Threats to validity: (1) Construct validity
+
+Discussion of threats to construct validity
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/06-content/
+
+  
+https://youtu.be/IziQBDzUJ6E
+PMAP 8521 • (6) Threats to validity: (2) Statistical conclusion validity
+
+Discussion of threats to statistical conclusion validity
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/06-content/
+  
+  
+https://youtu.be/ssz2DTfrGhw
+PMAP 8521 • (6) Threats to validity: (3) Internal validity
+
+Discussion of threats to internal validity
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/06-content/
+  
+  
+https://youtu.be/uK7YN6KTRT4
+PMAP 8521 • (6) Threats to validity: (4) External validity
+
+Discussion of threats to external validity
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/06-content/
+```

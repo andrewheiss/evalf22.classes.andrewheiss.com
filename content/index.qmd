@@ -1,5 +1,11 @@
 ---
-title: "All course content"
+title: "Readings, lectures, and videos"
 ---
 
-Blah
+Each class session has a set of required readings that you should complete ***before*** watching the lecture. 
+
+Every class session also has a YouTube playlist of short recorded videos for each of the lecture sections. The lecture slides are special HTML files made with the R package [**xaringan**](https://bookdown.org/yihui/rmarkdown/xaringan.html) (R can do so much!). On each class session page you'll see buttons for opening the presentation in a new tab or for downloading a PDF of the slides in case you want to print them or store them on your computer:
+
+<p class="buttons" style="text-align:center;"><span class="btn btn-danger">{{< fa arrow-up-right-from-square >}} View all slides in new window</span> <span class="btn btn-danger">{{< fa file-pdf >}} Download PDF of all slides</span></p>
+
+The slides are also embedded on each page. You can click in the slides and navigate through them with <kbd>←</kbd> and <kbd>→</kbd>. If you type <kbd>?</kbd> (or <kbd>shift</kbd> + <kbd>/</kbd>) while viewing the slides you can see a list of slide-specific commands (like <kbd>f</kbd> for fullscreen or <kbd>p</kbd> for presenter mode if you want to see my notes).

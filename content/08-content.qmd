@@ -1,0 +1,140 @@
+---
+title: "Difference-in-differences I"
+date: "2022-03-03"
+---
+
+```{r slides-videos, echo=FALSE, include=FALSE}
+source(here::here("R", "slide-things.R"))
+source(here::here("R", "youtube-playlist.R"))
+
+playlist_id <- "PLS6tnpTr39sHydbEoTK9DkyKV92-uE3r-"
+
+slide_details <- tibble::tribble(
+  ~youtube_id,   ~title, ~slide, ~active,
+  "4y84N23Mx-o", "Introduction", "1", TRUE,
+  "ZHBZtKL7zAg", "Quasi-experiments", "quasi-experiments", FALSE,
+  "B060u1zGOWo", "Interactions & regression", "interactions-regression", FALSE,
+  "0v1aE70FhsQ", "Two wrongs make a right", "two-wrongs", FALSE,
+  "tDWoNTk8CS4", "Diff-in-diff assumptions", "diff-diff-assumptions", FALSE
+)
+```
+
+## Readings
+
+- {{< fa book >}} Chapter 7 in *Impact Evaluation in Practice* [@wb-eval]
+- {{< fa book >}} Chapter 18 in *The Effect* [@Huntington-Klein:2021]
+
+
+## Slides
+
+The slides for today's lesson are available online as an HTML file. Use the buttons below to open the slides either as an interactive website or as a static PDF (for printing or storing for later). You can also click in the slides below and navigate through them with your left and right arrow keys.
+
+```{r show-slide-tabs, echo=FALSE, results="asis"}
+slide_buttons("/slides/08-slides")
+slide_tabs(slide_details, "/slides/08-slides.html")
+```
+
+:::{.callout-tip}
+**Fun fact**: If you type <kbd>?</kbd> (or <kbd>shift</kbd> + <kbd>/</kbd>) while going through the slides, you can see a list of special slide-specific commands.
+:::
+
+
+## Videos
+
+```{r show-youtube-list, echo=FALSE, results="asis"}
+youtube_list(slide_details, playlist_id)
+```
+
+
+## In-class stuff
+
+Here are all the materials we'll use in class:
+
+- [**Session 8 FAQ slides**](/slides/08-class.html) ([PDF](/slides/08-class.pdf))
+- [Session 8 R code](/projects/week-8.zip) (on [RStudio.cloud](https://rstudio.cloud/spaces/205054/project/3679422))
+
+
+```{verbatim include=FALSE}
+Playlist: https://www.youtube.com/playlist?list=PLS6tnpTr39sHydbEoTK9DkyKV92-uE3r-
+
+https://youtu.be/4y84N23Mx-o
+PMAP 8521 • (8/9) Difference-in-differences I & II: (0) Introduction
+
+Introduction to the class session on difference-in-difference analysis
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/08-content/
+
+
+https://youtu.be/ZHBZtKL7zAg
+PMAP 8521 • (8/9) Difference-in-differences I & II: (1) Quasi-experiments
+
+Discussion of what makes something a quasi-experiment + overview of three common types: difference-in-differences, regression discontinuity, and instrumental variables
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/08-content/
+
+  
+https://youtu.be/B060u1zGOWo
+PMAP 8521 • (8/9) Difference-in-differences I & II: (2) Interactions & regression
+
+Discussion of how interaction terms work in regression 
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/08-content/
+  
+  
+https://youtu.be/0v1aE70FhsQ
+PMAP 8521 • (8/9) Difference-in-differences I & II: (3) Two wrongs make a right
+
+Overview of the intuition behind difference-in-differences analysis
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/08-content/
+  
+  
+https://youtu.be/tDWoNTk8CS4
+PMAP 8521 • (8/9) Difference-in-differences I & II: (4) Diff-in-diff assumptions
+
+Discussion of the main assumptions for difference-in-differences
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/08-content/
+
+
+https://www.youtube.com/playlist?list=PLS6tnpTr39sHw3FevrihLn2Ly8pSCUUag
+
+https://youtu.be/u5iEtpITL3s
+PMAP 8521 • Example: Diff-in-diff with R: 1: Getting started
+
+Demonstration of how to create a new RStudio project and get ready to analyze data
+
+Download the data and see the polished code at https://evalf20.classes.andrewheiss.com/example/diff-in-diff/
+
+
+https://youtu.be/15BprphMT1g
+PMAP 8521 • Example: Diff-in-diff with R: 2: Load and clean data
+
+Demonstration of how to load and clean some data for diff-in-diff analysis
+
+Download the data and see the polished code at https://evalf20.classes.andrewheiss.com/example/diff-in-diff/
+
+
+https://youtu.be/SkPLMBkB06o
+PMAP 8521 • Example: Diff-in-diff with R: 3: Exploratory data analysis
+
+Demonstration of how to visually explore some key diff-in-diff variables
+
+Download the data and see the polished code at https://evalf20.classes.andrewheiss.com/example/diff-in-diff/
+
+
+https://youtu.be/56KPL2_nSxQ
+PMAP 8521 • Example: Diff-in-diff with R: 4: Diff-in-diff manually
+
+Demonstration of how to calculate average before/after treatment/control values and then calculate the difference in differences
+
+Download the data and see the polished code at https://evalf20.classes.andrewheiss.com/example/diff-in-diff/
+
+
+https://youtu.be/2JctZFGIYWw
+PMAP 8521 • Example: Diff-in-diff with R: 5: Diff-in-diff with regression
+
+Demonstration of how to use interaction terms in regression to calculate a diff-in-diff estimate
+
+Download the data and see the polished code at https://evalf20.classes.andrewheiss.com/example/diff-in-diff/
+```

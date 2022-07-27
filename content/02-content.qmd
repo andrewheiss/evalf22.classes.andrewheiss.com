@@ -1,0 +1,131 @@
+---
+title: "Regression and inference"
+date: "2022-01-20"
+---
+
+```{r slides-videos, echo=FALSE, include=FALSE}
+source(here::here("R", "slide-things.R"))
+source(here::here("R", "youtube-playlist.R"))
+
+playlist_id <- "PLS6tnpTr39sERjvBbJGr9mpqvtiLVPzd4"
+
+slide_details <- tibble::tribble(
+  ~youtube_id,   ~title, ~slide, ~active,
+  "S4OmWxc3h3Y", "Introduction", "1", TRUE,
+  "DGbLEgL4g6Y", "Drawing lines", "drawing-lines", FALSE,
+  "n-rV1TIoIgw", "Lines, Greek, and regression", "lines-greek-regression", FALSE,
+  "RYKsrTKWCR4", "Null worlds and statistical significance", "significance", FALSE
+)
+```
+
+## Readings
+
+- {{< fa book >}} Chapters 3 and 4 in *The Effect* [@Huntington-Klein:2021]
+
+
+## Recommended readings
+
+Look through your notes on regression from your last stats class. Also, you can skim through these resources:
+
+- {{< fa book >}} [6.1–6.4 in *ModernDive*](https://moderndive.com/6-regression.html) [@IsmayKim:2018]
+- {{< fa book >}} [7.1–7.4 in *ModernDive*](https://moderndive.com/7-multiple-regression.html) [@IsmayKim:2018]
+- {{< fa book >}} 7.1–7.3 in *OpenIntro Statistics* [@DiezBarrCetinkaya-Rundel:2017]
+- {{< fa book >}} 8.1 in *OpenIntro Statistics* [@DiezBarrCetinkaya-Rundel:2017]
+
+We'll review all this regression stuff in the videos, so *don't panic* if this all looks terrifying! Also, take advantage of the videos that accompany the *OpenIntro* chapters. And *also*, the *OpenIntro* chapters are heavier on the math—don't worry if you don't understand everything.
+
+
+## Slides
+
+The slides for today's lesson are available online as an HTML file. Use the buttons below to open the slides either as an interactive website or as a static PDF (for printing or storing for later). You can also click in the slides below and navigate through them with your left and right arrow keys.
+
+```{r show-slide-tabs, echo=FALSE, results="asis"}
+slide_buttons("/slides/02-slides")
+slide_tabs(slide_details, "/slides/02-slides.html")
+```
+
+:::{.callout-tip}
+**Fun fact**: If you type <kbd>?</kbd> (or <kbd>shift</kbd> + <kbd>/</kbd>) while going through the slides, you can see a list of special slide-specific commands.
+:::
+
+
+## Videos
+
+```{r show-youtube-list, echo=FALSE, results="asis"}
+youtube_list(slide_details, playlist_id)
+```
+
+
+## In-class stuff
+
+Here are all the materials we'll use in class:
+
+- [**Session 2 FAQ slides**](/slides/02-class.html) ([PDF](/slides/02-class.pdf))
+- [Errors vs. warnings vs. messages](https://moderndive.com/1-getting-started.html#messages) (i.e. what to do when R shows you red text)
+- R Markdown examples:
+    - Example R Markdown file used as a code-through or step-by-step teaching document:
+        - Lots of [blog posts here](https://www.andrewheiss.com/blog/)
+        - Julia Silge, ["Modeling human/computer interactions on Star Trek from #TidyTuesday with workflowsets"](https://juliasilge.com/blog/star-trek/)
+        - Bob Rudis, ["Some Covid Donuts To End The Week"](https://rud.is/b/2021/08/13/some-covid-donuts-to-end-the-week/)
+        - Holger K. von Jouanne-Diedrich, ["The “Youth Bulge” of Afghanistan: The Hidden Force behind Political Instability"](https://blog.ephorie.de/the-youth-bulge-of-afghanistan-the-hidden-force-behind-political-instability)
+    - Example R Markdown file used as a publicly-consumable document: 
+        - Click on the "Manuscript" menu item [at this site](https://stats.andrewheiss.com/cautioning-canary/)
+        - See [the Rmd file here](https://github.com/andrewheiss/cautioning-canary/blob/master/manuscript/manuscript.Rmd)
+
+Hands-on R materials:
+
+- [<i class="fas fa-file-csv"></i> `restaurant_inspections.csv`](https://vincentarelbundock.github.io/Rdatasets/csv/causaldata/restaurant_inspections.csv)
+- [RStudio.cloud project](https://rstudio.cloud/spaces/205054/project/3437782)
+- [Project `.zip` file](/projects/01-class.zip)
+- [Lab slides 3: Data basics](/slides/01-class_03_data-basics.html) ([PDF](/slides/01-class_03_data-basics.pdf))
+- [Lab slides 4: Visualize data with ggplot2](/slides/01-class_04_visualize-data.html) ([PDF](/slides/01-class_04_visualize-data.pdf))
+- [Lab slides 5: Transform data with dplyr](/slides/01-class_05_transform-data.html) ([PDF](/slides/01-class_05_transform-data.pdf))
+
+
+## Bayesian statistics resources
+
+In class I briefly mentioned the difference between frequentist and Bayesian statistics. You can see a bunch of [additional resources and examples of these two approaches to statistics here](/resource/bayes/). [This huge blog post](https://www.andrewheiss.com/blog/2021/12/01/multilevel-models-panel-data-guide/) also shows how to do multilevel models with Bayesian models.
+
+
+```{verbatim include=FALSE}
+Playlist: https://www.youtube.com/playlist?list=PLS6tnpTr39sERjvBbJGr9mpqvtiLVPzd4
+
+https://youtu.be/S4OmWxc3h3Y
+PMAP 8521 • (2) Regression and inference: (0) Introduction
+
+Introduction to the class session on regression and inference
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/02-content/
+
+
+https://youtu.be/DGbLEgL4g6Y
+PMAP 8521 • (2) Regression and inference: (1) Drawing lines
+
+Overview of the basics of regression analysis (particularly ordinary least squares (OLS) regression)
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/02-content/
+
+  
+https://youtu.be/n-rV1TIoIgw
+PMAP 8521 • (2) Regression and inference: (2) Lines, Greek, and regression
+
+Discussion of how to estimate parameters from a population using regression (with R specifically)
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/02-content/
+
+
+https://youtu.be/RYKsrTKWCR4
+PMAP 8521 • (2) Regression and inference: (3) Null worlds and statistical significance
+
+Discussion of statistical significance and p-values using simulated null worlds
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/02-content/
+
+
+https://youtu.be/E-Zz5S5NOUo
+PMAP 8521 • Example: Regression with R
+
+Demonstration of how to run regression models with R
+
+Download the data and see the polished code at https://evalf20.classes.andrewheiss.com/example/regression/
+```

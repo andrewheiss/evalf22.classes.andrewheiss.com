@@ -1,0 +1,164 @@
+---
+title: "Ethics, stories, and curiosity"
+date: "2022-04-21"
+---
+
+```{r slides-videos, echo=FALSE, include=FALSE}
+source(here::here("R", "slide-things.R"))
+source(here::here("R", "youtube-playlist.R"))
+
+playlist_id <- "PLS6tnpTr39sEKfedoOEFJvvNNHtDiYS-Q"
+
+slide_details <- tibble::tribble(
+  ~youtube_id,   ~title, ~slide, ~active,
+  "djmK0RIldu0", "Introduction", "1", TRUE,
+  "ini449ZegKI", "What did we just learn?", "overview", FALSE,
+  "NjwiGW_bpOg", "Ethics of data analyitcs (a)", "ethics-analysis", FALSE,
+  "VeX7WWZOyAc", "Ethics of data analytics (b)", "analysis-bias", FALSE,
+  "lr0rgzRondo", "Ethics of data analytics (c)", "analysis-evil", FALSE,
+  "RJpl7V76NeA", "Ethics of storytelling (a)", "telling-stories", FALSE,
+  "dXPj0XGCpag", "Ethics of storytelling (b)", "stories-manipulation", FALSE,
+  "O_yridxo4A8", "Ethics of storytelling (c)", "stories-misrepresentation", FALSE,
+  "k-59BLi8dMc", "Ethics of storytelling (d)", "stories-equity", FALSE,
+  "gqhoIe5vwoU", "Curiosity", "curiosity", FALSE
+)
+```
+
+## Readings
+
+This looks like a lot, but most of these are quite short!
+
+### Causal inference and data science
+
+- {{< fa file-pdf >}} Miguel A. Hernán, ["The C-Word: Scientific Euphemisms Do Not Improve Causal Inference From Observational Data"](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5888052/) [@Hernan:2018]
+- {{< fa arrow-up-right-from-square >}} Hannah Fresques and Meg Marco, ["'Your Default Position Should Be Skepticism' and Other Advice for Data Journalists From Hadley Wickham,"](https://www.propublica.org/nerds/hadley-wickham-your-default-position-should-be-skepticism-and-other-advice-for-data-journalists) *ProPublica*, June 10, 2019
+
+### Storytelling
+
+- {{< fa book >}} Chapter 14 in *Impact Evaluation in Practice* [@wb-eval]
+- {{< fa file-pdf >}} Martin Krzywinski and Alberto Cairo, ["Storytelling"](https://www.nature.com/articles/nmeth.2571.pdf)
+- {{< fa brands youtube >}} Ben Wellington, ["Making data mean more through storytelling"](https://www.youtube.com/watch?v=6xsvGYIxJok)
+- {{< fa brands youtube >}} Will Schoder, ["Every Story is the Same"](https://www.youtube.com/watch?v=LuD2Aa0zFiA)
+
+### Ethics
+
+Keep in mind throughout all these readings that an "algorithm" in these contexts is typically some fancy type of regression model where the outcome variable is something binary like "Safe babysitter/unsafe babysitter," "Gave up seat in past/didn't give up seat in past", or "Violated probation in past/didn't violate probation in past", and the explanatory variables are hundreds of pieces of data that might predict those outcomes (social media history, flight history, race, etc.). 
+
+Data scientists build a (sometimes proprietary and complex) model based on existing data, plug in values for any given new person, multiply that person's values by the coefficients in the model, and get a final score in the end for how likely someone is to be a safe babysitter or how likely someone is to return to jail.
+
+- {{< fa arrow-up-right-from-square >}} DJ Patil, ["A Code of Ethics for Data Science"](https://medium.com/@dpatil/a-code-of-ethics-for-data-science-cda27d1fac1) (if your're interested in this, also check out Mike Loukides, Hilary Mason, and DJ Patil, [*Ethics and Data Science*](https://www.amazon.com/dp/B07GTC8ZN7)
+- {{< fa arrow-up-right-from-square >}} ["AI in 2018: A Year in Review"](https://medium.com/@AINowInstitute/ai-in-2018-a-year-in-review-8b161ead2b4e)
+- {{< fa arrow-up-right-from-square >}} ["How Big Data Is ‘Automating Inequality’"](https://www.nytimes.com/2018/05/04/books/review/automating-inequality-virginia-eubanks.html)
+- {{< fa arrow-up-right-from-square >}} ["In ‘Algorithms of Oppression,’ Safiya Noble finds old stereotypes persist in new media"](https://annenberg.usc.edu/news/diversity-and-inclusion/algorithms-oppression-safiya-noble-finds-old-stereotypes-persist-new)
+- {{< fa podcast >}} [99% Invisible, "The Age of the Algorithm"](https://99percentinvisible.org/episode/the-age-of-the-algorithm/): Note that this is a podcast, or a 20ish minute audio story. **Listen to this.**
+- {{< fa podcast >}} [On the Media, "Biased Algorithms, Biased World"](https://www.wnycstudios.org/podcasts/otm/segments/biased-algorithms-biased-world)
+- {{< fa arrow-up-right-from-square >}} ["Wanted: The ‘perfect babysitter.’ Must pass AI scan for respect and attitude."](https://www.washingtonpost.com/technology/2018/11/16/wanted-perfect-babysitter-must-pass-ai-scan-respect-attitude/?utm_term=.080010494ed5)
+- {{< fa arrow-up-right-from-square >}} ["Companies are on the hook if their hiring algorithms are biased"](https://qz.com/1427621/companies-are-on-the-hook-if-their-hiring-algorithms-are-biased/)
+- {{< fa arrow-up-right-from-square >}} ["Courts use algorithms to help determine sentencing, but random people get the same results"](https://www.popsci.com/recidivism-algorithm-random-bias)
+- {{< fa brands twitter >}} [David Heinemeier Hansson's rant on the Apple Card](https://twitter.com/dhh/status/1192540900393705474)
+    - And [Jamie Heinemeier Hansson's response](https://dhh.dk/2019/about-the-apple-card.html)
+
+
+## Slides
+
+The slides for today's lesson are available online as an HTML file. Use the buttons below to open the slides either as an interactive website or as a static PDF (for printing or storing for later). You can also click in the slides below and navigate through them with your left and right arrow keys.
+
+```{r show-slide-tabs, echo=FALSE, results="asis"}
+slide_buttons("/slides/14-slides")
+slide_tabs(slide_details, "/slides/14-slides.html")
+```
+
+:::{.callout-tip}
+**Fun fact**: If you type <kbd>?</kbd> (or <kbd>shift</kbd> + <kbd>/</kbd>) while going through the slides, you can see a list of special slide-specific commands.
+:::
+
+
+## Videos
+
+```{r show-youtube-list, echo=FALSE, results="asis"}
+youtube_list(slide_details, playlist_id)
+```
+
+
+```{verbatim include=FALSE}
+Playlist: https://www.youtube.com/playlist?list=PLS6tnpTr39sEKfedoOEFJvvNNHtDiYS-Q
+
+https://youtu.be/djmK0RIldu0
+PMAP 8521 • (14) Ethics, stories, and curiosity: (0) Introduction
+
+Introduction to the final class session on ethics, storytelling, and curiosity
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/14-content/
+
+
+https://youtu.be/ini449ZegKI
+PMAP 8521 • (14) Ethics, stories, and curiosity: (1) What did we just learn?
+
+Brief overview of what we covered this semester
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/14-content/
+
+  
+https://youtu.be/NjwiGW_bpOg
+PMAP 8521 • (14) Ethics, stories, and curiosity: (2a) Ethics of data analysis 
+
+Discussion of why ethics matter in data analysis, focusing on manipulation
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/14-content/
+
+
+https://youtu.be/VeX7WWZOyAc
+PMAP 8521 • (14) Ethics, stories, and curiosity: (2b) Ethics of data analysis 
+
+Discussion of why ethics matter in data analysis, focusing on bias
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/14-content/
+
+
+https://youtu.be/lr0rgzRondo
+PMAP 8521 • (14) Ethics, stories, and curiosity: (2c) Ethics of data analysis 
+
+Discussion of why ethics matter in data analysis, focusing on accidental evil
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/14-content/
+  
+  
+https://youtu.be/RJpl7V76NeA
+PMAP 8521 • (14) Ethics, stories, and curiosity: (3a) Ethics of storytelling
+
+Discussion of the importance of storytelling in data analysis
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/14-content/
+  
+
+https://youtu.be/dXPj0XGCpag
+PMAP 8521 • (14) Ethics, stories, and curiosity: (3b) Ethics of storytelling
+
+Discussion of the potential pitfalls of storytelling with data: manipulation
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/14-content/
+  
+
+https://youtu.be/O_yridxo4A8
+PMAP 8521 • (14) Ethics, stories, and curiosity: (3c) Ethics of storytelling
+
+Discussion of the potential pitfalls of storytelling with data: misinterpretation
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/14-content/
+  
+
+https://youtu.be/k-59BLi8dMc
+PMAP 8521 • (14) Ethics, stories, and curiosity: (3d) Ethics of storytelling
+
+Discussion of the potential pitfalls of storytelling with data: equity
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/14-content/
+  
+
+https://youtu.be/gqhoIe5vwoU
+PMAP 8521 • (14) Ethics, stories, and curiosity: (4) Curiosity
+
+Discussion of the importance of curiosity in continuing to learn R and causal inference
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/14-content/
+```

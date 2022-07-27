@@ -1,0 +1,151 @@
+---
+title: "Instrumental variables I"
+date: "2022-03-31"
+---
+
+```{r slides-videos, echo=FALSE, include=FALSE}
+source(here::here("R", "slide-things.R"))
+source(here::here("R", "youtube-playlist.R"))
+
+playlist_id <- "PLS6tnpTr39sEsOSeMK19h6RWUB5kHrn0q"
+
+slide_details <- tibble::tribble(
+  ~youtube_id,   ~title, ~slide, ~active,
+  "2L4h_XRrNAg", "Introduction", "1", TRUE,
+  "fLJKAMSXDyw", "Endogeneity and exogeneity", "endo-exo", FALSE,
+  "915d3OMaWNA", "Instruments", "instruments", FALSE,
+  "rCMQkrVIKOc", "Using instruments", "using-instruments", FALSE
+)
+```
+
+## Readings
+
+- {{< fa book >}} Chapter 5 in *Impact Evaluation in Practice* [@wb-eval]
+- {{< fa book >}} Chapter 19 in *The Effect* [@Huntington-Klein:2021]
+
+### Instrumental variables
+
+- The [example page on instrumental variables](/example/iv/) shows how to use R to analyze and estimate causal effects with instrumental variables
+
+
+## Slides
+
+The slides for today's lesson are available online as an HTML file. Use the buttons below to open the slides either as an interactive website or as a static PDF (for printing or storing for later). You can also click in the slides below and navigate through them with your left and right arrow keys.
+
+```{r show-slide-tabs, echo=FALSE, results="asis"}
+slide_buttons("/slides/11-slides")
+slide_tabs(slide_details, "/slides/11-slides.html")
+```
+
+:::{.callout-tip}
+**Fun fact**: If you type <kbd>?</kbd> (or <kbd>shift</kbd> + <kbd>/</kbd>) while going through the slides, you can see a list of special slide-specific commands.
+:::
+
+
+## Videos
+
+```{r show-youtube-list, echo=FALSE, results="asis"}
+youtube_list(slide_details, playlist_id)
+```
+
+
+## In-class stuff
+
+Here are all the materials we'll use in class:
+
+- [**Week 11 FAQ slides**](/slides/11-class.html) ([PDF](/slides/11-class.pdf))
+- [Week 11 R code](/projects/week-11.zip) (on [RStudio.cloud](https://rstudio.cloud/spaces/205054/project/3829435))
+
+
+```{verbatim include=FALSE}
+Playlist: https://www.youtube.com/playlist?list=PLS6tnpTr39sEsOSeMK19h6RWUB5kHrn0q
+
+https://youtu.be/2L4h_XRrNAg
+PMAP 8521 • (11) Instrumental variables I: (0) Introduction
+
+Introduction to the class session on instrumental variables
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/11-content/
+
+
+https://youtu.be/fLJKAMSXDyw
+PMAP 8521 • (11) Instrumental variables I: (1) Endogeneity and exogeneity
+
+Discussion of the difference between endogeneity and exogeneity in a DAG
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/11-content/
+
+  
+https://youtu.be/915d3OMaWNA
+PMAP 8521 • (11) Instrumental variables I: (2) Instruments
+
+Discussion of what an instrument is and how it needs to be relevant, exclusive, and exogenous
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/11-content/
+  
+  
+https://youtu.be/rCMQkrVIKOc
+PMAP 8521 • (11) Instrumental variables I: (3) Using instruments
+
+Discussion of how to use instruments in two-stage least squares (2SLS) models to isolate exogeneity in treatment variables
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/11-content/
+  
+  
+https://www.youtube.com/playlist?list=PLS6tnpTr39sF97TfofFZ1O-bOQtB4ygZQ
+
+https://youtu.be/h-rx-dXo74Y
+PMAP 8521 • Example: Instrumental variables with R: 1: Getting started
+
+Demonstration of how to create a new RStudio project and get ready to analyze data with instrumental variables
+
+Download the data and see the polished code at https://evalf20.classes.andrewheiss.com/example/iv/
+
+
+https://youtu.be/wHTiAbGwKe4
+PMAP 8521 • Example: Instrumental variables with R: 2: Checking instrument validity
+
+Demonstration of how to check the validity of an instrument using fake data (wages ~ education | father's education)
+
+Download the data and see the polished code at https://evalf20.classes.andrewheiss.com/example/iv/
+
+
+https://youtu.be/tnerIh0uMxU
+PMAP 8521 • Example: Instrumental variables with R: 3: Manual 2SLS
+
+Demonstration of how to run a two-stage least squares (2SLS) regression model by running a first stage model, generated predicted values of the treatment variable, and use those exogenous predictions in a second stage model (using fake data (wages ~ education | father's education))
+
+Download the data and see the polished code at https://evalf20.classes.andrewheiss.com/example/iv/
+
+
+https://youtu.be/EI-knWTbH-s
+PMAP 8521 • Example: Instrumental variables with R: 4: One-step 2SLS
+
+Demonstration of how to run two-stage least squares (2SLS) regression model in one step using the iv_robust function from the **estimatr** R package (using fake data (wages ~ education | father's education))
+
+Download the data and see the polished code at https://evalf20.classes.andrewheiss.com/example/iv/
+
+
+https://youtu.be/W8Up5OOPtEY
+PMAP 8521 • Example: Instrumental variables with R: 5: Checking instrument validity (real data)
+
+Demonstration of how to check instrument validity using real data (wages ~ education | father's education + mother's education)
+
+Download the data and see the polished code at https://evalf20.classes.andrewheiss.com/example/iv/
+  
+
+https://youtu.be/6sp8sYrRv5c
+PMAP 8521 • Example: Instrumental variables with R: 6: 2SLS (real data)
+
+Demonstration of how to run two-stage least squares (2SLS) regression with multiple instruments, using real data (wages ~ education | father's education + mother's education)
+
+Download the data and see the polished code at https://evalf20.classes.andrewheiss.com/example/iv/
+
+
+https://youtu.be/uDr4nsWkG2c
+PMAP 8521 • Example: Instrumental variables with R: 7: Validity + 2SLS (real data)
+
+Demonstration of how to check instrument validity and run two-stage least squares (2SLS) regression with control variables, using real data (wages ~ education + controls | distance to college + controls)
+
+Download the data and see the polished code at https://evalf20.classes.andrewheiss.com/example/iv/
+```

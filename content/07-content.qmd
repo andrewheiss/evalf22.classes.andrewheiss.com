@@ -1,0 +1,159 @@
+---
+title: "Randomization and matching"
+date: "2022-02-24"
+---
+
+```{r slides-videos, echo=FALSE, include=FALSE}
+source(here::here("R", "slide-things.R"))
+source(here::here("R", "youtube-playlist.R"))
+
+playlist_id <- "PLS6tnpTr39sGJURMOwN9tf9MNDN4t0JMz"
+
+slide_details <- tibble::tribble(
+  ~youtube_id,   ~title, ~slide, ~active,
+  "m4nKVJ-2K3I", "Introduction", "1", TRUE,
+  "-zjSixOybQE", "The magic of randomization", "magic-randomization", FALSE,
+  "W0NyALrjLA4", "How to analyze RCTs", "rct-how", FALSE,
+  "vHb2TYAze74", 'The "gold" standard', "gold-standard", FALSE,
+  "jECz-SS-sqc", "Adjustment with matching", "matching", FALSE
+)
+```
+
+## Readings
+
+- {{< fa file-pdf >}} Andrew Heiss, "Causal Inference," Chapter 10 in *R for Political Data Science: A Practical Guide* (2020) (Ignore the exercises!). [Get the PDF here.](/files/10-causal-inference.pdf)
+- {{< fa book >}} Chapter 4 in *Impact Evaluation in Practice* [@wb-eval]
+- {{< fa book >}} Chapters 11 and 13 in *The Effect* [@Huntington-Klein:2021]. **Focus especially on section 13.3 about standard errors.** And skim chapter 11; it's an overview of regression, which we reviewed in session 2, but it also applies the language of DAGs to regression, so look for that specifically as you read.
+- {{< fa podcast >}} Planet Money, ["Moving To Opportunity?,"](https://www.npr.org/2019/08/30/756028025/episode-937-moving-to-opportunity) episode 937
+- {{< fa arrow-up-right-from-square >}} Aaron Carroll, ["Workplace Wellness Programs Don’t Work Well. Why Some Studies Show Otherwise,"](https://www.nytimes.com/2018/08/06/upshot/employer-wellness-programs-randomized-trials.html) *The Upshot*, August 6, 2018
+
+### RCTs, matching, and inverse probability weighting
+
+- The [example page on RCTs](/example/rcts/) shows how to use R to analyze and estimate causal effects from RCTs
+- The [example page on matching and inverse probability weighting](/example/matching-ipw/) shows how to use R to close backdoors, make adjustments, and find causal effects from observational data using matching and inverse probability weighting
+
+
+## Slides
+
+The slides for today's lesson are available online as an HTML file. Use the buttons below to open the slides either as an interactive website or as a static PDF (for printing or storing for later). You can also click in the slides below and navigate through them with your left and right arrow keys.
+
+```{r show-slide-tabs, echo=FALSE, results="asis"}
+slide_buttons("/slides/07-slides")
+slide_tabs(slide_details, "/slides/07-slides.html")
+```
+
+:::{.callout-tip}
+**Fun fact**: If you type <kbd>?</kbd> (or <kbd>shift</kbd> + <kbd>/</kbd>) while going through the slides, you can see a list of special slide-specific commands.
+:::
+
+
+## Videos
+
+```{r show-youtube-list, echo=FALSE, results="asis"}
+youtube_list(slide_details, playlist_id)
+```
+
+
+## In-class stuff
+
+Here are all the materials we'll use in class:
+
+- [**Session 7 FAQ slides**](/slides/07-class.html) ([PDF](/slides/07-class.pdf))
+- [In-class `.zip` file](/projects/rcts-ipw.zip)
+- [RStudio.cloud project](https://rstudio.cloud/spaces/205054/project/3646106)
+- [Finished code from in-class example](/files/rct_vaccine-payments.R) (see also `rct_vaccine-payments_finished.Rmd` in the `.zip` file)
+
+Other helpful resources:
+
+- ["The Impact of Mask Distribution and Promotion on Mask Uptake and COVID-19 in Bangladesh"](https://www.poverty-action.org/study/impact-mask-distribution-and-promotion-mask-uptake-and-covid-19-bangladesh)
+- Macartan Humphreys, ["I saw your RCT and I have some worries! FAQs"](https://macartan.github.io/i/notes/rct_faqs.html)
+- Darren Dahly, ["Out of balance: A perspective on covariate adjustment in randomized experiments"](https://statsepi.substack.com/p/out-of-balance)
+- [Bayesian stats and decison making](/resource/bayes/)
+- [Standard errors](/example/standard-errors/)
+- [Unobserved confounding and sensitivity analysis](/example/confounding-sensitivity/)
+
+
+```{verbatim include=FALSE}
+Playlist: https://www.youtube.com/playlist?list=PLS6tnpTr39sGJURMOwN9tf9MNDN4t0JMz
+
+https://youtu.be/m4nKVJ-2K3I
+PMAP 8521 • (7) Randomization and matching: (0) Introduction
+
+Introduction to the class session on randomization and matching
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/07-content/
+
+
+https://youtu.be/-zjSixOybQE
+PMAP 8521 • (7) Randomization and matching: (1) The magic of randomization
+
+Discussion of how randomization allows for strong claims of causal inference
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/07-content/
+
+  
+https://youtu.be/W0NyALrjLA4
+PMAP 8521 • (7) Randomization and matching: (2) How to analyze RCTs
+
+Discussion and demonstration of how to analyze the results of an RCT using R
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/07-content/
+  
+  
+https://youtu.be/vHb2TYAze74
+PMAP 8521 • (7) Randomization and matching: (3) The "gold" standard
+
+Discussion of why RCTs aren't really a true "gold" standard for causal inference
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/07-content/
+  
+  
+https://youtu.be/jECz-SS-sqc
+PMAP 8521 • (7) Randomization and matching: (4) Adjustment with matching
+
+Discussion of matching and inverse probability weighting + how these methods allow you to close DAG backdoors
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/07-content/
+
+
+https://www.youtube.com/playlist?list=PLS6tnpTr39sGv7RPHEZy8CDSdCliQOW8K
+
+https://youtu.be/OoYgOwxUQgI
+PMAP 8521 • Example: Matching and IPW with R: 1: Drawing a DAG
+
+Demonstration of how to connect nodes in a DAG with dagitty to find backdoor associations
+
+Download the data and see the polished code at https://evalf20.classes.andrewheiss.com/example/matching-ipw/
+
+
+https://youtu.be/_FNrfFe99R0
+PMAP 8521 • Example: Matching and IPW with R: 2: Creating an RStudio project
+
+Demonstration of how to create a new RStudio project and get ready to analyze data
+
+Download the data and see the polished code at https://evalf20.classes.andrewheiss.com/example/matching-ipw/
+
+
+https://youtu.be/7NW7GbO44BY
+PMAP 8521 • Example: Matching and IPW with R: 3: Naive (and wrong!) estimate
+
+Demonstration of how to calculate an incorrect correlation-is-not-causation estimate of a causal effect with R
+
+Download the data and see the polished code at https://evalf20.classes.andrewheiss.com/example/matching-ipw/
+
+
+https://youtu.be/uGwSRnET8Sg
+PMAP 8521 • Example: Matching and IPW with R: 4: Matching
+
+Demonstration of how to use the MatchIt package in R to close DAG backdoors, generate synthetic treatment and control groups, and estimate causal effects from observational data
+
+Download the data and see the polished code at https://evalf20.classes.andrewheiss.com/example/matching-ipw/
+
+
+https://youtu.be/CKm1rZlAwuA
+PMAP 8521 • Example: Matching and IPW with R: 5: Inverse probability weighting
+
+Demonstration of how to use inverse probability weighting with R to close DAG backdoors and estimate causal effects from observational data
+
+Download the data and see the polished code at https://evalf20.classes.andrewheiss.com/example/matching-ipw/
+```

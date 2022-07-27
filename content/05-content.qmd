@@ -1,0 +1,84 @@
+---
+title: "DAGs and potential outcomes"
+date: "2022-02-10"
+---
+
+```{r slides-videos, echo=FALSE, include=FALSE}
+source(here::here("R", "slide-things.R"))
+source(here::here("R", "youtube-playlist.R"))
+
+playlist_id <- "PLS6tnpTr39sHwqEeiG5xb3zAHcQCGWZUC"
+
+slide_details <- tibble::tribble(
+  ~youtube_id,   ~title, ~slide, ~active,
+  "6n7Qicffb2k", "Introduction", "1", TRUE,
+  "vARju899D3E", "do()ing observational causal inference", "dag-adjustment", FALSE,
+  "0pOA8y3YASA", "Potential outcomes", "potential-outcomes", FALSE
+)
+```
+
+## Readings
+
+- {{< fa podcast >}} Prologue and at least one of the four acts from [This American Life, "Gardens of Branching Paths," episode #691, January 10, 2020](https://www.thisamericanlife.org/691/gardens-of-branching-paths)
+- {{< fa book >}} Chapter 3 in *Impact Evaluation in Practice* [@wb-eval]
+- {{< fa book >}} Chapters 8, 9, and 10 in *The Effect* [@Huntington-Klein:2021]
+
+### Potential outcomes, ATEs, and CATEs example page
+
+- The [example page on potential outcomes, ATEs, and CATEs](/example/po-ate-cate/) shows how to use R to calculate ATEs and CATEs
+
+
+## Slides
+
+The slides for today's lesson are available online as an HTML file. Use the buttons below to open the slides either as an interactive website or as a static PDF (for printing or storing for later). You can also click in the slides below and navigate through them with your left and right arrow keys.
+
+```{r show-slide-tabs, echo=FALSE, results="asis"}
+slide_buttons("/slides/05-slides")
+slide_tabs(slide_details, "/slides/05-slides.html")
+```
+
+:::{.callout-tip}
+**Fun fact**: If you type <kbd>?</kbd> (or <kbd>shift</kbd> + <kbd>/</kbd>) while going through the slides, you can see a list of special slide-specific commands.
+:::
+
+
+## Videos
+
+```{r show-youtube-list, echo=FALSE, results="asis"}
+youtube_list(slide_details, playlist_id)
+```
+
+
+## In-class stuff
+
+Here are all the materials we'll use in class:
+
+- [**Session 5 FAQ slides**](/slides/05-class.html) ([PDF](/slides/05-class.pdf))
+
+
+```{verbatim include=FALSE}
+Playlist: https://www.youtube.com/playlist?list=PLS6tnpTr39sHwqEeiG5xb3zAHcQCGWZUC
+
+https://youtu.be/6n7Qicffb2k
+PMAP 8521 • (5) DAGs and potential outcomes: (0) Introduction
+
+Introduction to the class session on DAGs and potential outcomes
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/05-content/
+
+
+https://youtu.be/vARju899D3E
+PMAP 8521 • (5) DAGs and potential outcomes: (1) do()ing observational causal inference
+
+Discussion of the do-operator, how experiments let you manipulate DAGs, and how do-calculus lets you transform do-based expressions into do-free versions
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/05-content/
+
+  
+https://youtu.be/0pOA8y3YASA
+PMAP 8521 • (5) DAGs and potential outcomes: (2) Potential outcomes
+
+Discussion and demonstration of how the potential outcomes framework works and how it connects to DAGs
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/05-content/
+```

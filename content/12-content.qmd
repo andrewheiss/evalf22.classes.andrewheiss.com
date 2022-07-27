@@ -1,0 +1,89 @@
+---
+title: "Instrumental variables II + Regression discontinuity II"
+date: "2022-04-07"
+---
+
+```{r slides-videos, echo=FALSE, include=FALSE}
+source(here::here("R", "slide-things.R"))
+source(here::here("R", "youtube-playlist.R"))
+
+playlist_id <- "PLS6tnpTr39sGrbGfvdp0Gob6qAghIdiLq"
+
+slide_details <- tibble::tribble(
+  ~youtube_id,   ~title, ~slide, ~active,
+  "qDAFXXriFyE", "Introduction", "1", TRUE,
+  "_Ue7blCyEXk", "Treatment effects and compliance", "treatment-effects", FALSE,
+  "M5cuBBuqZys", "Randomized promotion", "encouragement", FALSE,
+  "9xGeCGRvVgE", "Fuzzy regression discontinuity", "fuzzy-rdd", FALSE
+)
+```
+
+## Readings
+
+- The [example page on complier average causal effects](/example/cace/) shows how to use R to disentangle complier average causal effects
+- The [example page on fuzzy regression discontinuity](/example/rdd-fuzzy) shows how to use R to use instrumental variables in fuzzy regression discontinuity, both parametrically and nonparametrically
+
+
+## Slides
+
+The slides for today's lesson are available online as an HTML file. Use the buttons below to open the slides either as an interactive website or as a static PDF (for printing or storing for later). You can also click in the slides below and navigate through them with your left and right arrow keys.
+
+```{r show-slide-tabs, echo=FALSE, results="asis"}
+slide_buttons("/slides/12-slides")
+slide_tabs(slide_details, "/slides/12-slides.html")
+```
+
+:::{.callout-tip}
+**Fun fact**: If you type <kbd>?</kbd> (or <kbd>shift</kbd> + <kbd>/</kbd>) while going through the slides, you can see a list of special slide-specific commands.
+:::
+
+
+## Videos
+
+```{r show-youtube-list, echo=FALSE, results="asis"}
+youtube_list(slide_details, playlist_id)
+```
+
+
+## In-class stuff
+
+Here are all the materials we'll use in class:
+
+- [**Week 12 FAQ slides**](/slides/12-class.html) ([PDF](/slides/12-class.pdf))
+- [<i class="fab fa-r-project"></i> Live R script](https://www.dropbox.com/s/ezk2cujsx8lmval/synthetic-data.R)
+
+
+```{verbatim include=FALSE}
+Playlist: https://www.youtube.com/playlist?list=PLS6tnpTr39sGrbGfvdp0Gob6qAghIdiLq
+
+https://youtu.be/qDAFXXriFyE
+PMAP 8521 • (12) Instrumental variables II + Regression discontinuity II: (0) Introduction
+
+Introduction to the class session on instrumental variables and fuzzy regression discontinuity
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/12-content/
+
+
+https://youtu.be/_Ue7blCyEXk
+PMAP 8521 • (12) Instrumental variables II + Regression discontinuity II: (1) Treatment effects and compliance
+
+Discussion of compliers, always takers, and never takers + how to find complier average causal effects (CACE) by finding the intent-to-treat effect (ITT) and dividing it by the proportion of compliers
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/12-content/
+
+  
+https://youtu.be/M5cuBBuqZys
+PMAP 8521 • (12) Instrumental variables II + Regression discontinuity II: (2) Randomized promotion
+
+Discussion of how to use randomized promotion as an instrument to measure the causal effect of a universal program with self-selection
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/12-content/
+  
+  
+https://youtu.be/9xGeCGRvVgE
+PMAP 8521 • (12) Instrumental variables II + Regression discontinuity II: (3) Fuzzy regression discontinuity
+
+Discussion of how to use an above/below threshold variable as an instrument in fuzzy regression discontinuity designs
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/12-content/
+```

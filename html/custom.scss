@@ -49,8 +49,8 @@ $h5-font-size: $font-size-base * 1;
 $h6-font-size: $font-size-base * 0.8;
 
 $toc-font-size: 1.1rem;
-$sidebar-font-size: 1.3rem;
-$sidebar-font-size-section: 1.1rem;
+$sidebar-font-size: 1.1rem;
+$sidebar-font-size-section: 0.9rem;
 
 $link-color: $red;
 $link-hover-color: $yellow;
@@ -78,7 +78,7 @@ h2 {
 }
 
 // Slightly larger buttons
-p a.btn {
+p a.btn, .buttons span.btn {
   font-size: 1.2rem;
 }
 
@@ -110,6 +110,7 @@ main {
 .sidebar-navigation .sidebar-section .sidebar-item,
 .sidebar-navigation .sidebar-item{
   line-height: 1.2;
+  padding-bottom: 0.4rem;
 }
 
 .sidebar-item .sidebar-item-toggle .bi {
