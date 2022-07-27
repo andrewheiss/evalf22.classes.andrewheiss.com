@@ -1,0 +1,8 @@
+# Ignore stuff in standalone projects
+projects/
+
+# Ignore site output
+_site/
+
+# Ignore targets folder
+_targets/
