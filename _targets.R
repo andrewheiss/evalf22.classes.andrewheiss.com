@@ -50,7 +50,6 @@ list(
                pattern = "\\.html",
                full.names = TRUE)
   }),
-
   tar_target(xaringan_pdfs,
              xaringan_to_pdf(xaringan_html_files),
              pattern = map(xaringan_html_files),
@@ -75,7 +74,9 @@ list(
   # with `format = "file"`
   #
   # The main index.qmd page loads project_zips as a target to link it as a dependency
-  tar_target(project_paths, list.dirs(here_rel("projects"), full.names = FALSE, recursive = FALSE)),
+  tar_target(project_paths,
+             list.dirs(here_rel("projects"),
+                       full.names = FALSE, recursive = FALSE)),
   tar_target(project_files, project_paths, pattern = map(project_paths)),
   tar_target(project_zips, {
     build_data
