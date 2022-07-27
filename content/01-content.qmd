@@ -1,7 +1,6 @@
 ---
 title: "Evaluation and the causal revolution"
 date: "2022-07-26"
-engine: knitr
 ---
 
 ```{r slides-videos, echo=FALSE, include=FALSE}
