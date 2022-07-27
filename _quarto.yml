@@ -4,6 +4,7 @@ project:
     - "*.qmd"
     - "!slides/"
   resources:
+    - "img/"
     - "slides/*.html"
     - "slides/*.pdf"
     - "slides/img/"
@@ -23,7 +24,9 @@ website:
       - schedule.qmd
       - text: "Content"
         file: content/index.qmd
-      - text: "Example"
+      - text: "Assignments"
+        file: assignment/index.qmd
+      - text: "Examples"
         file: example/index.qmd
       - text: "Resources"
         file: resource/index.qmd
@@ -43,7 +46,16 @@ website:
           contents:
             - content/01-content.qmd
 
-    - title: "Example"
+    - title: "Assignments"
+      contents:
+        - section: "Overview"
+          contents:
+            - assignment/index.qmd
+        - section: "Problem sets"
+          contents:
+            - assignment/02-problem-set.qmd
+
+    - title: "Examples"
       contents:
         - section: "Overview"
           contents:

@@ -13,6 +13,8 @@ $gray-800: #343a40 !default;
 $gray-900: #212529 !default;
 $black:    #000 !default;
 
+// Inferno colors
+// viridisLite::viridis(8, option = "inferno", begin = 0.1, end = 0.9)
 $blue:    #42159D !default;
 $indigo:  #771C6D !default;
 $purple:  #480B6A !default;
@@ -53,23 +55,34 @@ $sidebar-font-size-section: 1.1rem;
 $link-color: $red;
 $link-hover-color: $yellow;
 
+$monokai-bg: #2e3440;
+
+
 /*-- scss:rules --*/
 h2 {
   border-bottom: none;
+}
+
+// Content page stuff
+// Date bar
+.date-block {
+  font-size: 1.3rem;
 }
 
 .bg-content {
   background-color: $pink;
 }
 
-.date-block {
-  font-size: 1.3rem;
+.bg-assignment {
+  background-color: $red;
 }
 
+// Slightly larger buttons
 p a.btn {
   font-size: 1.2rem;
 }
 
+// No space after lists-within-lists
 main {
   ol ol,
   ul ul,
@@ -79,6 +92,7 @@ main {
   }
 }
 
+// Make callout text and icon bigger
 .callout.callout-style-default {
   > div.callout-header,
   > .callout-body {
@@ -92,7 +106,7 @@ main {
   }
 }
 
-
+// Increase font size in sidebar
 .sidebar-navigation .sidebar-section .sidebar-item,
 .sidebar-navigation .sidebar-item{
   line-height: 1.2;
@@ -104,6 +118,7 @@ main {
   text-align: center;
 }
 
+// Increase font size in TOC
 #TOC {
   padding-bottom: 0.1em;
   background-color: lighten($blue, 60%);
@@ -111,4 +126,35 @@ main {
 
 #toc-title {
   font-weight: 700;
+}
+
+
+// Code stuff
+// Shrink blocks of code
+pre.text, pre.sourceCode, .cell-output pre {
+  font-size: 0.775em;
+}
+
+// Slight bottom margin to output
+.cell-output {
+  margin: 0 0 1em;
+}
+
+// Remove margin on pre in output
+.cell-output pre {
+  margin-bottom: 0;
+  color: #ffffff;
+}
+
+// Format output and plain text blocks like code
+.cell-output, pre.text {
+  border: none;
+  padding: .4em;
+  background-color: $monokai-bg;
+  border: 1px solid $monokai-bg;
+  border-radius: .25rem;
+}
+
+pre.text {
+  color: #ffffff;
 }
