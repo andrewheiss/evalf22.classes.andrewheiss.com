@@ -23,10 +23,8 @@ render_xaringan <- function(slide_path) {
 xaringan_to_pdf <- function(slide_path) {
   path_sans_ext <- tools::file_path_sans_ext(slide_path)
 
-  pagedown::chrome_print(slide_path,
-                         output = paste0(path_sans_ext, ".pdf"),
-                         options = list(printBackground = TRUE),
-                         wait = 10, timeout = 600)
+  renderthis::to_pdf(slide_path,
+                     to = paste0(path_sans_ext, ".pdf"))
 
   return(paste0(tools::file_path_sans_ext(slide_path), ".pdf"))
 }
