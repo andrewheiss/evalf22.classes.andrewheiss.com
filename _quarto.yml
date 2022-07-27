@@ -1,0 +1,53 @@
+project:
+  type: website
+  render:
+    - "*.qmd"
+    - "!slides/"
+  resources:
+    - "slides/*.html"
+    - "slides/*.pdf"
+    - "slides/img/"
+    - "slides/libs/"
+    - "slides/css/"
+    - "slides/*_files/"
+
+bibliography: bib/references.bib
+csl: bib/chicago-author-date.csl
+
+website:
+  title: "Program Evaluation"
+  navbar:
+    pinned: true
+    right:
+      - text: "Content"
+        file: content/index.qmd
+      - text: "Example"
+        file: example/index.qmd
+
+  sidebar:
+    - title: "Content"
+      style: "docked"
+      search: false
+      background: dark
+      contents:
+        - section: "Overview"
+          contents:
+            - content/index.qmd
+        - section: "Course content"
+          contents:
+            - content/01-content.qmd
+
+    - title: "Example"
+      contents:
+        - section: "Overview"
+          contents:
+            - example/index.qmd
+        - example/rstudio-tidyverse.qmd
+
+format:
+  html:
+    theme:
+      - litera
+      - html/custom.scss
+    toc: true
+    highlight-style: monokai

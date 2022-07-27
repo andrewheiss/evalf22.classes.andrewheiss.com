@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,700;1,400;1,700&family=Fira+Sans+Condensed:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+/*-- scss:defaults --*/
+$white:    #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #ddd !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #868e96 !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black:    #000 !default;
+
+$blue:    #42159D !default;
+$indigo:  #771C6D !default;
+$purple:  #480B6A !default;
+$pink:    #A52C60 !default;
+$red:     #CF4446 !default;
+$orange:  #EE6A24 !default;
+$yellow:  #FB9E07 !default;
+$green:   #02b875 !default;
+$teal:    #20c997 !default;
+$cyan:    #17a2b8 !default;
+
+$primary:       $blue !default;
+$secondary:     $gray-500 !default;
+$success:       $green !default;
+$info:          $cyan !default;
+$warning:       $yellow !default;
+$danger:        $red !default;
+$light:         $gray-100 !default;
+$dark:          $gray-800 !default;
+
+$font-family-sans-serif:      Fira Sans Condensed, sans-serif !default;
+$font-family-serif:           Barlow, serif !default;  /* Not actually a serif font but whatever */
+
+$font-size-base:              1.25rem !default;
+$headings-font-weight:        700 !default;
+
+$h1-font-size: $font-size-base * 2.45;
+$h2-font-size: $font-size-base * 1.85;
+$h3-font-size: $font-size-base * 1.5;
+$h4-font-size: $font-size-base * 1.2;
+$h5-font-size: $font-size-base * 1;
+$h6-font-size: $font-size-base * 0.8;
+
+$toc-font-size: 1.1rem;
+$sidebar-font-size: 1.3rem;
+$sidebar-font-size-section: 1.1rem;
+
+$link-color: $red;
+$link-hover-color: $yellow;
+
+/*-- scss:rules --*/
+h2 {
+  border-bottom: none;
+}
+
+.bg-content {
+  background-color: $pink;
+}
+
+.date-block {
+  font-size: 1.3rem;
+}
+
+p a.btn {
+  font-size: 1.2rem;
+}
+
+main {
+  ol ol,
+  ul ul,
+  ol ul,
+  ul ol {
+    margin-bottom: 0em;
+  }
+}
+
+.callout.callout-style-default {
+  > div.callout-header,
+  > .callout-body {
+    font-size: 1.2rem;
+  }
+
+  .callout-icon::before {
+    height: 1.2rem;
+    width: 1.2rem;
+    background-size: 1.2rem 1.2rem;
+  }
+}
+
+
+.sidebar-navigation .sidebar-section .sidebar-item,
+.sidebar-navigation .sidebar-item{
+  line-height: 1.2;
+}
+
+.sidebar-item .sidebar-item-toggle .bi {
+  // The dongle for opening and closing sections
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+#TOC {
+  padding-bottom: 0.1em;
+  background-color: lighten($blue, 60%);
+}
+
+#toc-title {
+  font-weight: 700;
+}

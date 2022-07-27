@@ -1,0 +1,110 @@
+---
+title: "Evaluation and the causal revolution"
+date: "2022-07-26"
+engine: knitr
+---
+
+```{r slides-videos, echo=FALSE, include=FALSE}
+source(here::here("R", "slide-things.R"))
+source(here::here("R", "youtube-playlist.R"))
+
+playlist_id <- "PLS6tnpTr39sHcnk9KcoQVzDywxWRzVWHC"
+
+slide_details <- tibble::tribble(
+  ~youtube_id,   ~title, ~slide, ~active,
+  "BIhz1dz5Vws", "Introduction", "1", TRUE,
+  "f-sOSXyeeJE", "Data science and public service", "ds-ps", FALSE,
+  "Z2foqSMWnGU", "Evidence, evaluation, and causation (1)", "evidence-evaluation-causation", FALSE,
+  "W5ChuEhAzrs", "Evidence, evaluation, and causation (2)", "evidence-evaluation-causation1", FALSE,
+  "D4LoEctZxHE", "Class details", "class-details", FALSE
+)
+```
+
+## Readings
+
+- The [syllabus](/syllabus/), [content](/content/), [examples](/example/), and [assignments](/assigment/) pages for this class
+- {{< fa book >}} Chapter 1 in *Impact Evaluation in Practice* [@wb-eval]
+- {{< fa book >}} Chapters 1 and 2 in *The Effect* [@Huntington-Klein:2021]
+- {{< fa brands youtube >}} DJ Patil, ["What Makes a Radical and Revolutionary Technology?"](https://www.youtube.com/watch?v=UOoMzaWOQJA) 
+    - <small>(DJ Patil is the former Chief Data Scientist of the United States under President Obama. He gave this forum address at Brigham Young University on February 13, 2018.)</small>
+- {{< fa arrow-up-right-from-square >}} Stephen Goldsmith, ["Next Generation of Public Employees Must Understand Data and Policy"](http://www.govtech.com/opinion/Next-Generation-Public-Employees-Must-Understand-Data-Policy.html)
+- {{< fa arrow-up-right-from-square >}} Hadley Wickham, ["Data Science: How is it Different To Statistics?"](http://bulletin.imstat.org/2014/09/data-science-how-is-it-different-to-statistics%E2%80%89/)
+
+
+## Slides
+
+:::{.callout-warning}
+**Important!!**: In the "Class details" video, I say that there are three books for the class: the World Bank evaluation book, *'Metrics Matter*, and *Causal Inference: The Mixtape*. [That's not the case this semester](/syllabus/#books), since we're using the new *The Effect* book, which replaces both *'Metrics Matter* and the *Mixtape*. So ignore that part of the video. The slides are updated with the correct books, though: [see here](/slides/01-slides.html#85).
+:::
+
+The slides for today's lesson are available online as an HTML file. Use the buttons below to open the slides either as an interactive website or as a static PDF (for printing or storing for later). You can also click in the slides below and navigate through them with your left and right arrow keys.
+
+```{r show-slide-tabs, echo=FALSE, results="asis"}
+slide_buttons("/slides/01-slides")
+slide_tabs(slide_details, "/slides/01-slides.html")
+```
+
+
+## Videos
+
+:::{.callout-warning}
+**Important!!**: In the "Class details" video, I say that there are three books for the class: the World Bank evaluation book, *'Metrics Matter*, and *Causal Inference: The Mixtape*. [That's not the case this semester](/syllabus/#books), since we're using the new *The Effect* book, which replaces both *'Metrics Matter* and the *Mixtape*. So ignore that part of the video. The slides are updated with the correct books, though: [see here](/slides/01-slides.html#85).
+:::
+
+```{r show-youtube-list, echo=FALSE, results="asis"}
+youtube_list(slide_details, playlist_id)
+```
+
+
+## In-class stuff
+
+Here are all the materials we'll use in class:
+
+- [RStudio.cloud project](https://rstudio.cloud/spaces/205054/project/3437782)
+- [Project `.zip` file](/projects/01-class.zip)
+- [Lab slides 1: Markdown and universal writing](/slides/01-class_01_markdown-writing.html) ([PDF](/slides/01-class_01_markdown-writing.pdf))
+- [Lab slides 2: Getting started with R and RStudio](/slides/01-class_02-getting-started.html) ([PDF](/slides/01-class_02-getting-started.pdf))
+
+
+````{verbatim include=FALSE}
+Playlist: https://www.youtube.com/playlist?list=PLS6tnpTr39sHcnk9KcoQVzDywxWRzVWHC
+
+https://youtu.be/BIhz1dz5Vws
+PMAP 8521 • (1) Evaluation and the causal revolution: (0) Introduction
+
+Introduction to the class session on evaluation and the causal revolution
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/01-content/
+
+
+https://youtu.be/f-sOSXyeeJE
+PMAP 8521 • (1) Evaluation and the causal revolution: (1) Data science and public service
+
+Discussion of the role of data science in the public and nonprofit sectors
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/01-content/
+
+  
+https://youtu.be/Z2foqSMWnGU
+PMAP 8521 • (1) Evaluation and the causal revolution: (2.1) Evidence, evaluation, and causation
+
+Discussion of the role of evidence-based policy and program evaluation
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/01-content/
+
+
+https://youtu.be/W5ChuEhAzrs
+PMAP 8521 • (1) Evaluation and the causal revolution: (2.2) Evidence, evaluation, and causation
+
+Discussion of why causation is tricky (but also possible!) to measure
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/01-content/
+
+
+https://youtu.be/D4LoEctZxHE
+PMAP 8521 • (1) Evaluation and the causal revolution: (3) Class details
+
+Overview of how the class works
+
+Access the slides and other materials at the course website at https://evalf20.classes.andrewheiss.com/content/01-content/
+````
