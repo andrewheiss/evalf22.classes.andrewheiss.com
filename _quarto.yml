@@ -5,6 +5,7 @@ project:
     - "!slides/"
   resources:
     - "img/"
+    - "projects/"
     - "slides/*.html"
     - "slides/*.pdf"
     - "slides/img/"

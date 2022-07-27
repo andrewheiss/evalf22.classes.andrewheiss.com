@@ -3,12 +3,6 @@ title: "Problem set 2"
 date: "2022-01-27"
 ---
 
-```{r save-penguins, include=FALSE}
-readr::write_csv(tidyr::drop_na(palmerpenguins::penguins, body_mass_g),
-                 here::here("projects", "problem-set-2", 
-                            "data", "penguins.csv"))
-```
-
 :::{.callout-note}
 **IMPORTANT**: This looks like a lot of work, but it's mostly copying/pasting chunks of code and changing things. 
 :::

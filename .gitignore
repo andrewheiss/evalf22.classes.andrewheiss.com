@@ -6,3 +6,5 @@
 /.quarto/
 /_site/
 /slides/
+
+projects/*.zip
