@@ -1,0 +1,74 @@
+---
+title: "Things you should know for Exam 2"
+---
+
+## Randomization
+
+- Understand why randomization is crucial for causal inference and counterfactuals
+- Understand the process for analyzing a randomized controlled trial
+
+**Crucial resources**:
+
+- [Readings, slides, and videos for randomization and matching](/content/07-content/)
+- [Guide for RCTs](/example/rcts/)
+- Problem set 3
+- Task 1 in problem set 8
+
+
+## Matching and inverse probability weighting
+
+- Understand the intuition behind matching and inverse probability weighting
+- Understand the process for adjusting for confounders and closing backdoors with both matching and inverse probability weighting
+
+**Crucial resources**:
+
+- [Readings, slides, and videos for randomization and matching](/content/07-content/)
+- [Guide for matching and inverse probability weighting](/example/matching-ipw/)
+- Problem set 3
+- Task 2 in problem set 8
+
+
+## Difference-in-difference
+
+- Understand the intuition behind making causal inferences with difference-in-differences
+- Understand the process for analyzing diff-in-diffs
+
+**Crucial resources**:
+
+- [Readings, slides, and videos for diff-in-diff](/content/08-content/)
+- [Guide for diff-in-diff](/example/diff-in-diff/)
+- Problem set 4
+- Problem set 5
+- Task 3 in problem set 8
+
+
+## Regression discontinuity
+
+- Understand the intuition behind making causal inferences with regression discontinuity
+- Understand the process for analyzing regression discontinuities, both ***fuzzy*** and ***sharp***
+- Understand the difference between ATE and LATE
+
+**Crucial resources**:
+
+- [Readings, slides, and videos for regression discontinuity I (sharp)](/content/10-content/)
+- [Readings, slides, and videos for regression discontinuity II (fuzzy)](/content/12-content/)
+- [Guide for sharp diff-in-diff](/example/rdd/)
+- [Guide for fuzzy diff-in-diff](/example/rdd-fuzzy/)
+- Problem set 6
+- Task 4 in problem set 8
+
+
+## Instrumental variables
+
+- Understand the intuition behind using instruments for causal inference
+- Understand the three characteristics of a good instrument
+- Understand the process for analyzing data with instrumental variables and 2SLS
+- Understand the difference between ATE and LATE
+
+**Crucial resources**:
+
+- [Readings, slides, and videos for instrumental variables I](/content/11-content/)
+- [Readings, slides, and videos for instrumental variables II](/content/12-content/)
+- [Guide for instrumental variables](/example/iv/)
+- Problem set 7
+- Task 5 in problem set 8

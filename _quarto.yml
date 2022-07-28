@@ -105,6 +105,16 @@ website:
             - resource/citations.qmd
             - resource/bayes.qmd
             - resource/zilch.qmd
+        - section: "Study guides"
+          contents:
+            - resource/exam1.qmd
+            - resource/exam2.qmd
+        - section: "Guides"
+          contents:
+            - resource/install.qmd
+            - resource/markdown.qmd
+            - resource/rmarkdown.qmd
+            - resource/unzipping.qmd
 
 format:
   html:
