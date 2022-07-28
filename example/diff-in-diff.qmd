@@ -14,7 +14,7 @@ options(dplyr.summarise.inform = FALSE)
 
 If you want to follow along with this example, you can download the data below:
 
-- [<i class="fas fa-table"></i> `injury.csv`](/data/injury.csv)
+- [<i class="fas fa-table"></i> `injury.csv`](/files/data/package_data/injury.csv)
 
 ```{r show-youtube-list, echo=FALSE, results="asis"}
 source(here::here("R", "youtube-playlist.R"))
@@ -54,7 +54,7 @@ These are the main columns we'll worry about for now:
 
 First, let's download the dataset (if you haven't already), put in a folder named `data`, and load it:
 
-- [<i class="fas fa-table"></i> `injury.csv`](/data/injury.csv)
+- [<i class="fas fa-table"></i> `injury.csv`](/files/data/package_data/injury.csv)
 
 ```{r load-libraries, message=FALSE, warning=FALSE}
 library(tidyverse)  # ggplot(), %>%, mutate(), and friends
@@ -71,7 +71,7 @@ injury_raw <- read_csv("data/injury.csv")
 ```
 
 ```{r load-data-real, include=FALSE}
-injury_raw <- read_csv(here::here("files", "data", "injury.csv"))
+injury_raw <- read_csv(here::here("files", "data", "package_data", "injury.csv"))
 ```
 
 Next we'll clean up the `injury_raw` data a little to limit the data to just observations from Kentucky. we'll also rename some awkwardly-named columns:

@@ -14,7 +14,7 @@ There's no video for this example, since the R code is fairly straightforward, a
 
 If you want to follow along with this example, you can download the data below:
 
-- [<i class="fas fa-table"></i> `village_randomized.csv`](/data/village_randomized.csv)
+- [<i class="fas fa-table"></i> `village_randomized.csv`](/files/data/generated_data/village_randomized.csv)
 
 ```{r load-libraries, message=FALSE, warning=FALSE}
 library(tidyverse)  # ggplot(), %>%, mutate(), and friends
@@ -31,7 +31,7 @@ village_randomized <- read_csv("data/village_randomized.csv")
 ```
 
 ```{r load-data-real, include=FALSE, warning=FALSE, message=FALSE}
-village_randomized <- read_csv(here::here("files", "data", "village_randomized.csv"))
+village_randomized <- read_csv(here::here("files", "data", "generated_data", "village_randomized.csv"))
 ```
 
 ## Program details

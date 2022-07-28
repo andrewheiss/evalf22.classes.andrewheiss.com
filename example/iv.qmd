@@ -14,9 +14,9 @@ options(dplyr.summarise.inform = FALSE)
 
 If you want to follow along with this example, you can download these three datasets:
 
-- [<i class="fas fa-table"></i> `father_education.csv`](/data/father_education.csv)
-- [<i class="fas fa-table"></i> `wage2.csv`](/data/wage2.csv)
-- [<i class="fas fa-table"></i> `card.csv`](/data/card.csv)
+- [<i class="fas fa-table"></i> `father_education.csv`](/files/data/generated_data/father_education.csv)
+- [<i class="fas fa-table"></i> `wage2.csv`](/files/data/package_data/wage2.csv)
+- [<i class="fas fa-table"></i> `card.csv`](/files/data/package_data/card.csv)
 
 
 ```{r show-youtube-list, echo=FALSE, results="asis"}
@@ -44,9 +44,9 @@ For all these examples, we're interested in the perennial econometrics question 
 
 We'll explore the question with three different datasets: a fake one I made up and two real ones from published research.
 
-- [<i class="fas fa-table"></i> `father_education.csv`](/data/father_education.csv)
-- [<i class="fas fa-table"></i> `wage2.csv`](/data/wage2.csv)
-- [<i class="fas fa-table"></i> `card.csv`](/data/card.csv)
+- [<i class="fas fa-table"></i> `father_education.csv`](/files/data/generated_data/father_education.csv)
+- [<i class="fas fa-table"></i> `wage2.csv`](/files/data/package_data/wage2.csv)
+- [<i class="fas fa-table"></i> `card.csv`](/files/data/package_data/card.csv)
 
 Make sure you load all these libraries before getting started:
 
@@ -68,7 +68,7 @@ ed_fake <- read_csv("data/father_education.csv")
 ```
 
 ```{r load-fake-data-real, include=FALSE}
-ed_fake <- read_csv(here::here("files", "data", "father_education.csv"))
+ed_fake <- read_csv(here::here("files", "data", "generated_data", "father_education.csv"))
 ```
 
 The `father_education.csv` file contains four variables:
@@ -254,7 +254,7 @@ wage2 <- read_csv("data/wage2.csv")
 ```
 
 ```{r include=FALSE}
-wage2 <- read_csv(here::here("files", "data", "wage2.csv"))
+wage2 <- read_csv(here::here("files", "data", "package_data", "wage2.csv"))
 ```
 
 This dataset includes a bunch of different variables. If you run `library(wooldridge)` and then run `?wage` you can see the documentation for the data. These are the variables we care about for this example:
@@ -458,7 +458,7 @@ card <- read_csv("data/card.csv")
 ```
 
 ```{r include=FALSE}
-card <- read_csv(here::here("files", "data", "card.csv"))
+card <- read_csv(here::here("files", "data", "package_data", "card.csv"))
 ```
 
 Once again, Card wants to estimate the effect of education on wage. But to remove the endogeneity that comes from ability, he uses a different instrumental variable: **proximity to college**.

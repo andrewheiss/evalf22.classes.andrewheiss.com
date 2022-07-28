@@ -110,8 +110,8 @@ Let's find—and then ruin—these effects!
 
 Let's quickly look at the data we'll be using. You can get the data files here—put them in a folder named `data` in an RStudio Project folder.
 
-- [<i class="fas fa-table"></i> `mosquito_nets.csv`](/data/mosquito_nets.csv)
-- [<i class="fas fa-table"></i> `catholic.dta`](/data/catholic.dta)
+- [<i class="fas fa-table"></i> `mosquito_nets.csv`](/files/data/generated_data/mosquito_nets.csv)
+- [<i class="fas fa-table"></i> `catholic.dta`](/files/data/external_data.catholic.dta)
 
 ### Fake mosquito net program
 
@@ -128,7 +128,7 @@ Our main question here is whether using mosquito nets decreases an individual's 
 
 ### Real Catholic schools
 
-Our main question here is whether attending a Catholic high school (instead of a public high school) causes people to have higher math scores in 12th grade. The data contains a sample of 5,671 students from the [National Education Longitudinal Study of 1988](https://nces.ed.gov/surveys/nels88/) (NELS:88)—these students lived in households with annual income of less than $75,000 (1988 dollars) in the first year of the NELS:88 survey. A clean version of the dataset is available at [UCLA's IDRE statistical consulting website](https://stats.idre.ucla.edu/stata/examples/methods-matter/chapter12/), but only as a Stata file. I loaded this data using Stata, then saved it from Stata and [included it here](/data/catholic.dta) on this website. (You can see another example of this data being [used for propensity score matching here](https://bookdown.org/aschmi11/causal_inf/propensity-score-matching.html).)
+Our main question here is whether attending a Catholic high school (instead of a public high school) causes people to have higher math scores in 12th grade. The data contains a sample of 5,671 students from the [National Education Longitudinal Study of 1988](https://nces.ed.gov/surveys/nels88/) (NELS:88)—these students lived in households with annual income of less than $75,000 (1988 dollars) in the first year of the NELS:88 survey. A clean version of the dataset is available at [UCLA's IDRE statistical consulting website](https://stats.idre.ucla.edu/stata/examples/methods-matter/chapter12/), but only as a Stata file. I loaded this data using Stata, then saved it from Stata and [included it here](/files/data/external_data/catholic.dta) on this website. (You can see another example of this data being [used for propensity score matching here](https://bookdown.org/aschmi11/causal_inf/propensity-score-matching.html).)
 
 The `.dta` file contains 25 columns, but these are the ones we'll care about for this example:
 
@@ -168,8 +168,8 @@ The `.dta` file contains 25 columns, but these are the ones we'll care about for
 
 Let's load the data and get started! Again, if you haven't yet, download the two datasets here:
 
-- [<i class="fas fa-table"></i> `mosquito_nets.csv`](/data/mosquito_nets.csv)
-- [<i class="fas fa-table"></i> `catholic.dta`](/data/catholic.dta)
+- [<i class="fas fa-table"></i> `mosquito_nets.csv`](/files/data/generated_data/mosquito_nets.csv)
+- [<i class="fas fa-table"></i> `catholic.dta`](/files/data/external_data/catholic.dta)
 
 ```{r load-data-fake, eval=FALSE}
 nets <- read_csv("data/mosquito_nets.csv")
@@ -203,9 +203,9 @@ school_data <- read_stata("data/catholic.dta") %>%
 ```
 
 ```{r load-data-real, include=FALSE}
-nets <- read_csv(here::here("files", "data", "mosquito_nets.csv"))
+nets <- read_csv(here::here("files", "data", "generated_data", "mosquito_nets.csv"))
 
-school_data <- read_stata(here::here("files", "data", "catholic.dta")) %>% 
+school_data <- read_stata(here::here("files", "data", "external_data", "catholic.dta")) %>% 
   zap_labels() %>%
   zap_formats() %>%
   mutate(catholic_f = factor(catholic, labels = c("Public", "Catholic"))) %>% 

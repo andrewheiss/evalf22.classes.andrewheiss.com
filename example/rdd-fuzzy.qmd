@@ -20,7 +20,7 @@ In this example, we'll use the same situation that we used in the [the example f
 
 If you want to follow along, download this dataset and put it in a folder named `data`:
 
-- [<i class="fas fa-table"></i> `tutoring_program_fuzzy.csv`](/data/tutoring_program_fuzzy.csv)
+- [<i class="fas fa-table"></i> `tutoring_program_fuzzy.csv`](/files/data/generated_data/tutoring_program_fuzzy.csv)
 
 ```{r include=FALSE, warning=FALSE, message=FALSE}
 library(tidyverse)
@@ -30,7 +30,7 @@ library(estimatr)
 library(modelsummary)
 library(kableExtra)
 
-tutoring <- read_csv(here::here("files", "data", "tutoring_program_fuzzy.csv"))
+tutoring <- read_csv(here::here("files", "data", "generated_data", "tutoring_program_fuzzy.csv"))
 ```
 
 ```{r eval=FALSE}

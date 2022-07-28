@@ -14,7 +14,7 @@ options(dplyr.summarise.inform = FALSE)
 
 If you want to follow along with this example, you can download the data below:
 
-- [<i class="fas fa-table"></i> `mosquito_nets.csv`](/data/mosquito_nets.csv)
+- [<i class="fas fa-table"></i> `mosquito_nets.csv`](/files/data/generated_data/mosquito_nets.csv)
 
 ```{r show-youtube-list, echo=FALSE, results="asis"}
 source(here::here("R", "youtube-playlist.R"))
@@ -63,7 +63,7 @@ Let's see if we can find that 10 point effect!
 
 First, let's download the dataset (if you haven't already), put in a folder named `data`, and load it:
 
-- [<i class="fas fa-table"></i> `mosquito_nets.csv`](/data/mosquito_nets.csv)
+- [<i class="fas fa-table"></i> `mosquito_nets.csv`](/files/data/generated_data/mosquito_nets.csv)
 
 ```{r load-libraries, message=FALSE, warning=FALSE}
 library(tidyverse)  # ggplot(), %>%, mutate(), and friends
@@ -84,7 +84,7 @@ nets <- read_csv("data/mosquito_nets.csv")
 ```
 
 ```{r load-data-real, include=FALSE}
-nets <- read_csv(here::here("files", "data", "mosquito_nets.csv"))
+nets <- read_csv(here::here("files", "data", "generated_data", "mosquito_nets.csv"))
 ```
 
 

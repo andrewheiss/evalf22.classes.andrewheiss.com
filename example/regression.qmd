@@ -4,7 +4,7 @@ title: "Regression"
 
 If you want to follow along with this example, you can download the data below:
 
-- [<i class="fas fa-table"></i> `sat_gpa.csv`](/projects/regression-example/data/sat_gpa.csv)
+- [<i class="fas fa-table"></i> `sat_gpa.csv`](/files/data/external_data/sat_gpa.csv)
 
 You can also download a complete `.zip` file with a finished R Markdown file that you can knit and play with on your own:
 
@@ -63,7 +63,7 @@ sat_gpa <- read_csv("data/sat_gpa.csv")
 ```
 
 ```{r load-data-real, include=FALSE}
-sat_gpa <- read_csv(here::here("files", "data", "sat_gpa.csv"))
+sat_gpa <- read_csv(here::here("files", "data", "external_data", "sat_gpa.csv"))
 ```
 
 ### Exploratory questions

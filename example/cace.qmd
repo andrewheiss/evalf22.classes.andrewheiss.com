@@ -31,8 +31,8 @@ We can use data from a hypothetical program to see how these three types of comp
 
 If you want to follow along with this example, you can download these two datasets:
 
-- [<i class="fas fa-table"></i> `bed_nets_time_machine.csv`](/data/bed_nets_time_machine.csv)
-- [<i class="fas fa-table"></i> `bed_nets_observed.csv`](/data/bed_nets_observed.csv)
+- [<i class="fas fa-table"></i> `bed_nets_time_machine.csv`](/files/data/generated_data/bed_nets_time_machine.csv)
+- [<i class="fas fa-table"></i> `bed_nets_observed.csv`](/files/data/generated_data/bed_nets_observed.csv)
 
 
 ## Finding compliers with a mind-reading time machine
@@ -44,10 +44,12 @@ library(tidyverse)
 library(broom)
 library(estimatr)
 
-bed_nets <- read_csv(here::here("files", "data", "bed_nets_observed.csv")) %>%
+bed_nets <- read_csv(here::here("files", "data", "generated_data", 
+                                "bed_nets_observed.csv")) %>%
   mutate(bed_net = fct_relevel(bed_net, "No bed net"))
 
-bed_nets_time_machine <- read_csv(here::here("files", "data", "bed_nets_time_machine.csv")) %>%
+bed_nets_time_machine <- read_csv(here::here("files", "data", "generated_data", 
+                                             "bed_nets_time_machine.csv")) %>%
   mutate(bed_net = fct_relevel(bed_net, "No bed net"),
          status = fct_relevel(status, "Complier"))
 ```

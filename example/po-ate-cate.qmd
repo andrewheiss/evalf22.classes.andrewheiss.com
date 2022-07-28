@@ -45,7 +45,7 @@ Because we don't have a time machine, we can't look at individual-level counterf
 
 First we load the data from this CSV file (typed from the table in *Mastering 'Metrics*):
 
-- [<i class="fas fa-table"></i> `public_private_earnings.csv`](/data/public_private_earnings.csv)
+- [<i class="fas fa-table"></i> `public_private_earnings.csv`](/files/data/external_data/public_private_earnings.csv)
 
 ```{r load-data-fake, eval=FALSE}
 # The data doesn't come with an indicator variable marking if students went to a
@@ -68,7 +68,7 @@ schools_small <- schools %>%
 ```
 
 ```{r load-data-real, echo=FALSE, warning=FALSE, message=FALSE}
-schools <- read_csv(here::here("files", "data", "public_private_earnings.csv")) %>%
+schools <- read_csv(here::here("files", "data", "external_data", "public_private_earnings.csv")) %>%
   mutate(private = ifelse(str_detect(enrolled, "ivy"), TRUE, FALSE)) %>%
   mutate(group_A = ifelse(group == "A", TRUE, FALSE))
 

@@ -15,8 +15,8 @@ You'll be doing all your R work in R Markdown this time (and from now on). You s
 
 You'll need to download these two CSV files and put them somewhere on your computer or upload them to RStudio.cloud—preferably in a folder named `data` in your project folder:
 
-- [<i class="fas fa-file-csv"></i> `penguins.csv`](/projects/problem-set-2/data/penguins.csv)
-- [<i class="fas fa-file-csv"></i> `food_health_politics.csv`](/projects/problem-set-2/data/food_health_politics.csv)
+- [<i class="fas fa-file-csv"></i> `penguins.csv`](/files/data/package_data/penguins.csv)
+- [<i class="fas fa-file-csv"></i> `food_health_politics.csv`](/files/data/external_data/food_health_politics.csv)
 
 You'll also need to download this R Markdown file with a template for this problem set. Download that here and include it in your project:
 

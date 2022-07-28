@@ -14,7 +14,7 @@ options(dplyr.summarise.inform = FALSE)
 
 If you want to follow along with this example, you can download the data below:
 
-- [<i class="fas fa-table"></i> `tutoring_program.csv`](/data/tutoring_program.csv)
+- [<i class="fas fa-table"></i> `tutoring_program.csv`](/files/data/generated_data/tutoring_program.csv)
 
 :::{.callout-warning}
 **Important**: The results will be slightly different here than they were in the video. That's because in the data I used in the video, I didn't round any values, so people could score a 71.8392403 on the entrance exam, which is kind of an excessive number of decimals. In this data, I rounded everything to one decimal point (e.g. 71.8), so the gaps and lines will be a tiny bit different here.
@@ -54,7 +54,7 @@ You have a dataset with four columns in it:
 
 First, let's download the dataset (if you haven't already), put in a folder named `data`, and load it:
 
-- [<i class="fas fa-table"></i> `tutoring_program.csv`](/data/tutoring_program.csv)
+- [<i class="fas fa-table"></i> `tutoring_program.csv`](/files/data/generated_data/tutoring_program.csv)
 
 ```{r load-libraries, message=FALSE, warning=FALSE}
 library(tidyverse)  # ggplot(), %>%, mutate(), and friends
@@ -65,7 +65,7 @@ library(modelsummary)  # Create side-by-side regression tables
 ```
 
 ```{r load-data-real, include=FALSE}
-tutoring <- read_csv(here::here("files", "data", "tutoring_program.csv"))
+tutoring <- read_csv(here::here("files", "data", "generated_data", "tutoring_program.csv"))
 ```
 
 ```{r load-data-fake, eval=FALSE}
