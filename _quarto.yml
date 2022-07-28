@@ -36,8 +36,12 @@ website:
         file: example/index.qmd
       - text: "Resources"
         file: resource/index.qmd
-      - text: Slack
-      - text: RStudio.cloud
+      - icon: slack
+        href: "https://www.google.com"
+        aria-label: Slack
+      - icon: cloud-fill
+        href: "https://www.google.com"
+        aria-label: RStudio.cloud
 
   sidebar:
     - title: "Content"
