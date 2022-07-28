@@ -463,7 +463,7 @@ By controlling for income and health, we now explain 81.5% of the variation in m
 
 One way to figure this out is to calculate something called the **partial** $R^2$. To do this, we essentially fit a bunch of variations of the model and leave out individual variables one at a time and note the $R^2$ each time. That's tedious to do manually, but the `rsq.partial()` function from [the **rsq** library](https://cran.r-project.org/web/packages/rsq/) can do it for us:
 
-```{r partial-net-r2}
+```{r partial-net-r2, warning=FALSE}
 library(rsq)
 
 rsq.partial(model_some_controls)
@@ -876,13 +876,13 @@ A new method proposed by Carlos Cinelli and Chad Hazlett [@CinelliHazlett:2020]â
 
 The best overview of how **sensemakr** works is this short presentation by Carlos Cinelli from 2020. You should ***absolutely*** watch it (especially from 3:00â€“13:00). There's also [an example with code here](http://carloscinelli.com/sensemakr/articles/sensemakr.html), and [their full paper is here](https://www.researchgate.net/publication/340965014_sensemakr_Sensitivity_Analysis_Tools_for_OLS_in_R_and_Stata) (see the section called "Simple measures for routine reporting" in particular).
 
-<div class="embed-responsive embed-responsive-16by9">
-<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/p3dfHj6ki68" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0"></iframe>
+<div class="ratio ratio-16x9">
+<iframe src="https://www.youtube.com/embed/p3dfHj6ki68" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0"></iframe>
 </div>
 
 \ 
 
-Let's explore the robustness of our two causal effects with **sensemakr*!
+Let's explore the robustness of our two causal effects with **sensemakr**!
 
 ### Fake mosquito net program
 
@@ -963,7 +963,7 @@ How does **sensemakr** work with real data? Let's throw our Catholic schools ATE
 
 First we'll rerun the model with all the controls rather than weighting with IPW, and we'll look at the partial $R^2$s to get a sense of how much variation in math scores each of these variables explains.
 
-```{r sense-school-model}
+```{r sense-school-model, warning=FALSE}
 model_school_controls <- lm(math12 ~ catholic + I(inc8^2) + (inc8*math8) + fhowfar + 
                               mhowfar + fight8 + nohw8 + disrupt8 + riskdrop8,
                             data = school_iptw)
