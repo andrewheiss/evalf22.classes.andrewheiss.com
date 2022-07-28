@@ -34,7 +34,7 @@ slide_details <- tibble::tribble(
 
 ### DAG example page
 
-- The [example page on DAGs](/example/dags/) shows how to draw and analyze DAGs with both dagitty.net and R + **ggdag**
+- The [example page on DAGs](/example/dags.qmd) shows how to draw and analyze DAGs with both dagitty.net and R + **ggdag**
 
 
 ## Slides

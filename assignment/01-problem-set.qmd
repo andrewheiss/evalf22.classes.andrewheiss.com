@@ -5,14 +5,14 @@ date: "2022-04-21"
 
 ## Task 1: Introduce yourself to R, RStudio, and the tidyverse
 
-1. Go the the example page for this week, ["Welcome to R, RStudio, and the tidyverse"](/example/rstudio-tidyverse/), and work through the different primers and videos in the four parts of the page.
+1. Go the the example page for this week, ["Welcome to R, RStudio, and the tidyverse"](/example/rstudio-tidyverse.qmd), and work through the different primers and videos in the four parts of the page.
 
     It seems like there's a lot on the page, but they're short and go fairly quickly (especially as you get the hang of the syntax). Also, **I have no way of seeing what you do or what you get wrong or right, and that's totally fine!** If you get stuck and want to skip some (or if it gets too easy), go right ahead and skip them!
 
 
 ## Task 2: Make an RStudio Project
 
-1. Use either RStudio.cloud or RStudio on your computer (preferably RStudio on your computer! [Follow these instructions to get started!](/resource/install/)) to create a new RStudio Project. Refer to the [example page you read in Task 1 for instructions](/example/rstudio-tidyverse/#part-3-rstudio-projects)
+1. Use either RStudio.cloud or RStudio on your computer (preferably RStudio on your computer! [Follow these instructions to get started!](/resource/install.qmd)) to create a new RStudio Project. Refer to the [example page you read in Task 1 for instructions](/example/rstudio-tidyverse.qmd#part-3-rstudio-projects)
 
 2. Create a folder named "data" in the project folder you just made.
 
@@ -81,7 +81,7 @@ knitr::include_graphics("/img/assignments/insert-chunk-button.png", error = FALS
 
 2. Follow the instructions for the three chunks of code.
 
-3. Knit your document as a Word file (or PDF if you're brave and [installed LaTeX](/resource/install/#install-tinytex)). Use the "Knit" menu:
+3. Knit your document as a Word file (or PDF if you're brave and [installed LaTeX](/resource/install.qmd#install-tinytex)). Use the "Knit" menu:
 
 ```{r knit-button, echo=FALSE, out.width="30%", indent="    "}
 knitr::include_graphics("/img/assignments/knit-button.png", error = FALSE)

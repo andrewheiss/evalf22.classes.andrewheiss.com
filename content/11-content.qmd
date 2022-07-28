@@ -25,7 +25,7 @@ slide_details <- tibble::tribble(
 
 ### Instrumental variables
 
-- The [example page on instrumental variables](/example/iv/) shows how to use R to analyze and estimate causal effects with instrumental variables
+- The [example page on instrumental variables](/example/iv.qmd) shows how to use R to analyze and estimate causal effects with instrumental variables
 
 
 ## Slides

@@ -10,7 +10,7 @@ options("digits" = 4, "width" = 170)
 options(dplyr.summarise.inform = FALSE)
 ```
 
-In the [example guide for generating random numbers](/example/random-numbers/), we explored how to use a bunch of different statistical distributions to create variables that had reasonable values. However, each of the columns that we generated there were completely independent of each other. In the final example, we made some data with columns like age, education, and income, but none of those were related, though in real life they would be.
+In the [example guide for generating random numbers](/example/random-numbers.qmd), we explored how to use a bunch of different statistical distributions to create variables that had reasonable values. However, each of the columns that we generated there were completely independent of each other. In the final example, we made some data with columns like age, education, and income, but none of those were related, though in real life they would be.
 
 Generating random variables is fairly easy: choose some sort of distributional shape, set parameters like a mean and standard deviation, and let randomness take over. Forcing variables to be related is a little trickier and involves a little math. But don't worry! That math is all just regression stuff!
 
@@ -274,7 +274,7 @@ tidy(model_happiness_naive)
 
 Based on this, eating a cookie causes you to have 0.325 more happiness points. But that's wrong! Liking the color blue is a confounder and opens a path between cookies and happiness. You can see the confounding both in the DAG (since blue points to both the cookie node and the happiness node) and in the math (liking blue boosts happiness + liking blue boosts cookie consumption, which boosts happiness).
 
-To fix this confounding, we need to statistically adjust for liking blue and close the backdoor path. Ordinarily we'd do this with something like [matching or inverse probability weighting](/example/matching-ipw/), but here we can just include liking blue as a control variable (since it's linearly related to both cookies and happiness):
+To fix this confounding, we need to statistically adjust for liking blue and close the backdoor path. Ordinarily we'd do this with something like [matching or inverse probability weighting](/example/matching-ipw.qmd), but here we can just include liking blue as a control variable (since it's linearly related to both cookies and happiness):
 
 ```{r}
 model_happiness_ate <- lm(happiness ~ cookies + color_blue, data = happiness_cookies_blue)
@@ -303,7 +303,7 @@ We've got columns that follow specific distributions, and we've got columns that
 
 Right now, the effects we're finding are *too* perfect. When we used `mutate()` to add a 0.25 boost in happiness for every cookie people ate, we added *exactly* 0.25 happiness points. If someone ate 2 cookies, they got 0.5 more happiness; if they ate 5, they got 1.25 more.
 
-What if the cookie effect isn't exactly 0.25, but somewhere *around* 0.25? For some people it's 0.1, for others it's 0.3, for others it's 0.22. We can use the same ideas we talked about in the [random numbers example](/example/random-numbers/) to generate a *distribution* of an effect. For instance, let's say that the average cookie effect is 0.25, but it can vary somewhat with a standard deviation of 0.15:
+What if the cookie effect isn't exactly 0.25, but somewhere *around* 0.25? For some people it's 0.1, for others it's 0.3, for others it's 0.22. We can use the same ideas we talked about in the [random numbers example](/example/random-numbers.qmd) to generate a *distribution* of an effect. For instance, let's say that the average cookie effect is 0.25, but it can vary somewhat with a standard deviation of 0.15:
 
 ```{r random-cookie-effect}
 temp_data <- tibble(x = rnorm(10000, mean = 0.25, sd = 0.15))
@@ -378,7 +378,7 @@ It's best if you also create plots and models to see what the relationships look
 
 ### Visualizing one variable
 
-We covered a bunch of distributions in the [random number generation](/example/random-numbers/) example, but it's hard to think about what a standard deviation of 2 vs 10 looks like, or what happens when you mess with the shape parameters in a Beta distribution.
+We covered a bunch of distributions in the [random number generation](/example/random-numbers.qmd) example, but it's hard to think about what a standard deviation of 2 vs 10 looks like, or what happens when you mess with the shape parameters in a Beta distribution.
 
 It's best to visualize these variables. You could build the variable into your official dataset and then look at it, but I find it's often faster to just look at what a general distribution looks like first. The easiest way to do this is generate a dataset with just one column in it and look at it, either with a histogram or a density plot.
 
@@ -518,7 +518,7 @@ ggdag(mosquito_dag) +
 
 2. **Specify how those nodes are measured.**
 
-    For the sake of this example, we'll measure these nodes like so. See [the random number example](/example/random-numbers) for more details about the distributions.
+    For the sake of this example, we'll measure these nodes like so. See [the random number example](/example/random-numbers.qmd) for more details about the distributions.
 
     - **Malaria risk**: scale from 0–100, mostly around 40, but ranging from 10ish to 80ish. Best to use a Beta distribution.
 
@@ -538,7 +538,7 @@ ggdag(mosquito_dag) +
 
       Both income and health have an effect on the probability of bed net use, but bed net use is measured as a 0/1, TRUE/FALSE variable. If we run a regression with `net` as the outcome, we can't really interpret the coefficients like "a 1 point increase in health is associated with a 0.42 point increase in bed net being TRUE." That doesn't even make sense.
 
-      Ordinarily, when working with binary outcome variables, you use logistic regression models (see [the crash course we had when talking about propensity scores here](/example/matching-ipw/#oversimplified-crash-course-in-logistic-regression)). In this kind of regression, the coefficients in the model represent changes in the *log odds* of using a net. As we discuss in [the crash course section](/example/matching-ipw/#oversimplified-crash-course-in-logistic-regression), log odds are typically impossible to interpet. If you exponentiate them, you get odds ratios, which let you say things like "a 1 point increase in health is associated with a 15% increase in the likelihood of using a net." Technically we could include coefficients for a logistic regression model and simulate probabilities of using a net or not using log odds and odds ratios (and that's what I do in the rain barrel data from Problem Set 3 ([see code here](https://github.com/andrewheiss/evalsp22.classes.andrewheiss.com/blob/main/content/assignment/03-problem-set.Rmd#L225))), but that's really hard to wrap your head around since you're dealing with strange uninterpretable coefficients. So we won't do that here.
+      Ordinarily, when working with binary outcome variables, you use logistic regression models (see [the crash course we had when talking about propensity scores here](/example/matching-ipw.qmd#oversimplified-crash-course-in-logistic-regression)). In this kind of regression, the coefficients in the model represent changes in the *log odds* of using a net. As we discuss in [the crash course section](/example/matching-ipw.qmd#oversimplified-crash-course-in-logistic-regression), log odds are typically impossible to interpet. If you exponentiate them, you get odds ratios, which let you say things like "a 1 point increase in health is associated with a 15% increase in the likelihood of using a net." Technically we could include coefficients for a logistic regression model and simulate probabilities of using a net or not using log odds and odds ratios (and that's what I do in the rain barrel data from Problem Set 3 ([see code here](https://github.com/andrewheiss/evalsp22.classes.andrewheiss.com/blob/main/content/assignment/03-problem-set.Rmd#L225))), but that's really hard to wrap your head around since you're dealing with strange uninterpretable coefficients. So we won't do that here.
 
       Instead, we'll do some fun trickery. We'll create something called a "bed net score" that gets bigger as income and health increase. We'll say that a 1 point increase in health score is associated with a 1.5 point increase in bed net score, and a 1 dollar increase in income is associated with a 0.5 point increase in bed net score. This results in a column that ranges all over the place, from 200 to 500 (in this case; that won't always be true). This column definitely doesn't look like a TRUE/FALSE binary column—it's just a bunch of numbers. That's okay!
 
@@ -633,7 +633,7 @@ glm(net ~ income + health, family = binomial(link = "logit"), data = net_data) %
 
 6. **Try it out!**
 
-    Is the effect in there? Let's try finding it by controlling for our two backdoors: health and income. Ordinarily we should do something like [matching or inverse probability weighting](/example/matching-ipw/), but we'll just do regular regression here (which is okay-ish, since all these variables are indeed linearly related with each other—we made them that way!)
+    Is the effect in there? Let's try finding it by controlling for our two backdoors: health and income. Ordinarily we should do something like [matching or inverse probability weighting](/example/matching-ipw.qmd), but we'll just do regular regression here (which is okay-ish, since all these variables are indeed linearly related with each other—we made them that way!)
 
     If we just look at the effect of nets on malaria risk without any statistical adjustment, we see that net cause a decrease of 13 points in malaria risk. This is wrong though becuase there's confounding.
 
@@ -766,7 +766,7 @@ lm(health ~ income, data = net_data) %>% tidy()
 
 6. **Try it out!**
 
-    Is the effect in there? With an RCT, all we really need to do is compare the outcome across treatment and control groups—because there's no confounding, we don't need to control for anything. Ordinarily we should check for balance across characteristics like health and income (and maybe generate other demographic columns) like [we did in the RCT example](/example/rcts/), but we'll skip all that here since we're just checking to see if the effect is there.
+    Is the effect in there? With an RCT, all we really need to do is compare the outcome across treatment and control groups—because there's no confounding, we don't need to control for anything. Ordinarily we should check for balance across characteristics like health and income (and maybe generate other demographic columns) like [we did in the RCT example](/example/rcts.qmd), but we'll skip all that here since we're just checking to see if the effect is there.
 
     It looks like using nets *causes* an average decrease of 10 risk points. Great!
 
@@ -1162,7 +1162,7 @@ ggplot(rdd_data, aes(x = income, y = malaria_risk_fuzzy, color = net_fuzzy)) +
   theme(legend.position = "bottom")
 ```
 
-    There's a gap, but it's hard to measure since there are noncompliers on both sides. We can deal with the noncompliance if we use above/below the cutoff as an instrument (see the [fuzzy regression discontinuity guide](/example/rdd-fuzzy/) for a complete example). We should run this set of models:
+    There's a gap, but it's hard to measure since there are noncompliers on both sides. We can deal with the noncompliance if we use above/below the cutoff as an instrument (see the [fuzzy regression discontinuity guide](/example/rdd-fuzzy.qmd) for a complete example). We should run this set of models:
 
     $$
     \begin{aligned}
@@ -1212,7 +1212,7 @@ write_csv(rdd_data_final_fuzzy, "data/rdd_fuzzy.csv")
 
     As with diff-in-diff and regression discontinuity, instrumental variables are a design-based approach to causal inference and thus don't require complicated models (but you can still add control variables!), so their DAGs are simpler. Once again we'll look at the effect of mosquito nets on malaria risk, but this time we'll say that we cannot possibly measure all the confounding factors between net use and malaria risk, so we'll use an instrument to extract the exogeneity from net use.
 
-    [As we talked about in Session 11](/content/11-content/), good plausible instruments are hard to find: they have to cause bed net use and *not* be related to malaria risk *except through* bed net use.
+    [As we talked about in Session 11](/content/11-content.qmd), good plausible instruments are hard to find: they have to cause bed net use and *not* be related to malaria risk *except through* bed net use.
 
     For this example, we'll pretend that free bed nets are distributed from town halls around the country. We'll use "distance to town hall" as our instrument, since it could arguably maybe work perhaps. Being closer to a town hall makes you more likely to use a net, but being closer to a town halls doesn't make put you at higher or lower risk for malaria on its own—it does that only because it changes your likelihood of getting a net.
 
@@ -1244,7 +1244,7 @@ ggdag_status(iv_dag) +
 
     - **Unobserved**: who knows?! There are a lot of unknown confounders. We could generate columns like income, age, education, and health, make them mathematically related to malaria risk and net use, and then throw those columns away in the final data so they're unobserved. That would be fairly easy and intuitive.
 
-        For the sake of simplicity here, we'll make a column called "risk factors," kind of like we did with the "ability" column in [the instrumental variables example](/example/iv/#education-wages-and-fathers-education-fake-data)—it's a magical column that is unmeasurable, but it'll open a backdoor path between net use and malaria risk and thus create endogeneity. It'll be normally distributed around 50, with a standard deviation of 25.
+        For the sake of simplicity here, we'll make a column called "risk factors," kind of like we did with the "ability" column in [the instrumental variables example](/example/iv.qmd#education-wages-and-fathers-education-fake-data)—it's a magical column that is unmeasurable, but it'll open a backdoor path between net use and malaria risk and thus create endogeneity. It'll be normally distributed around 50, with a standard deviation of 25.
 
 3. **Specify the relationships between the nodes based on the DAG equations.**
 

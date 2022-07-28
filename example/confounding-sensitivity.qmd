@@ -22,9 +22,9 @@ set.seed(1234)   # Make all random draws reproducible
 
 ## You can never close every backdoor without an experiment
 
-Throughout the semester, we've used causal models to map out the data generating process that connects a treatment (like a program or a policy) to a social outcome. By drawing DAGs, we can ostensibly find causal effects in observational non-experimental data by using DAG logic to close backdoor paths and deal with confounding. You've even done this with [matching and inverse probability weighting](/example/matching-ipw/), and you'll be doing it with quasi-experimental designs like [diff-in-diff](/example/diff-in-diff/), [regression discontinuity](/example/rdd/), and [instrumental variables](/example/iv/).
+Throughout the semester, we've used causal models to map out the data generating process that connects a treatment (like a program or a policy) to a social outcome. By drawing DAGs, we can ostensibly find causal effects in observational non-experimental data by using DAG logic to close backdoor paths and deal with confounding. You've even done this with [matching and inverse probability weighting](/example/matching-ipw.qmd), and you'll be doing it with quasi-experimental designs like [diff-in-diff](/example/diff-in-diff.qmd), [regression discontinuity](/example/rdd.qmd), and [instrumental variables](/example/iv.qmd).
 
-However, doing observational causal inference requires a fairly strong assumption: all nodes that need to be adjusted for are observable and measurable. Let's go back to the mosquito net program example we used in the [matching and inverse probability weighting](/example/matching-ipw/) example, and let's add a new node here for unobserved confounding—something unknown causes people to both use nets and causes changes in individual malaria risk.
+However, doing observational causal inference requires a fairly strong assumption: all nodes that need to be adjusted for are observable and measurable. Let's go back to the mosquito net program example we used in the [matching and inverse probability weighting](/example/matching-ipw.qmd) example, and let's add a new node here for unobserved confounding—something unknown causes people to both use nets and causes changes in individual malaria risk.
 
 ```{r build-mosquito-dag-full, fig.width=8}
 mosquito_dag <- dagify(
@@ -100,7 +100,7 @@ Basically your goal with sensitivity analysis is to try to ruin your causal effe
 
 Our goal in this example is to estimate causal effects for two different situations:
 
-- **The effect of a hypothetical mosquito net program on malaria risk** (which we already used in the [DAG example](/example/dags/) and the [matching/IPW example](/example/matching-ipw/)). This data is **fake**. There's a built-in average treatment effect of −10: using a mosquito net causes the risk of malaria to decrease by 10 points, on average.
+- **The effect of a hypothetical mosquito net program on malaria risk** (which we already used in the [DAG example](/example/dags.qmd) and the [matching/IPW example](/example/matching-ipw.qmd)). This data is **fake**. There's a built-in average treatment effect of −10: using a mosquito net causes the risk of malaria to decrease by 10 points, on average.
 - **The effect of attending Catholic school on math scores.** This data is **real** and was used by @AltonjiElderTaber:2005 (and by lots of other researchers since then). A widely used econometrics textbook called [*Methods Matter*](https://global.oup.com/academic/product/methods-matter-9780199753864) [@MurnaneWillett:2011] uses this data as an example, too, and [you can access the data from Stata](https://stats.idre.ucla.edu/stata/examples/methods-matter/chapter12/). Since this isn't fake data, we actually have no idea what the true average treatment effect is. 
 
 Let's find—and then ruin—these effects!
@@ -478,7 +478,7 @@ This isn't a 100% correct interpretation of partial $R^2$ values and there are s
 
 ## Estimation of causal effects
 
-PHEW that was a lot of background information, but it's useful and important, so. Let's finally adjust for confounders and estimate causal effects in both the mosquito net and Catholic schools examples. We'll use [inverse probability weighting](/example/matching-ipw/#inverse-probability-weighting) just because—we could also use matching or other techniques, but IPW is fun. Consult [the IPW guide](/example/matching-ipw/#inverse-probability-weighting) for complete details about everything happening here.
+PHEW that was a lot of background information, but it's useful and important, so. Let's finally adjust for confounders and estimate causal effects in both the mosquito net and Catholic schools examples. We'll use [inverse probability weighting](/example/matching-ipw.qmd#inverse-probability-weighting) just because—we could also use matching or other techniques, but IPW is fun. Consult [the IPW guide](/example/matching-ipw.qmd#inverse-probability-weighting) for complete details about everything happening here.
 
 ### Fake mosquito net program
 

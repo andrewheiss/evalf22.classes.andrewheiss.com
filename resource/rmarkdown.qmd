@@ -2,7 +2,7 @@
 title: "Using R Markdown"
 ---
 
-[R Markdown](https://rmarkdown.rstudio.com/) is [regular Markdown](/resource/markdown/) with R code and output sprinkled in. You can do everything you can with [regular Markdown](/resource/markdown/), but you can incorporate graphs, tables, and other R output directly in your document. You can create HTML, PDF, and Word documents, PowerPoint and HTML presentations, websites, books, and even [interactive dashboards](https://rmarkdown.rstudio.com/flexdashboard/index.html) with R Markdown. This whole course website is created with R Markdown (and [a package named **blogdown**](https://bookdown.org/yihui/blogdown/)).
+[R Markdown](https://rmarkdown.rstudio.com/) is [regular Markdown](/resource/markdown.qmd) with R code and output sprinkled in. You can do everything you can with [regular Markdown](/resource/markdown.qmd), but you can incorporate graphs, tables, and other R output directly in your document. You can create HTML, PDF, and Word documents, PowerPoint and HTML presentations, websites, books, and even [interactive dashboards](https://rmarkdown.rstudio.com/flexdashboard/index.html) with R Markdown. This whole course website is created with R Markdown (and [a package named **blogdown**](https://bookdown.org/yihui/blogdown/)).
 
 The [documentation for R Markdown](https://rmarkdown.rstudio.com/) is extremely comprehensive, and their [tutorials](https://rmarkdown.rstudio.com/lesson-1.html) and [cheatsheets](https://rmarkdown.rstudio.com/lesson-15.html) are excellent—rely on those.
 
@@ -109,7 +109,7 @@ The average fuel efficiency for cars from 1974 was `r "\u0060r round(avg_mpg, 1)
 
 ## Output formats
 
-You can specify what kind of document you create when you knit in the [YAML front matter](/resource/markdown/#front-matter). 
+You can specify what kind of document you create when you knit in the [YAML front matter](/resource/markdown.qmd#front-matter). 
 
 ```yaml
 title: "My document"

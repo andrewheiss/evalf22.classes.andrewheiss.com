@@ -46,7 +46,7 @@ You may (and should!) work together on the problem sets, but *you must turn in y
 
 ## Evaluation assignments
 
-For your [final project](/assignment/final-project/), you will conduct a pre-registered evaluation of a social program using synthetic data. To (1) give you practice with the principles of program evaluation, research design, measurement, and causal diagrams, and (2) help you with the foundation of your final project, you will complete a set of four evaluation-related assignments. 
+For your [final project](/assignment/final-project.qmd), you will conduct a pre-registered evaluation of a social program using synthetic data. To (1) give you practice with the principles of program evaluation, research design, measurement, and causal diagrams, and (2) help you with the foundation of your final project, you will complete a set of four evaluation-related assignments. 
 
 Ideally these will become major sections of your final project. However, there is no requirement that the programs you use in these assignments must be the same as the final project. If, through these assignments, you discover that your initially chosen program is too simple, too complex, too boring, etc., you can change at any time.
 
@@ -68,6 +68,6 @@ You will take these exams online through iCollege. The exams will have a time li
 
 At the end of the course, you will demonstrate your knowledge of program evaluation and causal inference by completing a final project.
 
-[Complete details for the final project are here.](/assignment/final-project/)
+[Complete details for the final project are here.](/assignment/final-project.qmd)
 
 There is no final exam. This project is your final exam.

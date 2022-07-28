@@ -86,8 +86,8 @@ Do the following things:
 
 2. Skim through the content at these pages:
 
-    - [Using Markdown](/resource/markdown/)
-    - [Using R Markdown](/resource/rmarkdown/)
+    - [Using Markdown](/resource/markdown.qmd)
+    - [Using R Markdown](/resource/rmarkdown.qmd)
     - [How it Works](http://rmarkdown.rstudio.com/lesson-2.html)
     - [Code Chunks](http://rmarkdown.rstudio.com/lesson-3.html)
     - [Inline Code](http://rmarkdown.rstudio.com/lesson-4.html)

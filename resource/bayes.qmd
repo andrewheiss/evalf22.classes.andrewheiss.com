@@ -192,13 +192,13 @@ $$
 
 Put (hopefully!) simply, combine the observed likelihood of the data $P(\text{Data} \mid \theta)$ (that's basically frequentism!) with prior knowledge about the distribution of $\theta$ and you'll get a posterior estimate of $\theta$. 
 
-Actually calculating this with real data, though, can be tricky and computationally intensive—often there's no formal mathematical way to figure out the actual equation. So instead, we can use computers to simulate thousands of guesses and then look at the distribution of those guesses (just like we did with [the Zilch simulation in class](/resource/zilch/#probability-with-computers-only)). One modern method for doing this is called Monte Carlo Markov Chain (MCMC) simulation, which is what most R-based tools for Bayesian stats use nowadays.
+Actually calculating this with real data, though, can be tricky and computationally intensive—often there's no formal mathematical way to figure out the actual equation. So instead, we can use computers to simulate thousands of guesses and then look at the distribution of those guesses (just like we did with [the Zilch simulation in class](/resource/zilch.qmd#probability-with-computers-only)). One modern method for doing this is called Monte Carlo Markov Chain (MCMC) simulation, which is what most R-based tools for Bayesian stats use nowadays.
 
 Let's look at restaurant inspection scores on the weekend Bayesianly. Here, we're still interested in our population parameter $\theta$, or the average weekend score boost. Only now, we're not assuming that $\theta$ is some single fixed value out in the world that we're trying to capture with confidence intervals—we'll use the data that we have to estimate the variation in $\theta$. The easiest way to do Bayesian analysis with R is with [the **brms** package](https://paul-buerkner.github.io/brms/), which uses the familiar formula syntax you've been using with `lm()`. The syntax is super similar, just with a few additional arguments:
 
 **MCMC things**
 
-Arguments like `chains`, `iter`, and `cores` deal with the simulation. `chains` defines how many parallel simulations should happen, `iter` controls how many iterations should happen with in each chain, and `cores` spreads those chains across the CPUs in your computer (i.e. if you have a 4-core computer, you can run 4 chains all at the same time; run `parallel::detectCores()` in your R console to see how many CPU cores you have). `seed` makes it so that the random simulation results are reproducible ([see here for more on seeds](/example/random-numbers/#seeds)).
+Arguments like `chains`, `iter`, and `cores` deal with the simulation. `chains` defines how many parallel simulations should happen, `iter` controls how many iterations should happen with in each chain, and `cores` spreads those chains across the CPUs in your computer (i.e. if you have a 4-core computer, you can run 4 chains all at the same time; run `parallel::detectCores()` in your R console to see how many CPU cores you have). `seed` makes it so that the random simulation results are reproducible ([see here for more on seeds](/example/random-numbers.qmd#seeds)).
 
 **Priors**
 

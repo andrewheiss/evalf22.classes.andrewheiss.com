@@ -4,7 +4,7 @@ date: "2022-02-03"
 ---
 
 
-For your [final project](/assignment/final-project/), you will conduct an evaluation for a social program of your choosing. In this assignment, you will explore the program's background, history, purpose, and theory. 
+For your [final project](/assignment/final-project.qmd), you will conduct an evaluation for a social program of your choosing. In this assignment, you will explore the program's background, history, purpose, and theory. 
 
 If you decide to use a different program for your final project, that's okay! This assignment doesn't have to be related to your final program, but it would be helpful—a more polished version of this assignment can be included as part of your final project.
 
@@ -13,7 +13,7 @@ If you decide to use a different program for your final project, that's okay! Th
 
 You need to complete the four sections listed below. Ideally you should type this in R Markdown and knit your document to HTML or Word or PDF, but you can also write in Word if you want (though your final project will need to be in R Markdown, and this would give you practice).[^citations]
 
-[^citations]: And if you want to be super brave, try using [R Markdown's citation system](/resource/markdown/#citations)!
+[^citations]: And if you want to be super brave, try using [R Markdown's citation system](/resource/markdown.qmd#citations)!
 
 **I've created an R Markdown template you can use here:** [<i class="fas fa-file-archive"></i> `background-theory.zip`](/projects/background-theory.zip). It's also [available on RStudio.cloud](https://rstudio.cloud/spaces/205054/project/3424197).
 

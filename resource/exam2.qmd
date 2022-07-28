@@ -9,8 +9,8 @@ title: "Things you should know for Exam 2"
 
 **Crucial resources**:
 
-- [Readings, slides, and videos for randomization and matching](/content/07-content/)
-- [Guide for RCTs](/example/rcts/)
+- [Readings, slides, and videos for randomization and matching](/content/07-content.qmd)
+- [Guide for RCTs](/example/rcts.qmd)
 - Problem set 3
 - Task 1 in problem set 8
 
@@ -22,8 +22,8 @@ title: "Things you should know for Exam 2"
 
 **Crucial resources**:
 
-- [Readings, slides, and videos for randomization and matching](/content/07-content/)
-- [Guide for matching and inverse probability weighting](/example/matching-ipw/)
+- [Readings, slides, and videos for randomization and matching](/content/07-content.qmd)
+- [Guide for matching and inverse probability weighting](/example/matching-ipw.qmd)
 - Problem set 3
 - Task 2 in problem set 8
 
@@ -35,8 +35,8 @@ title: "Things you should know for Exam 2"
 
 **Crucial resources**:
 
-- [Readings, slides, and videos for diff-in-diff](/content/08-content/)
-- [Guide for diff-in-diff](/example/diff-in-diff/)
+- [Readings, slides, and videos for diff-in-diff](/content/08-content.qmd)
+- [Guide for diff-in-diff](/example/diff-in-diff.qmd)
 - Problem set 4
 - Problem set 5
 - Task 3 in problem set 8
@@ -50,10 +50,10 @@ title: "Things you should know for Exam 2"
 
 **Crucial resources**:
 
-- [Readings, slides, and videos for regression discontinuity I (sharp)](/content/10-content/)
-- [Readings, slides, and videos for regression discontinuity II (fuzzy)](/content/12-content/)
-- [Guide for sharp diff-in-diff](/example/rdd/)
-- [Guide for fuzzy diff-in-diff](/example/rdd-fuzzy/)
+- [Readings, slides, and videos for regression discontinuity I (sharp)](/content/10-content.qmd)
+- [Readings, slides, and videos for regression discontinuity II (fuzzy)](/content/12-content.qmd)
+- [Guide for sharp diff-in-diff](/example/rdd.qmd)
+- [Guide for fuzzy diff-in-diff](/example/rdd-fuzzy.qmd)
 - Problem set 6
 - Task 4 in problem set 8
 
@@ -67,8 +67,8 @@ title: "Things you should know for Exam 2"
 
 **Crucial resources**:
 
-- [Readings, slides, and videos for instrumental variables I](/content/11-content/)
-- [Readings, slides, and videos for instrumental variables II](/content/12-content/)
-- [Guide for instrumental variables](/example/iv/)
+- [Readings, slides, and videos for instrumental variables I](/content/11-content.qmd)
+- [Readings, slides, and videos for instrumental variables II](/content/12-content.qmd)
+- [Guide for instrumental variables](/example/iv.qmd)
 - Problem set 7
 - Task 5 in problem set 8

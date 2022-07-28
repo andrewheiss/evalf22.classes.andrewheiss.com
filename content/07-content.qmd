@@ -29,8 +29,8 @@ slide_details <- tibble::tribble(
 
 ### RCTs, matching, and inverse probability weighting
 
-- The [example page on RCTs](/example/rcts/) shows how to use R to analyze and estimate causal effects from RCTs
-- The [example page on matching and inverse probability weighting](/example/matching-ipw/) shows how to use R to close backdoors, make adjustments, and find causal effects from observational data using matching and inverse probability weighting
+- The [example page on RCTs](/example/rcts.qmd) shows how to use R to analyze and estimate causal effects from RCTs
+- The [example page on matching and inverse probability weighting](/example/matching-ipw.qmd) shows how to use R to close backdoors, make adjustments, and find causal effects from observational data using matching and inverse probability weighting
 
 
 ## Slides
@@ -68,9 +68,9 @@ Other helpful resources:
 - ["The Impact of Mask Distribution and Promotion on Mask Uptake and COVID-19 in Bangladesh"](https://www.poverty-action.org/study/impact-mask-distribution-and-promotion-mask-uptake-and-covid-19-bangladesh)
 - Macartan Humphreys, ["I saw your RCT and I have some worries! FAQs"](https://macartan.github.io/i/notes/rct_faqs.html)
 - Darren Dahly, ["Out of balance: A perspective on covariate adjustment in randomized experiments"](https://statsepi.substack.com/p/out-of-balance)
-- [Bayesian stats and decison making](/resource/bayes/)
-- [Standard errors](/example/standard-errors/)
-- [Unobserved confounding and sensitivity analysis](/example/confounding-sensitivity/)
+- [Bayesian stats and decison making](/resource/bayes.qmd)
+- [Standard errors](/example/standard-errors.qmd)
+- [Unobserved confounding and sensitivity analysis](/example/confounding-sensitivity.qmd)
 
 
 ```{verbatim include=FALSE}

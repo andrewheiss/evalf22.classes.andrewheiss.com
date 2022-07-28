@@ -20,8 +20,8 @@ slide_details <- tibble::tribble(
 
 ## Readings
 
-- {{< fa arrow-up-right-from-square >}} ["Generating random numbers"](/example/random-numbers/)
-- {{< fa arrow-up-right-from-square >}} ["The ultimate guide to generating synthetic data for causal inference"](/example/synthetic-data/)
+- {{< fa arrow-up-right-from-square >}} ["Generating random numbers"](/example/random-numbers.qmd)
+- {{< fa arrow-up-right-from-square >}} ["The ultimate guide to generating synthetic data for causal inference"](/example/synthetic-data.qmd)
 - {{< fa file-pdf >}} Paul Hünermund and Beyers Louw, ["On the Nuisance of Control Variables in Regression Analysis"](https://arxiv.org/abs/2005.10314) [@HunermundLouw:2020] (**click on the PDF link in the right sidebar**)
 - {{< fa file-pdf >}} ["Types of Evaluation,"](https://www.cdc.gov/std/Program/pupestd/Types%20of%20Evaluation.pdf) National Center for HIV/AIDS, Viral Hepatitis, STD, and TB Prevention, Centers for Disease Control (CDC)
 - {{< fa book >}} Chapters 11–13 in *Impact Evaluation in Practice* [@wb-eval]

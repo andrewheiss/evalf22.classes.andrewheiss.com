@@ -25,7 +25,7 @@ slide_details <- tibble::tribble(
 
 ### Regression discontinuity
 
-- The [example page on regression discontinuity](/example/rdd/) shows how to use R to analyze and estimate causal effects with regression discontinuity
+- The [example page on regression discontinuity](/example/rdd.qmd) shows how to use R to analyze and estimate causal effects with regression discontinuity
 
 
 ## Slides

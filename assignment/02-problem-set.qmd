@@ -52,16 +52,16 @@ Remember, if you're struggling, *please* talk to me. Work with classmates too. D
 
 For this problem set, we're less interested in causal relationships and more interested in the mechanics of manipulating data and running regressions in R. We'll start caring about identification and causal models in the next problem set. Because of this, don't put too much causal weight into the interpretations of these different models—this is an actual case of correlation not implying causation.
 
-[The example for week 2 on regression](/example/regression/) will be ***incredibly*** helpful for this exercise. Reference it. Copy and paste from it liberally.
+[The example for week 2 on regression](/example/regression.qmd) will be ***incredibly*** helpful for this exercise. Reference it. Copy and paste from it liberally.
 
 1. Rename the R Markdown file named `your-name_problem-set-2.Rmd` to something that matches your name and open it in RStudio.
 
-2. Complete the tasks given in the R Markdown file. Fill out code in the empty chunks provided (you can definitely copy, paste, and adapt from other code in the document or [from the regression example](/example/regression/)—*don't try to write everything from scratch!*), and replace text in ALL CAPS with your own. (i.e. You'll see a bunch of `TYPE YOUR ANSWER HERE`s. Type your answers there.). Again, you don't need to type your answers in all caps.
+2. Complete the tasks given in the R Markdown file. Fill out code in the empty chunks provided (you can definitely copy, paste, and adapt from other code in the document or [from the regression example](/example/regression.qmd)—*don't try to write everything from scratch!*), and replace text in ALL CAPS with your own. (i.e. You'll see a bunch of `TYPE YOUR ANSWER HERE`s. Type your answers there.). Again, you don't need to type your answers in all caps.
 
 
 ## Turning everything in
 
-When you're all done, click on the "Knit" button at the top of the editing window and create an HTML or Word version (or PDF if you've [installed **tinytex**](/resource/install/#install-tinytex)) of your document. Upload that file to iCollege.
+When you're all done, click on the "Knit" button at the top of the editing window and create an HTML or Word version (or PDF if you've [installed **tinytex**](/resource/install.qmd#install-tinytex)) of your document. Upload that file to iCollege.
 
 ```{r knit-button, echo=FALSE, out.width="30%", fig.align="center"}
 knitr::include_graphics("/img/assignments/knit-button.png", error = FALSE)

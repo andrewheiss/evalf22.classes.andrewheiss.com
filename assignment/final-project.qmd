@@ -13,19 +13,19 @@ One increasingly popular method for (1) ensuring that your data and methods work
 
 [^prereg]: See the [Center for Open Science's directory of preregistrations](https://cos.io/prereg/), or [AsPredicted list](https://aspredicted.org/) for examples of this in real life. [Here's one by me!](https://osf.io/hsbyd)
 
-The best preregistered studies use simulated data that has the same structure as the data that will be collected (i.e. same columns, sometimes the same correlations and relationships researchers expect to see in the collected data, etc.). Because there's no data yet (or [just fake data](/example/synthetic-data/)), you have more freedom when developing a preregistered study. You can experiment with different models, play with different approaches, manipulate data in different ways, and so on. If you realize that you need a new variable, or that you need to rearrange questions on a survey, or make any other kinds of changes, you can—you haven't collected the data yet! 
+The best preregistered studies use simulated data that has the same structure as the data that will be collected (i.e. same columns, sometimes the same correlations and relationships researchers expect to see in the collected data, etc.). Because there's no data yet (or [just fake data](/example/synthetic-data.qmd)), you have more freedom when developing a preregistered study. You can experiment with different models, play with different approaches, manipulate data in different ways, and so on. If you realize that you need a new variable, or that you need to rearrange questions on a survey, or make any other kinds of changes, you can—you haven't collected the data yet! 
 
 (Additionally, using synthetic data is extremely useful if you're working with proprietary or private data that you cannot make public. [You can make a synthetic version of the real data instead](https://arxiv.org/abs/2011.01374); see [this too](https://twitter.com/cmastication/status/1325424086659502081).)
 
 Once you finalize your plan and know all the data you need to collect, and once you've written out the different models you'll run, all you have to do is collect the real data, plop it into your script (replacing the fake data you'd been using), and run the analysis script again to generate the actual, real results. In the results section, you get to either say "As predicted, we found…", or "Contrary to expectations, we found that…".
 
-For your final project in this class, you will write a pre-registered analysis of a public or nonprofit social program that you're interested in. You don't need to worry about collecting data—[you'll create a synthetic dataset for your pre-analysis.](/example/synthetic-data/)
+For your final project in this class, you will write a pre-registered analysis of a public or nonprofit social program that you're interested in. You don't need to worry about collecting data—[you'll create a synthetic dataset for your pre-analysis.](/example/synthetic-data.qmd)
 
 You will submit **three things** via iCollege:
 
 1. A PDF of your preregistered report (see the outline below for details of what this needs to contain). You should compile this with R Markdown. You might want to write the prose-heavy sections in a word processor like Word or Google Docs and copy/paste the text into your R Markdown document, since RStudio doesn't have a nice spell checker or grammar checker. This should have *no visible R code, warnings, or messages in it* (set `echo = FALSE` at the beginning of your document before you knit).
 2. The same PDF as above, but with all the R code in it (set `echo = TRUE` at the beginning of your document and reknit the file).
-3. A CSV file of [your fake data.](/example/synthetic-data/)
+3. A CSV file of [your fake data.](/example/synthetic-data.qmd)
 
 This project is due by **11:59 PM on Monday, May 2, 2022.** <span style="color: #81056F; font-weight: bold"> No late work will be accepted.</span>
 
@@ -123,7 +123,7 @@ Given your measurement approach, limits on feasibility, and identification strat
 
 ### Synthetic analysis
 
-[Generate a synthetic (fake) dataset in R with all the variables you'll need for the real life analysis.](/example/synthetic-data/) Analyze the data using your identification strategy. For instance:
+[Generate a synthetic (fake) dataset in R with all the variables you'll need for the real life analysis.](/example/synthetic-data.qmd) Analyze the data using your identification strategy. For instance:
 
 - If you're relying on observational data, close all the backdoors with matching or inverse probability weighting, don't adjust for colliders, and make a strong argument for isolation of the causal effect in the absence of treatment/control groups
 - If you're doing an RCT, test the differences in means in the treatment and control groups (and follow all other best practices listed in the World Bank book, checking for balance across groups, etc.)

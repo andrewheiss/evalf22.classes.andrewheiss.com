@@ -21,7 +21,7 @@ slide_details <- tibble::tribble(
 
 ## Readings
 
-- The [syllabus](/syllabus/), [content](/content/), [examples](/example/), and [assignments](/assigment/) pages for this class
+- The [syllabus](/syllabus.qmd), [content](/content/index.qmd), [examples](/example/index.qmd), and [assignments](/assignment/index.qmd) pages for this class
 - {{< fa book >}} Chapter 1 in *Impact Evaluation in Practice* [@wb-eval]
 - {{< fa book >}} Chapters 1 and 2 in *The Effect* [@Huntington-Klein:2021]
 - {{< fa brands youtube >}} DJ Patil, ["What Makes a Radical and Revolutionary Technology?"](https://www.youtube.com/watch?v=UOoMzaWOQJA) 
@@ -33,7 +33,7 @@ slide_details <- tibble::tribble(
 ## Slides
 
 :::{.callout-warning}
-**Important!!**: In the "Class details" video, I say that there are three books for the class: the World Bank evaluation book, *'Metrics Matter*, and *Causal Inference: The Mixtape*. [That's not the case this semester](/syllabus/#books), since we're using the new *The Effect* book, which replaces both *'Metrics Matter* and the *Mixtape*. So ignore that part of the video. The slides are updated with the correct books, though: [see here](/slides/01-slides.html#85).
+**Important!!**: In the "Class details" video, I say that there are three books for the class: the World Bank evaluation book, *'Metrics Matter*, and *Causal Inference: The Mixtape*. [That's not the case this semester](/syllabus.qmd#books), since we're using the new *The Effect* book, which replaces both *'Metrics Matter* and the *Mixtape*. So ignore that part of the video. The slides are updated with the correct books, though: [see here](/slides/01-slides.html#85).
 :::
 
 The slides for today's lesson are available online as an HTML file. Use the buttons below to open the slides either as an interactive website or as a static PDF (for printing or storing for later). You can also click in the slides below and navigate through them with your left and right arrow keys.

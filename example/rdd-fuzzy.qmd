@@ -12,7 +12,7 @@ options(dplyr.summarise.inform = FALSE)
 
 ## Program background
 
-In this example, we'll use the same situation that we used in the [the example for regression discontinuity](/example/rdd/):
+In this example, we'll use the same situation that we used in the [the example for regression discontinuity](/example/rdd.qmd):
 
 - Students take an entrance exam at the beginning of the school year
 - If they score 70 or below, they are enrolled in a free tutoring program
@@ -47,7 +47,7 @@ tutoring <- read_csv("data/tutoring_program_fuzzy.csv")
 
 ## Noncompliance around a cutoff
 
-In [the example for regression discontinuity](/example/rdd/), it was fairly easy to measure the size of the jump at the cutoff because compliance was perfect. No people who scored above the threshold used the tutoring program, and nobody who qualified for the program didn't use it. It was a *sharp* design, since program usage looked like this:
+In [the example for regression discontinuity](/example/rdd.qmd), it was fairly easy to measure the size of the jump at the cutoff because compliance was perfect. No people who scored above the threshold used the tutoring program, and nobody who qualified for the program didn't use it. It was a *sharp* design, since program usage looked like this:
 
 ```{r echo=FALSE, out.width="75%"}
 knitr::include_graphics("/example/rdd_files/figure-html/check-fuzzy-sharp-1.png", error = FALSE)
@@ -86,7 +86,7 @@ This is definitely not a sharp design. This is a fuzzy regression discontinuity.
 
 ## Visualizing a fuzzy gap
 
-With regular sharp RD, our goal is to measure the size of the gap or discontinuity in outcome right at the cutoff. [In our sharp example](/example/rdd/#step-4-check-for-discontinuity-in-outcome-across-running-variabl) we did this with different parametric regression models, as well as with the `rdrobust()` function for nonparametric measurement.
+With regular sharp RD, our goal is to measure the size of the gap or discontinuity in outcome right at the cutoff. [In our sharp example](/example/rdd.qmd#step-4-check-for-discontinuity-in-outcome-across-running-variabl) we did this with different parametric regression models, as well as with the `rdrobust()` function for nonparametric measurement.
 
 Regular parametric regression won't really work here because we have strange compliance issues:
 
@@ -137,7 +137,7 @@ ggplot(tutoring_with_bins, aes(x = exam_binned, y = prob_tutoring)) +
 
 ## Measuring a fuzzy gap
 
-So how do we actually measure this gap, given all the compliance issues? Recall from Session 12 that *instruments* let us isolate causal effects for just compliers: they let us find [the complier average causal effect, or CACE](/example/cace/).
+So how do we actually measure this gap, given all the compliance issues? Recall from Session 12 that *instruments* let us isolate causal effects for just compliers: they let us find [the complier average causal effect, or CACE](/example/cace.qmd).
 
 But what should we use as an instrument? Do we use something weird like [the Scrabble score of people's names](http://ftp.iza.org/dp7725.pdf)? Something [overused like rainfall](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3715610)?
 
@@ -162,7 +162,7 @@ tutoring_centered
 
 Now we have a new column named `below_cutoff` that we'll use as an instrument. Most of the time this will be the same as the `tutoring` column, since most people are compliers. But some people didn't comply, like person 8 here who was *not* below the cutoff but still used the tutoring program.
 
-Before using the instrument, let's first run a model that assumes the cutoff is sharp. As we did with [the sharp parametric analysis](/example/rdd/#parametric-estimation), we'll include two explanatory variables:
+Before using the instrument, let's first run a model that assumes the cutoff is sharp. As we did with [the sharp parametric analysis](/example/rdd.qmd#parametric-estimation), we'll include two explanatory variables:
 
 $$
 \text{Exit exam} = \beta_0 + \beta_1 \text{Entrance exam score}_\text{centered} + \beta_2 \text{Tutoring program} + \epsilon
@@ -190,7 +190,7 @@ $$
 \end{aligned}
 $$
 
-We could manually run the first stage model, generate predicted `tutoring` and then use those predicted values in the second stage model [like we did in the instrumental variables example](/example/iv/), but that's tedious and nobody wants to do all that work. We'll use `iv_robust()` from the **estimatr** package instead.
+We could manually run the first stage model, generate predicted `tutoring` and then use those predicted values in the second stage model [like we did in the instrumental variables example](/example/iv.qmd), but that's tedious and nobody wants to do all that work. We'll use `iv_robust()` from the **estimatr** package instead.
 
 ```{r model-fuzzy}
 model_fuzzy <- iv_robust(
@@ -219,11 +219,11 @@ modelsummary(list("No instrument (wrong)" = model_sans_instrument,
   row_spec(5, background = "#F5ABEA")
 ```
 
-We can (and should!) [do all the other things that we talked about in the regression discontinuity example](/example/rdd/#parametric-estimation), like modifying the bandwidth, adding polynomial terms, and so forth to see how robust the finding is. But we won't do any of that here.
+We can (and should!) [do all the other things that we talked about in the regression discontinuity example](/example/rdd.qmd#parametric-estimation), like modifying the bandwidth, adding polynomial terms, and so forth to see how robust the finding is. But we won't do any of that here.
 
 ### Fuzzy nonparametric estimation
 
-We can also use nonparametric methods to measure the size of the fuzzy gap at the cutoff. We'll use `rdrobust()` just like we [did in the sharp example](/example/rdd/#nonparametric-estimation-1). The only difference is that we have to add one extra argument. That's it!
+We can also use nonparametric methods to measure the size of the fuzzy gap at the cutoff. We'll use `rdrobust()` just like we [did in the sharp example](/example/rdd.qmd#nonparametric-estimation-1). The only difference is that we have to add one extra argument. That's it!
 
 To do fuzzy estimation with `rdrobust()`, use the `fuzzy` argument to specify the treatment column (or `tutoring` in our case). **Importantly** (and confusingly! this took me waaaaay too long to figure out!), you ***do not*** need to specify an instrument (or even create one!). All you need to specify is the column that indicates treatment status—`rdrobust()` will do all the above/below-the-cutoff instrument stuff behind the scenes for you.
 
@@ -235,4 +235,4 @@ rdrobust(y = tutoring$exit_exam, x = tutoring$entrance_exam,
 
 That's all! Using nonparametric methods, with a triangular kernel and a bandwidth of ±12.96, the causal effect of the tutoring program for compliers in the bandwidth is 9.683.
 
-We can (and should!) [do all the other nonparametric robustness checks that we talked about in the regression discontinuity example](/example/rdd/#nonparametric-estimation), like modifying the bandwidth (ideal, half, double) and messing with the kernel (uniform, triangular, Epanechnikov) to see how robust the finding is. But again, we won't do any of that here.
+We can (and should!) [do all the other nonparametric robustness checks that we talked about in the regression discontinuity example](/example/rdd.qmd#nonparametric-estimation), like modifying the bandwidth (ideal, half, double) and messing with the kernel (uniform, triangular, Epanechnikov) to see how robust the finding is. But again, we won't do any of that here.

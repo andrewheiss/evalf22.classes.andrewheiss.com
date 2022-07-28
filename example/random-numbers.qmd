@@ -12,7 +12,7 @@ options(dplyr.summarise.inform = FALSE)
 
 In your final project, you will generate a synthetic dataset and use it to conduct an evaluation of some social program. Generating fake or simulated data is an *incredibly powerful skill*, but it takes some practice. Here are a bunch of helpful resources and code examples of how to use different R functions to generate random numbers that follow specific distributions (or probability shapes).
 
-This example focuses primarily on distributions. Each of the columns you'll generate will be completely independent from each other and there will be no correlation between them. [The example for generating synthetic data](/example/synthetic-data/) provides code and a bunch of examples of how to build in correlations between columns.
+This example focuses primarily on distributions. Each of the columns you'll generate will be completely independent from each other and there will be no correlation between them. [The example for generating synthetic data](/example/synthetic-data.qmd) provides code and a bunch of examples of how to build in correlations between columns.
 
 First, make sure you load the libraries we'll use throughout the example:
 
@@ -661,7 +661,7 @@ plot_unscaled + plot_scaled
 
 This gives you less control over the center of the distribution (here it happens to be 40 because that's in the middle of 18 and 65), but it gives you more control over the edges of the distribution.
 
-Rescaling things is really helpful when building in effects and interacting columns with other columns, since multiplying variables by different coefficients can make the values go way out of the normal range. You'll see a lot more of that in the [synthetic data example](/example/synthetic-data/).
+Rescaling things is really helpful when building in effects and interacting columns with other columns, since multiplying variables by different coefficients can make the values go way out of the normal range. You'll see a lot more of that in the [synthetic data example](/example/synthetic-data.qmd).
 
 
 ## Summary
@@ -686,7 +686,7 @@ tribble(
 
 ## Example
 
-And here's an example dataset of 1,000 fake people and different characteristics. One shortcoming of this fake data is that each of these columns is completely independent—there's no relationship between age and education and family size and income. You can see how to make these columns correlated (and make one cause another!) in the [example for synthetic data](/example/synthetic-data).
+And here's an example dataset of 1,000 fake people and different characteristics. One shortcoming of this fake data is that each of these columns is completely independent—there's no relationship between age and education and family size and income. You can see how to make these columns correlated (and make one cause another!) in the [example for synthetic data](/example/synthetic-data.qmd).
 
 ```{r example-data}
 set.seed(1234)

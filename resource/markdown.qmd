@@ -383,7 +383,7 @@ title: 'An evaluation of "scare quotes"'
 
 ## Citations
 
-One of the most powerful features of Markdown + pandoc is the ability to automatically cite things and generate bibliographies. to use citations, you need to create a [BibTeX file](http://www.bibtex.org/) (ends in `.bib`) that contains a database of the things you want to cite. You can do this with bibliography managers designed to work with BibTeX directly (like [BibDesk](https://bibdesk.sourceforge.io/) on macOS), or you can use [Zotero](https://www.zotero.org/) (macOS and Windows) to export a `.bib` file. You can [download an example `.bib` file of all the readings from this class here](/resource/citations/).
+One of the most powerful features of Markdown + pandoc is the ability to automatically cite things and generate bibliographies. to use citations, you need to create a [BibTeX file](http://www.bibtex.org/) (ends in `.bib`) that contains a database of the things you want to cite. You can do this with bibliography managers designed to work with BibTeX directly (like [BibDesk](https://bibdesk.sourceforge.io/) on macOS), or you can use [Zotero](https://www.zotero.org/) (macOS and Windows) to export a `.bib` file. You can [download an example `.bib` file of all the readings from this class here](/resource/citations.qmd).
 
 [Complete details for using citations can be found here](https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html). In brief, you need to do three things:
 

@@ -19,4 +19,4 @@ And here are some useful blog posts and examples of the stuff we talked about to
 
 - [How random effects work](https://www.andrewheiss.com/blog/2021/12/01/multilevel-models-panel-data-guide/#introduction-to-random-effects-intercepts-for-each-continent)
 - [TWFE diagnostics](https://www.andrewheiss.com/blog/2021/08/25/twfe-diagnostics/)
-- [Sensitivity analysis for unobserved confounding](/example/confounding-sensitivity/)
+- [Sensitivity analysis for unobserved confounding](/example/confounding-sensitivity.qmd)

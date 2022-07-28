@@ -25,7 +25,7 @@ slide_details <- tibble::tribble(
 
 ### Potential outcomes, ATEs, and CATEs example page
 
-- The [example page on potential outcomes, ATEs, and CATEs](/example/po-ate-cate/) shows how to use R to calculate ATEs and CATEs
+- The [example page on potential outcomes, ATEs, and CATEs](/example/po-ate-cate.qmd) shows how to use R to calculate ATEs and CATEs
 
 
 ## Slides

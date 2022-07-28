@@ -36,7 +36,7 @@ youtube_list(video_details, playlist_id, example = TRUE)
 
 ## Program background
 
-Let's revisit the mosquito net program we used in [the DAG example](/example/dags/). Here, researchers are interested in whether using mosquito nets decreases an individual's risk of contracting malaria. They have collected data from 1,752 households in an unnamed country and have variables related to environmental factors, individual health, and household characteristics. The data is **not experimental**—researchers have no control over who uses mosquito nets, and individual households make their own choices over whether to apply for free nets or buy their own nets, as well as whether they use the nets if they have them.
+Let's revisit the mosquito net program we used in [the DAG example](/example/dags.qmd). Here, researchers are interested in whether using mosquito nets decreases an individual's risk of contracting malaria. They have collected data from 1,752 households in an unnamed country and have variables related to environmental factors, individual health, and household characteristics. The data is **not experimental**—researchers have no control over who uses mosquito nets, and individual households make their own choices over whether to apply for free nets or buy their own nets, as well as whether they use the nets if they have them.
 
 The CSV file contains the following columns:
 
@@ -90,7 +90,7 @@ nets <- read_csv(here::here("files", "data", "mosquito_nets.csv"))
 
 ## DAG and adjustment sets
 
-Before running any models, we need to find what we need to adjust for. Recall from [the DAG example](/example/dags/) that we built this causal model to show the data generating process behind the relationship between mosquito net usage and malaria risk:
+Before running any models, we need to find what we need to adjust for. Recall from [the DAG example](/example/dags.qmd) that we built this causal model to show the data generating process behind the relationship between mosquito net usage and malaria risk:
 
 ```{r build-mosquito-dag, fig.width=8}
 mosquito_dag <- dagify(

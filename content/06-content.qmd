@@ -56,7 +56,7 @@ youtube_list(slide_details, playlist_id)
 Here are all the materials we'll use in class:
 
 - [**Session 6 FAQ slides**](/slides/06-class.html) ([PDF](/slides/06-class.pdf))
-- [Zilch!](/resource/zilch/)
+- [Zilch!](/resource/zilch.qmd)
 - [<i class="fab fa-r-project"></i> Live R script](https://www.dropbox.com/s/akez7ssaiyt6um3/bayes-fun.R)
 - [<i class="fas fa-file-csv"></i> `restaurant_inspections.csv`](https://vincentarelbundock.github.io/Rdatasets/csv/causaldata/restaurant_inspections.csv)
 
