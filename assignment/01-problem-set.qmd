@@ -3,6 +3,10 @@ title: "Problem set 1"
 date: "2022-04-21"
 ---
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(fig.align = "center")
+```
+
 ## Task 1: Introduce yourself to R, RStudio, and the tidyverse
 
 1. Go the the example page for this week, ["Welcome to R, RStudio, and the tidyverse"](/example/rstudio-tidyverse.qmd), and work through the different primers and videos in the four parts of the page.
@@ -24,50 +28,50 @@ date: "2022-04-21"
 
 5. Delete all the placeholder text in that new file and replace it with this:
 
-    ````text
-    ---
-    title: "Problem set 1"
-    author: "Put your name here"
-    output: html_document
-    ---
-    
-    `r ''````{r load-libraries-data, warning=FALSE, message=FALSE}
-    library(tidyverse)
-    
-    cars <- read_csv("data/cars.csv")
-    ```
-    
-    # Learning R
-    
-    Tell me that you worked through the primers and videos and examples at the example page for this week:
-    
-    WRITE SOMETHING HERE LIKE "I did all the primers and had the time of my life!" or whatever.
-    
-    
-    # My first plots
-    
-    Insert a chunk below and use it to create a scatterplot (hint: `geom_point()`) with diplacement (`displ`) on the x-axis, city MPG (`cty`) on the y-axis, and with the points colored by drive (`drv`).
-    
-    PUT CHUNK HERE
-    
-    Insert a chunk below and use it to create a histogram (hint: `geom_histogram()`) with highway MPG (`hwy`) on the x-axis. Do not include anything on the y-axis (`geom_histogram()` will do that automatically for you). Choose an appropriate bin width. If you're brave, facet by drive (`drv`).
-    
-    PUT CHUNK HERE
-    
-    
-    # My first data manipulation
-    
-    Insert a chunk below and use it to calculate the average city MPG (`cty`) by class of car (`class`). This won't be a plot---it'll be a table. Hint: use a combination of `group_by()` and `summarize()`.
-    
-    PUT CHUNK HERE
-    ````
+````{verbatim, indent="    "}
+---
+title: "Problem set 1"
+author: "Put your name here"
+output: html_document
+---
+
+```{r load-libraries-data, warning=FALSE, message=FALSE}
+library(tidyverse)
+
+cars <- read_csv("data/cars.csv")
+```
+
+# Learning R
+
+Tell me that you worked through the primers and videos and examples at the example page for this week:
+
+WRITE SOMETHING HERE LIKE "I did all the primers and had the time of my life!" or whatever.
+
+
+# My first plots
+
+Insert a chunk below and use it to create a scatterplot (hint: `geom_point()`) with diplacement (`displ`) on the x-axis, city MPG (`cty`) on the y-axis, and with the points colored by drive (`drv`).
+
+PUT CHUNK HERE
+
+Insert a chunk below and use it to create a histogram (hint: `geom_histogram()`) with highway MPG (`hwy`) on the x-axis. Do not include anything on the y-axis (`geom_histogram()` will do that automatically for you). Choose an appropriate bin width. If you're brave, facet by drive (`drv`).
+
+PUT CHUNK HERE
+
+
+# My first data manipulation
+
+Insert a chunk below and use it to calculate the average city MPG (`cty`) by class of car (`class`). This won't be a plot---it'll be a table. Hint: use a combination of `group_by()` and `summarize()`.
+
+PUT CHUNK HERE
+````
 
 6. Save the R Markdown file with some sort of name (**without any spaces!**)
 
 7. Your project folder should look something like this:
 
-```{r project-structure, echo=FALSE, out.width="30%", indent="    "}
-knitr::include_graphics("/img/assignments/project-structure.png", error = FALSE)
+```{r project-structure, echo=FALSE, out.width="30%"}
+knitr::include_graphics("/files/img/assignments/project-structure.png", error = FALSE)
 ```
 
 
@@ -75,16 +79,16 @@ knitr::include_graphics("/img/assignments/project-structure.png", error = FALSE)
 
 1. Remove the text that says "PUT CHUNK HERE" and insert a new R code chunk. Either type <kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>i</kbd> on Windows, or <kbd>⌘</kbd> + <kbd>⌥</kbd> + <kbd>i</kbd> on macOS, or use the "Insert Chunk" menu:
 
-```{r insert-chunk-button, echo=FALSE, out.width="19%", indent="    "}
-knitr::include_graphics("/img/assignments/insert-chunk-button.png", error = FALSE)
+```{r insert-chunk-button, echo=FALSE, out.width="19%"}
+knitr::include_graphics("/files/img/assignments/insert-chunk-button.png", error = FALSE)
 ```
 
 2. Follow the instructions for the three chunks of code.
 
 3. Knit your document as a Word file (or PDF if you're brave and [installed LaTeX](/resource/install.qmd#install-tinytex)). Use the "Knit" menu:
 
-```{r knit-button, echo=FALSE, out.width="30%", indent="    "}
-knitr::include_graphics("/img/assignments/knit-button.png", error = FALSE)
+```{r knit-button, echo=FALSE, out.width="30%"}
+knitr::include_graphics("/files/img/assignments/knit-button.png", error = FALSE)
 ```
 
 4. Upload the knitted document to iCollege.
@@ -97,13 +101,13 @@ knitr::include_graphics("/img/assignments/knit-button.png", error = FALSE)
 You'll be doing this same process for all your future problem sets. Each problem set will involve an R Markdown file. You can either create a new RStudio Project directory for all your work:
 
 ```{r single-directory, echo=FALSE, out.width="30%"}
-knitr::include_graphics("/img/reference/rproj-one-folder.png", error = FALSE)
+knitr::include_graphics("/files/img/reference/rproj-one-folder.png", error = FALSE)
 ```
 
 Or you can create individual projects for each assignment and project:
 
 ```{r multiple-directories, echo=FALSE, out.width="30%",}
-knitr::include_graphics("/img/reference/rproj-multiple-folders.png", error = FALSE)
+knitr::include_graphics("/files/img/reference/rproj-multiple-folders.png", error = FALSE)
 ```
 
 :::

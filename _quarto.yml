@@ -6,6 +6,7 @@ project:
   resources:
     - "img/"
     - "projects/"
+    - "files/"
     - "slides/*.html"
     - "slides/*.pdf"
     - "slides/img/"

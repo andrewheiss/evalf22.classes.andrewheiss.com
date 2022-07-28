@@ -172,7 +172,7 @@ R will find minimally sufficient adjustment sets, which includes the fewest numb
 If you use [dagitty.net](http://dagitty.net/) to draw a DAG, you'll notice that it generates some code for you in the model code section:
 
 ```{r dagitty-model-code-example, echo=FALSE}
-knitr::include_graphics("/img/example/dagitty-code.png", error = FALSE)
+knitr::include_graphics("/files/img/example/dagitty-code.png", error = FALSE)
 ```
 
 You can copy that `dag{ ... }` code and paste it into R to define a DAG object rather than use the `dagify()` function. To do this, use the `dagitty()` function from the **dagitty** library and include the whole generated model code in single quotes (`''`):

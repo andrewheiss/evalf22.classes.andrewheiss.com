@@ -30,19 +30,19 @@ First you need to install R itself (the engine).
 2. Click on "Download R for `XXX`", where `XXX` is either Mac or Windows:
 
     ```{r, echo=FALSE, out.width="60%"}
-    include_graphics("/img/install/install-r-links.png", error = FALSE)
+    include_graphics("/files/img/install/install-r-links.png", error = FALSE)
     ```
 
     - If you use macOS, scroll down to the first `.pkg` file in the list of files (in this picture, it's `R-4.0.0.pkg`; as of right now, the current version is also 4.0.0) and download it.
     
         ```{r, echo=FALSE, out.width="100%"}
-        include_graphics("/img/install/install-r-mac.png", error = FALSE)
+        include_graphics("/files/img/install/install-r-mac.png", error = FALSE)
         ```
     
     - If you use Windows, click "base" (or click on the bolded "install R for the first time" link) and download it. 
     
         ```{r, echo=FALSE, out.width="100%"}
-        include_graphics("/img/install/install-r-windows.png", error = FALSE)
+        include_graphics("/files/img/install/install-r-windows.png", error = FALSE)
         ```
 
 3. Double click on the downloaded file (check your `Downloads` folder). Click yes through all the prompts to install like any other program.
@@ -59,13 +59,13 @@ Next, you need to install RStudio, the nicer graphical user interface (GUI) for 
 2. The website should automatically detect your operating system (macOS or Windows) and show a big download button for it:
 
     ```{r, echo=FALSE, out.width="50%"}
-    include_graphics("/img/install/install-r-rstudio1.png", error = FALSE)
+    include_graphics("/files/img/install/install-r-rstudio1.png", error = FALSE)
     ```
     
     If not, scroll down a little to the large table and choose the version of RStudio that matches your operating system.
 
     ```{r, echo=FALSE, out.width="100%"}
-    include_graphics("/img/install/install-r-rstudio2.png", error = FALSE)
+    include_graphics("/files/img/install/install-r-rstudio2.png", error = FALSE)
     ```
 
 3. Double click on the downloaded file (again, check your `Downloads` folder). Click yes through all the prompts to install like any other program.
@@ -78,7 +78,7 @@ Double click on RStudio to run it (check your applications folder or start menu)
 R packages are easy to install with RStudio. Select the packages panel, click on "Install," type the name of the package you want to install, and press enter.
 
 ```{r, echo=FALSE, out.width="40%"}
-include_graphics("/img/install/install-r-package-panel.png", error = FALSE)
+include_graphics("/files/img/install/install-r-package-panel.png", error = FALSE)
 ```
 
 This can sometimes be tedious when you're installing lots of packages, though. [The tidyverse](https://www.tidyverse.org/), for instance, consists of dozens of packages (including **ggplot2**) that all work together. Rather than install each individually, you can install a single magical package and get them all at the same time.
@@ -86,7 +86,7 @@ This can sometimes be tedious when you're installing lots of packages, though. [
 Go to the packages panel in RStudio, click on "Install," type "tidyverse", and press enter. You'll see a bunch of output in the RStudio console as all the tidyverse packages are installed.
 
 ```{r, echo=FALSE, out.width="60%"}
-include_graphics("/img/install/install-r-tidyverse.png", error = FALSE)
+include_graphics("/files/img/install/install-r-tidyverse.png", error = FALSE)
 ```
 
 Notice also that RStudio will generate a line of code for you and run it: `install.packages("tidyverse")`. You can also just paste and run this instead of using the packages panel.

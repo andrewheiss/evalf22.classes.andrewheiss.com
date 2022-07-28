@@ -11,8 +11,23 @@ title: "Using Markdown"
 # See https://benweet.github.io/stackedit.js/
 ```
 
-<script src="/js/stackedit.min.js"></script>
-<script src="/js/markdown-config.js"></script>
+```{css echo=FALSE}
+.invisible-text {
+    display: none;
+}
+
+.btn-editor {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.stackedit-button-wrapper {
+    text-align: center;
+}
+```
+
+<script src="/files/js/stackedit.min.js"></script>
+<script src="/files/js/markdown-config.js"></script>
 
 
 ## Basic Markdown formatting
@@ -84,7 +99,7 @@ Heading 3
 <tr class="odd">
 <td><code>![Image caption](/path/to/image.png)</code></td>
 <td></td>
-<td><img src="/img/mstile-144x144.png" title="fig:" alt="Class logo" /></td>
+<td><img src="/files/img/mstile-144x144.png" title="fig:" alt="Class logo" /></td>
 </tr>
 <tr class="even">
 <td>`<code>Inline code` with backticks</code></td>
@@ -185,7 +200,7 @@ math_table %>%
 
 ### Using math inline
 
-You can use math in two different ways: inline or in a display block. To use math inline, wrap it in single dollar signs, like ``\$y = mx + b\$``:
+You can use math in two different ways: inline or in a display block. To use math inline, wrap it in single dollar signs, like ``$y = mx + b$``:
 
 <table>
 <colgroup>
@@ -202,12 +217,13 @@ You can use math in two different ways: inline or in a display block. To use mat
 <tr class="odd">
 <td><pre>Based on the DAG, the regression model for
 estimating the effect of education on wages
-is &dollar;\hat{y} = \beta_0 + \beta_1 x_1 + \epsilon&dollar;, or
-&dollar;\text{Wages} = \beta_0 + \beta_1 \text{Education} + \epsilon&dollar;.</pre></td>
+is &dollar;\hat{y} = \beta_0 + \beta_1 x_1 + \epsilon&dollar;, 
+or &dollar;\text{Wages} = \beta_0 + 
+\beta_1 \text{Education} + \epsilon&dollar;.</pre></td>
 <td>Based on the DAG, the regression model for
 estimating the effect of education on wages
-is <span class="math inline">\(\hat{y} = \beta_0 + \beta_1 x_1 + \epsilon\)</span>, or
-<span class="math inline">\(\text{Wages} = \beta_0 + \beta_1 \text{Education} + \epsilon\)</span>.</td>
+is $\hat{y} = \beta_0 + \beta_1 x_1 + \epsilon$, or
+$\text{Wages} = \beta_0 + \beta_1 \text{Education} + \epsilon$.</td>
 </tr>
 </tbody>
 </table>
@@ -219,32 +235,28 @@ To put an equation on its own line in a display block, wrap it in double dollar 
 **Type…**
 
 ```text
-The quadratic equation was an important part of high school math:
+The quadratic equation was a way to solve for $x$ in high school math:
 
 $$
 x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
 $$
-
-But now we just use computers to solve for $x$.
 ```
 
 **…to get…**
 
-> The quadratic equation was an important part of high school math:
+> The quadratic equation was a way to solve for $x$ in high school math:
 > 
 > $$
 > x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
 > $$
-> 
-> But now we just use computers to solve for $x$.
 
 ---
 
 ### Dollar signs and math
 
-Because dollar signs are used to indicate math equations, you can't just use dollar signs like normal if you're writing about actual dollars. For instance, if you write `This book costs \$5.75 and this other costs \$40`, Markdown will treat everything that comes between the dollar signs as math, like so: "This book costs $5.75 and this other costs $40". 
+Because dollar signs are used to indicate math equations, you can't just use dollar signs like normal if you're writing about actual dollars. For instance, if you write `This book costs $5.75 and this other costs $40`, Markdown will treat everything that comes between the dollar signs as math, like so: "This book costs <span class="math inline">\\($5.75 and this other costs $40\\)</span>". 
 
-To get around that, put a backslash (`\`) in front of the dollar signs, so that `This book costs \\\$5.75 and this other costs \\\$40` becomes "This book costs <span>$5.75</span> and this other costs <span>$40</span>".
+To get around that, put a backslash (`\`) in front of the dollar signs, so that `This book costs \$5.75 and this other costs \$40` becomes "This book costs <span>$5.75</span> and this other costs <span>$40</span>".
 
 
 ## Tables
@@ -420,18 +432,28 @@ One of the most powerful features of Markdown + pandoc is the ability to automat
 
 3. Cite things in your document. [Check the documentation for full details of how to do this](https://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html). Essentially, you use `@citationkey` inside square brackets (`[]`):
 
-    |                                               Type…                                                |                                          …to get…                                           |
-    | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-    | `Causal inference is neat [@Rohrer:2018; @AngristPischke:2015].`                                   | Causal inference is neat (Rohrer 2018; Angrist and Pischke 2015).                           |
-    | `Causal inference is neat [see @Rohrer:2018, p. 34; also @AngristPischke:2015, chapter 1].`        | Causal inference is neat (see Rohrer 2018, 34; also Angrist and Pischke 2015, chap. 1).     |
-    | `Angrist and Pischke say causal inference is neat [-@AngristPischke:2015; see also @Rohrer:2018].` | Angrist and Pischke say causal inference is neat (2015; see also Rohrer 2018).              |
-    | `@AngristPischke:2015 [chapter 1] say causal inference is neat, and @Rohrer:2018 agrees.`          | Angrist and Pischke (2015, chap. 1) say causal inference is neat, and Rohrer (2018) agrees. |
++--------------------------------------------------+--------------------------------------------------------------------------------------------------+
+| Type…                                            | …to get…                                                                                         |
++==================================================+==================================================================================================+
+|     Causal inference is neat [@Rohrer:2018;      | Causal inference is neat [@Rohrer:2018; @AngristPischke:2015].                                   |
+|     @AngristPischke:2015].                       |                                                                                                  |
++--------------------------------------------------+--------------------------------------------------------------------------------------------------+
+|     Causal inference is neat [see @Rohrer:2018,  | Causal inference is neat [see @Rohrer:2018, p. 34; also @AngristPischke:2015, chapter 1]         |
+|     p. 34; also @AngristPischke:2015, chapter 1] |                                                                                                  |
++--------------------------------------------------+--------------------------------------------------------------------------------------------------+
+|     Angrist and Pischke say causal inference     | Angrist and Pischke say causal inference is neat [-@AngristPischke:2015; see also @Rohrer:2018]. |
+|     is neat [-@AngristPischke:2015; see also     |                                                                                                  |
+|     @Rohrer:2018].                               |                                                                                                  |
++--------------------------------------------------+--------------------------------------------------------------------------------------------------+
+|     @AngristPischke:2015 [chapter 1] say causal  | @AngristPischke:2015 [chapter 1] say causal inference is neat, and @Rohrer:2018 agrees.          |
+|     inference is neat, and @Rohrer:2018 agrees.  |                                                                                                  |
++--------------------------------------------------+--------------------------------------------------------------------------------------------------+
 
-    After compiling, you should have a perfectly formatted bibliography added to the end of your document too:
-    
-    > Angrist, Joshua D., and Jörn-Steffen Pischke. 2015. *Mastering ’Metrics: The Path from Cause to Effect.* Princeton, NJ: Princeton University Press.
-    > 
-    > Rohrer, Julia M. 2018. “Thinking Clearly About Correlations and Causation: Graphical Causal Models for Observational Data.” *Advances in Methods and Practices in Psychological Science* 1 (1): 27–42. https://doi.org/10.1177/2515245917745629.
+After compiling, you should have a perfectly formatted bibliography added to the end of your document too:
+
+> Angrist, Joshua D., and Jörn-Steffen Pischke. 2015. *Mastering ’Metrics: The Path from Cause to Effect.* Princeton, NJ: Princeton University Press.
+> 
+> Rohrer, Julia M. 2018. “Thinking Clearly About Correlations and Causation: Graphical Causal Models for Observational Data.” *Advances in Methods and Practices in Psychological Science* 1 (1): 27–42. https://doi.org/10.1177/2515245917745629.
 
 
 ## Other references

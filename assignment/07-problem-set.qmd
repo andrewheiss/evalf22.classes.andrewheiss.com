@@ -31,7 +31,7 @@ And as always, if you're struggling, *please* talk to me. Work with classmates t
     You'll need to insert your own code chunks. Rather than typing them by hand (that's tedious!), use the "Insert" button at the top of the editing window, or press  <kbd>⌥</kbd> + <kbd>⌘</kbd> + <kbd>I</kbd> on macOS, or <kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>I</kbd> on Windows.
 
 ```{r insert-chunk-button, echo=FALSE, out.width="19%", indent="    "}
-knitr::include_graphics("/img/assignments/insert-chunk-button.png", error = FALSE)
+knitr::include_graphics("/files/img/assignments/insert-chunk-button.png", error = FALSE)
 ```
 
     Remember that you can run an entire chunk by clicking on the green play arrow in the top right corner of the chunk. You can also run lines of code line-by-line if you place your cursor on some R code and press <kbd>⌘</kbd> + <kbd>enter</kbd> (for macOS users) or <kbd>ctrl</kbd> + <kbd>enter</kbd> (for Windows users).
@@ -41,5 +41,5 @@ knitr::include_graphics("/img/assignments/insert-chunk-button.png", error = FALS
 4. When you're all done, click on the "Knit" button at the top of the editing window and create an HTML or Word version (or PDF if you've [installed **tinytex**](/resource/install.qmd#install-tinytex)) of your document. Upload that file to iCollege.
 
 ```{r knit-button, echo=FALSE, out.width="30%"}
-knitr::include_graphics("/img/assignments/knit-button.png", error = FALSE)
+knitr::include_graphics("/files/img/assignments/knit-button.png", error = FALSE)
 ```

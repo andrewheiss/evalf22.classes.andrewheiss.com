@@ -56,7 +56,7 @@ When you first open R, it is "pointed" at some folder on your computer, and anyt
 When you first open RStudio, look in the area right at the top of the Console pane to see your current working directory. Most likely you'll see something cryptic: `~/`
 
 ```{r working-directory, echo=FALSE, out.width="50%"}
-knitr::include_graphics("/img/example/working-directory.png", error = FALSE)
+knitr::include_graphics("/files/img/example/working-directory.png", error = FALSE)
 ```
 
 That tilde sign (`~`) is a shortcut that stands for your user directory. On Windows this is `C:\Users\your_user_name\`; on macOS this is `/Users/your_user_name/`. With the working directory set to `~/`, R is "pointed" at that folder, and anything you save will end up in that folder, and R will expect any data that you load to be there too.

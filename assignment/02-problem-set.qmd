@@ -64,5 +64,5 @@ For this problem set, we're less interested in causal relationships and more int
 When you're all done, click on the "Knit" button at the top of the editing window and create an HTML or Word version (or PDF if you've [installed **tinytex**](/resource/install.qmd#install-tinytex)) of your document. Upload that file to iCollege.
 
 ```{r knit-button, echo=FALSE, out.width="30%", fig.align="center"}
-knitr::include_graphics("/img/assignments/knit-button.png", error = FALSE)
+knitr::include_graphics("/files/img/assignments/knit-button.png", error = FALSE)
 ```
