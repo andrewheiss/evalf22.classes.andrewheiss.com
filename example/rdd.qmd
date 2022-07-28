@@ -307,7 +307,7 @@ Look at that 8.5 point jump at 70! Neat!
 
 Notice that the points here aren't actually the observations in the dataset. The `rdplot()` function makes bins of points (like a histogram) and then shows the average outcome within each bin. You can control how many bins are used in the x-axis with the `nbins` or `binselect` arguments in `rdplot()` (run `?rdplot` in your console to see all the possible options for plotting nonparametric discontinuities).
 
-{{< div "fyi" >}}
+:::{.callout-note}
 **Side note**: `rdplot()` uses the same plotting system as `ggplot()`, so you can add layers like `labs()` or `geom_point()` or anything else, which is cool, but getting to that underlying `ggplot()` object is weird. To do it, store the results of `rdplot` as an object, like `asdf`, then use `asdf$rdplot` to access the plot:
 
 ```{r eval=FALSE}
@@ -317,7 +317,7 @@ asdf$rdplot +
 ```
 
 You don't need to worry about all that for showing simple plots though!
-{{< /div >}}
+:::
 
 By default, `rdrobust()` chooses the bandwidth size automatically based on fancy algorithms that economists have developed. You can use `rdbwselect()` to see what that bandwidth is, and if you include the `all = TRUE` argument, you can see a bunch of different potential bandwidths based on a bunch of different algorithms:
 
