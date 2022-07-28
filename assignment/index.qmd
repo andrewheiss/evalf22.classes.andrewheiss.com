@@ -2,4 +2,72 @@
 title: "Assignments"
 ---
 
-Here are the assignments.
+The main goals of this class are to help you design, critique, code, and run rigorous, valid, and feasible evaluations of public sector programs. Each type of assignment in this class is designed to help you achieve one or more of these goals.
+
+
+## Weekly check-in
+
+Every week, after you finish working through the content, I want to hear about what you learned and what questions you still have. Because the content in thsi course is flipped, these questions are **crucial** for our weekly in-class discussions.
+
+To encourage engagement with the course content—and to allow me to collect the class's questions each week—you'll need to fill out a short response on iCollege. This should be ≈150 words. That's fairly short: there are ≈250 words on a typical double-spaced page in Microsoft Word (500 when single-spaced). 
+
+These check-ins are **due by noon on the days we have class**. This is so I can look through the responses and start structuring the discussion for the evening's class.
+
+You should answer these two questions each week:
+
+1. What were the **three (3)** most interesting or exciting things you learned from the session? Why?
+2. What were the **three (3)** muddiest or unclear things from the session this week? What are you still wondering about?    
+
+You can include more than three interesting or muddiest things, but you must include at least three. There should be six easily identifiable things in each check-in: three exciting things and three questions.
+
+I will grade these check-ins using a check system:
+
+- ✔+: (*11.5 points (115%) in gradebook*) Response shows phenomenal thought and engagement with the course content. I will not assign these often.
+- ✔: (*10 points (100%) in gradebook*) Response is thoughtful, well-written, and shows engagement with the course content. This is the expected level of performance.
+- ✔−: (*5 points (50%) in gradebook*) Response is hastily composed, too short, and/or only cursorily engages with the course content. This grade signals that you need to improve next time. I will hopefully not assign these often.
+
+Notice that is essentially a pass/fail or completion-based system. I'm not grading your writing ability, I'm not counting the exact number of words you're writing, and I'm not looking for encyclopedic citations of every single reading to prove that you did indeed read everything. I'm looking for thoughtful engagement, three interesting things, and three questions. That's all. Do good work and you'll get a ✓.
+
+You will submit these check-ins via iCollege.
+
+
+## Problem sets
+
+To practice writing R code, running inferential models, and thinking about causation, you will complete a series of problem sets. 
+
+You need to show that you made a good faith effort to work each question. I will not grade these in detail. The problem sets will be graded using a check system:
+
+- ✔+: (*33 points (110%) in gradebook*) Assignment is 100% completed. Every question was attempted and answered, and most answers are correct. Document is clean and easy to follow. Work is exceptional. I will not assign these often.
+- ✔: (*30 points (100%) in gradebook*) Assignment is 70–99% complete and most answers are correct. **This is the expected level of performance.**
+- ✔−: (*15 points (50%) in gradebook*) Assignment is less than 70% complete and/or most answers are incorrect. This indicates that you need to improve next time. I will hopefully not asisgn these often.
+
+You may (and should!) work together on the problem sets, but *you must turn in your own answers.* You cannot work in groups of more than **four** people, and you must note who participated in the group in your assignment.
+
+
+## Evaluation assignments
+
+For your [final project](/assignment/final-project/), you will conduct a pre-registered evaluation of a social program using synthetic data. To (1) give you practice with the principles of program evaluation, research design, measurement, and causal diagrams, and (2) help you with the foundation of your final project, you will complete a set of four evaluation-related assignments. 
+
+Ideally these will become major sections of your final project. However, there is no requirement that the programs you use in these assignments must be the same as the final project. If, through these assignments, you discover that your initially chosen program is too simple, too complex, too boring, etc., you can change at any time.
+
+These assignments will be graded using a check system:
+
+- ✔+: (*33 points (110%) in gradebook*) Assignment is 100% completed. Every question was attempted and answered, and most answers are correct. Document is clean and easy to follow. Work is exceptional. I will not assign these often.
+- ✔: (*30 points (100%) in gradebook*) Assignment is 70–99% complete and most answers are correct. **This is the expected level of performance.**
+- ✔−: (*15 points (50%) in gradebook*) Assignment is less than 70% complete and/or most answers are incorrect. This indicates that you need to improve next time. I will hopefully not asisgn these often.
+
+
+## Exams
+
+There will be two exams covering (1) program evaluation, design, and causation, and (2) the core statistical tools of program evaluation and causal inference.
+
+You will take these exams online through iCollege. The exams will have a time limit, but you can use notes and readings and [the Google](https://www.youtube.com/watch?v=AQ45fO1uiOQ). You must take the exams on your own though, and not talk to anyone about them.
+
+
+## Final project
+
+At the end of the course, you will demonstrate your knowledge of program evaluation and causal inference by completing a final project.
+
+[Complete details for the final project are here.](/assignment/final-project/)
+
+There is no final exam. This project is your final exam.

@@ -1,0 +1,50 @@
+---
+title: "Measurement"
+date: "2022-02-10"
+---
+
+For your [final project](/assignment/final-project/), you will conduct an evaluation for a social program of your choosing. In this assignment, you will decide how to best measure two of the program's outcomes. 
+
+If you decide to use a different program for your final project, that's okay! This assignment doesn't have to be related to your final program, but it would be extraordinarily helpful—a more polished version of this assignment can be included as part of your final project.
+
+
+## Instructions
+
+You need to complete the two sections listed below. Ideally you should type this in R Markdown and knit your document to HTML or Word or PDF, but you can also write in Word if you want (though your final project will need to be in R Markdown, and this would give you practice).[^citations]
+
+[^citations]: And if you want to be super brave, try using [R Markdown's citation system](/resource/markdown/#citations)!
+
+**I've created an R Markdown template you can use here:** [<i class="fas fa-file-archive"></i> `measurement.zip`](/projects/measurement.zip). It's also [available on RStudio.cloud](https://rstudio.cloud/spaces/205054/project/3424198).
+
+**Submit this assignment as a PDF or Word file on iCollege.**
+
+---
+
+## Assignment outline
+
+### 1: Measurement and abstraction for full-day kindergarten
+
+Read [this article about half-day vs. full-day kindergarten in Utah](https://archive.sltrib.com/story.php?ref=/news/ci_13164697). The article is 10 years old, and half-day kindergarten still remains standard practice in most Utah school districts.
+
+Pretend you are the administrator of the Optional Extended Day Kindergarten initiative. Based on the *Salt Lake Tribune* article (which provides hints throughout, and especially in one of the final paragraphs), and based on your own knowledge of educational outcomes, make a list of **two (2) possible outcomes** of the full-day kindergarten program. 
+
+Then, *for each of those two outcomes*, do the following: Using the concept of the "ladder of abstraction" that we discussed in class (e.g. identifying a witch, measuring poverty, etc.), make a list of all the possible attributes of the outcome. Narrow this list down to 3–4 key attributes. Discuss how you decided to narrow the concepts and justify why you think these attributes capture the outcome. *(≈100 words)*
+
+Then, *for each of those attributes*, answer these questions:
+
+- *Measurable definition*: How would you specifically define this attribute? (i.e. if the attribute is "reduced crime", define it as "The percent change in crime in a specific neighborhood during a certain time frame" or something similar)
+- *Ideal measurement*: How would you measure this attribute in an ideal world?
+- *Feasible measurement*: How would you measure this given reality and given limitations in budget, time, etc.?
+- *Measurement of program effect*: How would to connect this measure to people in the program? How would you check to see if the program itself had an effect?
+
+
+### 2: Measurement and abstraction for your program
+
+Make a list of two possible outcomes of your selected program. For each of those outcomes, make a list of all the possible attributes. Narrow this list down to 3–4 key attributes. Discuss how you decided to narrow the concepts and justify why you think these attributes capture the outcome. *(≈100 words)*
+
+Then, *for each of those attributes*, answer these questions:
+
+- *Measurable definition*: How would you specifically define this attribute? (i.e. if the attribute is "reduced crime", define it as "The percent change in crime in a specific neighborhood during a certain time frame" or something similar)
+- *Ideal measurement*: How would you measure this attribute in an ideal world?
+- *Feasible measurement*: How would you measure this given reality and given limitations in budget, time, etc.?
+- *Measurement of program effect*: How would to connect this measure to people in the program? How would you check to see if the program itself had an effect?

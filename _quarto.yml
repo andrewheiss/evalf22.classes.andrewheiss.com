@@ -83,9 +83,27 @@ website:
         - section: "Overview"
           contents:
             - assignment/index.qmd
+        - section: "Other projects"
+          contents:
+            - assignment/final-project.qmd
+            - assignment/weekly-check-in.qmd
         - section: "Problem sets"
           contents:
+            - assignment/01-problem-set.qmd
             - assignment/02-problem-set.qmd
+            - assignment/03-problem-set.qmd
+            - assignment/04-problem-set.qmd
+            - assignment/05-problem-set.qmd
+            - assignment/06-problem-set.qmd
+            - assignment/07-problem-set.qmd
+            - assignment/08-problem-set.qmd
+            - assignment/09-problem-set.qmd
+        - section: "Evaluation"
+          contents:
+            - assignment/01-eval-background-theory.qmd
+            - assignment/02-eval-measurement.qmd
+            - assignment/03-eval-dag.qmd
+            - assignment/04-eval-threats.qmd
 
     - title: "Examples"
       contents:

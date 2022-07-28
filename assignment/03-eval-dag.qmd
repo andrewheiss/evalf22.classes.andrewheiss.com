@@ -1,0 +1,80 @@
+---
+title: "Causal model"
+date: "2022-02-17"
+---
+
+For your [final project](/assignment/final-project/), you will conduct an evaluation for a social program of your choosing. In this assignment, you will decide how to model the causal effect of your program on your primary outcome. 
+
+If you decide to use a different program for your final project, that's okay! This assignment doesn't have to be related to your final program, but it would be extraordinarily helpful—a more polished version of this assignment can be included as part of your final project.
+
+
+## Instructions
+
+You need to complete the three sections listed below. Ideally you should type this in R Markdown and knit your document to HTML or Word or PDF, but you can also write in Word if you want (though your final project will need to be in R Markdown, and this would give you practice).
+
+**I've created an R Markdown template you can use here:** [<i class="fas fa-file-archive"></i> `causal-model.zip`](/projects/causal-model.zip). It's also [available on RStudio.cloud](https://rstudio.cloud/spaces/205054/project/3424199).
+
+**Submit this assignment as a PDF or Word file on iCollege.**
+
+---
+
+
+## 1: DAG I
+
+Find a news article that makes a causal claim and interpret that claim by drawing an appropriate diagram. The article likely won't explain all the things the researchers controlled for, so you'll need to create an ideal DAG. What should be included in the causal process to measure the effect of X on Y? 
+
+Export the figure from dagitty and include it in your assignment, or use this code to draw the DAG with R:
+
+```{r example-dag-code, eval=FALSE}
+library(tidyverse)
+library(ggdag)
+
+# Remember that you can change the variable names here--they can be basically
+# anything, but cannot include spaces. The labels can have spaces. Adjust the
+# variable names (y, x2, etc) and labels ("Outcome", "Something", etc.) as
+# necessary.
+my_dag <- dagify(y ~ x1 + x2 + z,
+                 z ~ x1,
+                 x2 ~ x1 + z,
+                 labels = c("y" = "Outcome",
+                            "x1" = "Something",
+                            "x2" = "Something else",
+                            "z" = "Yet another thing"),
+                 exposure = "z",
+                 outcome = "y")
+
+# If you set text = TRUE, you'll see the variable names in the DAG points
+# The `seed` argument makes it so that the random layout is the same every time
+ggdag(my_dag, text = FALSE, use_labels = "label", seed = 1234) +
+  theme_dag()
+
+# If you want the treatment and outcomes colored differently,
+# replace ggdag() with ggdag_status()
+ggdag_status(my_dag, text = FALSE, use_labels = "label", seed = 1234) +
+  theme_dag() +
+  theme(legend.position = "bottom")  # Move legend to bottom for fun
+```
+
+Summarize the causal claim. Describe what the authors controlled for and what else you included in the DAG. Justify the inclusion of each node (point) and connection (line) in the graph. *(≈150 words)*
+
+Identify all the frontdoor and backdoor paths between your exposure and outcome. What variables need to be controlled for / adjusted to close the backdoors? Did this happen in the study or article? *(≈100 words)*
+
+
+## 2: DAG II
+
+Find a different news article with a causal claim and do the same thing as above. 
+
+Draw and include a DAG.
+
+Summarize the causal claim. Describe what the authors controlled for and what else you included in the DAG. Justify the inclusion of each node (point) and connection (line) in the graph. *(≈150 words)*
+
+Identify all the frontdoor and backdoor paths between your exposure and outcome. What variables need to be controlled for / adjusted to close the backdoors? Did this happen in the study or article? *(≈100 words)*
+
+
+## 3: DAG for your program
+
+Identify the outcome you care most about from your final project program. Draw a DAG that shows the causal effect of your program's intervention on the outcome. 
+
+Summarize the causal claim. Describe what needs to be controlled for and what else you included in the DAG. Justify the inclusion of each node (point) and connection (line) in the graph. *(≈150 words)*
+
+Identify all the frontdoor and backdoor paths between your exposure and outcome. What variables need to be controlled for / adjusted to close the backdoors? How might you do this with your evaluation? *(≈100 words)*
