@@ -1,0 +1,100 @@
+---
+title: "Visualizing data with ggplot"
+output: html_document
+---
+
+```{r setup, warning=FALSE, message=FALSE}
+library(tidyverse)  # For ggplot, dplyr, and friends
+
+mpg <- read_csv("data/mpg.csv")  # Load data
+```
+
+## Figuring out what's in the data
+
+```{r}
+mpg
+```
+
+## Basic ggplot code
+
+Run this code from the the slide to make a graph.
+
+```{r}
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = displ, y = hwy))
+```
+
+## ggplot playground
+
+Add `color`, `size`, `alpha`, or `shape` aesthetics to your graph. Experiment.  
+
+```{r}
+ggplot(data = mpg) + 
+  geom_point(mapping = aes(x = displ, y = hwy))
+```
+
+## Switching geoms
+
+Replace this scatterplot with one that draws boxplots. Use the cheatsheet. Try your best guess.
+
+```{r}
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = class, y = hwy))
+```
+
+## Histograms
+
+Make a histogram of the `hwy` variable from `mpg`.
+
+```{r}
+ggplot(data = mpg)
+```
+
+## Density plots
+
+Make a density plot `hwy` colored by `class`.
+
+```{r}
+ggplot(data = mpg) 
+```
+
+## Complex plots
+
+Predict what this code will do. Then run it.
+
+```{r}
+ggplot(mpg) + 
+  geom_point(aes(displ, hwy)) +
+  geom_smooth(aes(displ, hwy))
+```
+
+---
+
+## Fancy completed plot from slides
+
+```{r message=FALSE}
+ggplot(data = mpg, mapping = aes(x = displ, y = hwy, color = drv)) +
+  geom_point() +
+  geom_smooth(method = "lm") + 
+  scale_color_viridis_d() +
+  facet_wrap(vars(drv), ncol = 1) +
+  labs(x = "Displacement", y = "Highway MPG",
+       color = "Drive", 
+       title = "Heavier cars get lower mileage",
+       subtitle = "Displacement indicates weight(?)",
+       caption = "I know nothing about cars") +
+  theme_bw() +
+  theme(legend.position = "bottom",
+        plot.title = element_text(face = "bold"))
+```
+
+---
+
+## Takeaways
+
+You can use this code template to any kind of graph with **ggplot2**.
+
+```{r eval=FALSE}
+ggplot(data = <DATA>) +
+  <GEOM_FUNCTION>(mapping = aes(<MAPPINGS>))
+```

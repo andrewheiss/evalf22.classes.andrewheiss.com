@@ -1,0 +1,50 @@
+---
+title: "Happiness"
+output: html_document
+---
+
+```{r warning=FALSE, message=FALSE}
+library(tidyverse)
+library(broom)
+
+world_happiness <- read_csv("data/world_happiness.csv") %>% 
+  mutate(latin_america = region == "Latin America & Caribbean")
+```
+
+# Indicator variables
+
+```{r}
+model_life_school_region <- lm(happiness_score ~ life_expectancy + 
+                                 school_enrollment + region, 
+                               data = world_happiness)
+tidy(model_life_school_region)
+```
+
+```{r}
+model_life_school_la <- lm(happiness_score ~ life_expectancy + latin_america, 
+                           data = world_happiness)
+tidy(model_life_school_la)
+```
+
+```{r}
+ggplot(world_happiness, aes(x = life_expectancy, y = happiness_score)) +
+  geom_point(aes(color = latin_america)) +
+  geom_abline(slope = 0.1023494, intercept = -2.0770858, color = "blue", size = 2) +
+  geom_abline(slope = 0.1023494, intercept = -2.0770858 + 0.6234255, 
+              color = "orange", size = 2)
+```
+
+```{r}
+model_life_school_la_int <- lm(happiness_score ~ life_expectancy + latin_america +
+                                 life_expectancy * latin_america, 
+                               data = world_happiness)
+tidy(model_life_school_la_int)
+```
+
+```{r}
+ggplot(world_happiness, aes(x = life_expectancy, y = happiness_score)) +
+  geom_point(aes(color = latin_america)) +
+  geom_abline(slope = 0.10154408, intercept = -2.01948544, color = "blue", size = 2) +
+  geom_abline(slope = 0.10154408 + 0.02884127, intercept = -2.01948544 + -1.51554651, 
+              color = "darkred", size = 2)
+```

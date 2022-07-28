@@ -1,0 +1,494 @@
+id,water_bill,barrel,barrel_num,yard_size,home_garden,home_garden_num,attitude_env,temperature
+1,209.12,Barrel,1,25811,No home garden,0,3,68.5
+2,238.39,Barrel,1,39479,Home garden,1,7,77.4
+3,163.66,Barrel,1,13297,No home garden,0,7,65.1
+4,226,Barrel,1,28259,No home garden,0,2,65.7
+5,232.44,No barrel,0,21479,No home garden,0,5,65.7
+6,278.74,No barrel,0,28906,Home garden,1,8,76.9
+7,224.34,No barrel,0,7041,No home garden,0,3,70.9
+8,185.67,Barrel,1,29434,No home garden,0,4,56.1
+9,198.91,Barrel,1,24779,Home garden,1,8,70.1
+10,172.29,Barrel,1,29741,Home garden,1,9,62.2
+11,224.8,No barrel,0,16931,No home garden,0,8,73.3
+12,227.06,No barrel,0,10357,No home garden,0,9,81.8
+13,158.02,Barrel,1,16071,No home garden,0,6,67.2
+14,226.37,No barrel,0,14977,No home garden,0,6,70.5
+15,209.08,No barrel,0,13053,No home garden,0,3,71
+16,244.47,No barrel,0,24206,No home garden,0,5,71.3
+17,186.44,No barrel,0,14641,No home garden,0,9,67.6
+18,229.73,No barrel,0,15519,No home garden,0,3,70.7
+19,189.76,No barrel,0,6782,No home garden,0,9,67.4
+20,186.18,Barrel,1,19185,No home garden,0,5,72.2
+21,251.2,No barrel,0,26319,Home garden,1,7,73.4
+22,257.97,No barrel,0,35468,Home garden,1,8,66.2
+23,253.07,Barrel,1,35299,No home garden,0,3,70.4
+24,159.37,Barrel,1,8066,No home garden,0,9,77
+25,138.33,Barrel,1,9509,No home garden,0,6,64.3
+26,224.06,No barrel,0,21281,No home garden,0,2,61.8
+27,163.04,Barrel,1,20160,No home garden,0,2,54.4
+28,220.33,Barrel,1,28510,Home garden,1,7,75.9
+29,193.11,No barrel,0,3815,No home garden,0,6,68.2
+30,227.04,No barrel,0,11933,No home garden,0,4,76.1
+31,233.86,Barrel,1,36989,Home garden,1,6,66.5
+32,220.97,No barrel,0,13489,No home garden,0,5,76.8
+33,220.47,No barrel,0,17570,No home garden,0,3,74.5
+34,172.41,Barrel,1,17197,No home garden,0,3,65.3
+35,236.16,No barrel,0,37644,Home garden,1,6,66.8
+36,261.62,No barrel,0,33476,Home garden,1,8,72.4
+37,213.66,Barrel,1,24009,No home garden,0,1,73.8
+38,177.04,Barrel,1,10880,No home garden,0,4,72.1
+39,200.26,Barrel,1,31316,Home garden,1,7,71.8
+40,269.7,No barrel,0,34542,Home garden,1,6,72.5
+41,174.04,Barrel,1,14983,No home garden,0,5,73.3
+42,215.76,No barrel,0,27877,Home garden,1,9,64
+43,196.76,Barrel,1,27994,No home garden,0,5,69.9
+44,184.51,Barrel,1,15527,No home garden,0,2,67.8
+45,226.97,No barrel,0,13715,No home garden,0,8,75.2
+46,254.77,No barrel,0,28308,No home garden,0,2,70.9
+47,239.8,No barrel,0,26454,No home garden,0,5,65.1
+48,287.15,No barrel,0,29906,No home garden,0,4,79.1
+49,170.2,No barrel,0,18501,Home garden,1,9,63.8
+50,174.67,Barrel,1,26720,No home garden,0,5,65.2
+51,221.79,Barrel,1,35343,Home garden,1,6,65.8
+52,207.99,Barrel,1,12211,No home garden,0,6,83.8
+53,274.21,No barrel,0,28904,Home garden,1,7,71.3
+54,214,No barrel,0,13592,No home garden,0,6,66.8
+55,139.61,Barrel,1,12990,No home garden,0,4,69.4
+56,203.03,No barrel,0,9363,No home garden,0,7,69.2
+57,208.71,Barrel,1,27521,Home garden,1,7,68.5
+58,254,No barrel,0,24539,No home garden,0,4,68.4
+59,235.48,No barrel,0,26410,No home garden,0,4,65.7
+60,185.66,No barrel,0,12062,No home garden,0,6,67.9
+61,196.37,Barrel,1,32672,No home garden,0,4,64.6
+62,247.88,No barrel,0,34827,Home garden,1,6,75.7
+63,211.09,Barrel,1,24811,No home garden,0,3,70.1
+64,147.5,Barrel,1,13646,No home garden,0,6,65.9
+65,223.8,Barrel,1,20140,No home garden,0,3,74.4
+66,227.88,No barrel,0,24714,No home garden,0,4,68.2
+67,201.84,Barrel,1,11316,No home garden,0,8,76.3
+68,243.97,No barrel,0,23572,No home garden,0,4,70.6
+69,202.1,Barrel,1,29730,No home garden,0,5,68.4
+70,145.9,Barrel,1,12860,No home garden,0,6,62.4
+71,167.67,Barrel,1,13761,No home garden,0,6,78.3
+72,182.36,Barrel,1,25221,No home garden,0,4,61.9
+73,234.83,No barrel,0,31993,Home garden,1,6,70.2
+74,241.64,No barrel,0,31952,No home garden,0,5,68.5
+75,247.06,No barrel,0,36695,Home garden,1,5,61.8
+76,179.13,Barrel,1,16829,No home garden,0,1,65.9
+77,188.45,Barrel,1,26067,Home garden,1,8,68.8
+78,196.54,Barrel,1,23897,No home garden,0,7,63
+79,209.38,Barrel,1,34248,Home garden,1,7,67.6
+80,242.18,No barrel,0,28608,Home garden,1,7,73.1
+81,140.48,Barrel,1,4832,No home garden,0,8,67.8
+82,213.61,Barrel,1,24637,Home garden,1,7,68.4
+83,230.77,No barrel,0,29531,Home garden,1,6,66.1
+84,201.43,No barrel,0,18565,No home garden,0,5,66.7
+85,223.31,No barrel,0,19108,No home garden,0,1,70.8
+86,267.9,No barrel,0,30574,Home garden,1,6,66.2
+87,206.89,Barrel,1,20286,No home garden,0,4,76.9
+88,177.22,Barrel,1,16218,No home garden,0,4,71.4
+89,164.04,Barrel,1,18107,No home garden,0,7,63.8
+90,200.85,No barrel,0,23129,Home garden,1,8,71.8
+91,211.74,Barrel,1,17230,Home garden,1,9,75.4
+92,153.7,Barrel,1,24724,Home garden,1,8,61.4
+93,213.76,No barrel,0,12219,No home garden,0,2,69.6
+94,185.25,Barrel,1,27721,Home garden,1,6,71.2
+95,180.83,Barrel,1,18977,No home garden,0,4,73
+96,232.74,Barrel,1,25067,Home garden,1,7,79.4
+97,215.43,Barrel,1,27990,Home garden,1,6,71.9
+98,217.37,Barrel,1,16333,No home garden,0,6,79.2
+99,237.21,No barrel,0,26412,No home garden,0,6,65.9
+100,195.3,No barrel,0,6261,No home garden,0,6,63.2
+101,207.69,No barrel,0,22827,No home garden,0,3,65.6
+102,227.11,Barrel,1,28279,No home garden,0,4,69.2
+103,186.57,Barrel,1,18408,No home garden,0,7,69.6
+104,154.95,Barrel,1,11176,No home garden,0,6,66.5
+105,161.4,Barrel,1,10682,No home garden,0,7,73.4
+106,209.59,Barrel,1,25144,No home garden,0,4,75
+107,196.25,Barrel,1,22087,No home garden,0,6,69.2
+108,209.29,Barrel,1,33313,Home garden,1,8,65.8
+109,197.94,No barrel,0,26079,No home garden,0,5,54.7
+110,251.86,No barrel,0,21691,No home garden,0,5,68.5
+111,164.68,Barrel,1,24941,Home garden,1,10,65.8
+112,246.76,No barrel,0,28018,Home garden,1,8,74.9
+113,221.33,Barrel,1,26331,Home garden,1,8,73.7
+114,251.75,No barrel,0,32150,No home garden,0,4,70.1
+115,171.61,Barrel,1,27143,No home garden,0,5,67.6
+116,145.34,Barrel,1,15679,Home garden,1,9,70.7
+117,204,Barrel,1,34956,No home garden,0,3,71.3
+118,163.23,Barrel,1,23506,No home garden,0,4,63.8
+119,217.96,No barrel,0,21556,No home garden,0,4,62.2
+120,217.18,No barrel,0,11430,No home garden,0,2,66.9
+121,210.62,Barrel,1,19677,No home garden,0,5,73.1
+122,216.99,Barrel,1,28299,No home garden,0,4,70.4
+123,202,No barrel,0,14878,No home garden,0,5,71.4
+124,224.21,Barrel,1,19757,No home garden,0,5,76.2
+125,163.89,Barrel,1,24519,No home garden,0,5,65.2
+126,238.1,Barrel,1,27526,No home garden,0,6,74.7
+127,181.33,Barrel,1,22271,No home garden,0,6,76
+128,229.81,No barrel,0,17550,No home garden,0,3,72.7
+129,270.49,No barrel,0,22228,No home garden,0,3,72.5
+130,207.26,Barrel,1,18875,No home garden,0,2,70.3
+131,266.46,No barrel,0,28731,No home garden,0,3,74.8
+132,173.71,Barrel,1,19544,No home garden,0,7,70.9
+133,235.87,Barrel,1,28653,No home garden,0,4,76
+134,119.5,Barrel,1,14885,No home garden,0,7,62.9
+135,158.89,Barrel,1,27255,No home garden,0,5,55.2
+136,191.23,Barrel,1,22252,No home garden,0,5,68.3
+137,233.08,Barrel,1,16299,No home garden,0,3,79.8
+138,275.78,No barrel,0,28339,No home garden,0,4,74.2
+139,231.46,No barrel,0,31862,Home garden,1,6,66.7
+140,230.23,Barrel,1,25688,No home garden,0,5,74.9
+141,177.86,Barrel,1,23795,Home garden,1,10,72.6
+142,223.81,Barrel,1,26763,No home garden,0,5,79.4
+143,205.84,No barrel,0,20645,No home garden,0,6,74.5
+144,184.87,Barrel,1,11961,No home garden,0,4,68.8
+145,192.3,No barrel,0,17118,No home garden,0,8,64.9
+146,211.11,Barrel,1,28364,Home garden,1,6,70.8
+147,178.91,Barrel,1,7939,No home garden,0,7,74
+148,286.43,No barrel,0,32363,No home garden,0,2,79.8
+149,198.59,Barrel,1,20559,No home garden,0,3,73.2
+150,216.86,No barrel,0,22450,No home garden,0,7,70.2
+151,159.37,Barrel,1,21992,No home garden,0,4,68.1
+152,234.05,Barrel,1,27979,No home garden,0,2,69.9
+153,152.01,Barrel,1,6885,No home garden,0,7,70.6
+154,245.65,No barrel,0,30342,Home garden,1,7,71.7
+155,271.27,No barrel,0,18034,No home garden,0,5,79
+156,140.48,Barrel,1,3635,No home garden,0,4,75.4
+157,149.6,Barrel,1,13369,No home garden,0,2,63.5
+158,198.7,No barrel,0,20765,No home garden,0,7,66.3
+159,172.47,Barrel,1,20211,No home garden,0,5,66.6
+160,153.03,Barrel,1,6049,No home garden,0,6,71
+161,217.31,Barrel,1,28028,No home garden,0,6,74.4
+162,197.46,Barrel,1,24006,Home garden,1,8,70.2
+163,238.04,Barrel,1,22052,No home garden,0,4,77.3
+164,218.8,Barrel,1,27177,No home garden,0,6,76.4
+165,207.38,No barrel,0,20355,Home garden,1,8,64.1
+166,184.1,No barrel,0,9577,No home garden,0,9,64
+167,235.13,Barrel,1,34602,No home garden,0,4,80
+168,246.59,No barrel,0,24962,No home garden,0,5,69.1
+169,113.6,Barrel,1,7522,No home garden,0,9,67.4
+170,284.35,No barrel,0,30832,No home garden,0,3,77
+171,215.45,Barrel,1,33357,Home garden,1,8,73.2
+172,235.83,No barrel,0,28891,No home garden,0,4,64.2
+173,152.72,Barrel,1,7664,No home garden,0,7,67
+174,241.28,No barrel,0,22879,No home garden,0,1,65.7
+175,236,No barrel,0,32797,Home garden,1,9,70.7
+176,167.92,Barrel,1,6317,No home garden,0,3,71.5
+177,234.85,Barrel,1,38750,No home garden,0,4,69.4
+178,158.23,Barrel,1,10549,No home garden,0,6,74
+179,187.68,Barrel,1,16835,No home garden,0,2,68.4
+180,206.54,Barrel,1,29641,No home garden,0,5,57.8
+181,154.67,No barrel,0,1950,No home garden,0,7,63.2
+182,231.45,No barrel,0,21646,No home garden,0,4,71.3
+183,238.22,No barrel,0,31386,No home garden,0,5,61.1
+184,235.17,No barrel,0,23409,No home garden,0,5,67.9
+185,247.5,Barrel,1,36306,No home garden,0,3,83.1
+186,194.42,Barrel,1,14235,No home garden,0,8,77
+187,231.43,No barrel,0,19422,No home garden,0,3,66.3
+188,172.16,Barrel,1,19659,No home garden,0,5,72.3
+189,277.56,No barrel,0,24669,No home garden,0,5,76.7
+190,207.28,No barrel,0,14662,No home garden,0,5,71.9
+191,214.15,Barrel,1,24369,No home garden,0,4,74.5
+192,235.35,Barrel,1,36826,Home garden,1,7,76.9
+193,169.86,No barrel,0,17097,No home garden,0,6,63.7
+194,199.68,No barrel,0,14804,No home garden,0,5,69.3
+195,163.95,Barrel,1,20895,No home garden,0,7,64.6
+196,245.3,No barrel,0,23453,No home garden,0,4,73.7
+197,233.04,No barrel,0,15292,No home garden,0,4,71.2
+198,154.31,Barrel,1,11943,No home garden,0,4,64.5
+199,229.06,No barrel,0,39000,Home garden,1,4,62.7
+200,207.62,No barrel,0,24622,Home garden,1,7,66.1
+201,146.11,Barrel,1,12524,No home garden,0,4,66
+202,121.2,Barrel,1,7235,No home garden,0,9,66.4
+203,211.83,No barrel,0,19168,No home garden,0,6,68.7
+204,199.43,Barrel,1,28649,Home garden,1,8,74.5
+205,166.22,Barrel,1,17615,No home garden,0,3,67.3
+206,198.62,Barrel,1,24905,Home garden,1,8,76.3
+207,222.6,No barrel,0,29426,Home garden,1,7,71.7
+208,235.43,No barrel,0,22186,No home garden,0,5,69.7
+209,179.06,Barrel,1,24699,Home garden,1,8,72.1
+210,143.27,Barrel,1,16278,No home garden,0,8,65.4
+211,241.88,No barrel,0,30939,Home garden,1,9,67.3
+212,215.19,Barrel,1,28699,No home garden,0,6,69.6
+213,227.09,No barrel,0,22377,No home garden,0,5,69.9
+214,228.36,No barrel,0,25072,No home garden,0,5,67.2
+215,191,Barrel,1,17516,No home garden,0,7,72.8
+216,242.12,No barrel,0,24901,Home garden,1,9,75.9
+217,162.93,No barrel,0,3797,No home garden,0,7,65.2
+218,147.43,Barrel,1,12596,No home garden,0,5,68.6
+219,228.73,Barrel,1,29474,Home garden,1,7,74.3
+220,222.53,No barrel,0,20795,Home garden,1,8,69.1
+221,255.51,No barrel,0,21396,No home garden,0,5,72.6
+222,215,No barrel,0,11609,No home garden,0,7,73.5
+223,258.54,No barrel,0,26493,No home garden,0,4,76.8
+224,156.36,Barrel,1,12809,No home garden,0,7,65.5
+225,162.7,Barrel,1,13605,No home garden,0,7,66.8
+226,218.3,Barrel,1,26145,No home garden,0,5,70.7
+227,139.86,Barrel,1,572,No home garden,0,9,66.3
+228,247.65,No barrel,0,28862,No home garden,0,4,67
+229,266.93,No barrel,0,28305,No home garden,0,4,75.4
+230,170.07,Barrel,1,22778,Home garden,1,8,67.1
+231,246.68,No barrel,0,28042,No home garden,0,6,75.5
+232,213.98,Barrel,1,20065,No home garden,0,3,77
+233,184.08,No barrel,0,8463,No home garden,0,6,70.2
+234,211.87,Barrel,1,19207,No home garden,0,3,79.6
+235,167.48,Barrel,1,22067,Home garden,1,8,63.7
+236,170.19,Barrel,1,12730,No home garden,0,3,64
+237,177.81,Barrel,1,23102,No home garden,0,5,62.5
+238,198.47,Barrel,1,25148,Home garden,1,7,73.6
+239,254.68,No barrel,0,29420,No home garden,0,5,67.3
+240,267.82,No barrel,0,27732,No home garden,0,5,70.1
+241,223.48,Barrel,1,26237,No home garden,0,4,67.8
+242,184.77,Barrel,1,16245,No home garden,0,2,65.5
+243,205.78,Barrel,1,20156,No home garden,0,4,76.4
+244,196.29,Barrel,1,12116,No home garden,0,3,69.6
+245,177.52,Barrel,1,27499,No home garden,0,4,57.7
+246,251.84,Barrel,1,29061,No home garden,0,3,74.5
+247,173.98,Barrel,1,16866,No home garden,0,8,73.8
+248,181.66,Barrel,1,14483,No home garden,0,7,71.3
+249,205.85,No barrel,0,20120,No home garden,0,7,75.8
+250,164.38,Barrel,1,17426,No home garden,0,8,71.2
+251,231.16,No barrel,0,10322,No home garden,0,6,81.1
+252,167.63,Barrel,1,10334,No home garden,0,6,65.7
+253,249.36,No barrel,0,31526,Home garden,1,6,73.7
+254,195.66,No barrel,0,14850,No home garden,0,5,68.4
+255,184.56,Barrel,1,13115,No home garden,0,3,65.8
+256,208.42,Barrel,1,29775,No home garden,0,5,71.2
+257,213.56,No barrel,0,24220,No home garden,0,5,64.2
+258,233.57,No barrel,0,17341,No home garden,0,4,69.9
+259,240.53,No barrel,0,23242,No home garden,0,6,63.5
+260,286.79,No barrel,0,38900,Home garden,1,7,71
+261,171.92,Barrel,1,12636,No home garden,0,5,72.5
+262,206.97,Barrel,1,25900,Home garden,1,7,74.1
+263,205.2,Barrel,1,30876,Home garden,1,6,64.2
+264,244.36,Barrel,1,38559,Home garden,1,6,72.2
+265,143.54,Barrel,1,11182,No home garden,0,6,67.6
+266,237.98,No barrel,0,25847,No home garden,0,4,70.2
+267,259.23,No barrel,0,16846,No home garden,0,2,74.6
+268,202.09,Barrel,1,21089,No home garden,0,6,71.7
+269,151.88,Barrel,1,11424,No home garden,0,4,61.8
+270,236.68,Barrel,1,34542,No home garden,0,3,69.6
+271,211.02,No barrel,0,22464,Home garden,1,7,68.2
+272,211.26,No barrel,0,11423,No home garden,0,4,74.6
+273,205.76,No barrel,0,26701,No home garden,0,5,65.1
+274,185.18,Barrel,1,13528,No home garden,0,2,66.9
+275,202.92,Barrel,1,30111,Home garden,1,7,73.7
+276,180.99,No barrel,0,7301,No home garden,0,9,62.8
+277,202.46,Barrel,1,19713,No home garden,0,2,66.8
+278,220.91,No barrel,0,15397,No home garden,0,6,75.5
+279,199.05,No barrel,0,24008,Home garden,1,7,57.2
+280,251.89,Barrel,1,36530,No home garden,0,3,65.6
+281,242.46,No barrel,0,22268,Home garden,1,8,75.7
+282,175.14,Barrel,1,22842,No home garden,0,7,73.2
+283,194.89,No barrel,0,5676,No home garden,0,3,67
+284,207.72,No barrel,0,19227,No home garden,0,5,63.3
+285,247.36,No barrel,0,12084,No home garden,0,5,72.7
+286,221.84,No barrel,0,20179,No home garden,0,7,72.1
+287,188.49,No barrel,0,13680,No home garden,0,4,67.8
+288,205.89,Barrel,1,29663,Home garden,1,7,68.6
+289,200.66,Barrel,1,9402,No home garden,0,4,70.9
+290,111.58,Barrel,1,4957,No home garden,0,10,72.3
+291,161.16,Barrel,1,5772,No home garden,0,5,73.4
+292,187.42,Barrel,1,25044,Home garden,1,8,66.9
+293,209.99,No barrel,0,9163,No home garden,0,5,73.6
+294,191.23,No barrel,0,11746,No home garden,0,3,68.5
+295,252.14,Barrel,1,36012,No home garden,0,4,74.6
+296,177.33,No barrel,0,19909,No home garden,0,7,58.4
+297,167.03,Barrel,1,13791,No home garden,0,3,71.7
+298,187.81,No barrel,0,17166,Home garden,1,8,68.7
+299,198.57,Barrel,1,32059,No home garden,0,4,74.9
+300,231.49,No barrel,0,15538,No home garden,0,8,74
+301,232.52,No barrel,0,24576,No home garden,0,6,67.6
+302,208.64,Barrel,1,36060,Home garden,1,8,65.2
+303,162.41,Barrel,1,14428,No home garden,0,4,65.1
+304,101.26,Barrel,1,16403,No home garden,0,6,59.6
+305,194.97,Barrel,1,15809,No home garden,0,7,74.1
+306,193.42,Barrel,1,16009,No home garden,0,3,74.1
+307,213.12,No barrel,0,22192,Home garden,1,10,65.5
+308,266.1,No barrel,0,32695,Home garden,1,8,73
+309,234.76,No barrel,0,26563,Home garden,1,8,73.6
+310,253.2,No barrel,0,20250,No home garden,0,4,76.9
+311,210.04,No barrel,0,19129,No home garden,0,2,67.6
+312,267.01,No barrel,0,36691,Home garden,1,10,71.7
+313,145.63,Barrel,1,19936,Home garden,1,9,66.8
+314,275.26,No barrel,0,30956,No home garden,0,4,77.2
+315,192.9,No barrel,0,9035,No home garden,0,5,71.5
+316,207.12,Barrel,1,25321,No home garden,0,6,71.4
+317,185.11,Barrel,1,21845,No home garden,0,7,71.1
+318,142.82,Barrel,1,18141,No home garden,0,6,60
+319,210.66,No barrel,0,17294,Home garden,1,8,62.5
+320,182.06,Barrel,1,24703,Home garden,1,10,66.7
+321,206.6,No barrel,0,26873,Home garden,1,7,61.3
+322,178.8,Barrel,1,23680,Home garden,1,10,72.2
+323,237.5,Barrel,1,32314,No home garden,0,4,76.6
+324,252.24,No barrel,0,26245,No home garden,0,6,69.3
+325,204.38,No barrel,0,21201,No home garden,0,6,69.3
+326,227.1,Barrel,1,31968,No home garden,0,2,69.6
+327,249.2,No barrel,0,21966,No home garden,0,6,78.1
+328,238.55,No barrel,0,21619,No home garden,0,3,73.6
+329,262.91,No barrel,0,29348,No home garden,0,5,75.2
+330,228.45,No barrel,0,17334,No home garden,0,6,73.2
+331,221.84,No barrel,0,22451,Home garden,1,8,67.7
+332,177.4,Barrel,1,23481,Home garden,1,8,67.5
+333,189.1,Barrel,1,11152,No home garden,0,6,79.1
+334,189.52,Barrel,1,13522,No home garden,0,2,72.9
+335,275.7,No barrel,0,18675,No home garden,0,2,70.8
+336,218.46,No barrel,0,29744,Home garden,1,6,67.3
+337,188.22,Barrel,1,29141,Home garden,1,9,72.5
+338,151.03,Barrel,1,18130,No home garden,0,6,61.7
+339,200.19,No barrel,0,9674,No home garden,0,7,64.5
+340,170.18,Barrel,1,2995,No home garden,0,7,69.4
+341,170.78,Barrel,1,17610,No home garden,0,4,67.5
+342,145.01,Barrel,1,5752,No home garden,0,5,67
+343,157.96,Barrel,1,18593,No home garden,0,5,67.1
+344,255.89,Barrel,1,31806,No home garden,0,4,77.6
+345,150.54,Barrel,1,4582,No home garden,0,7,67.5
+346,253.99,Barrel,1,27107,Home garden,1,7,78.2
+347,212.76,Barrel,1,20361,No home garden,0,6,74.8
+348,167.34,Barrel,1,11789,No home garden,0,7,74.7
+349,239.61,No barrel,0,22098,No home garden,0,4,67.7
+350,162.49,Barrel,1,9797,No home garden,0,3,59.8
+351,241.19,Barrel,1,28685,Home garden,1,7,78.7
+352,221.59,Barrel,1,23137,No home garden,0,2,71.4
+353,186.52,Barrel,1,17442,No home garden,0,5,76.7
+354,138.14,Barrel,1,2082,No home garden,0,6,72.5
+355,163.98,Barrel,1,1886,No home garden,0,6,73.3
+356,192.42,Barrel,1,19408,No home garden,0,3,67.9
+357,204.77,Barrel,1,15740,No home garden,0,2,65.6
+358,139.69,Barrel,1,10330,No home garden,0,8,68.4
+359,243.61,No barrel,0,23610,Home garden,1,8,73.2
+360,150.08,Barrel,1,10932,No home garden,0,5,66.8
+361,210.29,No barrel,0,11705,No home garden,0,4,67.4
+362,279.24,No barrel,0,36420,Home garden,1,7,66.9
+363,282.31,No barrel,0,37060,Home garden,1,8,76.9
+364,234.9,No barrel,0,20577,No home garden,0,3,74.5
+365,194.45,No barrel,0,13606,No home garden,0,6,69.8
+366,186.22,Barrel,1,24182,No home garden,0,7,64.9
+367,164.49,Barrel,1,8218,No home garden,0,3,67
+368,235.68,No barrel,0,28461,Home garden,1,6,70.3
+369,150.77,Barrel,1,11640,No home garden,0,4,71.2
+370,151.53,Barrel,1,6801,No home garden,0,5,64.5
+371,186.93,Barrel,1,19448,No home garden,0,5,64.1
+372,178.4,Barrel,1,20970,No home garden,0,6,65.1
+373,193.37,Barrel,1,21163,No home garden,0,1,69
+374,175.72,Barrel,1,17070,No home garden,0,3,66.5
+375,141.2,Barrel,1,30536,Home garden,1,10,58.3
+376,191.69,No barrel,0,982,No home garden,0,7,72.8
+377,249,No barrel,0,19660,No home garden,0,3,70.1
+378,184.1,Barrel,1,22161,Home garden,1,9,81.1
+379,264.43,No barrel,0,31622,No home garden,0,4,65
+380,225.46,No barrel,0,8157,No home garden,0,7,70.9
+381,178.21,Barrel,1,13119,No home garden,0,5,73
+382,198.78,Barrel,1,24252,No home garden,0,5,73.1
+383,225.73,No barrel,0,17648,No home garden,0,5,75.3
+384,149.1,Barrel,1,3478,No home garden,0,4,61.6
+385,209.95,Barrel,1,27011,No home garden,0,4,69.7
+386,180.57,Barrel,1,16246,No home garden,0,3,66.3
+387,187.03,Barrel,1,13220,No home garden,0,3,71.3
+388,213.72,No barrel,0,29814,Home garden,1,10,68.7
+389,206.81,Barrel,1,32031,Home garden,1,7,72.1
+390,227.54,No barrel,0,19079,No home garden,0,3,63.3
+391,238.06,Barrel,1,31389,No home garden,0,3,76.8
+392,205,Barrel,1,16959,No home garden,0,3,74.5
+393,216.6,Barrel,1,34034,Home garden,1,9,71.1
+394,189.05,No barrel,0,14242,No home garden,0,7,65.4
+395,226.08,No barrel,0,7896,No home garden,0,4,75
+396,170.96,No barrel,0,15567,No home garden,0,8,60.5
+397,215.55,No barrel,0,11384,No home garden,0,5,72.5
+398,241.28,No barrel,0,12423,No home garden,0,2,67.3
+399,127.85,Barrel,1,11376,No home garden,0,6,66.7
+400,271.68,No barrel,0,27549,No home garden,0,4,74.7
+401,209.13,No barrel,0,22512,No home garden,0,5,65.4
+402,224.33,No barrel,0,21336,Home garden,1,9,70.7
+403,198.13,No barrel,0,12950,No home garden,0,3,64.3
+404,219.19,No barrel,0,26771,Home garden,1,7,68.3
+405,147.52,Barrel,1,12474,No home garden,0,6,65
+406,201.83,No barrel,0,15037,Home garden,1,10,73.1
+407,185.17,Barrel,1,21735,Home garden,1,8,71.2
+408,254.96,No barrel,0,33339,Home garden,1,7,75
+409,171.68,Barrel,1,21485,No home garden,0,6,69.7
+410,251.87,No barrel,0,19231,No home garden,0,6,76.1
+411,186.05,Barrel,1,11639,No home garden,0,4,69.9
+412,174.26,Barrel,1,23759,No home garden,0,4,59.8
+413,210.55,No barrel,0,19035,No home garden,0,7,63.1
+414,236.6,No barrel,0,12768,No home garden,0,4,68.5
+415,188.31,Barrel,1,14954,No home garden,0,5,73.6
+416,189.69,Barrel,1,23186,No home garden,0,6,77.3
+417,169.15,Barrel,1,18246,No home garden,0,6,72.9
+418,216.6,No barrel,0,12380,No home garden,0,6,72.7
+419,254.69,No barrel,0,30214,No home garden,0,5,77.2
+420,170.96,No barrel,0,9743,No home garden,0,8,61.1
+421,177.28,Barrel,1,14253,No home garden,0,6,74.1
+422,191.08,No barrel,0,16838,No home garden,0,5,64.1
+423,260.63,No barrel,0,21306,No home garden,0,5,76.1
+424,195.57,No barrel,0,12565,No home garden,0,6,65.2
+425,250.1,No barrel,0,29013,No home garden,0,5,70.4
+426,238.95,Barrel,1,28754,No home garden,0,1,64.2
+427,258.69,Barrel,1,33999,No home garden,0,3,72.7
+428,159.63,No barrel,0,4514,No home garden,0,5,68.4
+429,233.18,No barrel,0,28854,No home garden,0,5,68.9
+430,226.18,Barrel,1,32674,Home garden,1,8,70
+431,221.2,Barrel,1,25658,No home garden,0,1,68.7
+432,208.29,No barrel,0,9121,No home garden,0,3,73.3
+433,206.17,Barrel,1,20175,No home garden,0,7,70.4
+434,293.28,No barrel,0,33906,No home garden,0,4,74.1
+435,260.73,No barrel,0,14747,No home garden,0,2,72.7
+436,202.98,Barrel,1,27357,Home garden,1,7,76.3
+437,240.17,No barrel,0,19782,No home garden,0,3,66.7
+438,155.14,Barrel,1,3006,No home garden,0,9,75.6
+439,157.46,Barrel,1,4741,No home garden,0,5,64.4
+440,186.63,No barrel,0,6697,Home garden,1,10,65.7
+441,184.82,Barrel,1,19251,No home garden,0,7,66.5
+442,178.85,Barrel,1,16104,No home garden,0,7,65.7
+443,203.99,No barrel,0,4106,No home garden,0,6,74.2
+444,164.37,Barrel,1,11793,No home garden,0,2,64.3
+445,177.08,No barrel,0,11378,No home garden,0,9,72.8
+446,184.46,Barrel,1,14103,No home garden,0,2,67.7
+447,250.94,No barrel,0,30836,No home garden,0,5,71.4
+448,217.1,No barrel,0,20782,Home garden,1,7,70.2
+449,207.97,Barrel,1,31260,Home garden,1,9,73.8
+450,190.13,Barrel,1,20661,No home garden,0,2,71.4
+451,186.14,Barrel,1,13977,No home garden,0,4,68.8
+452,226.82,No barrel,0,17355,No home garden,0,2,70.2
+453,198.93,No barrel,0,21482,Home garden,1,8,66.8
+454,119.71,Barrel,1,13677,No home garden,0,8,65.2
+455,229.93,Barrel,1,26645,No home garden,0,4,74.4
+456,180.06,Barrel,1,11934,No home garden,0,4,66.3
+457,201.93,Barrel,1,21117,No home garden,0,5,68.5
+458,241.86,No barrel,0,22077,No home garden,0,3,64
+459,158.09,Barrel,1,16688,No home garden,0,6,64.9
+460,244.47,No barrel,0,38528,Home garden,1,6,59.5
+461,239.8,Barrel,1,18839,No home garden,0,3,76.2
+462,237.47,Barrel,1,31148,No home garden,0,4,78
+463,224.6,No barrel,0,17226,No home garden,0,5,72
+464,131.08,Barrel,1,3494,No home garden,0,5,62.7
+465,152.13,Barrel,1,19242,No home garden,0,8,65.9
+466,217.99,No barrel,0,17631,No home garden,0,5,77.8
+467,99.63,Barrel,1,7341,No home garden,0,6,54.3
+468,246.4,No barrel,0,36758,Home garden,1,6,71.6
+469,159.77,Barrel,1,16308,No home garden,0,3,61.5
+470,216.95,No barrel,0,12537,No home garden,0,5,67.3
+471,178.75,No barrel,0,3592,No home garden,0,6,72.2
+472,204.05,No barrel,0,13035,No home garden,0,3,68.4
+473,267.06,Barrel,1,32190,Home garden,1,6,81.8
+474,197.12,Barrel,1,18444,No home garden,0,4,66.3
+475,244.41,No barrel,0,33438,Home garden,1,5,73.8
+476,281.83,No barrel,0,33103,No home garden,0,2,70.7
+477,216.74,Barrel,1,21262,No home garden,0,2,66.9
+478,153.14,Barrel,1,17543,No home garden,0,6,63.1
+479,185.92,Barrel,1,18878,No home garden,0,4,61.2
+480,245.79,No barrel,0,20398,No home garden,0,2,60.3
+481,236.07,No barrel,0,33642,Home garden,1,7,59.4
+482,269.57,No barrel,0,37338,Home garden,1,6,67.4
+483,245.82,No barrel,0,27251,No home garden,0,6,66.5
+484,170.21,Barrel,1,24893,No home garden,0,6,65.6
+485,267.53,No barrel,0,19375,No home garden,0,2,70.9
+486,256.15,Barrel,1,28103,No home garden,0,4,82.1
+487,212.33,No barrel,0,15588,Home garden,1,8,72.2
+488,202.83,Barrel,1,25928,No home garden,0,5,68.7
+489,250.38,No barrel,0,31002,No home garden,0,4,60.9
+490,179.96,Barrel,1,8360,No home garden,0,5,71
+491,182.15,Barrel,1,20315,No home garden,0,7,66.5
+492,189.84,Barrel,1,21202,Home garden,1,10,74.5
+493,179.33,Barrel,1,17548,No home garden,0,6,71.3

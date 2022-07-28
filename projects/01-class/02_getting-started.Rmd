@@ -1,0 +1,71 @@
+---
+title: "Getting started with R and RStudio"
+output: html_document
+---
+
+```{r setup}
+library(tidyverse)
+```
+
+## R Markdown
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) file (it has a .Rmd file extension). When you execute code within the file, the results appear beneath the code. 
+
+R code goes in **code chunks**, denoted by three backticks. Try executing this chunk by clicking the *Run* button (a small green triangle) within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter* (or *Cmd+Shift+Enter* on Mac). 
+
+```{r}
+ggplot(data = mpg) +
+  geom_point(mapping = aes(x = cty, y = hwy), alpha = 0.2)
+```
+
+## Add a new code chunk
+
+Add a new code chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd/Ctrl+Option+I*. 
+
+Put 2 + 2 in your new code chunk and run it.
+
+PUT A NEW CHUNK HERE
+
+
+## Knitting R Markdown files
+
+We'll use R Markdown files as notebooks as we learn because we can record text, code and output. 
+
+R Markdown files are also a publication format. Try hitting the "Knit" button in the toolbar above. R runs all the code in the document from top to bottom, it collects the output and puts the code, text and output together in an HTML document---you should see it as `01-getting-started.html` in the Files pane. This document is a great way to record or share your work (you can also Knit to PDF or Word documents).
+
+## Assigning variables
+
+What's the difference between the code in this chunk:
+
+```{r}
+filter(mtcars, cyl == 4)
+```
+
+And the code in this chunk?
+
+```{r}
+four_cyls <- filter(mtcars, cyl == 4)
+```
+
+## Functions
+
+Look at the help page for `seq`
+
+Add a chunk here that uses `seq()` to create a list of numbers from 5 to 100, spaced by 5 (so 5, 10, 15, 20, etc.)
+
+CHUNK HERE
+
+
+## Syntax gone wrong
+
+```{r, error=TRUE}
+sd(pull(.data = starwars, var = mass)
+```
+
+```{r, error=TRUE}
+my_name <- "Andrew'
+```
+
+```{r, error=TRUE}
+pull(.data = "starwars", var = height)
+```

@@ -1,0 +1,45 @@
+---
+title: "Penguins and interactions"
+output: html_document
+---
+
+```{r warning=FALSE, message=FALSE}
+library(tidyverse)
+library(broom)
+library(palmerpenguins)
+
+penguins <- penguins %>% drop_na(sex)
+```
+
+
+```{r}
+model_basic <- lm(body_mass_g ~ flipper_length_mm + species,
+                  data = penguins)
+
+tidy(model_basic)
+```
+
+
+```{r}
+basic_predictions <- augment(model_basic, penguins)
+
+ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point(aes(color = species)) +
+  geom_smooth(data = basic_predictions, aes(y = .fitted, color = species))
+```
+
+
+```{r}
+model_interaction <- lm(body_mass_g ~ flipper_length_mm * species,
+                        data = penguins)
+
+tidy(model_interaction)
+```
+
+
+```{r}
+ggplot(penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point(aes(color = species)) +
+  geom_smooth(aes(color = species), method = "lm", se = FALSE)
+```
+

@@ -1,0 +1,64 @@
+---
+title: "Organ donations"
+output: html_document
+---
+
+## Load and clean data
+
+```{r warning=FALSE, message=FALSE}
+library(tidyverse)
+library(broom)
+library(fixest)
+
+organ_donations_raw <- read_csv("data/organ_donations.csv")
+```
+
+```{r}
+# TODO: Make a dataset based on `organ_donations` that only contains California and New Jersey
+# TODO: Make a new column called `After` that is TRUE (or 1) if the quarter is Q32011, Q42011, or Q12012 (or if Quarter_num is 4, 5, or 6)
+# TODO: Make a new column called `is_california` that is TRUE (or 1) if the state is California
+```
+
+
+## Simple diff-in-diff
+
+```{r}
+# TODO: Using the data for only California and New Jersey, create a plot that shows
+# the donation rate over time, colored by state. Add a vertical line at Q22011 (or Quarter_num = 3).
+# Determine if the two states' trends are parallel before the change.
+```
+
+```{r}
+# TODO: Use group_by() and summarize() to find the average donation rate in
+# California and New Jersey before and after the change in California's policy
+# TODO: You *don't* need to extract all the cell A, cell B, cell C, and cell D
+# numbers. Just make a table of averages
+```
+
+```{r}
+# TODO: Use lm() to calculate the diff-in-diff effect with this model:
+```
+
+$$
+\begin{aligned}
+\text{Donation rate}\ =&\ \beta_0 + \beta_1\ \text{California} + \beta_2\ \text{After Q22011}\ + \\
+&\ \beta_3\ (\text{California} \times \text{After Q22011})
+\end{aligned}
+$$
+
+
+## Two-way fixed effects
+
+```{r}
+# TODO: Create a new dataset based on `organ_donations_raw` 
+# TODO: Make a new column called `After` that is TRUE (or 1) if the quarter is Q32011, Q42011, or Q12012 (or if Quarter_num is 4, 5, or 6)
+# TODO: Make a new column called `Treated` that is TRUE (or 1) if the state is California and After is TRUE/1
+```
+
+```{r}
+# TODO: Use that new data to create a TWFE model like this:
+```
+
+$$
+\text{Donation rate}\ =\ \beta_0 + \beta_1\ \text{Treatment} + \beta_2\ \text{State} + \beta_3\ \text{Quarter}
+$$

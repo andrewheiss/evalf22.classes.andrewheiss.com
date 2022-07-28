@@ -1,0 +1,2001 @@
+status,treatment,bed_net_0,bed_net_1,health_0,health_1,bed_net,health
+Never taker,Control,0,0,24.6,14.4,No bed net,24.6
+Complier,Control,0,1,36.4,39.6,No bed net,36.4
+Complier,Treatment,0,1,29.7,49.1,Bed net,49.1
+Complier,Treatment,0,1,38.1,47,Bed net,47
+Always taker,Control,1,1,39.4,58.6,Bed net,58.6
+Complier,Treatment,0,1,39.3,63.9,Bed net,63.9
+Never taker,Treatment,0,0,34.5,10.8,No bed net,34.5
+Never taker,Control,0,0,19.4,34.4,No bed net,19.4
+Complier,Treatment,0,1,53.3,36.6,Bed net,36.6
+Complier,Control,0,1,37.4,48.2,No bed net,37.4
+Complier,Control,0,1,48.1,64.2,No bed net,48.1
+Complier,Treatment,0,1,37,50.7,Bed net,50.7
+Never taker,Treatment,0,0,44.2,47.5,No bed net,44.2
+Always taker,Control,1,1,61.3,57,Bed net,57
+Never taker,Control,0,0,10.4,30.5,No bed net,10.4
+Always taker,Control,1,1,66,49.4,Bed net,49.4
+Never taker,Control,0,0,22.7,49.3,No bed net,22.7
+Never taker,Treatment,0,0,24.2,40,No bed net,24.2
+Never taker,Treatment,0,0,22.7,45.1,No bed net,22.7
+Never taker,Control,0,0,28.9,43.2,No bed net,28.9
+Never taker,Treatment,0,0,28.3,29.8,No bed net,28.3
+Never taker,Treatment,0,0,28,47.9,No bed net,28
+Never taker,Treatment,0,0,24.4,48.8,No bed net,24.4
+Never taker,Control,0,0,53.2,40.9,No bed net,53.2
+Never taker,Control,0,0,47.4,49.2,No bed net,47.4
+Always taker,Treatment,1,1,58.8,50.7,Bed net,50.7
+Complier,Control,0,1,41.7,36,No bed net,41.7
+Always taker,Control,1,1,57.9,66.1,Bed net,66.1
+Always taker,Treatment,1,1,65.5,59.2,Bed net,59.2
+Never taker,Control,0,0,35.6,35.9,No bed net,35.6
+Complier,Treatment,0,1,41.5,59.3,Bed net,59.3
+Never taker,Treatment,0,0,52.6,24.6,No bed net,52.6
+Never taker,Control,0,0,23.8,37.6,No bed net,23.8
+Complier,Control,0,1,33.4,27.1,No bed net,33.4
+Never taker,Control,0,0,44.6,19.3,No bed net,44.6
+Complier,Control,0,1,48.5,59.7,No bed net,48.5
+Never taker,Control,0,0,65.6,45.1,No bed net,65.6
+Never taker,Control,0,0,34,18.7,No bed net,34
+Always taker,Control,1,1,63.7,58.6,Bed net,58.6
+Always taker,Treatment,1,1,41.7,51.5,Bed net,51.5
+Complier,Treatment,0,1,45.1,28.4,Bed net,28.4
+Complier,Treatment,0,1,38.6,64.5,Bed net,64.5
+Never taker,Control,0,0,31.2,11,No bed net,31.2
+Complier,Treatment,0,1,33.2,56.1,Bed net,56.1
+Never taker,Control,0,0,52.5,9.9,No bed net,52.5
+Complier,Treatment,0,1,45.5,48.8,Bed net,48.8
+Complier,Control,0,1,30.9,48.7,No bed net,30.9
+Complier,Control,0,1,46.8,41.8,No bed net,46.8
+Never taker,Control,0,0,35.8,44.2,No bed net,35.8
+Complier,Treatment,0,1,27.6,73.6,Bed net,73.6
+Never taker,Control,0,0,49.3,39.8,No bed net,49.3
+Never taker,Treatment,0,0,38.7,62.9,No bed net,38.7
+Complier,Treatment,0,1,34.1,51.2,Bed net,51.2
+Complier,Control,0,1,29.5,48.6,No bed net,29.5
+Never taker,Treatment,0,0,28.1,42.7,No bed net,28.1
+Complier,Treatment,0,1,45.4,47.5,Bed net,47.5
+Complier,Control,0,1,37.3,48.4,No bed net,37.3
+Complier,Treatment,0,1,30.9,80.5,Bed net,80.5
+Never taker,Control,0,0,38.5,43.9,No bed net,38.5
+Always taker,Treatment,1,1,47.6,48.2,Bed net,48.2
+Always taker,Treatment,1,1,53.6,46.4,Bed net,46.4
+Never taker,Treatment,0,0,36.1,36.5,No bed net,36.1
+Never taker,Control,0,0,41.2,30.8,No bed net,41.2
+Never taker,Control,0,0,39.9,20.3,No bed net,39.9
+Never taker,Control,0,0,35.6,26.2,No bed net,35.6
+Complier,Treatment,0,1,36.7,40.6,Bed net,40.6
+Never taker,Control,0,0,36.1,33.4,No bed net,36.1
+Complier,Control,0,1,25.7,29,No bed net,25.7
+Never taker,Control,0,0,28,43.5,No bed net,28
+Complier,Control,0,1,40.2,76.4,No bed net,40.2
+Never taker,Control,0,0,48.6,37.1,No bed net,48.6
+Always taker,Control,1,1,61.7,48.1,Bed net,48.1
+Never taker,Treatment,0,0,29.8,42.7,No bed net,29.8
+Complier,Control,0,1,31.5,71,No bed net,31.5
+Never taker,Control,0,0,34.8,35.3,No bed net,34.8
+Complier,Treatment,0,1,39.6,40.1,Bed net,40.1
+Never taker,Control,0,0,51.3,24.9,No bed net,51.3
+Never taker,Treatment,0,0,19.9,9.6,No bed net,19.9
+Never taker,Treatment,0,0,31.9,21.8,No bed net,31.9
+Complier,Control,0,1,25.2,74.5,No bed net,25.2
+Always taker,Treatment,1,1,46.4,60.1,Bed net,60.1
+Complier,Control,0,1,30.2,46.2,No bed net,30.2
+Never taker,Control,0,0,43.8,46.9,No bed net,43.8
+Complier,Control,0,1,56.7,65.5,No bed net,56.7
+Never taker,Control,0,0,26.1,16.6,No bed net,26.1
+Always taker,Control,1,1,71.6,71.7,Bed net,71.7
+Never taker,Treatment,0,0,42.8,51.3,No bed net,42.8
+Never taker,Control,0,0,43.2,18.7,No bed net,43.2
+Never taker,Treatment,0,0,55,29.3,No bed net,55
+Always taker,Control,1,1,54.3,43.2,Bed net,43.2
+Never taker,Treatment,0,0,56.6,34,No bed net,56.6
+Always taker,Treatment,1,1,79.9,36.3,Bed net,36.3
+Never taker,Treatment,0,0,47,42.2,No bed net,47
+Never taker,Control,0,0,41.6,17.1,No bed net,41.6
+Never taker,Control,0,0,35,31.9,No bed net,35
+Complier,Control,0,1,36.9,60.5,No bed net,36.9
+Never taker,Control,0,0,33.1,8.8,No bed net,33.1
+Never taker,Treatment,0,0,24.2,65.1,No bed net,24.2
+Never taker,Control,0,0,39.1,29.3,No bed net,39.1
+Complier,Control,0,1,53.8,27.4,No bed net,53.8
+Never taker,Control,0,0,60.1,54.3,No bed net,60.1
+Complier,Treatment,0,1,44.7,82.8,Bed net,82.8
+Never taker,Treatment,0,0,35.4,41.9,No bed net,35.4
+Never taker,Treatment,0,0,24.8,45.9,No bed net,24.8
+Never taker,Treatment,0,0,27.5,41.4,No bed net,27.5
+Never taker,Treatment,0,0,26.8,40.1,No bed net,26.8
+Never taker,Treatment,0,0,32.6,43.2,No bed net,32.6
+Never taker,Treatment,0,0,61.9,41.1,No bed net,61.9
+Complier,Treatment,0,1,34.8,61.2,Bed net,61.2
+Never taker,Treatment,0,0,45.6,27.2,No bed net,45.6
+Complier,Treatment,0,1,39.1,66.9,Bed net,66.9
+Never taker,Treatment,0,0,58.4,30,No bed net,58.4
+Always taker,Control,1,1,63,41.1,Bed net,41.1
+Never taker,Control,0,0,26,15,No bed net,26
+Never taker,Control,0,0,38.5,16.3,No bed net,38.5
+Always taker,Treatment,1,1,63.7,69.9,Bed net,69.9
+Always taker,Treatment,1,1,54.2,66.5,Bed net,66.5
+Never taker,Control,0,0,46.4,17.5,No bed net,46.4
+Never taker,Control,0,0,26,47.5,No bed net,26
+Complier,Control,0,1,36.2,74.4,No bed net,36.2
+Complier,Treatment,0,1,41.6,36.8,Bed net,36.8
+Always taker,Control,1,1,75.1,53.6,Bed net,53.6
+Always taker,Control,1,1,70.7,53.2,Bed net,53.2
+Always taker,Treatment,1,1,40,68.5,Bed net,68.5
+Complier,Control,0,1,35.2,81.7,No bed net,35.2
+Never taker,Treatment,0,0,25.6,37.8,No bed net,25.6
+Never taker,Control,0,0,25.7,49.4,No bed net,25.7
+Complier,Treatment,0,1,38.6,69.6,Bed net,69.6
+Complier,Treatment,0,1,54.5,51.8,Bed net,51.8
+Never taker,Control,0,0,38.4,37.9,No bed net,38.4
+Always taker,Control,1,1,72.4,50.6,Bed net,50.6
+Complier,Control,0,1,39.5,49.9,No bed net,39.5
+Never taker,Control,0,0,34,28.9,No bed net,34
+Complier,Treatment,0,1,30.7,53.8,Bed net,53.8
+Always taker,Treatment,1,1,50.9,45.8,Bed net,45.8
+Complier,Treatment,0,1,49.8,59.4,Bed net,59.4
+Always taker,Control,1,1,53.8,55.3,Bed net,55.3
+Complier,Treatment,0,1,39,64.5,Bed net,64.5
+Complier,Treatment,0,1,33,42.9,Bed net,42.9
+Always taker,Treatment,1,1,62.8,54.5,Bed net,54.5
+Complier,Control,0,1,39,31.5,No bed net,39
+Always taker,Treatment,1,1,70.5,46.3,Bed net,46.3
+Never taker,Control,0,0,44.7,41.7,No bed net,44.7
+Complier,Control,0,1,43.9,72.2,No bed net,43.9
+Never taker,Control,0,0,14,37,No bed net,14
+Complier,Control,0,1,43.8,30.9,No bed net,43.8
+Complier,Control,0,1,37.9,25.8,No bed net,37.9
+Complier,Treatment,0,1,34.2,55,Bed net,55
+Always taker,Treatment,1,1,62.5,56.9,Bed net,56.9
+Complier,Control,0,1,22.8,43.8,No bed net,22.8
+Complier,Treatment,0,1,38.3,54.9,Bed net,54.9
+Never taker,Treatment,0,0,28.1,37.8,No bed net,28.1
+Never taker,Treatment,0,0,28.6,43,No bed net,28.6
+Always taker,Treatment,1,1,57.7,59.3,Bed net,59.3
+Never taker,Control,0,0,47.4,50.9,No bed net,47.4
+Always taker,Treatment,1,1,40.8,55.3,Bed net,55.3
+Complier,Control,0,1,31.1,58.7,No bed net,31.1
+Always taker,Control,1,1,66.2,56.4,Bed net,56.4
+Never taker,Control,0,0,56.1,39.6,No bed net,56.1
+Complier,Control,0,1,47.3,39.2,No bed net,47.3
+Complier,Treatment,0,1,40.4,29.8,Bed net,29.8
+Complier,Control,0,1,16.6,51.4,No bed net,16.6
+Complier,Treatment,0,1,49.8,70.8,Bed net,70.8
+Never taker,Control,0,0,22.5,40.1,No bed net,22.5
+Never taker,Treatment,0,0,50.5,39.5,No bed net,50.5
+Complier,Treatment,0,1,47.5,61.5,Bed net,61.5
+Complier,Control,0,1,43.3,59.6,No bed net,43.3
+Never taker,Treatment,0,0,37.9,54.7,No bed net,37.9
+Always taker,Treatment,1,1,43,52.7,Bed net,52.7
+Never taker,Treatment,0,0,25.7,49.1,No bed net,25.7
+Complier,Treatment,0,1,27.2,50.8,Bed net,50.8
+Complier,Treatment,0,1,45.8,57.7,Bed net,57.7
+Complier,Treatment,0,1,41.6,42.8,Bed net,42.8
+Complier,Control,0,1,52,24.9,No bed net,52
+Never taker,Control,0,0,33.3,23,No bed net,33.3
+Complier,Control,0,1,29.8,70.1,No bed net,29.8
+Complier,Control,0,1,43,51.7,No bed net,43
+Complier,Control,0,1,28.7,48.7,No bed net,28.7
+Never taker,Control,0,0,33,23.2,No bed net,33
+Never taker,Treatment,0,0,47.4,25.9,No bed net,47.4
+Complier,Treatment,0,1,45,39.9,Bed net,39.9
+Never taker,Control,0,0,56.5,27.3,No bed net,56.5
+Complier,Treatment,0,1,39.7,77.6,Bed net,77.6
+Never taker,Treatment,0,0,32.9,44.8,No bed net,32.9
+Always taker,Control,1,1,48,63.6,Bed net,63.6
+Never taker,Treatment,0,0,17.3,28,No bed net,17.3
+Always taker,Treatment,1,1,54.9,47.4,Bed net,47.4
+Complier,Control,0,1,35.7,50.2,No bed net,35.7
+Never taker,Control,0,0,18.7,33.7,No bed net,18.7
+Complier,Treatment,0,1,30.3,34.4,Bed net,34.4
+Complier,Treatment,0,1,41.6,54,Bed net,54
+Always taker,Treatment,1,1,58.7,38.8,Bed net,38.8
+Never taker,Treatment,0,0,37.2,54.2,No bed net,37.2
+Always taker,Treatment,1,1,50.1,47.4,Bed net,47.4
+Always taker,Control,1,1,58.2,53.6,Bed net,53.6
+Always taker,Control,1,1,58.7,52.4,Bed net,52.4
+Always taker,Control,1,1,59.7,56.9,Bed net,56.9
+Complier,Control,0,1,40.3,41.5,No bed net,40.3
+Always taker,Control,1,1,75.5,57.6,Bed net,57.6
+Complier,Control,0,1,35.5,74.3,No bed net,35.5
+Complier,Treatment,0,1,44.3,51.5,Bed net,51.5
+Complier,Control,0,1,45.8,38.3,No bed net,45.8
+Never taker,Control,0,0,47.2,59.7,No bed net,47.2
+Complier,Control,0,1,41.6,56.4,No bed net,41.6
+Complier,Treatment,0,1,31.8,45.3,Bed net,45.3
+Complier,Treatment,0,1,38.8,67,Bed net,67
+Never taker,Control,0,0,22,39.3,No bed net,22
+Complier,Control,0,1,42.3,28.3,No bed net,42.3
+Never taker,Control,0,0,41.7,0,No bed net,41.7
+Always taker,Treatment,1,1,61.8,47.1,Bed net,47.1
+Complier,Treatment,0,1,23.5,61.3,Bed net,61.3
+Never taker,Control,0,0,10.9,41.4,No bed net,10.9
+Never taker,Treatment,0,0,37.2,38.5,No bed net,37.2
+Complier,Control,0,1,47.5,50.3,No bed net,47.5
+Complier,Control,0,1,29.4,62.1,No bed net,29.4
+Always taker,Control,1,1,70.2,67.6,Bed net,67.6
+Complier,Treatment,0,1,38.3,72.9,Bed net,72.9
+Complier,Control,0,1,28.9,40,No bed net,28.9
+Complier,Control,0,1,26.6,83.9,No bed net,26.6
+Always taker,Treatment,1,1,56.8,64,Bed net,64
+Complier,Control,0,1,33.1,56.9,No bed net,33.1
+Never taker,Treatment,0,0,43,44.6,No bed net,43
+Never taker,Control,0,0,36.5,33,No bed net,36.5
+Never taker,Control,0,0,50.3,17.8,No bed net,50.3
+Never taker,Control,0,0,41.4,40.7,No bed net,41.4
+Complier,Control,0,1,19.1,51.7,No bed net,19.1
+Always taker,Control,1,1,54.6,66.3,Bed net,66.3
+Never taker,Treatment,0,0,24.1,20.7,No bed net,24.1
+Complier,Treatment,0,1,36.5,49.1,Bed net,49.1
+Complier,Treatment,0,1,39.8,54.1,Bed net,54.1
+Complier,Treatment,0,1,30.6,62.9,Bed net,62.9
+Complier,Treatment,0,1,46.7,78.3,Bed net,78.3
+Never taker,Treatment,0,0,33.3,35.8,No bed net,33.3
+Always taker,Treatment,1,1,59.1,45.5,Bed net,45.5
+Complier,Treatment,0,1,39.2,61.7,Bed net,61.7
+Never taker,Treatment,0,0,30.7,32.8,No bed net,30.7
+Complier,Treatment,0,1,46.5,49.6,Bed net,49.6
+Never taker,Treatment,0,0,43.6,43.3,No bed net,43.6
+Complier,Treatment,0,1,37.7,35.5,Bed net,35.5
+Always taker,Treatment,1,1,37.8,48.5,Bed net,48.5
+Complier,Control,0,1,43.2,44.8,No bed net,43.2
+Never taker,Treatment,0,0,10.4,43,No bed net,10.4
+Never taker,Control,0,0,31.7,40.3,No bed net,31.7
+Complier,Treatment,0,1,48.4,75.2,Bed net,75.2
+Always taker,Treatment,1,1,59.5,68.3,Bed net,68.3
+Complier,Control,0,1,27,50.7,No bed net,27
+Complier,Control,0,1,36.2,50.3,No bed net,36.2
+Complier,Treatment,0,1,35.3,32.1,Bed net,32.1
+Always taker,Control,1,1,68.4,53.7,Bed net,53.7
+Complier,Control,0,1,24.7,52.4,No bed net,24.7
+Complier,Treatment,0,1,36,57,Bed net,57
+Complier,Control,0,1,30.2,69.6,No bed net,30.2
+Never taker,Control,0,0,50,36,No bed net,50
+Never taker,Control,0,0,34.4,54.7,No bed net,34.4
+Never taker,Control,0,0,64.3,40.4,No bed net,64.3
+Complier,Treatment,0,1,25.6,47.1,Bed net,47.1
+Never taker,Treatment,0,0,43.1,23.4,No bed net,43.1
+Never taker,Control,0,0,50.4,53.5,No bed net,50.4
+Complier,Control,0,1,47.4,59.3,No bed net,47.4
+Complier,Control,0,1,31.6,52.9,No bed net,31.6
+Always taker,Treatment,1,1,59.6,38.6,Bed net,38.6
+Never taker,Treatment,0,0,19.1,28.5,No bed net,19.1
+Complier,Treatment,0,1,27,74.4,Bed net,74.4
+Never taker,Treatment,0,0,44,44,No bed net,44
+Never taker,Treatment,0,0,23.5,25.3,No bed net,23.5
+Never taker,Control,0,0,32.7,37.6,No bed net,32.7
+Complier,Treatment,0,1,46.8,66.3,Bed net,66.3
+Never taker,Treatment,0,0,24.5,28.7,No bed net,24.5
+Never taker,Treatment,0,0,27,46.5,No bed net,27
+Complier,Control,0,1,41.8,49.9,No bed net,41.8
+Never taker,Treatment,0,0,33.2,63.6,No bed net,33.2
+Complier,Treatment,0,1,29.1,35.1,Bed net,35.1
+Never taker,Control,0,0,50.4,21.2,No bed net,50.4
+Complier,Control,0,1,44.2,61.3,No bed net,44.2
+Never taker,Control,0,0,33.2,32.2,No bed net,33.2
+Complier,Treatment,0,1,44.8,55.9,Bed net,55.9
+Always taker,Treatment,1,1,52.9,53.8,Bed net,53.8
+Complier,Treatment,0,1,37.3,63.1,Bed net,63.1
+Never taker,Treatment,0,0,24.2,40.8,No bed net,24.2
+Never taker,Treatment,0,0,40.8,49.2,No bed net,40.8
+Never taker,Control,0,0,32.3,44.6,No bed net,32.3
+Complier,Treatment,0,1,45.6,40.5,Bed net,40.5
+Always taker,Treatment,1,1,64.7,37.5,Bed net,37.5
+Complier,Treatment,0,1,41.4,68.1,Bed net,68.1
+Complier,Control,0,1,29.5,63.1,No bed net,29.5
+Never taker,Treatment,0,0,57.8,31.2,No bed net,57.8
+Complier,Treatment,0,1,34.7,54,Bed net,54
+Never taker,Control,0,0,47.1,28.7,No bed net,47.1
+Complier,Control,0,1,36.7,41.9,No bed net,36.7
+Always taker,Treatment,1,1,39.5,54.1,Bed net,54.1
+Complier,Treatment,0,1,41.3,47,Bed net,47
+Complier,Treatment,0,1,41.9,64.3,Bed net,64.3
+Always taker,Treatment,1,1,54.7,54.2,Bed net,54.2
+Never taker,Control,0,0,28.6,37.3,No bed net,28.6
+Complier,Treatment,0,1,17,69.9,Bed net,69.9
+Complier,Control,0,1,31.6,46.1,No bed net,31.6
+Complier,Control,0,1,33.1,76.5,No bed net,33.1
+Never taker,Treatment,0,0,37.8,41.7,No bed net,37.8
+Complier,Treatment,0,1,32.1,41.2,Bed net,41.2
+Never taker,Control,0,0,45.6,45.1,No bed net,45.6
+Never taker,Control,0,0,54.8,33.6,No bed net,54.8
+Always taker,Control,1,1,62.5,43.3,Bed net,43.3
+Complier,Control,0,1,39.2,41.5,No bed net,39.2
+Complier,Treatment,0,1,48.1,43.8,Bed net,43.8
+Always taker,Treatment,1,1,43.8,55.1,Bed net,55.1
+Complier,Treatment,0,1,45.5,43,Bed net,43
+Never taker,Control,0,0,23.8,20.6,No bed net,23.8
+Always taker,Control,1,1,38.8,44.1,Bed net,44.1
+Complier,Treatment,0,1,48,55.4,Bed net,55.4
+Complier,Control,0,1,41.3,56.6,No bed net,41.3
+Always taker,Treatment,1,1,44.3,45.7,Bed net,45.7
+Complier,Control,0,1,42.1,56.7,No bed net,42.1
+Complier,Treatment,0,1,25.3,43.6,Bed net,43.6
+Complier,Control,0,1,37.6,43.3,No bed net,37.6
+Never taker,Control,0,0,30.5,27.7,No bed net,30.5
+Never taker,Control,0,0,15.2,34.1,No bed net,15.2
+Never taker,Treatment,0,0,24.8,40.4,No bed net,24.8
+Complier,Treatment,0,1,31,46,Bed net,46
+Never taker,Treatment,0,0,22.5,17.1,No bed net,22.5
+Always taker,Treatment,1,1,54.7,46.4,Bed net,46.4
+Never taker,Treatment,0,0,39.8,26.7,No bed net,39.8
+Always taker,Treatment,1,1,57.9,67.6,Bed net,67.6
+Never taker,Control,0,0,21.2,21,No bed net,21.2
+Never taker,Control,0,0,49.9,52.9,No bed net,49.9
+Never taker,Treatment,0,0,30.7,24.5,No bed net,30.7
+Never taker,Treatment,0,0,13.4,33.6,No bed net,13.4
+Complier,Control,0,1,36.5,36,No bed net,36.5
+Never taker,Control,0,0,42.8,19.3,No bed net,42.8
+Complier,Control,0,1,43.3,59,No bed net,43.3
+Always taker,Control,1,1,50.9,64,Bed net,64
+Complier,Control,0,1,47.3,70,No bed net,47.3
+Always taker,Treatment,1,1,50.8,50.3,Bed net,50.3
+Always taker,Control,1,1,67.8,65.8,Bed net,65.8
+Never taker,Treatment,0,0,62.3,16.4,No bed net,62.3
+Complier,Treatment,0,1,32.8,26.7,Bed net,26.7
+Never taker,Control,0,0,31.5,36.2,No bed net,31.5
+Never taker,Treatment,0,0,27.4,42.6,No bed net,27.4
+Never taker,Treatment,0,0,36.2,31.9,No bed net,36.2
+Always taker,Treatment,1,1,57.6,52.1,Bed net,52.1
+Complier,Control,0,1,50.4,76.3,No bed net,50.4
+Always taker,Control,1,1,54.4,52.7,Bed net,52.7
+Never taker,Control,0,0,49,66.6,No bed net,49
+Complier,Control,0,1,49.3,65.6,No bed net,49.3
+Always taker,Control,1,1,53.7,52.4,Bed net,52.4
+Never taker,Treatment,0,0,37.7,27.9,No bed net,37.7
+Never taker,Treatment,0,0,33.2,33.4,No bed net,33.2
+Never taker,Control,0,0,31.9,46.8,No bed net,31.9
+Complier,Control,0,1,26.8,31.1,No bed net,26.8
+Always taker,Treatment,1,1,44.2,46.2,Bed net,46.2
+Never taker,Control,0,0,42.2,35,No bed net,42.2
+Never taker,Treatment,0,0,19.6,59.8,No bed net,19.6
+Complier,Control,0,1,33.8,45.4,No bed net,33.8
+Never taker,Treatment,0,0,49.2,43.4,No bed net,49.2
+Complier,Control,0,1,37.5,43.1,No bed net,37.5
+Always taker,Treatment,1,1,84,50.9,Bed net,50.9
+Always taker,Control,1,1,60.8,53.8,Bed net,53.8
+Complier,Control,0,1,20.3,48.9,No bed net,20.3
+Complier,Control,0,1,14.5,34.8,No bed net,14.5
+Complier,Control,0,1,39.6,59.2,No bed net,39.6
+Complier,Treatment,0,1,31.6,51,Bed net,51
+Never taker,Control,0,0,28.9,35.6,No bed net,28.9
+Complier,Treatment,0,1,36.1,66.7,Bed net,66.7
+Complier,Control,0,1,41.8,51.3,No bed net,41.8
+Never taker,Control,0,0,49.5,20.2,No bed net,49.5
+Always taker,Treatment,1,1,63.6,54,Bed net,54
+Always taker,Treatment,1,1,41.7,50.5,Bed net,50.5
+Complier,Treatment,0,1,41.7,72,Bed net,72
+Never taker,Control,0,0,14.4,24.8,No bed net,14.4
+Always taker,Control,1,1,60,61.6,Bed net,61.6
+Complier,Control,0,1,37.4,45,No bed net,37.4
+Always taker,Treatment,1,1,42.7,39.7,Bed net,39.7
+Never taker,Control,0,0,28.2,43.5,No bed net,28.2
+Always taker,Control,1,1,54.7,51.3,Bed net,51.3
+Complier,Treatment,0,1,49.9,71.9,Bed net,71.9
+Never taker,Control,0,0,44.4,42.8,No bed net,44.4
+Never taker,Control,0,0,56.6,23.5,No bed net,56.6
+Complier,Treatment,0,1,43.2,50.7,Bed net,50.7
+Never taker,Control,0,0,47.8,44.2,No bed net,47.8
+Complier,Treatment,0,1,39.4,33.4,Bed net,33.4
+Complier,Treatment,0,1,18.9,41.5,Bed net,41.5
+Never taker,Treatment,0,0,66.8,13.3,No bed net,66.8
+Never taker,Control,0,0,18.8,18.3,No bed net,18.8
+Never taker,Control,0,0,40.1,28.3,No bed net,40.1
+Never taker,Control,0,0,19.8,21.7,No bed net,19.8
+Never taker,Control,0,0,54.1,45.3,No bed net,54.1
+Never taker,Treatment,0,0,35.5,36.2,No bed net,35.5
+Complier,Control,0,1,33.5,46.2,No bed net,33.5
+Never taker,Control,0,0,44.6,27.6,No bed net,44.6
+Always taker,Treatment,1,1,60.2,67.5,Bed net,67.5
+Always taker,Control,1,1,47.1,71.2,Bed net,71.2
+Complier,Control,0,1,30.1,52.3,No bed net,30.1
+Complier,Treatment,0,1,37.9,48.8,Bed net,48.8
+Complier,Control,0,1,46.1,64.4,No bed net,46.1
+Complier,Treatment,0,1,40,42.2,Bed net,42.2
+Never taker,Control,0,0,34.1,45.4,No bed net,34.1
+Always taker,Treatment,1,1,45.6,44.1,Bed net,44.1
+Complier,Control,0,1,36,58.7,No bed net,36
+Complier,Treatment,0,1,42.2,53.5,Bed net,53.5
+Never taker,Control,0,0,30.3,57,No bed net,30.3
+Never taker,Control,0,0,40.6,51,No bed net,40.6
+Complier,Control,0,1,41.5,60.2,No bed net,41.5
+Complier,Treatment,0,1,45.7,42.5,Bed net,42.5
+Complier,Treatment,0,1,41.3,53.8,Bed net,53.8
+Complier,Control,0,1,41.9,71.5,No bed net,41.9
+Complier,Treatment,0,1,35.5,44.3,Bed net,44.3
+Never taker,Treatment,0,0,55.6,53.1,No bed net,55.6
+Complier,Control,0,1,45.4,38,No bed net,45.4
+Never taker,Treatment,0,0,17.7,17.6,No bed net,17.7
+Complier,Treatment,0,1,43,43.5,Bed net,43.5
+Complier,Treatment,0,1,33.3,38.6,Bed net,38.6
+Complier,Treatment,0,1,33.9,55.2,Bed net,55.2
+Always taker,Treatment,1,1,65,61.2,Bed net,61.2
+Always taker,Treatment,1,1,53,39.4,Bed net,39.4
+Never taker,Control,0,0,29.5,28,No bed net,29.5
+Always taker,Treatment,1,1,61.4,46.7,Bed net,46.7
+Complier,Control,0,1,20.6,71,No bed net,20.6
+Complier,Treatment,0,1,40.7,64,Bed net,64
+Complier,Treatment,0,1,43,64,Bed net,64
+Never taker,Treatment,0,0,43,37.3,No bed net,43
+Complier,Treatment,0,1,37.6,73.6,Bed net,73.6
+Complier,Control,0,1,41.9,63.3,No bed net,41.9
+Always taker,Treatment,1,1,54.3,64.5,Bed net,64.5
+Never taker,Control,0,0,35.4,22.1,No bed net,35.4
+Never taker,Treatment,0,0,29.2,54.6,No bed net,29.2
+Always taker,Control,1,1,56.4,59.1,Bed net,59.1
+Never taker,Treatment,0,0,40.3,27.8,No bed net,40.3
+Never taker,Control,0,0,63.1,14.1,No bed net,63.1
+Complier,Treatment,0,1,36.4,52.4,Bed net,52.4
+Never taker,Treatment,0,0,32.2,46.5,No bed net,32.2
+Never taker,Treatment,0,0,34.2,40,No bed net,34.2
+Complier,Treatment,0,1,36.2,45,Bed net,45
+Complier,Control,0,1,46.8,40.4,No bed net,46.8
+Complier,Treatment,0,1,30.4,51.3,Bed net,51.3
+Always taker,Control,1,1,56.8,58.4,Bed net,58.4
+Never taker,Treatment,0,0,32.8,16.1,No bed net,32.8
+Complier,Treatment,0,1,38.8,55.6,Bed net,55.6
+Never taker,Treatment,0,0,52.7,30.2,No bed net,52.7
+Always taker,Control,1,1,63.3,75.8,Bed net,75.8
+Complier,Treatment,0,1,29.9,84.6,Bed net,84.6
+Complier,Control,0,1,43.6,45.6,No bed net,43.6
+Always taker,Treatment,1,1,66,68.6,Bed net,68.6
+Always taker,Treatment,1,1,51,59.3,Bed net,59.3
+Complier,Control,0,1,23.1,51.3,No bed net,23.1
+Complier,Treatment,0,1,34,77.8,Bed net,77.8
+Always taker,Treatment,1,1,46.6,58.7,Bed net,58.7
+Complier,Control,0,1,46.3,57.1,No bed net,46.3
+Always taker,Treatment,1,1,45,53.6,Bed net,53.6
+Complier,Treatment,0,1,39,79.7,Bed net,79.7
+Complier,Treatment,0,1,43.5,50.1,Bed net,50.1
+Never taker,Control,0,0,28.6,33.5,No bed net,28.6
+Never taker,Control,0,0,33.9,28.7,No bed net,33.9
+Complier,Treatment,0,1,49.6,81.4,Bed net,81.4
+Always taker,Treatment,1,1,71.4,63.4,Bed net,63.4
+Always taker,Treatment,1,1,42.8,68.2,Bed net,68.2
+Complier,Treatment,0,1,29.7,78.2,Bed net,78.2
+Complier,Control,0,1,33.3,53.5,No bed net,33.3
+Never taker,Control,0,0,47.2,36.6,No bed net,47.2
+Complier,Control,0,1,31.5,41.3,No bed net,31.5
+Complier,Treatment,0,1,37.8,67.7,Bed net,67.7
+Never taker,Treatment,0,0,49.1,52.5,No bed net,49.1
+Never taker,Treatment,0,0,37.2,31.7,No bed net,37.2
+Always taker,Treatment,1,1,68.9,64.8,Bed net,64.8
+Never taker,Treatment,0,0,18.1,42.7,No bed net,18.1
+Complier,Control,0,1,27.1,60.6,No bed net,27.1
+Never taker,Control,0,0,34.5,53.6,No bed net,34.5
+Never taker,Treatment,0,0,39.9,23.7,No bed net,39.9
+Complier,Control,0,1,29.1,52.6,No bed net,29.1
+Never taker,Control,0,0,54,43.7,No bed net,54
+Complier,Treatment,0,1,45.5,57.6,Bed net,57.6
+Complier,Treatment,0,1,41.1,70.3,Bed net,70.3
+Never taker,Control,0,0,25.8,35.6,No bed net,25.8
+Never taker,Treatment,0,0,32.7,21.9,No bed net,32.7
+Never taker,Treatment,0,0,27.2,59,No bed net,27.2
+Always taker,Treatment,1,1,59.7,43,Bed net,43
+Never taker,Treatment,0,0,32.6,52.8,No bed net,32.6
+Always taker,Treatment,1,1,63.3,88.8,Bed net,88.8
+Complier,Treatment,0,1,48.7,63.3,Bed net,63.3
+Complier,Treatment,0,1,34.2,38.7,Bed net,38.7
+Complier,Control,0,1,41.3,54.2,No bed net,41.3
+Never taker,Treatment,0,0,37.7,41.5,No bed net,37.7
+Complier,Control,0,1,39.7,62.5,No bed net,39.7
+Complier,Control,0,1,25.5,70.2,No bed net,25.5
+Complier,Treatment,0,1,44.4,67.3,Bed net,67.3
+Never taker,Control,0,0,21,43,No bed net,21
+Never taker,Treatment,0,0,27.7,41.6,No bed net,27.7
+Never taker,Control,0,0,13.7,57.3,No bed net,13.7
+Complier,Control,0,1,25.7,67,No bed net,25.7
+Complier,Control,0,1,38.5,48,No bed net,38.5
+Complier,Treatment,0,1,37.3,93.5,Bed net,93.5
+Never taker,Treatment,0,0,41.4,3.6,No bed net,41.4
+Complier,Control,0,1,31.1,27.6,No bed net,31.1
+Complier,Control,0,1,29.5,76.3,No bed net,29.5
+Always taker,Treatment,1,1,57.8,34.6,Bed net,34.6
+Never taker,Control,0,0,38.1,31.8,No bed net,38.1
+Complier,Treatment,0,1,30.4,44.3,Bed net,44.3
+Never taker,Treatment,0,0,16.1,49.5,No bed net,16.1
+Complier,Treatment,0,1,30.7,27.3,Bed net,27.3
+Never taker,Control,0,0,37,42.2,No bed net,37
+Complier,Control,0,1,32.4,63.4,No bed net,32.4
+Complier,Control,0,1,37.9,52.4,No bed net,37.9
+Complier,Treatment,0,1,38.8,43.3,Bed net,43.3
+Always taker,Control,1,1,61.2,66.3,Bed net,66.3
+Always taker,Control,1,1,42.7,70.8,Bed net,70.8
+Never taker,Control,0,0,14.4,24,No bed net,14.4
+Complier,Treatment,0,1,46.8,49.6,Bed net,49.6
+Always taker,Control,1,1,39.8,68.2,Bed net,68.2
+Complier,Control,0,1,39.7,28.5,No bed net,39.7
+Always taker,Control,1,1,58.9,55.9,Bed net,55.9
+Never taker,Treatment,0,0,32.5,38.8,No bed net,32.5
+Complier,Treatment,0,1,30.1,76.3,Bed net,76.3
+Never taker,Control,0,0,48.7,35.7,No bed net,48.7
+Always taker,Control,1,1,60.3,44.7,Bed net,44.7
+Always taker,Treatment,1,1,46.3,58.7,Bed net,58.7
+Complier,Control,0,1,53.1,73.2,No bed net,53.1
+Never taker,Treatment,0,0,42.7,56.9,No bed net,42.7
+Complier,Control,0,1,33.8,62.6,No bed net,33.8
+Complier,Control,0,1,34.9,56,No bed net,34.9
+Never taker,Treatment,0,0,51.9,40.6,No bed net,51.9
+Complier,Treatment,0,1,38.4,60.4,Bed net,60.4
+Never taker,Control,0,0,27.5,47.1,No bed net,27.5
+Always taker,Control,1,1,41.6,39.9,Bed net,39.9
+Never taker,Control,0,0,54.7,33.7,No bed net,54.7
+Never taker,Treatment,0,0,42.4,46.3,No bed net,42.4
+Always taker,Treatment,1,1,46.2,65.7,Bed net,65.7
+Complier,Treatment,0,1,44.5,44.6,Bed net,44.6
+Always taker,Control,1,1,51.4,67.3,Bed net,67.3
+Never taker,Control,0,0,32.8,51.1,No bed net,32.8
+Never taker,Control,0,0,47.1,40.8,No bed net,47.1
+Complier,Treatment,0,1,37.3,33.5,Bed net,33.5
+Never taker,Treatment,0,0,43.7,24.6,No bed net,43.7
+Never taker,Treatment,0,0,18,45.9,No bed net,18
+Complier,Treatment,0,1,38.9,93.7,Bed net,93.7
+Complier,Control,0,1,32.3,45.6,No bed net,32.3
+Complier,Treatment,0,1,30,39.6,Bed net,39.6
+Never taker,Control,0,0,43.1,34.5,No bed net,43.1
+Always taker,Control,1,1,41,42.3,Bed net,42.3
+Complier,Control,0,1,42.4,55.7,No bed net,42.4
+Complier,Control,0,1,26.2,60,No bed net,26.2
+Complier,Treatment,0,1,39.1,43.9,Bed net,43.9
+Complier,Treatment,0,1,34.4,63.1,Bed net,63.1
+Never taker,Control,0,0,63.4,35.1,No bed net,63.4
+Complier,Control,0,1,32.8,67.1,No bed net,32.8
+Always taker,Control,1,1,68.7,69.2,Bed net,69.2
+Never taker,Control,0,0,34.7,48.5,No bed net,34.7
+Complier,Treatment,0,1,41.1,43.4,Bed net,43.4
+Complier,Control,0,1,45.4,45.4,No bed net,45.4
+Always taker,Treatment,1,1,60.7,52.5,Bed net,52.5
+Always taker,Control,1,1,55.5,54.6,Bed net,54.6
+Always taker,Treatment,1,1,42.7,35.6,Bed net,35.6
+Always taker,Control,1,1,47,51,Bed net,51
+Never taker,Treatment,0,0,40.7,29.9,No bed net,40.7
+Never taker,Control,0,0,34.1,41.6,No bed net,34.1
+Complier,Treatment,0,1,35.3,47.4,Bed net,47.4
+Never taker,Treatment,0,0,19.8,6.7,No bed net,19.8
+Always taker,Control,1,1,62.5,48.7,Bed net,48.7
+Always taker,Control,1,1,54.9,56.6,Bed net,56.6
+Complier,Treatment,0,1,16,41.1,Bed net,41.1
+Never taker,Control,0,0,26,39.4,No bed net,26
+Complier,Control,0,1,49.5,26.1,No bed net,49.5
+Always taker,Control,1,1,55,63,Bed net,63
+Never taker,Control,0,0,48.7,42.3,No bed net,48.7
+Always taker,Treatment,1,1,53.5,66,Bed net,66
+Complier,Control,0,1,30.5,50.5,No bed net,30.5
+Always taker,Treatment,1,1,67,53.3,Bed net,53.3
+Never taker,Control,0,0,37.2,28.6,No bed net,37.2
+Always taker,Treatment,1,1,52.6,66.7,Bed net,66.7
+Complier,Treatment,0,1,41.6,40.5,Bed net,40.5
+Complier,Control,0,1,48.2,57.2,No bed net,48.2
+Never taker,Treatment,0,0,40.8,26.1,No bed net,40.8
+Never taker,Control,0,0,20.5,47.6,No bed net,20.5
+Complier,Treatment,0,1,20,61.1,Bed net,61.1
+Always taker,Control,1,1,49.9,69.4,Bed net,69.4
+Never taker,Control,0,0,26,27,No bed net,26
+Complier,Control,0,1,30.5,50,No bed net,30.5
+Complier,Treatment,0,1,48.7,60.6,Bed net,60.6
+Never taker,Control,0,0,22.3,37.5,No bed net,22.3
+Never taker,Treatment,0,0,33.2,17,No bed net,33.2
+Complier,Treatment,0,1,47.9,32.7,Bed net,32.7
+Complier,Treatment,0,1,42.6,27.1,Bed net,27.1
+Always taker,Treatment,1,1,54.9,39.4,Bed net,39.4
+Always taker,Treatment,1,1,53.5,69.3,Bed net,69.3
+Never taker,Control,0,0,22.5,53.3,No bed net,22.5
+Complier,Treatment,0,1,48.4,56.8,Bed net,56.8
+Never taker,Treatment,0,0,38,27.3,No bed net,38
+Never taker,Control,0,0,49.9,52.2,No bed net,49.9
+Never taker,Control,0,0,44.2,40.9,No bed net,44.2
+Never taker,Treatment,0,0,54,55.9,No bed net,54
+Always taker,Treatment,1,1,73,57.2,Bed net,57.2
+Always taker,Control,1,1,44.1,44,Bed net,44
+Complier,Treatment,0,1,31.6,65.5,Bed net,65.5
+Always taker,Control,1,1,79.5,47.3,Bed net,47.3
+Always taker,Control,1,1,52.1,71.5,Bed net,71.5
+Never taker,Treatment,0,0,42.2,36.9,No bed net,42.2
+Complier,Treatment,0,1,48,31.4,Bed net,31.4
+Never taker,Control,0,0,40.5,21.9,No bed net,40.5
+Complier,Treatment,0,1,20,65.6,Bed net,65.6
+Complier,Treatment,0,1,36.8,36,Bed net,36
+Complier,Control,0,1,39.3,52.4,No bed net,39.3
+Complier,Treatment,0,1,48.6,34.3,Bed net,34.3
+Never taker,Treatment,0,0,28.7,21.8,No bed net,28.7
+Never taker,Treatment,0,0,39.2,40.5,No bed net,39.2
+Never taker,Treatment,0,0,45.7,41.6,No bed net,45.7
+Never taker,Treatment,0,0,42.8,30,No bed net,42.8
+Complier,Treatment,0,1,30.1,56.9,Bed net,56.9
+Complier,Treatment,0,1,30.1,52.6,Bed net,52.6
+Never taker,Treatment,0,0,41.5,46,No bed net,41.5
+Always taker,Treatment,1,1,45.4,72.8,Bed net,72.8
+Never taker,Treatment,0,0,26.6,26.2,No bed net,26.6
+Complier,Control,0,1,42.5,54.1,No bed net,42.5
+Never taker,Control,0,0,18.3,60.4,No bed net,18.3
+Never taker,Treatment,0,0,12.8,36.1,No bed net,12.8
+Always taker,Treatment,1,1,51.8,48.4,Bed net,48.4
+Never taker,Treatment,0,0,19.7,28.8,No bed net,19.7
+Never taker,Control,0,0,39.5,34.6,No bed net,39.5
+Always taker,Control,1,1,58.5,39.3,Bed net,39.3
+Never taker,Control,0,0,29.7,37,No bed net,29.7
+Never taker,Control,0,0,33,38.7,No bed net,33
+Complier,Treatment,0,1,35,42,Bed net,42
+Complier,Treatment,0,1,51.8,51.9,Bed net,51.9
+Complier,Control,0,1,34.4,58.9,No bed net,34.4
+Always taker,Control,1,1,64,53.3,Bed net,53.3
+Never taker,Treatment,0,0,29.7,58,No bed net,29.7
+Complier,Treatment,0,1,54.8,20.8,Bed net,20.8
+Always taker,Treatment,1,1,50.8,54.9,Bed net,54.9
+Never taker,Control,0,0,45.2,34.2,No bed net,45.2
+Always taker,Control,1,1,65.6,47.9,Bed net,47.9
+Complier,Treatment,0,1,39.6,55.6,Bed net,55.6
+Always taker,Control,1,1,57.9,40.4,Bed net,40.4
+Never taker,Treatment,0,0,26.6,23.5,No bed net,26.6
+Complier,Control,0,1,44.3,45.7,No bed net,44.3
+Always taker,Control,1,1,47.7,46.2,Bed net,46.2
+Complier,Control,0,1,54.1,41.8,No bed net,54.1
+Complier,Control,0,1,33.8,57.3,No bed net,33.8
+Complier,Control,0,1,34.6,51.2,No bed net,34.6
+Always taker,Control,1,1,76.5,50.3,Bed net,50.3
+Always taker,Control,1,1,64.8,46.7,Bed net,46.7
+Never taker,Treatment,0,0,39.9,56.5,No bed net,39.9
+Always taker,Control,1,1,64.4,66.4,Bed net,66.4
+Never taker,Control,0,0,25.8,27.4,No bed net,25.8
+Never taker,Control,0,0,30.5,20.1,No bed net,30.5
+Complier,Control,0,1,53.5,61,No bed net,53.5
+Never taker,Treatment,0,0,41.9,50.4,No bed net,41.9
+Complier,Treatment,0,1,38.3,47.7,Bed net,47.7
+Always taker,Control,1,1,50.1,44,Bed net,44
+Never taker,Control,0,0,44.2,42.8,No bed net,44.2
+Never taker,Treatment,0,0,29.4,34.1,No bed net,29.4
+Never taker,Treatment,0,0,45.6,49.8,No bed net,45.6
+Always taker,Control,1,1,50.5,51.9,Bed net,51.9
+Complier,Treatment,0,1,32,62.7,Bed net,62.7
+Always taker,Treatment,1,1,52.8,31.4,Bed net,31.4
+Never taker,Treatment,0,0,44.5,29.3,No bed net,44.5
+Complier,Control,0,1,38.6,71.3,No bed net,38.6
+Always taker,Treatment,1,1,64.5,56.3,Bed net,56.3
+Complier,Control,0,1,49.8,34.8,No bed net,49.8
+Never taker,Control,0,0,59.6,11.7,No bed net,59.6
+Complier,Control,0,1,40.4,75.6,No bed net,40.4
+Always taker,Control,1,1,60.9,37,Bed net,37
+Never taker,Control,0,0,41.4,34,No bed net,41.4
+Never taker,Treatment,0,0,32.9,21.2,No bed net,32.9
+Always taker,Control,1,1,54.8,61.4,Bed net,61.4
+Complier,Treatment,0,1,41.1,36,Bed net,36
+Always taker,Control,1,1,40.4,51.5,Bed net,51.5
+Always taker,Treatment,1,1,57.6,81.2,Bed net,81.2
+Never taker,Control,0,0,34.6,51.2,No bed net,34.6
+Never taker,Treatment,0,0,37.1,24.5,No bed net,37.1
+Complier,Control,0,1,20.4,66.4,No bed net,20.4
+Complier,Control,0,1,48.5,54.5,No bed net,48.5
+Never taker,Control,0,0,48.6,51.3,No bed net,48.6
+Complier,Treatment,0,1,33.4,72.9,Bed net,72.9
+Complier,Control,0,1,30.4,61.1,No bed net,30.4
+Never taker,Treatment,0,0,17.7,18.2,No bed net,17.7
+Always taker,Treatment,1,1,52.4,54.6,Bed net,54.6
+Never taker,Control,0,0,49.7,70.2,No bed net,49.7
+Never taker,Treatment,0,0,35.6,18.5,No bed net,35.6
+Always taker,Treatment,1,1,47.1,53.1,Bed net,53.1
+Always taker,Control,1,1,40.5,63.1,Bed net,63.1
+Complier,Control,0,1,46.9,53.8,No bed net,46.9
+Always taker,Treatment,1,1,57.9,31.1,Bed net,31.1
+Never taker,Treatment,0,0,19.7,53.7,No bed net,19.7
+Always taker,Control,1,1,47.4,59.9,Bed net,59.9
+Complier,Treatment,0,1,22,68.3,Bed net,68.3
+Never taker,Treatment,0,0,25,25.3,No bed net,25
+Complier,Treatment,0,1,38,69.1,Bed net,69.1
+Never taker,Treatment,0,0,44.4,34,No bed net,44.4
+Always taker,Control,1,1,42.9,62.4,Bed net,62.4
+Never taker,Treatment,0,0,27.2,42.7,No bed net,27.2
+Always taker,Control,1,1,63.7,55,Bed net,55
+Never taker,Treatment,0,0,28.7,35.1,No bed net,28.7
+Complier,Control,0,1,36.3,74.9,No bed net,36.3
+Complier,Treatment,0,1,48.8,44.4,Bed net,44.4
+Always taker,Treatment,1,1,67.5,55.4,Bed net,55.4
+Complier,Treatment,0,1,31.3,51.8,Bed net,51.8
+Never taker,Treatment,0,0,42,36,No bed net,42
+Complier,Control,0,1,39.3,48.3,No bed net,39.3
+Never taker,Control,0,0,39.3,56.1,No bed net,39.3
+Never taker,Treatment,0,0,11.1,34,No bed net,11.1
+Never taker,Treatment,0,0,26.5,40.1,No bed net,26.5
+Complier,Treatment,0,1,19.6,48.6,Bed net,48.6
+Never taker,Treatment,0,0,33.9,37,No bed net,33.9
+Complier,Control,0,1,39.5,64.6,No bed net,39.5
+Never taker,Treatment,0,0,47.7,54.9,No bed net,47.7
+Complier,Control,0,1,41.2,59.1,No bed net,41.2
+Complier,Treatment,0,1,29.6,35.8,Bed net,35.8
+Complier,Control,0,1,40.2,46.3,No bed net,40.2
+Never taker,Treatment,0,0,43.8,36.6,No bed net,43.8
+Never taker,Control,0,0,31.5,28.5,No bed net,31.5
+Complier,Treatment,0,1,36.3,45.5,Bed net,45.5
+Complier,Control,0,1,25.2,53,No bed net,25.2
+Never taker,Treatment,0,0,34.7,24.7,No bed net,34.7
+Complier,Control,0,1,43.1,46.4,No bed net,43.1
+Complier,Treatment,0,1,28.5,61,Bed net,61
+Always taker,Control,1,1,58.9,51.9,Bed net,51.9
+Always taker,Treatment,1,1,54.3,66,Bed net,66
+Never taker,Control,0,0,41.1,36.6,No bed net,41.1
+Never taker,Control,0,0,32.8,67.7,No bed net,32.8
+Never taker,Control,0,0,18.6,19.4,No bed net,18.6
+Complier,Treatment,0,1,31.4,46.9,Bed net,46.9
+Never taker,Treatment,0,0,11.2,30.4,No bed net,11.2
+Always taker,Control,1,1,71,54.4,Bed net,54.4
+Never taker,Treatment,0,0,21.5,29.4,No bed net,21.5
+Always taker,Control,1,1,62.6,52.8,Bed net,52.8
+Never taker,Control,0,0,35,23.8,No bed net,35
+Always taker,Treatment,1,1,55.4,44.7,Bed net,44.7
+Never taker,Treatment,0,0,28.3,25,No bed net,28.3
+Complier,Treatment,0,1,40.7,54.8,Bed net,54.8
+Always taker,Treatment,1,1,42.6,50.1,Bed net,50.1
+Complier,Treatment,0,1,36.3,45.1,Bed net,45.1
+Never taker,Control,0,0,30.4,33.9,No bed net,30.4
+Never taker,Control,0,0,44.8,44.1,No bed net,44.8
+Always taker,Control,1,1,39.9,53.5,Bed net,53.5
+Always taker,Control,1,1,47.3,48.4,Bed net,48.4
+Never taker,Control,0,0,36.5,35,No bed net,36.5
+Never taker,Treatment,0,0,13.9,47.4,No bed net,13.9
+Complier,Treatment,0,1,42.8,64.9,Bed net,64.9
+Complier,Control,0,1,28.3,66.6,No bed net,28.3
+Complier,Treatment,0,1,45.2,41.3,Bed net,41.3
+Complier,Control,0,1,54.2,44.8,No bed net,54.2
+Always taker,Treatment,1,1,60.8,54.2,Bed net,54.2
+Always taker,Treatment,1,1,58,65.2,Bed net,65.2
+Always taker,Control,1,1,63.6,73.8,Bed net,73.8
+Never taker,Control,0,0,30.4,37.2,No bed net,30.4
+Never taker,Control,0,0,27.3,56.5,No bed net,27.3
+Never taker,Treatment,0,0,10.5,28.1,No bed net,10.5
+Never taker,Control,0,0,37.6,24.3,No bed net,37.6
+Complier,Treatment,0,1,47.9,53.4,Bed net,53.4
+Never taker,Treatment,0,0,33.1,32.1,No bed net,33.1
+Complier,Treatment,0,1,29.1,42.3,Bed net,42.3
+Complier,Treatment,0,1,41.4,19.6,Bed net,19.6
+Never taker,Control,0,0,34.7,55,No bed net,34.7
+Complier,Treatment,0,1,27.8,65.1,Bed net,65.1
+Complier,Control,0,1,42.1,53.5,No bed net,42.1
+Complier,Treatment,0,1,39.4,59.8,Bed net,59.8
+Never taker,Treatment,0,0,36.7,49.8,No bed net,36.7
+Always taker,Control,1,1,56.7,45.4,Bed net,45.4
+Never taker,Control,0,0,13.8,24.2,No bed net,13.8
+Always taker,Control,1,1,43.7,57.3,Bed net,57.3
+Complier,Treatment,0,1,44.9,55.7,Bed net,55.7
+Always taker,Treatment,1,1,58,56,Bed net,56
+Never taker,Control,0,0,49,45.8,No bed net,49
+Complier,Treatment,0,1,31.7,54.6,Bed net,54.6
+Never taker,Control,0,0,20.7,22.5,No bed net,20.7
+Complier,Treatment,0,1,38.3,53.6,Bed net,53.6
+Never taker,Treatment,0,0,18.2,47.3,No bed net,18.2
+Complier,Treatment,0,1,37.1,78.1,Bed net,78.1
+Never taker,Treatment,0,0,45.1,23.2,No bed net,45.1
+Complier,Control,0,1,19.7,54.7,No bed net,19.7
+Always taker,Control,1,1,42.7,62.2,Bed net,62.2
+Complier,Treatment,0,1,44.5,47.6,Bed net,47.6
+Complier,Treatment,0,1,33.1,38.9,Bed net,38.9
+Never taker,Control,0,0,41.8,23.4,No bed net,41.8
+Always taker,Treatment,1,1,61,39.1,Bed net,39.1
+Always taker,Treatment,1,1,40.1,60.5,Bed net,60.5
+Always taker,Control,1,1,40.3,62.3,Bed net,62.3
+Never taker,Control,0,0,43.4,44.7,No bed net,43.4
+Complier,Treatment,0,1,41.8,64.7,Bed net,64.7
+Complier,Treatment,0,1,36.8,43.8,Bed net,43.8
+Never taker,Control,0,0,17.3,34.4,No bed net,17.3
+Never taker,Treatment,0,0,46,35.4,No bed net,46
+Complier,Control,0,1,35.7,39.4,No bed net,35.7
+Never taker,Treatment,0,0,37.6,16.9,No bed net,37.6
+Always taker,Treatment,1,1,68,49.8,Bed net,49.8
+Never taker,Treatment,0,0,54.8,36.2,No bed net,54.8
+Never taker,Control,0,0,33.7,31.8,No bed net,33.7
+Never taker,Control,0,0,40.9,32.9,No bed net,40.9
+Never taker,Treatment,0,0,29.4,32.8,No bed net,29.4
+Complier,Control,0,1,29.4,42.8,No bed net,29.4
+Always taker,Control,1,1,46,58.2,Bed net,58.2
+Never taker,Treatment,0,0,24.3,34.8,No bed net,24.3
+Complier,Treatment,0,1,43.1,39.5,Bed net,39.5
+Never taker,Control,0,0,32.3,24.3,No bed net,32.3
+Complier,Control,0,1,43.8,55.8,No bed net,43.8
+Never taker,Treatment,0,0,17.5,40,No bed net,17.5
+Complier,Control,0,1,41.3,55.3,No bed net,41.3
+Complier,Treatment,0,1,30.2,28.7,Bed net,28.7
+Complier,Control,0,1,35.9,33.5,No bed net,35.9
+Never taker,Treatment,0,0,50.6,44.3,No bed net,50.6
+Complier,Control,0,1,46.4,58.2,No bed net,46.4
+Always taker,Treatment,1,1,55.5,60.1,Bed net,60.1
+Never taker,Control,0,0,22.7,30.8,No bed net,22.7
+Always taker,Treatment,1,1,50.6,58.6,Bed net,58.6
+Never taker,Control,0,0,43.6,48.1,No bed net,43.6
+Always taker,Treatment,1,1,41.7,84.7,Bed net,84.7
+Complier,Control,0,1,41,60.8,No bed net,41
+Never taker,Control,0,0,55.1,24.5,No bed net,55.1
+Never taker,Treatment,0,0,40.9,26.4,No bed net,40.9
+Complier,Treatment,0,1,35.5,39.4,Bed net,39.4
+Never taker,Control,0,0,37.3,23.8,No bed net,37.3
+Complier,Control,0,1,29.3,53.3,No bed net,29.3
+Complier,Treatment,0,1,34.9,77.1,Bed net,77.1
+Complier,Treatment,0,1,33.1,57.8,Bed net,57.8
+Complier,Treatment,0,1,43.9,58.6,Bed net,58.6
+Never taker,Treatment,0,0,41.5,38.3,No bed net,41.5
+Always taker,Treatment,1,1,51.2,52.2,Bed net,52.2
+Complier,Treatment,0,1,28.8,50.3,Bed net,50.3
+Never taker,Treatment,0,0,40.3,39,No bed net,40.3
+Never taker,Treatment,0,0,15.9,45.1,No bed net,15.9
+Never taker,Treatment,0,0,30.5,35.1,No bed net,30.5
+Always taker,Treatment,1,1,50.9,65.3,Bed net,65.3
+Complier,Treatment,0,1,35,31.7,Bed net,31.7
+Complier,Treatment,0,1,50,69,Bed net,69
+Never taker,Treatment,0,0,24.3,11.9,No bed net,24.3
+Never taker,Treatment,0,0,37.7,34.3,No bed net,37.7
+Never taker,Control,0,0,17.7,40.6,No bed net,17.7
+Never taker,Control,0,0,36.3,37,No bed net,36.3
+Never taker,Treatment,0,0,23.9,39.9,No bed net,23.9
+Complier,Control,0,1,37.1,52.3,No bed net,37.1
+Never taker,Treatment,0,0,25.5,15.2,No bed net,25.5
+Never taker,Treatment,0,0,59.3,31.8,No bed net,59.3
+Never taker,Control,0,0,30.1,27.1,No bed net,30.1
+Complier,Control,0,1,27,55.8,No bed net,27
+Never taker,Treatment,0,0,29.7,34,No bed net,29.7
+Always taker,Treatment,1,1,51.6,41.1,Bed net,41.1
+Always taker,Treatment,1,1,52.5,45.2,Bed net,45.2
+Always taker,Treatment,1,1,62.4,59.4,Bed net,59.4
+Never taker,Control,0,0,34.1,16.7,No bed net,34.1
+Complier,Control,0,1,43.1,55.4,No bed net,43.1
+Complier,Treatment,0,1,35.8,77.3,Bed net,77.3
+Never taker,Treatment,0,0,41.3,44.2,No bed net,41.3
+Complier,Treatment,0,1,26.9,35.4,Bed net,35.4
+Complier,Control,0,1,23.3,54.3,No bed net,23.3
+Never taker,Control,0,0,49.3,26.3,No bed net,49.3
+Complier,Treatment,0,1,38.6,74.7,Bed net,74.7
+Complier,Control,0,1,41.8,61.6,No bed net,41.8
+Never taker,Treatment,0,0,14.6,40.9,No bed net,14.6
+Complier,Treatment,0,1,32.6,56.8,Bed net,56.8
+Always taker,Control,1,1,60.5,57.1,Bed net,57.1
+Complier,Treatment,0,1,28.2,49.5,Bed net,49.5
+Always taker,Control,1,1,71.3,56.5,Bed net,56.5
+Complier,Control,0,1,29.5,60.8,No bed net,29.5
+Complier,Control,0,1,43.6,46.8,No bed net,43.6
+Complier,Control,0,1,44.3,44.9,No bed net,44.3
+Always taker,Treatment,1,1,55.8,57.2,Bed net,57.2
+Always taker,Control,1,1,60.3,41.3,Bed net,41.3
+Never taker,Control,0,0,39.6,36,No bed net,39.6
+Complier,Treatment,0,1,49.9,67.1,Bed net,67.1
+Complier,Treatment,0,1,39,86.4,Bed net,86.4
+Never taker,Control,0,0,39.5,28,No bed net,39.5
+Never taker,Treatment,0,0,49.6,34.4,No bed net,49.6
+Complier,Treatment,0,1,43,76,Bed net,76
+Always taker,Control,1,1,63.6,65.2,Bed net,65.2
+Never taker,Treatment,0,0,46.8,44,No bed net,46.8
+Complier,Treatment,0,1,32.4,67.6,Bed net,67.6
+Never taker,Treatment,0,0,32.6,45.4,No bed net,32.6
+Complier,Control,0,1,32.1,64.8,No bed net,32.1
+Never taker,Treatment,0,0,34.7,44.6,No bed net,34.7
+Always taker,Treatment,1,1,50.5,52.9,Bed net,52.9
+Never taker,Treatment,0,0,32.5,28.6,No bed net,32.5
+Always taker,Control,1,1,44.1,65.5,Bed net,65.5
+Never taker,Control,0,0,31.5,32.5,No bed net,31.5
+Complier,Control,0,1,21.9,90.4,No bed net,21.9
+Always taker,Control,1,1,71.4,58,Bed net,58
+Always taker,Control,1,1,68.8,42.4,Bed net,42.4
+Always taker,Treatment,1,1,48.4,55.4,Bed net,55.4
+Never taker,Treatment,0,0,24.7,50.3,No bed net,24.7
+Complier,Treatment,0,1,38,59.2,Bed net,59.2
+Never taker,Treatment,0,0,26.5,41.9,No bed net,26.5
+Never taker,Control,0,0,39.7,14.5,No bed net,39.7
+Never taker,Control,0,0,25.2,40.1,No bed net,25.2
+Complier,Treatment,0,1,48.6,43.2,Bed net,43.2
+Complier,Treatment,0,1,45.8,69.8,Bed net,69.8
+Complier,Control,0,1,17.5,43.5,No bed net,17.5
+Never taker,Control,0,0,18.1,46.5,No bed net,18.1
+Complier,Treatment,0,1,34.1,74.5,Bed net,74.5
+Complier,Control,0,1,41,59.2,No bed net,41
+Complier,Control,0,1,42.4,65.1,No bed net,42.4
+Always taker,Control,1,1,55.3,55.2,Bed net,55.2
+Never taker,Control,0,0,21.6,41.4,No bed net,21.6
+Never taker,Treatment,0,0,28,36.8,No bed net,28
+Never taker,Control,0,0,54.7,19.4,No bed net,54.7
+Never taker,Treatment,0,0,43.4,39,No bed net,43.4
+Always taker,Control,1,1,51.1,53.8,Bed net,53.8
+Complier,Treatment,0,1,32.3,76,Bed net,76
+Complier,Treatment,0,1,27.9,55.6,Bed net,55.6
+Never taker,Control,0,0,48.4,55.2,No bed net,48.4
+Never taker,Treatment,0,0,35.9,36.5,No bed net,35.9
+Never taker,Treatment,0,0,32.6,36.6,No bed net,32.6
+Complier,Control,0,1,33.4,60.5,No bed net,33.4
+Complier,Control,0,1,43.7,36.5,No bed net,43.7
+Always taker,Treatment,1,1,57.8,52.3,Bed net,52.3
+Always taker,Treatment,1,1,50.6,48.7,Bed net,48.7
+Complier,Treatment,0,1,33.7,49.7,Bed net,49.7
+Complier,Treatment,0,1,28.8,57.5,Bed net,57.5
+Always taker,Control,1,1,48.8,53.4,Bed net,53.4
+Complier,Control,0,1,39.6,51.8,No bed net,39.6
+Always taker,Control,1,1,49.3,63.7,Bed net,63.7
+Never taker,Treatment,0,0,39.8,35.2,No bed net,39.8
+Never taker,Control,0,0,21.3,46.6,No bed net,21.3
+Never taker,Treatment,0,0,36.9,33.3,No bed net,36.9
+Complier,Control,0,1,36.1,49.1,No bed net,36.1
+Never taker,Treatment,0,0,50.4,37.8,No bed net,50.4
+Never taker,Treatment,0,0,46.6,14.6,No bed net,46.6
+Complier,Treatment,0,1,33.4,63.5,Bed net,63.5
+Never taker,Treatment,0,0,51.6,39.1,No bed net,51.6
+Never taker,Treatment,0,0,46.2,34.7,No bed net,46.2
+Never taker,Control,0,0,29.5,59.3,No bed net,29.5
+Never taker,Treatment,0,0,32.1,32.3,No bed net,32.1
+Complier,Control,0,1,42.8,66.1,No bed net,42.8
+Always taker,Control,1,1,57,63.2,Bed net,63.2
+Always taker,Treatment,1,1,53.3,59.8,Bed net,59.8
+Complier,Treatment,0,1,27.4,60.2,Bed net,60.2
+Complier,Control,0,1,46.2,49.9,No bed net,46.2
+Complier,Control,0,1,41.3,67.8,No bed net,41.3
+Never taker,Treatment,0,0,18.1,35.1,No bed net,18.1
+Never taker,Control,0,0,21.4,36.2,No bed net,21.4
+Complier,Treatment,0,1,23.4,67.4,Bed net,67.4
+Never taker,Control,0,0,28.5,23.4,No bed net,28.5
+Complier,Control,0,1,26.7,69.1,No bed net,26.7
+Complier,Treatment,0,1,43.7,54.8,Bed net,54.8
+Never taker,Control,0,0,53.6,63.9,No bed net,53.6
+Never taker,Treatment,0,0,38.5,36.5,No bed net,38.5
+Never taker,Treatment,0,0,30.7,33.1,No bed net,30.7
+Always taker,Control,1,1,66.4,42.8,Bed net,42.8
+Never taker,Control,0,0,40.9,46.2,No bed net,40.9
+Complier,Control,0,1,27,48.9,No bed net,27
+Never taker,Control,0,0,39,37.6,No bed net,39
+Complier,Control,0,1,28.5,56.6,No bed net,28.5
+Never taker,Treatment,0,0,40.5,49.3,No bed net,40.5
+Complier,Control,0,1,43.1,56,No bed net,43.1
+Never taker,Treatment,0,0,33.2,28.4,No bed net,33.2
+Complier,Treatment,0,1,44.7,47,Bed net,47
+Always taker,Control,1,1,68.1,56.7,Bed net,56.7
+Complier,Treatment,0,1,44.8,33,Bed net,33
+Always taker,Control,1,1,68.7,56.9,Bed net,56.9
+Complier,Treatment,0,1,37,55.2,Bed net,55.2
+Complier,Treatment,0,1,33.6,60.6,Bed net,60.6
+Complier,Control,0,1,44.9,58.2,No bed net,44.9
+Never taker,Control,0,0,30,28.5,No bed net,30
+Never taker,Control,0,0,35,42.6,No bed net,35
+Complier,Control,0,1,25.8,74.6,No bed net,25.8
+Never taker,Control,0,0,44.2,46.7,No bed net,44.2
+Complier,Treatment,0,1,50.4,46.5,Bed net,46.5
+Always taker,Treatment,1,1,60,41.3,Bed net,41.3
+Never taker,Treatment,0,0,34.8,25,No bed net,34.8
+Always taker,Control,1,1,59.6,51.7,Bed net,51.7
+Always taker,Control,1,1,37.7,58.2,Bed net,58.2
+Never taker,Treatment,0,0,42.2,30.1,No bed net,42.2
+Always taker,Treatment,1,1,49.3,59.7,Bed net,59.7
+Complier,Treatment,0,1,32,49.1,Bed net,49.1
+Never taker,Treatment,0,0,28.8,14.5,No bed net,28.8
+Complier,Treatment,0,1,44.2,28.1,Bed net,28.1
+Never taker,Treatment,0,0,36.6,38.1,No bed net,36.6
+Complier,Control,0,1,43.2,34.8,No bed net,43.2
+Always taker,Control,1,1,62.2,64.7,Bed net,64.7
+Complier,Control,0,1,34.5,53.4,No bed net,34.5
+Never taker,Control,0,0,34.5,26.5,No bed net,34.5
+Never taker,Control,0,0,41.1,51.1,No bed net,41.1
+Complier,Treatment,0,1,34.5,54.6,Bed net,54.6
+Never taker,Control,0,0,46,23.7,No bed net,46
+Complier,Control,0,1,37.3,62.2,No bed net,37.3
+Never taker,Control,0,0,21.8,41.3,No bed net,21.8
+Always taker,Control,1,1,49.5,67.8,Bed net,67.8
+Complier,Treatment,0,1,36.3,47,Bed net,47
+Never taker,Control,0,0,30.2,42,No bed net,30.2
+Complier,Control,0,1,42.6,39.3,No bed net,42.6
+Never taker,Control,0,0,33.9,25.9,No bed net,33.9
+Complier,Treatment,0,1,36.2,37.9,Bed net,37.9
+Complier,Treatment,0,1,39.4,71.6,Bed net,71.6
+Never taker,Treatment,0,0,37.4,14.1,No bed net,37.4
+Always taker,Treatment,1,1,34.3,67.4,Bed net,67.4
+Complier,Control,0,1,34.4,53.1,No bed net,34.4
+Complier,Treatment,0,1,46.1,57.5,Bed net,57.5
+Always taker,Control,1,1,48.6,53.4,Bed net,53.4
+Never taker,Control,0,0,68.1,25.4,No bed net,68.1
+Complier,Treatment,0,1,41.5,44.8,Bed net,44.8
+Always taker,Control,1,1,58.8,60.7,Bed net,60.7
+Never taker,Treatment,0,0,17,23.3,No bed net,17
+Never taker,Control,0,0,25.4,27.9,No bed net,25.4
+Always taker,Control,1,1,51.6,65.4,Bed net,65.4
+Never taker,Control,0,0,16,51.7,No bed net,16
+Never taker,Treatment,0,0,43.1,47.6,No bed net,43.1
+Complier,Treatment,0,1,48.5,32.7,Bed net,32.7
+Complier,Control,0,1,36.6,73.3,No bed net,36.6
+Always taker,Treatment,1,1,52.4,60.6,Bed net,60.6
+Never taker,Control,0,0,22.6,44.8,No bed net,22.6
+Complier,Treatment,0,1,51,54,Bed net,54
+Never taker,Treatment,0,0,21.8,40,No bed net,21.8
+Complier,Treatment,0,1,43.6,65.9,Bed net,65.9
+Never taker,Control,0,0,31.3,17.6,No bed net,31.3
+Always taker,Treatment,1,1,58.1,63.1,Bed net,63.1
+Never taker,Treatment,0,0,32.6,12.4,No bed net,32.6
+Always taker,Treatment,1,1,52,60.9,Bed net,60.9
+Complier,Control,0,1,41.8,53,No bed net,41.8
+Never taker,Control,0,0,25.1,36.3,No bed net,25.1
+Never taker,Control,0,0,32.6,24.9,No bed net,32.6
+Complier,Control,0,1,49,40.7,No bed net,49
+Never taker,Control,0,0,46.1,11.9,No bed net,46.1
+Complier,Control,0,1,35.6,62,No bed net,35.6
+Never taker,Treatment,0,0,29.7,41.9,No bed net,29.7
+Always taker,Control,1,1,42.2,56.5,Bed net,56.5
+Always taker,Treatment,1,1,61.3,53.9,Bed net,53.9
+Complier,Control,0,1,32.5,54.2,No bed net,32.5
+Always taker,Treatment,1,1,67.9,74.6,Bed net,74.6
+Never taker,Treatment,0,0,46.4,36.1,No bed net,46.4
+Complier,Control,0,1,45.2,35.8,No bed net,45.2
+Complier,Control,0,1,29.1,49.4,No bed net,29.1
+Never taker,Control,0,0,45.3,41.7,No bed net,45.3
+Complier,Control,0,1,25.3,86.1,No bed net,25.3
+Complier,Treatment,0,1,35.4,56.9,Bed net,56.9
+Complier,Control,0,1,36.2,69.3,No bed net,36.2
+Always taker,Control,1,1,60.5,65,Bed net,65
+Never taker,Control,0,0,44.4,24.1,No bed net,44.4
+Complier,Treatment,0,1,41.2,38.8,Bed net,38.8
+Never taker,Control,0,0,33.8,43,No bed net,33.8
+Always taker,Treatment,1,1,64.7,71.4,Bed net,71.4
+Complier,Treatment,0,1,37.5,52.9,Bed net,52.9
+Never taker,Treatment,0,0,27.8,41.5,No bed net,27.8
+Always taker,Treatment,1,1,59.6,53.1,Bed net,53.1
+Complier,Control,0,1,43.7,54.8,No bed net,43.7
+Never taker,Treatment,0,0,46.5,34.1,No bed net,46.5
+Never taker,Control,0,0,40.4,33.2,No bed net,40.4
+Never taker,Control,0,0,32.4,30.6,No bed net,32.4
+Complier,Treatment,0,1,35.9,58,Bed net,58
+Never taker,Treatment,0,0,32.2,36.4,No bed net,32.2
+Always taker,Control,1,1,58.2,55.9,Bed net,55.9
+Complier,Treatment,0,1,34.9,51.6,Bed net,51.6
+Never taker,Control,0,0,38.5,41.6,No bed net,38.5
+Complier,Treatment,0,1,42.4,51.2,Bed net,51.2
+Complier,Treatment,0,1,24.4,35.7,Bed net,35.7
+Always taker,Control,1,1,56.4,57.3,Bed net,57.3
+Never taker,Treatment,0,0,11.2,64.2,No bed net,11.2
+Always taker,Control,1,1,49,48.2,Bed net,48.2
+Never taker,Control,0,0,43,40.2,No bed net,43
+Complier,Treatment,0,1,45.3,24.6,Bed net,24.6
+Complier,Treatment,0,1,16,49,Bed net,49
+Always taker,Treatment,1,1,53.6,54,Bed net,54
+Complier,Control,0,1,44.8,50.7,No bed net,44.8
+Complier,Treatment,0,1,40,64.2,Bed net,64.2
+Never taker,Control,0,0,41.5,40,No bed net,41.5
+Never taker,Treatment,0,0,14.5,32.8,No bed net,14.5
+Complier,Treatment,0,1,44.4,39.1,Bed net,39.1
+Never taker,Control,0,0,52.2,39.5,No bed net,52.2
+Always taker,Treatment,1,1,44,63.5,Bed net,63.5
+Never taker,Control,0,0,49.1,49,No bed net,49.1
+Never taker,Control,0,0,34.7,13.7,No bed net,34.7
+Complier,Control,0,1,43,8.9,No bed net,43
+Never taker,Control,0,0,43.2,40.3,No bed net,43.2
+Complier,Treatment,0,1,36.1,65.4,Bed net,65.4
+Always taker,Treatment,1,1,55,65.7,Bed net,65.7
+Complier,Control,0,1,31.8,56.6,No bed net,31.8
+Complier,Treatment,0,1,45.8,61.1,Bed net,61.1
+Complier,Control,0,1,56,58.4,No bed net,56
+Complier,Control,0,1,35.6,62.6,No bed net,35.6
+Complier,Treatment,0,1,44.4,70.1,Bed net,70.1
+Never taker,Treatment,0,0,38.4,51.9,No bed net,38.4
+Never taker,Control,0,0,9.2,69.8,No bed net,9.2
+Always taker,Control,1,1,59.4,47.5,Bed net,47.5
+Always taker,Treatment,1,1,63.8,58.9,Bed net,58.9
+Never taker,Treatment,0,0,31.6,38.8,No bed net,31.6
+Complier,Treatment,0,1,35.4,79.8,Bed net,79.8
+Never taker,Control,0,0,34.9,45.6,No bed net,34.9
+Never taker,Control,0,0,29.2,33.5,No bed net,29.2
+Never taker,Control,0,0,12.7,21.5,No bed net,12.7
+Never taker,Control,0,0,47.6,55.3,No bed net,47.6
+Never taker,Control,0,0,27.5,23.1,No bed net,27.5
+Complier,Treatment,0,1,39.7,56.5,Bed net,56.5
+Never taker,Control,0,0,27.8,47.5,No bed net,27.8
+Never taker,Treatment,0,0,36.2,45.3,No bed net,36.2
+Never taker,Treatment,0,0,34.6,24.8,No bed net,34.6
+Complier,Control,0,1,36.8,42,No bed net,36.8
+Complier,Treatment,0,1,37.7,67.2,Bed net,67.2
+Complier,Control,0,1,36.6,36.2,No bed net,36.6
+Always taker,Treatment,1,1,75.3,53.7,Bed net,53.7
+Always taker,Control,1,1,54,66.6,Bed net,66.6
+Never taker,Control,0,0,38.5,48.8,No bed net,38.5
+Never taker,Treatment,0,0,52.2,53,No bed net,52.2
+Never taker,Treatment,0,0,49.6,26.1,No bed net,49.6
+Complier,Treatment,0,1,31.8,44.8,Bed net,44.8
+Never taker,Control,0,0,45.6,38.2,No bed net,45.6
+Never taker,Control,0,0,46.7,5.8,No bed net,46.7
+Complier,Treatment,0,1,29.8,41.1,Bed net,41.1
+Never taker,Treatment,0,0,22.3,23.1,No bed net,22.3
+Never taker,Treatment,0,0,72.2,43.6,No bed net,72.2
+Never taker,Control,0,0,39.7,32.4,No bed net,39.7
+Never taker,Treatment,0,0,67.4,25.1,No bed net,67.4
+Complier,Control,0,1,26.4,75.5,No bed net,26.4
+Never taker,Control,0,0,48.2,31.9,No bed net,48.2
+Complier,Control,0,1,41.1,58.9,No bed net,41.1
+Always taker,Control,1,1,58.5,45.2,Bed net,45.2
+Complier,Control,0,1,39.5,30.2,No bed net,39.5
+Complier,Control,0,1,57.9,54.8,No bed net,57.9
+Never taker,Control,0,0,69.6,43.7,No bed net,69.6
+Complier,Treatment,0,1,30,25.9,Bed net,25.9
+Never taker,Treatment,0,0,36.4,50.1,No bed net,36.4
+Never taker,Treatment,0,0,37.1,42.7,No bed net,37.1
+Never taker,Treatment,0,0,13.7,33.4,No bed net,13.7
+Never taker,Treatment,0,0,26.1,28.6,No bed net,26.1
+Never taker,Control,0,0,17.1,54.6,No bed net,17.1
+Complier,Control,0,1,50.8,46.8,No bed net,50.8
+Complier,Treatment,0,1,27.3,39.8,Bed net,39.8
+Complier,Control,0,1,49.4,66.2,No bed net,49.4
+Complier,Treatment,0,1,32.7,43.7,Bed net,43.7
+Never taker,Treatment,0,0,47.7,16.7,No bed net,47.7
+Never taker,Control,0,0,41.7,42.6,No bed net,41.7
+Always taker,Control,1,1,50.6,51,Bed net,51
+Never taker,Treatment,0,0,22.5,37.8,No bed net,22.5
+Always taker,Control,1,1,51.4,83,Bed net,83
+Always taker,Treatment,1,1,76.8,56.6,Bed net,56.6
+Never taker,Control,0,0,23,48.2,No bed net,23
+Complier,Treatment,0,1,40.5,25.5,Bed net,25.5
+Never taker,Treatment,0,0,51.8,33.2,No bed net,51.8
+Never taker,Control,0,0,49.4,36.9,No bed net,49.4
+Complier,Treatment,0,1,37.7,27.3,Bed net,27.3
+Never taker,Control,0,0,19.2,42.8,No bed net,19.2
+Always taker,Treatment,1,1,59.7,47.5,Bed net,47.5
+Never taker,Control,0,0,53,25.9,No bed net,53
+Complier,Treatment,0,1,48,36.9,Bed net,36.9
+Complier,Control,0,1,39.5,60.4,No bed net,39.5
+Never taker,Treatment,0,0,43.1,25.9,No bed net,43.1
+Complier,Control,0,1,39.5,58.5,No bed net,39.5
+Never taker,Treatment,0,0,26.6,34.8,No bed net,26.6
+Always taker,Control,1,1,56.2,56.1,Bed net,56.1
+Complier,Control,0,1,30.7,77.6,No bed net,30.7
+Never taker,Treatment,0,0,47.8,18.3,No bed net,47.8
+Never taker,Control,0,0,62.9,23.2,No bed net,62.9
+Complier,Control,0,1,46.7,43.9,No bed net,46.7
+Never taker,Treatment,0,0,29.2,35,No bed net,29.2
+Always taker,Treatment,1,1,46.8,47.6,Bed net,47.6
+Never taker,Treatment,0,0,37.3,18.1,No bed net,37.3
+Never taker,Control,0,0,43.5,29.4,No bed net,43.5
+Always taker,Control,1,1,49.7,58.5,Bed net,58.5
+Complier,Treatment,0,1,40.1,93,Bed net,93
+Complier,Control,0,1,41,62.9,No bed net,41
+Never taker,Treatment,0,0,24.9,30.2,No bed net,24.9
+Always taker,Control,1,1,56.4,56,Bed net,56
+Complier,Control,0,1,42.1,71.7,No bed net,42.1
+Complier,Treatment,0,1,39.1,43.2,Bed net,43.2
+Never taker,Control,0,0,38,53.1,No bed net,38
+Never taker,Control,0,0,20.4,46.6,No bed net,20.4
+Never taker,Control,0,0,56.3,34.8,No bed net,56.3
+Complier,Control,0,1,37.1,46.1,No bed net,37.1
+Never taker,Treatment,0,0,31.3,20.2,No bed net,31.3
+Never taker,Treatment,0,0,42.9,32.3,No bed net,42.9
+Complier,Treatment,0,1,48.4,31.4,Bed net,31.4
+Never taker,Treatment,0,0,32.7,14.6,No bed net,32.7
+Never taker,Control,0,0,27.9,21.1,No bed net,27.9
+Never taker,Treatment,0,0,42.9,32.5,No bed net,42.9
+Never taker,Control,0,0,23.3,37.8,No bed net,23.3
+Never taker,Control,0,0,37.8,22.1,No bed net,37.8
+Never taker,Control,0,0,33.9,31.8,No bed net,33.9
+Never taker,Control,0,0,31.9,18.4,No bed net,31.9
+Never taker,Treatment,0,0,44.1,40.4,No bed net,44.1
+Always taker,Control,1,1,66.4,48.7,Bed net,48.7
+Complier,Control,0,1,34.4,44,No bed net,34.4
+Never taker,Control,0,0,42.3,50.8,No bed net,42.3
+Complier,Control,0,1,46.9,70.6,No bed net,46.9
+Always taker,Treatment,1,1,67.7,52.1,Bed net,52.1
+Complier,Control,0,1,44.7,40.1,No bed net,44.7
+Complier,Control,0,1,38.8,64.3,No bed net,38.8
+Complier,Control,0,1,29.8,37,No bed net,29.8
+Complier,Treatment,0,1,35.4,63.1,Bed net,63.1
+Never taker,Treatment,0,0,37,40.1,No bed net,37
+Never taker,Treatment,0,0,36.1,48.1,No bed net,36.1
+Never taker,Treatment,0,0,19.1,44.9,No bed net,19.1
+Never taker,Control,0,0,36,49.9,No bed net,36
+Always taker,Control,1,1,68.4,60.6,Bed net,60.6
+Always taker,Control,1,1,45.4,38.4,Bed net,38.4
+Complier,Control,0,1,45.3,58.6,No bed net,45.3
+Never taker,Treatment,0,0,29.1,26.8,No bed net,29.1
+Never taker,Control,0,0,28,36.6,No bed net,28
+Never taker,Control,0,0,49.6,30.6,No bed net,49.6
+Complier,Treatment,0,1,37.9,48.4,Bed net,48.4
+Never taker,Control,0,0,31.6,27,No bed net,31.6
+Complier,Treatment,0,1,42.5,25.2,Bed net,25.2
+Always taker,Control,1,1,58.6,44,Bed net,44
+Complier,Treatment,0,1,18.1,63.4,Bed net,63.4
+Never taker,Treatment,0,0,46.5,50,No bed net,46.5
+Always taker,Treatment,1,1,49.2,56.1,Bed net,56.1
+Complier,Control,0,1,35.3,41.6,No bed net,35.3
+Complier,Treatment,0,1,32.6,47.9,Bed net,47.9
+Complier,Control,0,1,49.1,51.5,No bed net,49.1
+Never taker,Control,0,0,36,27.4,No bed net,36
+Complier,Control,0,1,36.9,62,No bed net,36.9
+Never taker,Treatment,0,0,28.1,31.3,No bed net,28.1
+Complier,Control,0,1,37.9,54.9,No bed net,37.9
+Complier,Treatment,0,1,58.1,26.9,Bed net,26.9
+Never taker,Treatment,0,0,20.9,31.1,No bed net,20.9
+Never taker,Treatment,0,0,29.4,53.5,No bed net,29.4
+Complier,Control,0,1,30.1,49,No bed net,30.1
+Never taker,Control,0,0,45.4,44.9,No bed net,45.4
+Never taker,Control,0,0,43.5,31.3,No bed net,43.5
+Complier,Control,0,1,35.6,66.7,No bed net,35.6
+Never taker,Treatment,0,0,36.3,34.3,No bed net,36.3
+Complier,Control,0,1,47.3,63.6,No bed net,47.3
+Never taker,Control,0,0,11.8,26.2,No bed net,11.8
+Never taker,Control,0,0,43.6,37.4,No bed net,43.6
+Always taker,Control,1,1,42,44.8,Bed net,44.8
+Complier,Treatment,0,1,37.8,51.7,Bed net,51.7
+Always taker,Control,1,1,51.8,57.8,Bed net,57.8
+Complier,Control,0,1,40.9,60.3,No bed net,40.9
+Complier,Control,0,1,30.5,40.1,No bed net,30.5
+Complier,Treatment,0,1,39.6,40,Bed net,40
+Never taker,Control,0,0,41,33.9,No bed net,41
+Always taker,Treatment,1,1,59.1,58.2,Bed net,58.2
+Never taker,Treatment,0,0,49.3,46.3,No bed net,49.3
+Always taker,Control,1,1,45.9,78.3,Bed net,78.3
+Always taker,Treatment,1,1,75.6,56.4,Bed net,56.4
+Never taker,Control,0,0,25.9,48.3,No bed net,25.9
+Complier,Treatment,0,1,57.5,42.7,Bed net,42.7
+Always taker,Control,1,1,63.7,60.8,Bed net,60.8
+Never taker,Control,0,0,16.5,38.6,No bed net,16.5
+Never taker,Treatment,0,0,24.1,47.5,No bed net,24.1
+Always taker,Control,1,1,47.4,52.2,Bed net,52.2
+Complier,Treatment,0,1,49,55,Bed net,55
+Complier,Control,0,1,25.4,41.8,No bed net,25.4
+Complier,Treatment,0,1,34.5,49.3,Bed net,49.3
+Complier,Treatment,0,1,34.8,48,Bed net,48
+Complier,Control,0,1,44.5,65.5,No bed net,44.5
+Never taker,Treatment,0,0,15.6,37,No bed net,15.6
+Never taker,Control,0,0,35.4,23.8,No bed net,35.4
+Always taker,Treatment,1,1,47.7,30.4,Bed net,30.4
+Never taker,Control,0,0,38.2,26.5,No bed net,38.2
+Never taker,Treatment,0,0,52.7,32,No bed net,52.7
+Always taker,Treatment,1,1,46.1,49.4,Bed net,49.4
+Always taker,Treatment,1,1,58,34.8,Bed net,34.8
+Complier,Treatment,0,1,32.4,41.2,Bed net,41.2
+Always taker,Control,1,1,54.2,50.8,Bed net,50.8
+Never taker,Control,0,0,24.3,20.9,No bed net,24.3
+Complier,Control,0,1,32.3,49.9,No bed net,32.3
+Never taker,Control,0,0,24,42.1,No bed net,24
+Never taker,Control,0,0,28.8,43,No bed net,28.8
+Always taker,Control,1,1,32.2,51.3,Bed net,51.3
+Never taker,Treatment,0,0,28.1,53.3,No bed net,28.1
+Complier,Treatment,0,1,40.1,51.8,Bed net,51.8
+Complier,Treatment,0,1,55.3,54.3,Bed net,54.3
+Never taker,Treatment,0,0,31.6,43.4,No bed net,31.6
+Never taker,Control,0,0,31.7,33.5,No bed net,31.7
+Complier,Treatment,0,1,42.1,39,Bed net,39
+Never taker,Control,0,0,18.2,42.4,No bed net,18.2
+Complier,Treatment,0,1,31.2,35.7,Bed net,35.7
+Complier,Control,0,1,31,69.1,No bed net,31
+Always taker,Treatment,1,1,60.4,63.8,Bed net,63.8
+Never taker,Treatment,0,0,60.8,39.6,No bed net,60.8
+Never taker,Control,0,0,45.8,33.8,No bed net,45.8
+Always taker,Treatment,1,1,59.3,60.8,Bed net,60.8
+Never taker,Treatment,0,0,49.4,30.7,No bed net,49.4
+Complier,Control,0,1,26,62.6,No bed net,26
+Always taker,Control,1,1,42.5,48.7,Bed net,48.7
+Complier,Control,0,1,26.8,47.7,No bed net,26.8
+Never taker,Control,0,0,35.4,42.8,No bed net,35.4
+Always taker,Control,1,1,42.8,43.7,Bed net,43.7
+Always taker,Control,1,1,62.3,72.3,Bed net,72.3
+Complier,Treatment,0,1,32.8,44.4,Bed net,44.4
+Always taker,Treatment,1,1,56.9,66.9,Bed net,66.9
+Always taker,Control,1,1,63.5,56.2,Bed net,56.2
+Never taker,Control,0,0,18.2,49.3,No bed net,18.2
+Complier,Treatment,0,1,39,49.3,Bed net,49.3
+Complier,Control,0,1,42.5,46.7,No bed net,42.5
+Complier,Treatment,0,1,46.4,63.3,Bed net,63.3
+Never taker,Control,0,0,41.7,42.1,No bed net,41.7
+Complier,Control,0,1,42.8,52.5,No bed net,42.8
+Never taker,Control,0,0,53.2,42.1,No bed net,53.2
+Complier,Control,0,1,38.5,62.9,No bed net,38.5
+Complier,Treatment,0,1,32.4,56.3,Bed net,56.3
+Complier,Treatment,0,1,38.7,56.9,Bed net,56.9
+Complier,Treatment,0,1,37.1,38.4,Bed net,38.4
+Complier,Treatment,0,1,32.3,55.4,Bed net,55.4
+Complier,Treatment,0,1,37.9,44.3,Bed net,44.3
+Complier,Treatment,0,1,35.1,27.3,Bed net,27.3
+Always taker,Control,1,1,56.2,52.5,Bed net,52.5
+Always taker,Control,1,1,46.9,66.5,Bed net,66.5
+Complier,Treatment,0,1,44.3,49,Bed net,49
+Never taker,Control,0,0,31.3,49.7,No bed net,31.3
+Never taker,Treatment,0,0,41.3,24.6,No bed net,41.3
+Never taker,Control,0,0,45.3,39.5,No bed net,45.3
+Complier,Control,0,1,40.1,35,No bed net,40.1
+Never taker,Treatment,0,0,42.1,46.4,No bed net,42.1
+Never taker,Control,0,0,26.2,36.6,No bed net,26.2
+Never taker,Treatment,0,0,25.7,34,No bed net,25.7
+Complier,Treatment,0,1,60,34,Bed net,34
+Never taker,Control,0,0,17,45.1,No bed net,17
+Never taker,Treatment,0,0,24.9,30.5,No bed net,24.9
+Never taker,Treatment,0,0,16.6,47,No bed net,16.6
+Complier,Treatment,0,1,43.3,45.7,Bed net,45.7
+Always taker,Treatment,1,1,52,57.7,Bed net,57.7
+Complier,Treatment,0,1,40.8,58,Bed net,58
+Always taker,Treatment,1,1,55.9,48,Bed net,48
+Never taker,Control,0,0,50.1,67.4,No bed net,50.1
+Complier,Treatment,0,1,31.2,80,Bed net,80
+Complier,Control,0,1,28.2,36.4,No bed net,28.2
+Complier,Control,0,1,39.6,67.4,No bed net,39.6
+Never taker,Control,0,0,55,29.8,No bed net,55
+Always taker,Treatment,1,1,64.5,60.6,Bed net,60.6
+Never taker,Control,0,0,42.3,37.4,No bed net,42.3
+Never taker,Treatment,0,0,41.2,35.4,No bed net,41.2
+Complier,Control,0,1,44.7,38.5,No bed net,44.7
+Always taker,Control,1,1,61.4,61,Bed net,61
+Complier,Control,0,1,34.8,66.2,No bed net,34.8
+Never taker,Treatment,0,0,34.6,36.7,No bed net,34.6
+Complier,Treatment,0,1,30.9,67.9,Bed net,67.9
+Complier,Control,0,1,47,35.1,No bed net,47
+Complier,Treatment,0,1,46.4,65.9,Bed net,65.9
+Complier,Treatment,0,1,29.5,68.7,Bed net,68.7
+Always taker,Control,1,1,70.6,37.4,Bed net,37.4
+Never taker,Control,0,0,45.8,46,No bed net,45.8
+Never taker,Control,0,0,57.3,35.8,No bed net,57.3
+Complier,Control,0,1,32.9,53.4,No bed net,32.9
+Complier,Control,0,1,53.8,30.9,No bed net,53.8
+Always taker,Control,1,1,51.3,54.4,Bed net,54.4
+Complier,Control,0,1,40.6,27.9,No bed net,40.6
+Never taker,Treatment,0,0,42.8,75.8,No bed net,42.8
+Never taker,Treatment,0,0,30.8,32.6,No bed net,30.8
+Complier,Treatment,0,1,43.4,50.1,Bed net,50.1
+Complier,Treatment,0,1,45.2,42.1,Bed net,42.1
+Complier,Control,0,1,36.8,55.8,No bed net,36.8
+Never taker,Control,0,0,41.7,40,No bed net,41.7
+Complier,Control,0,1,46.1,38.4,No bed net,46.1
+Never taker,Treatment,0,0,34.4,36.4,No bed net,34.4
+Never taker,Control,0,0,37.5,23.4,No bed net,37.5
+Never taker,Control,0,0,35.6,33.3,No bed net,35.6
+Never taker,Control,0,0,25.6,49.9,No bed net,25.6
+Never taker,Control,0,0,26.5,71.4,No bed net,26.5
+Complier,Treatment,0,1,38.1,63.5,Bed net,63.5
+Never taker,Control,0,0,55.7,34.5,No bed net,55.7
+Never taker,Treatment,0,0,36.8,12.6,No bed net,36.8
+Never taker,Treatment,0,0,62.8,41.6,No bed net,62.8
+Never taker,Treatment,0,0,24.8,33,No bed net,24.8
+Always taker,Control,1,1,45.5,64.1,Bed net,64.1
+Complier,Treatment,0,1,42.8,43.9,Bed net,43.9
+Never taker,Control,0,0,33.2,35.1,No bed net,33.2
+Never taker,Control,0,0,46.1,46.6,No bed net,46.1
+Always taker,Control,1,1,59.9,78.7,Bed net,78.7
+Complier,Treatment,0,1,29,64.8,Bed net,64.8
+Complier,Treatment,0,1,43.1,64.4,Bed net,64.4
+Complier,Control,0,1,35.7,82.6,No bed net,35.7
+Never taker,Control,0,0,26.5,43.7,No bed net,26.5
+Always taker,Control,1,1,45.5,61.3,Bed net,61.3
+Never taker,Treatment,0,0,48.8,33.8,No bed net,48.8
+Never taker,Treatment,0,0,47.6,19.3,No bed net,47.6
+Never taker,Treatment,0,0,48.5,41.8,No bed net,48.5
+Never taker,Control,0,0,33.5,29.1,No bed net,33.5
+Complier,Control,0,1,45.3,68.2,No bed net,45.3
+Always taker,Treatment,1,1,35.5,55.8,Bed net,55.8
+Never taker,Control,0,0,54.2,45.3,No bed net,54.2
+Complier,Treatment,0,1,46,89.1,Bed net,89.1
+Complier,Treatment,0,1,47.3,62,Bed net,62
+Complier,Treatment,0,1,48.9,28.7,Bed net,28.7
+Never taker,Control,0,0,37.8,37.8,No bed net,37.8
+Complier,Control,0,1,32.8,69.8,No bed net,32.8
+Never taker,Treatment,0,0,44.8,51.8,No bed net,44.8
+Complier,Treatment,0,1,23.3,62.9,Bed net,62.9
+Complier,Control,0,1,39.9,24.5,No bed net,39.9
+Complier,Treatment,0,1,38.2,58.6,Bed net,58.6
+Never taker,Control,0,0,36.7,38.8,No bed net,36.7
+Never taker,Treatment,0,0,22.5,41.9,No bed net,22.5
+Always taker,Treatment,1,1,54.3,72.8,Bed net,72.8
+Never taker,Treatment,0,0,40.9,43.6,No bed net,40.9
+Never taker,Control,0,0,49.5,46,No bed net,49.5
+Never taker,Control,0,0,29.6,40.1,No bed net,29.6
+Never taker,Control,0,0,33.5,40.6,No bed net,33.5
+Complier,Control,0,1,28,58,No bed net,28
+Never taker,Treatment,0,0,43,30.6,No bed net,43
+Always taker,Control,1,1,66.5,67.6,Bed net,67.6
+Complier,Control,0,1,39.5,35.5,No bed net,39.5
+Always taker,Treatment,1,1,55.7,64.5,Bed net,64.5
+Never taker,Control,0,0,33.6,27.5,No bed net,33.6
+Always taker,Control,1,1,66.9,57.9,Bed net,57.9
+Complier,Treatment,0,1,35.8,39.5,Bed net,39.5
+Complier,Control,0,1,46.8,42.5,No bed net,46.8
+Never taker,Control,0,0,57.5,38.4,No bed net,57.5
+Complier,Control,0,1,28.7,41.3,No bed net,28.7
+Complier,Control,0,1,49.4,45.7,No bed net,49.4
+Always taker,Control,1,1,75.2,53.2,Bed net,53.2
+Complier,Treatment,0,1,45.4,49.5,Bed net,49.5
+Always taker,Treatment,1,1,47.5,59.7,Bed net,59.7
+Complier,Treatment,0,1,25.4,63.6,Bed net,63.6
+Never taker,Treatment,0,0,43.5,32.3,No bed net,43.5
+Always taker,Control,1,1,51.5,71.3,Bed net,71.3
+Never taker,Treatment,0,0,23,52.9,No bed net,23
+Complier,Control,0,1,43,38.3,No bed net,43
+Complier,Treatment,0,1,40.9,43.5,Bed net,43.5
+Never taker,Control,0,0,22,46.4,No bed net,22
+Complier,Treatment,0,1,46,45.4,Bed net,45.4
+Always taker,Control,1,1,70.3,46.3,Bed net,46.3
+Never taker,Control,0,0,37.7,32.4,No bed net,37.7
+Never taker,Treatment,0,0,30.3,35.7,No bed net,30.3
+Never taker,Treatment,0,0,46.4,41.8,No bed net,46.4
+Complier,Control,0,1,53.1,53.6,No bed net,53.1
+Never taker,Control,0,0,33.5,31.6,No bed net,33.5
+Always taker,Control,1,1,58.3,47.4,Bed net,47.4
+Complier,Treatment,0,1,32.3,64.7,Bed net,64.7
+Complier,Control,0,1,40.1,46.7,No bed net,40.1
+Complier,Control,0,1,36.1,68.1,No bed net,36.1
+Always taker,Treatment,1,1,60,53.6,Bed net,53.6
+Always taker,Control,1,1,67.1,55.4,Bed net,55.4
+Complier,Control,0,1,50.4,40.3,No bed net,50.4
+Always taker,Control,1,1,60.5,60.3,Bed net,60.3
+Never taker,Control,0,0,36.8,18.1,No bed net,36.8
+Never taker,Control,0,0,37.5,38.6,No bed net,37.5
+Never taker,Treatment,0,0,43.4,27.1,No bed net,43.4
+Never taker,Control,0,0,26,30.1,No bed net,26
+Never taker,Control,0,0,29.3,47.6,No bed net,29.3
+Never taker,Treatment,0,0,48.6,39.4,No bed net,48.6
+Complier,Treatment,0,1,39.9,50.6,Bed net,50.6
+Complier,Control,0,1,34.2,61.4,No bed net,34.2
+Never taker,Treatment,0,0,48.3,74.8,No bed net,48.3
+Always taker,Treatment,1,1,53.1,53.7,Bed net,53.7
+Complier,Treatment,0,1,42.1,45.1,Bed net,45.1
+Never taker,Treatment,0,0,34.9,39.6,No bed net,34.9
+Never taker,Treatment,0,0,20.7,38.3,No bed net,20.7
+Never taker,Control,0,0,31.3,41.2,No bed net,31.3
+Always taker,Control,1,1,55.2,53.5,Bed net,53.5
+Complier,Control,0,1,37.1,46.3,No bed net,37.1
+Always taker,Treatment,1,1,32.9,65,Bed net,65
+Complier,Treatment,0,1,36.8,57,Bed net,57
+Never taker,Control,0,0,45.5,45,No bed net,45.5
+Complier,Treatment,0,1,35.6,58.8,Bed net,58.8
+Complier,Control,0,1,39.6,56,No bed net,39.6
+Complier,Control,0,1,33.6,34.8,No bed net,33.6
+Never taker,Control,0,0,35,37.6,No bed net,35
+Complier,Control,0,1,28.9,43,No bed net,28.9
+Never taker,Treatment,0,0,26.5,29.3,No bed net,26.5
+Always taker,Treatment,1,1,42.6,57.7,Bed net,57.7
+Never taker,Control,0,0,23.7,31.5,No bed net,23.7
+Never taker,Treatment,0,0,41.3,26.6,No bed net,41.3
+Complier,Treatment,0,1,40.8,54.8,Bed net,54.8
+Never taker,Control,0,0,39.8,28.2,No bed net,39.8
+Complier,Treatment,0,1,41.5,46.9,Bed net,46.9
+Always taker,Control,1,1,66.3,47.8,Bed net,47.8
+Always taker,Treatment,1,1,48.1,64.4,Bed net,64.4
+Never taker,Control,0,0,23.7,28.5,No bed net,23.7
+Never taker,Treatment,0,0,27.3,47,No bed net,27.3
+Never taker,Control,0,0,41.1,49.3,No bed net,41.1
+Never taker,Control,0,0,26.8,48.3,No bed net,26.8
+Always taker,Treatment,1,1,56.2,51.8,Bed net,51.8
+Always taker,Treatment,1,1,59.3,28.7,Bed net,28.7
+Never taker,Control,0,0,45.7,36.3,No bed net,45.7
+Complier,Control,0,1,43.9,68.3,No bed net,43.9
+Never taker,Treatment,0,0,53,17.7,No bed net,53
+Complier,Control,0,1,28,65.2,No bed net,28
+Never taker,Control,0,0,38.8,21.1,No bed net,38.8
+Never taker,Control,0,0,43.7,37.4,No bed net,43.7
+Complier,Control,0,1,21.7,48.3,No bed net,21.7
+Complier,Control,0,1,29.2,55.8,No bed net,29.2
+Complier,Control,0,1,45.4,60.9,No bed net,45.4
+Complier,Control,0,1,46.1,69.7,No bed net,46.1
+Complier,Control,0,1,41.7,63.6,No bed net,41.7
+Complier,Control,0,1,40.6,80.3,No bed net,40.6
+Never taker,Control,0,0,51.9,34.2,No bed net,51.9
+Never taker,Control,0,0,32.3,41.5,No bed net,32.3
+Never taker,Control,0,0,37.3,54.7,No bed net,37.3
+Always taker,Treatment,1,1,67.5,53.2,Bed net,53.2
+Always taker,Treatment,1,1,51.1,65.6,Bed net,65.6
+Always taker,Control,1,1,62.4,42.5,Bed net,42.5
+Always taker,Treatment,1,1,53.9,57.5,Bed net,57.5
+Always taker,Control,1,1,52.2,49,Bed net,49
+Never taker,Control,0,0,29.6,53.9,No bed net,29.6
+Never taker,Control,0,0,34.9,53,No bed net,34.9
+Complier,Control,0,1,49,74.2,No bed net,49
+Never taker,Control,0,0,28.8,49,No bed net,28.8
+Never taker,Control,0,0,20.7,26.3,No bed net,20.7
+Never taker,Treatment,0,0,48.4,46.7,No bed net,48.4
+Complier,Treatment,0,1,44,66,Bed net,66
+Always taker,Control,1,1,60.9,62.9,Bed net,62.9
+Always taker,Treatment,1,1,40.4,53.9,Bed net,53.9
+Never taker,Treatment,0,0,48.4,33.1,No bed net,48.4
+Never taker,Control,0,0,30.2,38.2,No bed net,30.2
+Complier,Control,0,1,36.6,47.4,No bed net,36.6
+Never taker,Treatment,0,0,36.6,30.4,No bed net,36.6
+Complier,Treatment,0,1,24.5,61.6,Bed net,61.6
+Complier,Control,0,1,45.2,22.4,No bed net,45.2
+Complier,Treatment,0,1,42.2,44.1,Bed net,44.1
+Always taker,Treatment,1,1,56,51.2,Bed net,51.2
+Never taker,Control,0,0,32.2,22.9,No bed net,32.2
+Complier,Control,0,1,56.6,72,No bed net,56.6
+Always taker,Control,1,1,55,50.4,Bed net,50.4
+Complier,Treatment,0,1,40.2,69,Bed net,69
+Never taker,Treatment,0,0,25.8,34.3,No bed net,25.8
+Never taker,Treatment,0,0,34.1,36.5,No bed net,34.1
+Never taker,Control,0,0,41.6,19,No bed net,41.6
+Always taker,Control,1,1,45.4,54.9,Bed net,54.9
+Complier,Control,0,1,47.7,62.9,No bed net,47.7
+Never taker,Treatment,0,0,6.2,47.6,No bed net,6.2
+Always taker,Treatment,1,1,43.7,40.4,Bed net,40.4
+Complier,Control,0,1,43.7,82.7,No bed net,43.7
+Complier,Treatment,0,1,36.6,54.8,Bed net,54.8
+Complier,Treatment,0,1,46.2,65,Bed net,65
+Complier,Control,0,1,28,32.6,No bed net,28
+Never taker,Treatment,0,0,38.7,18.3,No bed net,38.7
+Always taker,Treatment,1,1,56.4,54.6,Bed net,54.6
+Always taker,Treatment,1,1,48,57.9,Bed net,57.9
+Complier,Treatment,0,1,30.7,41.5,Bed net,41.5
+Complier,Control,0,1,29.7,61.6,No bed net,29.7
+Complier,Control,0,1,36.6,53.3,No bed net,36.6
+Always taker,Treatment,1,1,52.3,56.8,Bed net,56.8
+Always taker,Control,1,1,63.1,59.6,Bed net,59.6
+Complier,Control,0,1,36.2,65.9,No bed net,36.2
+Complier,Control,0,1,39.3,45.8,No bed net,39.3
+Always taker,Control,1,1,47.3,46,Bed net,46
+Never taker,Treatment,0,0,18.8,61.9,No bed net,18.8
+Complier,Control,0,1,34.6,55.7,No bed net,34.6
+Complier,Treatment,0,1,32,46.1,Bed net,46.1
+Complier,Control,0,1,29,52.9,No bed net,29
+Never taker,Treatment,0,0,44.9,36.1,No bed net,44.9
+Complier,Treatment,0,1,38.3,44.7,Bed net,44.7
+Never taker,Control,0,0,43.2,27.2,No bed net,43.2
+Never taker,Treatment,0,0,58.4,37.7,No bed net,58.4
+Complier,Treatment,0,1,45.5,70,Bed net,70
+Complier,Treatment,0,1,44.3,81.7,Bed net,81.7
+Never taker,Control,0,0,58.3,31.3,No bed net,58.3
+Never taker,Control,0,0,18,44.8,No bed net,18
+Complier,Treatment,0,1,35.1,61.1,Bed net,61.1
+Never taker,Control,0,0,37,11.9,No bed net,37
+Complier,Control,0,1,46.1,51.7,No bed net,46.1
+Never taker,Control,0,0,19,29.8,No bed net,19
+Never taker,Treatment,0,0,40.3,31.9,No bed net,40.3
+Always taker,Treatment,1,1,55.8,55.7,Bed net,55.7
+Always taker,Treatment,1,1,42.3,45.8,Bed net,45.8
+Complier,Treatment,0,1,42.2,49.2,Bed net,49.2
+Complier,Treatment,0,1,35.7,60,Bed net,60
+Never taker,Treatment,0,0,47.8,41.1,No bed net,47.8
+Always taker,Treatment,1,1,40.4,59.1,Bed net,59.1
+Never taker,Control,0,0,41.6,49.8,No bed net,41.6
+Complier,Control,0,1,43.9,61.3,No bed net,43.9
+Complier,Treatment,0,1,37.1,48.5,Bed net,48.5
+Never taker,Control,0,0,39.3,35.7,No bed net,39.3
+Never taker,Treatment,0,0,37.6,33.3,No bed net,37.6
+Complier,Control,0,1,33.6,70.5,No bed net,33.6
+Never taker,Treatment,0,0,37.3,66,No bed net,37.3
+Always taker,Treatment,1,1,53.6,53.3,Bed net,53.3
+Never taker,Treatment,0,0,26.9,42.9,No bed net,26.9
+Always taker,Treatment,1,1,54.9,72.6,Bed net,72.6
+Never taker,Treatment,0,0,42.6,37.5,No bed net,42.6
+Never taker,Treatment,0,0,60.6,18.4,No bed net,60.6
+Complier,Control,0,1,49,66.7,No bed net,49
+Complier,Treatment,0,1,33.5,72,Bed net,72
+Never taker,Control,0,0,52,16.8,No bed net,52
+Always taker,Treatment,1,1,53.2,64.3,Bed net,64.3
+Never taker,Treatment,0,0,57.4,33.1,No bed net,57.4
+Complier,Treatment,0,1,35.6,26.5,Bed net,26.5
+Never taker,Treatment,0,0,19.9,45,No bed net,19.9
+Complier,Treatment,0,1,49,74.2,Bed net,74.2
+Complier,Control,0,1,43.3,70.1,No bed net,43.3
+Never taker,Control,0,0,33.4,41.4,No bed net,33.4
+Complier,Treatment,0,1,40,45.9,Bed net,45.9
+Never taker,Treatment,0,0,36.9,45.9,No bed net,36.9
+Complier,Treatment,0,1,44.8,64.8,Bed net,64.8
+Complier,Control,0,1,27.9,76.6,No bed net,27.9
+Never taker,Treatment,0,0,44.6,55.1,No bed net,44.6
+Complier,Treatment,0,1,45.4,36.7,Bed net,36.7
+Never taker,Control,0,0,35,11.7,No bed net,35
+Always taker,Control,1,1,54.6,61.2,Bed net,61.2
+Never taker,Treatment,0,0,15.9,27.2,No bed net,15.9
+Never taker,Treatment,0,0,49,23.3,No bed net,49
+Never taker,Control,0,0,58.2,42.2,No bed net,58.2
+Never taker,Treatment,0,0,25.1,29.7,No bed net,25.1
+Never taker,Control,0,0,40.2,34.5,No bed net,40.2
+Complier,Control,0,1,33.8,70.7,No bed net,33.8
+Never taker,Control,0,0,23.7,37.5,No bed net,23.7
+Complier,Treatment,0,1,34.2,56.3,Bed net,56.3
+Never taker,Control,0,0,27.8,31.6,No bed net,27.8
+Complier,Treatment,0,1,49.6,41.6,Bed net,41.6
+Complier,Treatment,0,1,29.6,50.6,Bed net,50.6
+Complier,Control,0,1,45.5,48.1,No bed net,45.5
+Never taker,Treatment,0,0,44.1,47.3,No bed net,44.1
+Never taker,Treatment,0,0,31.4,42,No bed net,31.4
+Complier,Control,0,1,35.8,46.1,No bed net,35.8
+Never taker,Treatment,0,0,33.8,20,No bed net,33.8
+Never taker,Treatment,0,0,29.9,36.9,No bed net,29.9
+Complier,Treatment,0,1,37.5,60.2,Bed net,60.2
+Complier,Treatment,0,1,35.4,42.6,Bed net,42.6
+Complier,Control,0,1,33.6,56.6,No bed net,33.6
+Always taker,Control,1,1,66.5,54.9,Bed net,54.9
+Never taker,Control,0,0,35.2,36.5,No bed net,35.2
+Complier,Control,0,1,27,43.8,No bed net,27
+Never taker,Treatment,0,0,25.1,45.4,No bed net,25.1
+Always taker,Control,1,1,55,71.7,Bed net,71.7
+Complier,Control,0,1,39.1,60.7,No bed net,39.1
+Complier,Control,0,1,37.9,57,No bed net,37.9
+Complier,Treatment,0,1,33.5,50,Bed net,50
+Never taker,Control,0,0,45.3,31.6,No bed net,45.3
+Complier,Treatment,0,1,48.7,51.5,Bed net,51.5
+Never taker,Treatment,0,0,28.6,51.3,No bed net,28.6
+Always taker,Control,1,1,53.7,52.6,Bed net,52.6
+Never taker,Control,0,0,41.5,46.7,No bed net,41.5
+Never taker,Treatment,0,0,51.4,49,No bed net,51.4
+Complier,Control,0,1,54.8,51.4,No bed net,54.8
+Never taker,Control,0,0,40.7,49.3,No bed net,40.7
+Complier,Treatment,0,1,41.1,58.8,Bed net,58.8
+Never taker,Control,0,0,43.3,29.9,No bed net,43.3
+Always taker,Control,1,1,82,36.9,Bed net,36.9
+Never taker,Control,0,0,22.9,26.1,No bed net,22.9
+Complier,Treatment,0,1,38.5,27.8,Bed net,27.8
+Never taker,Control,0,0,27.9,36.4,No bed net,27.9
+Complier,Treatment,0,1,26.5,68.7,Bed net,68.7
+Complier,Control,0,1,28,43.9,No bed net,28
+Never taker,Control,0,0,60.4,49.7,No bed net,60.4
+Always taker,Treatment,1,1,54.1,46.2,Bed net,46.2
+Never taker,Treatment,0,0,31,30.7,No bed net,31
+Complier,Treatment,0,1,36.5,27.2,Bed net,27.2
+Complier,Treatment,0,1,46.7,53,Bed net,53
+Complier,Control,0,1,51.2,45.7,No bed net,51.2
+Never taker,Control,0,0,71.1,51.9,No bed net,71.1
+Never taker,Control,0,0,22,34.8,No bed net,22
+Never taker,Treatment,0,0,48.3,33.6,No bed net,48.3
+Complier,Control,0,1,34.9,53.4,No bed net,34.9
+Never taker,Control,0,0,65.9,45.9,No bed net,65.9
+Complier,Treatment,0,1,55.6,55.5,Bed net,55.5
+Complier,Control,0,1,31.4,59.6,No bed net,31.4
+Never taker,Control,0,0,38.6,48.7,No bed net,38.6
+Complier,Control,0,1,29.4,31.3,No bed net,29.4
+Complier,Control,0,1,35.7,35.1,No bed net,35.7
+Complier,Control,0,1,39.2,63.9,No bed net,39.2
+Complier,Control,0,1,31.9,61.1,No bed net,31.9
+Always taker,Control,1,1,53.8,50.7,Bed net,50.7
+Never taker,Treatment,0,0,45.3,50.3,No bed net,45.3
+Complier,Treatment,0,1,37.4,67,Bed net,67
+Never taker,Control,0,0,14.9,33.5,No bed net,14.9
+Never taker,Treatment,0,0,37.6,33.5,No bed net,37.6
+Always taker,Treatment,1,1,53.9,44,Bed net,44
+Complier,Control,0,1,39.9,51.1,No bed net,39.9
+Complier,Treatment,0,1,43.7,66.5,Bed net,66.5
+Always taker,Control,1,1,71,30.9,Bed net,30.9
+Complier,Control,0,1,39.7,39.4,No bed net,39.7
+Complier,Control,0,1,19.4,74.6,No bed net,19.4
+Complier,Treatment,0,1,39.1,70.4,Bed net,70.4
+Always taker,Control,1,1,66.2,53.2,Bed net,53.2
+Never taker,Control,0,0,35.7,35.3,No bed net,35.7
+Complier,Treatment,0,1,31.1,65.6,Bed net,65.6
+Never taker,Treatment,0,0,26.4,28.7,No bed net,26.4
+Always taker,Treatment,1,1,68.8,34.1,Bed net,34.1
+Never taker,Treatment,0,0,51.3,48.9,No bed net,51.3
+Never taker,Treatment,0,0,20.5,53.6,No bed net,20.5
+Always taker,Control,1,1,54.7,55,Bed net,55
+Never taker,Treatment,0,0,32.5,44.5,No bed net,32.5
+Never taker,Control,0,0,42.2,41.7,No bed net,42.2
+Always taker,Control,1,1,64.4,37.5,Bed net,37.5
+Complier,Treatment,0,1,34.4,27.5,Bed net,27.5
+Always taker,Control,1,1,42.4,75.3,Bed net,75.3
+Always taker,Control,1,1,68.4,65.2,Bed net,65.2
+Never taker,Control,0,0,51.7,46.9,No bed net,51.7
+Always taker,Control,1,1,61.8,72.2,Bed net,72.2
+Complier,Treatment,0,1,38.3,92.3,Bed net,92.3
+Complier,Treatment,0,1,35.7,42.3,Bed net,42.3
+Never taker,Treatment,0,0,61.2,5.2,No bed net,61.2
+Never taker,Control,0,0,46.4,10.2,No bed net,46.4
+Complier,Treatment,0,1,41.3,53.8,Bed net,53.8
+Never taker,Treatment,0,0,53.7,13.6,No bed net,53.7
+Always taker,Treatment,1,1,50.5,43.9,Bed net,43.9
+Complier,Treatment,0,1,42.4,46.8,Bed net,46.8
+Always taker,Control,1,1,57.2,50.4,Bed net,50.4
+Complier,Treatment,0,1,36.1,57,Bed net,57
+Never taker,Control,0,0,38.9,42.4,No bed net,38.9
+Complier,Treatment,0,1,36.2,41,Bed net,41
+Complier,Treatment,0,1,36.4,51.7,Bed net,51.7
+Never taker,Control,0,0,34.3,23.2,No bed net,34.3
+Complier,Control,0,1,43.4,46.7,No bed net,43.4
+Complier,Treatment,0,1,44.9,36.9,Bed net,36.9
+Never taker,Treatment,0,0,35.7,42,No bed net,35.7
+Complier,Treatment,0,1,33.5,72.4,Bed net,72.4
+Never taker,Control,0,0,14.2,37.8,No bed net,14.2
+Always taker,Treatment,1,1,50.3,70.3,Bed net,70.3
+Complier,Treatment,0,1,40.4,58.4,Bed net,58.4
+Always taker,Treatment,1,1,55.4,57.7,Bed net,57.7
+Never taker,Control,0,0,28.2,43.5,No bed net,28.2
+Complier,Treatment,0,1,36.7,38.4,Bed net,38.4
+Never taker,Control,0,0,41,7.9,No bed net,41
+Never taker,Treatment,0,0,10.8,28.4,No bed net,10.8
+Never taker,Treatment,0,0,37.3,35.9,No bed net,37.3
+Complier,Control,0,1,25.8,55.9,No bed net,25.8
+Never taker,Control,0,0,35.4,26.9,No bed net,35.4
+Never taker,Control,0,0,52.5,27.3,No bed net,52.5
+Complier,Control,0,1,46.7,47.9,No bed net,46.7
+Complier,Control,0,1,55,35,No bed net,55
+Complier,Control,0,1,50.3,49.2,No bed net,50.3
+Never taker,Control,0,0,42.3,27.1,No bed net,42.3
+Never taker,Treatment,0,0,47.9,12.4,No bed net,47.9
+Complier,Treatment,0,1,39.9,44.1,Bed net,44.1
+Never taker,Control,0,0,33.9,39.4,No bed net,33.9
+Never taker,Control,0,0,61.8,42.5,No bed net,61.8
+Complier,Control,0,1,38.7,57.3,No bed net,38.7
+Never taker,Treatment,0,0,24.5,31.8,No bed net,24.5
+Never taker,Control,0,0,59.3,34.1,No bed net,59.3
+Complier,Control,0,1,28.3,34.7,No bed net,28.3
+Complier,Control,0,1,27.1,72.9,No bed net,27.1
+Never taker,Control,0,0,32.9,37.7,No bed net,32.9
+Complier,Control,0,1,22.5,60.4,No bed net,22.5
+Always taker,Control,1,1,48.1,63.8,Bed net,63.8
+Never taker,Treatment,0,0,29.5,69,No bed net,29.5
+Never taker,Treatment,0,0,44.1,32,No bed net,44.1
+Never taker,Treatment,0,0,35.3,36.4,No bed net,35.3
+Complier,Treatment,0,1,29.1,57.5,Bed net,57.5
+Complier,Treatment,0,1,28.4,73.2,Bed net,73.2
+Complier,Treatment,0,1,29.8,17.2,Bed net,17.2
+Never taker,Control,0,0,32.8,30.3,No bed net,32.8
+Never taker,Treatment,0,0,36,33.8,No bed net,36
+Complier,Control,0,1,32,61.7,No bed net,32
+Always taker,Treatment,1,1,59.4,52.1,Bed net,52.1
+Complier,Control,0,1,49.9,40.4,No bed net,49.9
+Never taker,Treatment,0,0,55.6,36.1,No bed net,55.6
+Never taker,Control,0,0,51,28.3,No bed net,51
+Never taker,Control,0,0,50,36,No bed net,50
+Complier,Treatment,0,1,27.5,41.1,Bed net,41.1
+Complier,Control,0,1,39.3,53.8,No bed net,39.3
+Never taker,Control,0,0,19.7,42.6,No bed net,19.7
+Never taker,Control,0,0,41.9,32,No bed net,41.9
+Complier,Control,0,1,40.1,67.6,No bed net,40.1
+Never taker,Control,0,0,27.8,51.9,No bed net,27.8
+Never taker,Control,0,0,34.3,62.8,No bed net,34.3
+Complier,Treatment,0,1,44.6,57.7,Bed net,57.7
+Never taker,Control,0,0,35.3,46.4,No bed net,35.3
+Never taker,Control,0,0,32.6,17.1,No bed net,32.6
+Never taker,Treatment,0,0,35.4,36.6,No bed net,35.4
+Complier,Control,0,1,37,48.3,No bed net,37
+Complier,Control,0,1,44.4,60.3,No bed net,44.4
+Never taker,Control,0,0,26.9,41.2,No bed net,26.9
+Never taker,Treatment,0,0,27.4,25.4,No bed net,27.4
+Never taker,Treatment,0,0,32.9,29,No bed net,32.9
+Complier,Control,0,1,49.5,30.5,No bed net,49.5
+Complier,Treatment,0,1,36.7,72.7,Bed net,72.7
+Complier,Control,0,1,37.5,45.3,No bed net,37.5
+Complier,Control,0,1,52.8,49.2,No bed net,52.8
+Complier,Control,0,1,39.9,55.3,No bed net,39.9
+Complier,Treatment,0,1,49.8,44,Bed net,44
+Always taker,Control,1,1,50.6,36.6,Bed net,36.6
+Complier,Control,0,1,29.5,67.3,No bed net,29.5
+Complier,Treatment,0,1,42.7,45.3,Bed net,45.3
+Never taker,Control,0,0,41.7,5.7,No bed net,41.7
+Complier,Control,0,1,39.9,46.5,No bed net,39.9
+Always taker,Control,1,1,45.4,55.4,Bed net,55.4
+Complier,Control,0,1,30.2,33.9,No bed net,30.2
+Complier,Control,0,1,41.1,46.6,No bed net,41.1
+Never taker,Control,0,0,33.1,35.9,No bed net,33.1
+Never taker,Treatment,0,0,14.7,47.1,No bed net,14.7
+Never taker,Treatment,0,0,24.6,24.7,No bed net,24.6
+Complier,Treatment,0,1,33.8,57.3,Bed net,57.3
+Always taker,Control,1,1,46.8,60.1,Bed net,60.1
+Complier,Control,0,1,38.2,67.3,No bed net,38.2
+Never taker,Control,0,0,31,40.5,No bed net,31
+Never taker,Control,0,0,49.1,30,No bed net,49.1
+Complier,Treatment,0,1,32.2,61.2,Bed net,61.2
+Complier,Treatment,0,1,31.2,42.1,Bed net,42.1
+Complier,Control,0,1,39.5,34.1,No bed net,39.5
+Complier,Treatment,0,1,36.2,54.8,Bed net,54.8
+Complier,Treatment,0,1,32,47.8,Bed net,47.8
+Always taker,Treatment,1,1,39.2,60.6,Bed net,60.6
+Complier,Treatment,0,1,32.4,83.4,Bed net,83.4
+Always taker,Treatment,1,1,54.6,48.9,Bed net,48.9
+Never taker,Control,0,0,29.4,14.1,No bed net,29.4
+Never taker,Treatment,0,0,41,54.7,No bed net,41
+Always taker,Treatment,1,1,43.6,44.2,Bed net,44.2
+Never taker,Treatment,0,0,34.1,39.4,No bed net,34.1
+Never taker,Control,0,0,54,29.1,No bed net,54
+Never taker,Treatment,0,0,63.6,25.9,No bed net,63.6
+Never taker,Treatment,0,0,37.5,56.1,No bed net,37.5
+Never taker,Treatment,0,0,37.6,70.4,No bed net,37.6
+Complier,Control,0,1,42.2,29,No bed net,42.2
+Always taker,Treatment,1,1,63.6,71.8,Bed net,71.8
+Complier,Control,0,1,30.8,33.1,No bed net,30.8
+Always taker,Treatment,1,1,52.6,63,Bed net,63
+Complier,Control,0,1,36.5,33.5,No bed net,36.5
+Always taker,Control,1,1,72.3,67.4,Bed net,67.4
+Never taker,Treatment,0,0,57,46.7,No bed net,57
+Never taker,Treatment,0,0,41,30.7,No bed net,41
+Complier,Control,0,1,43.3,52.4,No bed net,43.3
+Complier,Treatment,0,1,28.8,37.5,Bed net,37.5
+Complier,Treatment,0,1,37.8,59.6,Bed net,59.6
+Always taker,Control,1,1,46.3,48.9,Bed net,48.9
+Complier,Control,0,1,41.8,50.4,No bed net,41.8
+Complier,Treatment,0,1,46.3,58.5,Bed net,58.5
+Always taker,Treatment,1,1,63.8,53.8,Bed net,53.8
+Never taker,Control,0,0,36,37.3,No bed net,36
+Complier,Treatment,0,1,34.2,59.1,Bed net,59.1
+Always taker,Treatment,1,1,65.7,49.5,Bed net,49.5
+Complier,Control,0,1,37.5,50.6,No bed net,37.5
+Complier,Control,0,1,34.5,84.5,No bed net,34.5
+Complier,Treatment,0,1,38.5,62.8,Bed net,62.8
+Complier,Treatment,0,1,41.9,64.8,Bed net,64.8
+Never taker,Treatment,0,0,31.9,25.2,No bed net,31.9
+Never taker,Control,0,0,43.1,17.8,No bed net,43.1
+Complier,Treatment,0,1,34.9,51.6,Bed net,51.6
+Always taker,Treatment,1,1,57.8,45.3,Bed net,45.3
+Never taker,Treatment,0,0,39.3,63.4,No bed net,39.3
+Complier,Control,0,1,57.4,51.1,No bed net,57.4
+Complier,Control,0,1,43.9,34.8,No bed net,43.9
+Complier,Treatment,0,1,34.6,36.6,Bed net,36.6
+Complier,Treatment,0,1,36.1,73.2,Bed net,73.2
+Always taker,Control,1,1,65.7,65.4,Bed net,65.4
+Never taker,Treatment,0,0,46.7,40.1,No bed net,46.7
+Complier,Treatment,0,1,41.3,70.7,Bed net,70.7
+Never taker,Control,0,0,35.7,41,No bed net,35.7
+Never taker,Treatment,0,0,31.6,36.2,No bed net,31.6
+Complier,Treatment,0,1,27.5,52.8,Bed net,52.8
+Never taker,Treatment,0,0,49.6,23.8,No bed net,49.6
+Never taker,Treatment,0,0,35.2,42.2,No bed net,35.2
+Never taker,Treatment,0,0,37.8,43.8,No bed net,37.8
+Never taker,Control,0,0,54.9,46.8,No bed net,54.9
+Complier,Control,0,1,32.3,82.3,No bed net,32.3
+Never taker,Treatment,0,0,47.3,20.3,No bed net,47.3
+Never taker,Control,0,0,14.1,22.3,No bed net,14.1
+Always taker,Control,1,1,42.9,52.7,Bed net,52.7
+Always taker,Control,1,1,44.8,59.1,Bed net,59.1
+Complier,Treatment,0,1,45.1,47,Bed net,47
+Complier,Treatment,0,1,31.2,47.9,Bed net,47.9
+Complier,Treatment,0,1,43,79.2,Bed net,79.2
+Complier,Treatment,0,1,29.6,87.3,Bed net,87.3
+Never taker,Treatment,0,0,40.5,36.3,No bed net,40.5
+Complier,Control,0,1,36.6,60.3,No bed net,36.6
+Always taker,Control,1,1,74.5,61.8,Bed net,61.8
+Never taker,Control,0,0,31,41.7,No bed net,31
+Always taker,Treatment,1,1,61.9,53.9,Bed net,53.9
+Complier,Treatment,0,1,34.5,42.6,Bed net,42.6
+Complier,Treatment,0,1,44.1,73.4,Bed net,73.4
+Never taker,Treatment,0,0,44.1,19.3,No bed net,44.1
+Never taker,Treatment,0,0,31.6,43.8,No bed net,31.6
+Complier,Control,0,1,39.9,79.1,No bed net,39.9
+Always taker,Treatment,1,1,60.4,55.5,Bed net,55.5
+Never taker,Treatment,0,0,36.5,41.4,No bed net,36.5
+Complier,Control,0,1,19.6,45.9,No bed net,19.6
+Never taker,Treatment,0,0,57.1,36.3,No bed net,57.1
+Never taker,Treatment,0,0,62.8,31.6,No bed net,62.8
+Never taker,Treatment,0,0,28.8,31.2,No bed net,28.8
+Never taker,Treatment,0,0,46.2,29.8,No bed net,46.2
+Always taker,Control,1,1,51.1,38.4,Bed net,38.4
+Always taker,Treatment,1,1,49.4,47.4,Bed net,47.4
+Never taker,Control,0,0,51.6,56.4,No bed net,51.6
+Complier,Treatment,0,1,23.2,100,Bed net,100
+Never taker,Control,0,0,49.3,34.9,No bed net,49.3
+Never taker,Control,0,0,62,40.9,No bed net,62
+Complier,Control,0,1,43.9,40.6,No bed net,43.9
+Never taker,Control,0,0,45.2,38.9,No bed net,45.2
+Never taker,Control,0,0,45.2,57.5,No bed net,45.2
+Never taker,Treatment,0,0,41.4,19.4,No bed net,41.4
+Never taker,Treatment,0,0,24,20.4,No bed net,24
+Never taker,Control,0,0,52.3,33.1,No bed net,52.3
+Complier,Control,0,1,46.8,26.9,No bed net,46.8
+Never taker,Treatment,0,0,39.8,64,No bed net,39.8
+Complier,Treatment,0,1,49.6,46.7,Bed net,46.7
+Never taker,Control,0,0,31.4,14.4,No bed net,31.4
+Never taker,Treatment,0,0,29.1,34.9,No bed net,29.1
+Complier,Treatment,0,1,49.4,60.2,Bed net,60.2
+Complier,Control,0,1,39.4,51,No bed net,39.4
+Complier,Control,0,1,31.3,76.8,No bed net,31.3
+Complier,Treatment,0,1,31.3,71.3,Bed net,71.3
+Never taker,Control,0,0,52.8,51.1,No bed net,52.8
+Complier,Treatment,0,1,40.5,48.4,Bed net,48.4
+Complier,Control,0,1,40.4,47.7,No bed net,40.4
+Never taker,Treatment,0,0,24.7,44,No bed net,24.7
+Never taker,Control,0,0,48,37.9,No bed net,48
+Never taker,Treatment,0,0,41.5,38.7,No bed net,41.5
+Always taker,Control,1,1,55.7,38.3,Bed net,38.3
+Complier,Control,0,1,44.7,52.1,No bed net,44.7
+Always taker,Control,1,1,55.9,48.1,Bed net,48.1
+Always taker,Treatment,1,1,65.7,45.8,Bed net,45.8
+Always taker,Control,1,1,51.1,43.9,Bed net,43.9
+Never taker,Control,0,0,40.6,52.1,No bed net,40.6
+Complier,Treatment,0,1,36.5,53.3,Bed net,53.3
+Never taker,Control,0,0,45.9,36.3,No bed net,45.9
+Never taker,Control,0,0,44.6,58.6,No bed net,44.6
+Complier,Control,0,1,25.5,61.1,No bed net,25.5
+Complier,Treatment,0,1,43.3,38.2,Bed net,38.2
+Complier,Treatment,0,1,30,56.6,Bed net,56.6
+Never taker,Treatment,0,0,51.4,51.2,No bed net,51.4
+Never taker,Treatment,0,0,39,45.2,No bed net,39
+Complier,Control,0,1,30.4,73,No bed net,30.4
+Always taker,Treatment,1,1,58.5,47,Bed net,47
+Complier,Treatment,0,1,43.8,40.6,Bed net,40.6
+Always taker,Control,1,1,57.2,48.5,Bed net,48.5
+Complier,Treatment,0,1,41.5,57.5,Bed net,57.5
+Never taker,Control,0,0,41.9,40.4,No bed net,41.9
+Complier,Control,0,1,34.6,59.8,No bed net,34.6
+Always taker,Control,1,1,59.8,33.2,Bed net,33.2
+Complier,Control,0,1,43.5,69.8,No bed net,43.5
+Never taker,Control,0,0,33.4,47.8,No bed net,33.4
+Never taker,Control,0,0,41.9,27.5,No bed net,41.9
+Complier,Control,0,1,41.7,67.5,No bed net,41.7
+Never taker,Treatment,0,0,27.6,29.9,No bed net,27.6
+Never taker,Treatment,0,0,37,24.9,No bed net,37
+Never taker,Treatment,0,0,33.7,49.6,No bed net,33.7
+Never taker,Treatment,0,0,50.3,51.6,No bed net,50.3
+Never taker,Control,0,0,34.9,44.2,No bed net,34.9
+Never taker,Control,0,0,39.4,32.7,No bed net,39.4
+Never taker,Treatment,0,0,41.3,49.7,No bed net,41.3
+Complier,Control,0,1,33.9,42.3,No bed net,33.9
+Always taker,Treatment,1,1,61.3,44.7,Bed net,44.7
+Never taker,Control,0,0,7.7,28.3,No bed net,7.7
+Complier,Treatment,0,1,42.8,60.8,Bed net,60.8
+Never taker,Control,0,0,35,29.4,No bed net,35
+Complier,Treatment,0,1,34.1,52,Bed net,52
+Complier,Treatment,0,1,33.5,51.1,Bed net,51.1
+Always taker,Treatment,1,1,52,52.5,Bed net,52.5
+Never taker,Control,0,0,22.6,56.4,No bed net,22.6
+Complier,Control,0,1,37.2,49.9,No bed net,37.2
+Complier,Control,0,1,34.8,50,No bed net,34.8
+Complier,Treatment,0,1,32.9,45.2,Bed net,45.2
+Never taker,Treatment,0,0,40.9,50.2,No bed net,40.9
+Complier,Treatment,0,1,15.1,52.8,Bed net,52.8
+Complier,Treatment,0,1,24.8,55.9,Bed net,55.9
+Always taker,Treatment,1,1,53.5,52.6,Bed net,52.6
+Complier,Control,0,1,46,47.6,No bed net,46
+Always taker,Control,1,1,63.3,71.5,Bed net,71.5
+Complier,Control,0,1,30.7,30.8,No bed net,30.7
+Never taker,Control,0,0,56.6,49.3,No bed net,56.6
+Never taker,Treatment,0,0,41,46,No bed net,41
+Complier,Control,0,1,38.1,31.4,No bed net,38.1
+Complier,Control,0,1,29.5,47.9,No bed net,29.5
+Complier,Control,0,1,43.4,58.4,No bed net,43.4
+Complier,Treatment,0,1,30.2,59,Bed net,59
+Never taker,Treatment,0,0,15.3,29.5,No bed net,15.3
+Complier,Treatment,0,1,45.3,53.8,Bed net,53.8
+Complier,Control,0,1,43.1,66.2,No bed net,43.1
+Always taker,Treatment,1,1,48.3,72.6,Bed net,72.6
+Always taker,Control,1,1,51.3,53.6,Bed net,53.6
+Never taker,Control,0,0,44.1,37.6,No bed net,44.1
+Never taker,Treatment,0,0,39.3,63.1,No bed net,39.3
+Complier,Control,0,1,39.4,54.1,No bed net,39.4
+Never taker,Treatment,0,0,35.2,27.9,No bed net,35.2
+Complier,Treatment,0,1,42.6,31.5,Bed net,31.5
+Never taker,Treatment,0,0,39.2,30.4,No bed net,39.2
+Always taker,Treatment,1,1,59.6,55.7,Bed net,55.7
+Always taker,Control,1,1,60,43.5,Bed net,43.5
+Complier,Control,0,1,49.9,28.6,No bed net,49.9
+Never taker,Treatment,0,0,46.8,59.2,No bed net,46.8
+Never taker,Control,0,0,50.6,27.8,No bed net,50.6
+Complier,Treatment,0,1,40.2,44.8,Bed net,44.8
+Complier,Treatment,0,1,43,80.7,Bed net,80.7
+Complier,Treatment,0,1,51.1,47,Bed net,47
+Complier,Control,0,1,41.7,82,No bed net,41.7
+Complier,Control,0,1,37.6,55.2,No bed net,37.6
+Never taker,Treatment,0,0,25.1,42.5,No bed net,25.1
+Never taker,Treatment,0,0,23.2,40,No bed net,23.2
+Never taker,Control,0,0,52.2,31.7,No bed net,52.2
+Never taker,Treatment,0,0,33.7,18,No bed net,33.7
+Complier,Control,0,1,37.9,39.2,No bed net,37.9
+Never taker,Control,0,0,30.2,44.5,No bed net,30.2
+Always taker,Treatment,1,1,51.6,72.9,Bed net,72.9
+Never taker,Treatment,0,0,35.3,27.1,No bed net,35.3
+Complier,Treatment,0,1,43,63.4,Bed net,63.4
+Complier,Control,0,1,29.8,44.9,No bed net,29.8
+Never taker,Control,0,0,41.2,26.3,No bed net,41.2
+Complier,Treatment,0,1,42.8,39.2,Bed net,39.2
+Always taker,Control,1,1,64.2,59.9,Bed net,59.9
+Never taker,Control,0,0,12.6,23.6,No bed net,12.6
+Never taker,Control,0,0,21.2,45.9,No bed net,21.2
+Always taker,Treatment,1,1,67.1,51.7,Bed net,51.7
+Never taker,Treatment,0,0,32.9,27.7,No bed net,32.9
+Complier,Control,0,1,42.6,39.9,No bed net,42.6
+Never taker,Treatment,0,0,15.5,38.4,No bed net,15.5
+Complier,Treatment,0,1,28.8,51.6,Bed net,51.6
+Never taker,Control,0,0,30.6,46,No bed net,30.6
+Complier,Control,0,1,41.4,35.9,No bed net,41.4
+Always taker,Treatment,1,1,45.8,26.2,Bed net,26.2
+Complier,Control,0,1,27.5,44,No bed net,27.5
+Always taker,Control,1,1,71.3,44.6,Bed net,44.6
+Always taker,Treatment,1,1,63.1,40.5,Bed net,40.5
+Complier,Treatment,0,1,43.4,58.8,Bed net,58.8
+Always taker,Control,1,1,60.4,57.4,Bed net,57.4
+Complier,Treatment,0,1,35.4,67.5,Bed net,67.5
+Never taker,Treatment,0,0,37.8,15.7,No bed net,37.8
+Complier,Control,0,1,42.8,42.7,No bed net,42.8
+Complier,Treatment,0,1,47.2,50,Bed net,50
+Complier,Control,0,1,36.2,54.1,No bed net,36.2
+Always taker,Control,1,1,46.1,36.7,Bed net,36.7
+Complier,Control,0,1,28.8,37.8,No bed net,28.8
+Always taker,Control,1,1,59.4,65.8,Bed net,65.8
+Complier,Control,0,1,23.6,70.9,No bed net,23.6
+Always taker,Control,1,1,86.7,62.8,Bed net,62.8
+Always taker,Treatment,1,1,56.4,70.7,Bed net,70.7
+Complier,Treatment,0,1,36.8,47,Bed net,47
+Complier,Treatment,0,1,46.8,49.3,Bed net,49.3
+Always taker,Treatment,1,1,46.1,77.7,Bed net,77.7
+Complier,Treatment,0,1,32.3,58.9,Bed net,58.9
+Never taker,Treatment,0,0,37.9,35.7,No bed net,37.9
+Never taker,Treatment,0,0,15.6,49.4,No bed net,15.6
+Never taker,Control,0,0,23.3,28.7,No bed net,23.3
+Always taker,Control,1,1,54.5,75.3,Bed net,75.3
+Complier,Control,0,1,43.7,10.4,No bed net,43.7
+Always taker,Treatment,1,1,64.6,61.1,Bed net,61.1
+Complier,Treatment,0,1,28.5,63.7,Bed net,63.7
+Never taker,Treatment,0,0,35.2,31.5,No bed net,35.2
+Never taker,Treatment,0,0,37.6,37,No bed net,37.6
+Complier,Treatment,0,1,35.9,52,Bed net,52
+Never taker,Control,0,0,30.5,22.8,No bed net,30.5
+Complier,Treatment,0,1,44.5,60.1,Bed net,60.1
+Complier,Control,0,1,53.4,47,No bed net,53.4
+Complier,Treatment,0,1,23.6,53.5,Bed net,53.5
+Complier,Control,0,1,44.2,53.9,No bed net,44.2
+Complier,Control,0,1,42.8,69.1,No bed net,42.8
+Always taker,Treatment,1,1,66,55.3,Bed net,55.3
+Never taker,Control,0,0,31.6,32.3,No bed net,31.6
+Complier,Control,0,1,41.5,66.2,No bed net,41.5

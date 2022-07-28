@@ -1,0 +1,217 @@
+---
+title: "Penguins"
+author: "Andrew Heiss"
+date: "August 17, 2021"
+output: 
+  html_document: 
+    toc: yes
+  word_document: 
+    toc: yes
+  pdf_document: 
+    toc: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,
+                      fig.align = "center",
+                      fig.width = 6, 
+                      fig.height = 4)
+```
+
+```{r load-libraries-data, warning=FALSE, message=FALSE}
+library(tidyverse)
+library(scales)
+library(broom)
+library(kableExtra)
+
+penguins_raw <- read_csv("data/penguins.csv")
+```
+
+Between 2007 and 2009, researchers collected data on penguins in three islands in the Palmer Archipelago in Antarctica: Biscoe, Dream, and Torgersen. The `penguins` dataset has data for 342 penguins from 3 different species: Chinstrap, Gentoo, and Adélie. It includes the following variables:
+
+- `species`: The penguin's species (Chinstrap, Gentoo, and Adélie)
+- `island`: The island where the penguin lives (Biscoe, Dream, and Torgersen)
+- `bill_length_mm`: The length of the penguin's bill, in millimeters (distance from the penguin's face to the tip of the bill)
+- `bill_depth_mm`: The depth of the penguin's bill, in millimeters (height of the bill; distance from the bottom of the bill to the top of the bill)
+- `flipper_length_mm`: The length of the penguin's flippers, in millimeters
+- `body_mass_g`: The weight of the penguin, in grams
+- `sex`: The sex of the penguin
+- `year`: The year the observation was made
+
+Knowing the difference between bill length and bill depth is tricky if you're not a bird expert (I'm not!), so here's a helpful diagram:
+
+```{r penguin-diagram, out.width="50%", echo=FALSE, fig.cap="Penguin bill length vs. bill depth"}
+knitr::include_graphics("img/culmen_depth.png")
+```
+
+# Cleaning the data
+
+We first need to clean the data a little. Some of the observations are missing the sex of the penguin!
+
+```{r show-miss-data, warning=FALSE}
+library(naniar)
+
+gg_miss_var(penguins_raw)
+```
+
+Missing data will mess up our regression models, so we remove any rows with missing sex. That also fixes the issues we had with the other missing variables, since those rows were missing the sex.
+
+```{r show-fixed-data, warning=FALSE}
+penguins <- penguins_raw %>% 
+  filter(!is.na(sex))
+
+gg_miss_var(penguins)
+```
+
+We'll save this clean data as a CSV file so we can use it in other analysis (or other files within this analysis).
+
+```{r save-clean-data}
+write_csv(penguins, file = "data/penguins_clean.csv")
+```
+
+# Exploratory analysis
+
+First we'll look for any patterns in the data. Maybe specific species are heavier or have longer wings or longer or taller bills?
+
+## Penguin weight by species
+
+```{r weight-species, fig.cap="Penguin weight by species"}
+ggplot(penguins, aes(x = body_mass_g,
+                     fill = species)) +
+  geom_density(alpha = 0.75) +
+  scale_fill_viridis_d(option = "plasma") +
+  labs(x = "Body mass (g)", y = "Density", fill = "Species") +
+  theme_minimal()
+```
+
+```{r extract-summary-stats, include=FALSE}
+penguin_details <- penguins %>% 
+  group_by(species) %>% 
+  summarize(avg_weight = mean(body_mass_g),
+            avg_bill_depth = mean(bill_depth_mm),
+            avg_flipper_length = mean(flipper_length_mm))
+
+gentoo_weight <- filter(penguin_details, species == "Gentoo")$avg_weight
+adelie_weight <- filter(penguin_details, species == "Adelie")$avg_weight
+chinstrap_weight <- filter(penguin_details, species == "Chinstrap")$avg_weight
+
+gentoo_bill <- filter(penguin_details, species == "Gentoo")$avg_bill_depth
+adelie_bill <- filter(penguin_details, species == "Adelie")$avg_bill_depth
+chinstrap_bill <- filter(penguin_details, species == "Chinstrap")$avg_bill_depth
+```
+
+It looks like Gentoo penguins are heavier on average than the other two species, and substantially so. Gentoo penguins weigh an average of `r comma(gentoo_weight)` grams, while Adelie and Chinstrap penguins weigh an average of `r comma(adelie_weight)` and `r comma(chinstrap_weight)`, respectively.
+
+## Bill depth by species
+
+Next we'll look at bill depth (again, this refers to the distance between the top and bottom of the bill) across species:
+
+```{r depth-species, fig.cap="Penguin bill depth by species"}
+ggplot(penguins, aes(x = bill_depth_mm,
+                     fill = species)) +
+  geom_density(alpha = 0.75) +
+  scale_fill_viridis_d(option = "plasma") +
+  labs(x = "Bill depth (mm)", y = "Density", fill = "Species") +
+  theme_minimal()
+```
+
+Again, Gentoo penguins are quite distinctive and have the shortest bills. On average, Gentoo bills are  `r round(gentoo_bill, 1)` millimeters deep, while Adelie and Chinstrap penguins have bills that are `r round(adelie_bill, 1)` and `r round(chinstrap_bill, 1)`, respectively.
+
+## Penguin location
+
+Are there any patterns in where these birds live?
+
+```{r penguin-location, fig.cap="Penguin location by species"}
+ggplot(penguins, aes(x = island, y = species, color = species)) + 
+  geom_point(position = position_jitter(seed = 1234)) +
+  scale_color_viridis_d(option = "plasma") +
+  guides(color = "none") +
+  labs(x = "Island", y = "Species") +
+  theme_minimal()
+```
+
+Neat! Gentoo penguins are only on Biscoe Island, Chinstrap penguins are only on Dream Island, and Adelie penguins live on all three of the islands in the dataset---and they're all alone on Torgersen Island.
+
+
+# Regression analysis
+
+We've seen that Gentoo penguins are pretty distinctive and are both heavier and have shorter bill depths. What's the overall relationship between bill length and bird weight? Are Gentoos still distinctive?
+
+```{r depth-mass-initial, message=FALSE}
+ggplot(penguins, aes(x = bill_depth_mm, y = body_mass_g)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  labs(x = "Bill depth (mm)", y = "Body mass (g)") +
+  theme_minimal()
+```
+
+According to this plot, it looks like there's a negative relationship between bill depth and body mass---as bills get taller, penguins get lighter. We can create a regression model to see the exact relationship. We'll use this model:
+
+$$
+\widehat{\text{Body mass}} = \beta_0 + \beta_1 \text{Bill depth} + \epsilon
+$$
+
+```{r first-model}
+model1 <- lm(body_mass_g ~ bill_depth_mm, 
+             data = penguins)
+
+nice_results1 <- tidy(model1)
+
+nice_results1 %>% 
+  kbl(booktabs = TRUE) %>% 
+  kable_styling()
+```
+
+Based on this model, a 1-mm increase in bill depth is associated with a `r round(filter(nice_results1, term == "bill_depth_mm")$estimate, 1)` gram decrease in body weight, on average.
+
+However, that's wrong! The coefficient for $\beta_1$ is negative here, but we're not accounting for species. If we look at the original scatterplot, the trend line does go down, but if we color the points by species, we can see that the relationship is actually positive *within* species.
+
+```{r depth-mass-species, message=FALSE}
+ggplot(penguins, aes(x = bill_depth_mm, y = body_mass_g, color = species)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  geom_smooth(aes(color = NULL), method = "lm", color = "darkred") +
+  scale_color_viridis_d(option = "plasma") +
+  labs(x = "Bill depth (mm)", y = "Body mass (g)", color = "Species") +
+  theme_minimal()
+```
+
+The dark red line shows the trend when not considering species, while the yellow, purple, and blue lines show the within-species trends. The directions reverse! This is a great example of something called Simpson's Paradox, which [according to Wikipedia](https://en.wikipedia.org/wiki/Simpson%27s_paradox) means that 
+
+> …a trend appears in several groups of data but disappears or reverses when the groups are combined.
+
+If we control for species in a new regression model, we can see the positive relationship between bill depth and body mass. Here's the new model:
+
+$$
+\widehat{\text{Body mass}} = \beta_0 + \beta_1 \text{Bill depth} + \beta_2 \text{Species} + \epsilon
+$$
+
+```{r second-model}
+model2 <- lm(body_mass_g ~ bill_depth_mm + species, 
+             data = penguins)
+
+nice_results2 <- tidy(model2)
+
+nice_results2 %>% 
+  kbl(booktabs = TRUE) %>% 
+  kable_styling()
+```
+
+It worked! After controlling for species, on average, a 1-mm increase in bill depth is associated with a `r round(filter(nice_results2, term == "bill_depth_mm")$estimate, 1)` gram *increase* in weight. Also, interestingly, the coefficients for Chinstrap and Gentoo penguins show the trends across these species' weights. Compared to Adelie penguins, Chinstrap penguins are only `r round(filter(nice_results2, term == "speciesChinstrap")$estimate, 1)` grams heavier, while Gentoo penguins are `r comma(filter(nice_results2, term == "speciesGentoo")$estimate, 1)` grams heavier than Adelie penguins, on average.
+
+
+# Conclusion
+
+Therefore, Gentoo penguins are neat. They
+
+1. only live on Biscoe Island
+2. are heavier than their Chinstrap and Adelie counterparts---they're the chonky bois of the penguin world
+3. have short bills, height-wise
+
+Also, there seems to be a fairly strong relationship between bill depth and body weight. Within all three species, penguins with taller bills tend to be heavier. This relationship can get hidden by Simpson's Paradox if we don't look at within-species trends though.
+
+The end.
+
+```{r penguin-all-three, out.width="50%", echo=FALSE, fig.cap="Penguins!"}
+knitr::include_graphics("img/lter_penguins.png")
+```

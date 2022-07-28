@@ -1,0 +1,188 @@
+---
+title: "Teacher salary bonuses"
+date: '`r format(Sys.time(), "%B %e, %Y")`'
+---
+
+Teachers in North Carolina Public schools earn a bonus of \$750 if the students in their school meet a standard called "expected growth." A summary statistic called "average growth" is computed for each school; the expected growth standard is met when this summary measure exceeds zero. (This is based on [actual econometric research](https://my.vanderbilt.edu/performanceincentives/files/2012/10/200803_Vigdor_TeacherBonusesNC.pdf).)
+
+For this example, we'll use regression discontinuity techniques to see if failing to receive a bonus motivates teachers to improve their performance in the subsequent school year.
+
+- Running variable = `avgrow05`
+- Treatment = `expgrow`
+- Outcome = `avgrow06`
+
+```{r setup, warning=FALSE, message=FALSE}
+library(tidyverse)
+library(haven)
+library(broom)
+library(rdrobust)
+library(rddensity)
+library(modelsummary)
+
+schools <- read_stata("data/nc_schools.dta")
+```
+
+# Step 1: Rule based?
+
+Yep.
+
+# Step 2: Fuzzy or sharp?
+
+```{r}
+ggplot(schools, aes(x = avgrow05, y = expgrow, color = avgrow05 > 0)) +
+  geom_point(size = 0.5, alpha = 0.5,
+             position = position_jitter(width = 0, height = 0.25, seed = 1234)) +
+  geom_vline(xintercept = 0)
+```
+
+```{r}
+schools %>%
+  group_by(expgrow, avgrow05 > 0) %>%
+  summarize(count = n())
+```
+
+```{r}
+schools_clean <- schools %>% 
+  filter(avgrow05 <= 0 & expgrow == 0 |
+           avgrow05 > 0 & expgrow == 1)
+```
+
+
+# Step 3: Check for discontinuity in running variable around cutpoint
+
+```{r}
+ggplot(schools_clean, aes(x = avgrow05, fill = factor(expgrow))) +
+  geom_histogram(binwidth = 0.05, color = "white", boundary = 0) +
+  geom_vline(xintercept = 0) +
+  labs(x = "Growth in 2005", y = "Count", fill = "Received bonus")
+
+```
+
+```{r}
+test_density <- rddensity(schools_clean$avgrow05, c = 0)
+summary(test_density)
+```
+
+```{r}
+plot_density_test <- rdplotdensity(rdd = test_density,
+                                   X = schools_clean$avgrow05,
+                                   type = "both")  # This adds both points and lines
+```
+
+# Step 4: Check for discontinuity in outcome across running variable
+
+```{r}
+ggplot(schools_clean, aes(x = avgrow05, y = avgrow06, color = factor(expgrow))) +
+  geom_point(size = 0.5, alpha = 0.5) +
+  # Add a line based on a linear model for the people scoring 70 or less
+  geom_smooth(data = filter(schools_clean, avgrow05 <= 0), method = "lm") +
+  # Add a line based on a linear model for the people scoring more than 70
+  geom_smooth(data = filter(schools_clean, avgrow05 > 0), method = "lm") +
+  geom_vline(xintercept = 0) +
+  labs(x = "2005 growth", y = "2006 growth", color = "Received bonus") +
+  coord_cartesian(xlim = c(-0.3, 0.3), ylim = c(-0.3, 0.3))
+```
+
+# Step 5: Measure the size of the effect
+
+## Parametric estimation
+
+```{r}
+summary(rdbwselect(y = schools_clean$avgrow06, x = schools_clean$avgrow05, c = 0))
+```
+
+```{r}
+schools_bw <- schools_clean %>% 
+  filter(avgrow05 > -0.061 & avgrow05 < 0.061)
+
+ggplot(schools_bw, aes(x = avgrow05, y = avgrow06, color = factor(expgrow))) +
+  geom_point(size = 0.5, alpha = 0.5) +
+  geom_smooth(data = filter(schools_bw, avgrow05 <= 0), method = "lm") +
+  geom_smooth(data = filter(schools_bw, avgrow05 > 0), method = "lm") +
+  geom_vline(xintercept = 0) +
+  labs(x = "2005 growth", y = "2006 growth", color = "Received bonus") +
+  coord_cartesian(ylim = c(-0.25, 0.25))
+
+ggplot(schools_bw, aes(x = avgrow05, y = avgrow06, color = factor(expgrow))) +
+  geom_point(size = 0.5, alpha = 0.5) +
+  geom_smooth(data = filter(schools_bw, avgrow05 <= 0), method = "loess") +
+  geom_smooth(data = filter(schools_bw, avgrow05 > 0), method = "loess") +
+  geom_vline(xintercept = 0) +
+  labs(x = "2005 growth", y = "2006 growth", color = "Received bonus") +
+  coord_cartesian(ylim = c(-0.25, 0.25))
+```
+
+```{r}
+model_simple <- lm(avgrow06 ~ avgrow05 + expgrow,
+                   data = schools_bw)
+tidy(model_simple, conf.int = TRUE)
+```
+
+## Nonparametric estimation
+
+```{r}
+model_rdrobust <- rdrobust(y = schools_clean$avgrow06, x = schools_clean$avgrow05, c = 0) 
+
+summary(model_rdrobust)
+```
+
+```{r}
+rdplot(y = schools_clean$avgrow06, x = schools_clean$avgrow05, c = 0)
+```
+
+
+# Step 6: Compare all the effects
+
+The **broom** package doesn't support `rdrobust` objects (yet), but it's possible to add `tidy()` and `glance()` functions that work with them, which means you can (1) use things like `tidy()` and (2) use things like `modelsummary()`. [Get the code here](https://github.com/tidymodels/broom/issues/777#issuecomment-643251123).
+
+```{r}
+#' Tidy a `rdrobust` regression discontinuity design object
+#'
+#' @param x A `rdrobust` object
+#' @param ... extra arguments (not used)
+#' @examples
+#' \dontrun{
+#' x <- runif(1000,-1,1)
+#' y <- 3 * x + 2 * (x>=0) + rnorm(1000)
+#' mod <- rdrobust(y,x)
+#' 
+#' tidy(mod)
+#' 
+#' glance(mod)
+#' }
+#' @export
+tidy.rdrobust <- function(object, ...){
+    ret <- tibble(term = row.names(object$coef), 
+                  estimate = object$coef[, 1], 
+                  std.error = object$se[, 1], 
+                  statistic = object$z[, 1],
+                  p.value = object$pv[, 1], 
+                  conf.low = object$ci[,1],
+                  conf.high = object$ci[, 2])
+    ret
+}
+
+#' Glance a `rdrobust` regression discontinuity design object
+#'
+#' @inheritParams tidy.rdrobust
+#' @export
+glance.rdrobust <- function(object, ...){
+    ret <- tibble(nobs.left = object$N[1],
+                  nobs.right = object$N[2],
+                  nobs.effective.left = object$N_h[1],
+                  nobs.effective.right = object$N_h[2],
+                  cutoff = object$c,
+                  order.regression = object$q,
+                  order.bias = object$q,
+                  kernel = object$kernel,
+                  bwselect = object$bwselect)
+    ret
+}
+
+```
+
+```{r}
+tidy(model_rdrobust)
+modelsummary(list(model_simple, model_rdrobust))
+```
+

@@ -1,0 +1,185 @@
+---
+title: "Measurement"
+author: "YOUR NAME HERE"
+date: "DATE GOES HERE"
+output: 
+  html_document: 
+    toc: yes
+  pdf_document: 
+    latex_engine: xelatex
+    toc: yes
+  word_document: 
+    toc: yes
+---
+
+**Feel free to remove any/all of the placeholder text and instructions here!**
+
+# 1: Measurement and abstraction for full-day kindergarten
+
+Read this article about half-day vs. full-day kindergarten in Utah: <https://archive.sltrib.com/story.php?ref=/news/ci_13164697>. The article is 10 years old, and half-day kindergarten still remains standard practice in most Utah school districts.
+
+Pretend you are the administrator of the Optional Extended Day Kindergarten initiative. Based on the *Salt Lake Tribune* article (which provides hints throughout, and especially in one of the final paragraphs), and based on your own knowledge of educational outcomes, do the following: 
+
+## Possible outcomes
+
+Make a list of two (2) possible outcomes of the full-day kindergarten program. 
+
+- Outcome 1
+- Outcome 2
+
+For each of the these outcomes, answer these questions:
+
+## Outcome 1: NAME OF IT HERE
+
+Using the concept of the "ladder of abstraction" that we discussed in class (e.g. identifying a witch, measuring poverty, etc.), make a list of all the possible attributes of the outcome:
+
+- List
+- Lots
+- Of
+- Things
+- Here
+
+Narrow this list down to 3-4 key attributes. Discuss how you decided to narrow the concepts and justify why you think these attributes capture the outcome. *(≈100 words)*
+
+*For each of these attributes*, answer these questions:
+
+### Attribute 1: NAME
+
+- Measurable definition: How would you specifically define this attribute? (i.e. if the attribute is "reduced crime", define it as "The percent change in crime in a specific neighborhood during a certain time frame" or something similar)
+- Ideal measurement: How would you measure this attribute in an ideal world?
+- Feasible measurement: How would you measure this given reality and given limitations in budget, time, etc.?
+- Measurement of program effect: How would to connect this measure to people in the program? How would you check to see if the program itself had an effect?
+
+### Attribute 2: NAME
+
+- Measurable definition: 
+- Ideal measurement: 
+- Feasible measurement: 
+- Measurement of program effect: 
+
+### Attribute 3: NAME
+
+- Measurable definition: 
+- Ideal measurement: 
+- Feasible measurement: 
+- Measurement of program effect: 
+
+
+## Outcome 2: NAME OF IT HERE
+
+Using the concept of the "ladder of abstraction" that we discussed in class (e.g. identifying a witch, measuring poverty, etc.), make a list of all the possible attributes of the outcome:
+
+- List
+- Lots
+- Of
+- Things
+- Here
+
+Narrow this list down to 3-4 key attributes. Discuss how you decided to narrow the concepts and justify why you think these attributes capture the outcome. *(≈100 words)*
+
+*For each of these attributes*, answer these questions:
+
+### Attribute 1: NAME
+
+- Measurable definition: 
+- Ideal measurement: 
+- Feasible measurement: 
+- Measurement of program effect: 
+
+### Attribute 2: NAME
+
+- Measurable definition: 
+- Ideal measurement: 
+- Feasible measurement: 
+- Measurement of program effect: 
+
+### Attribute 3: NAME
+
+- Measurable definition: 
+- Ideal measurement: 
+- Feasible measurement: 
+- Measurement of program effect: 
+
+
+# 2: Measurement and abstraction for your program
+
+Repeat this exercise for the program you've chosen for your final project.
+
+## Possible outcomes
+
+- List
+- Things
+- Here
+
+For each of the these outcomes, answer these questions:
+
+## Outcome 1: NAME OF IT HERE
+
+Using the concept of the "ladder of abstraction" that we discussed in class (e.g. identifying a witch, measuring poverty, etc.), make a list of all the possible attributes of the outcome:
+
+- List
+- Lots
+- Of
+- Things
+- Here
+
+Narrow this list down to 3-4 key attributes. Discuss how you decided to narrow the concepts and justify why you think these attributes capture the outcome. *(≈100 words)*
+
+*For each of these attributes*, answer these questions:
+
+### Attribute 1: NAME
+
+- Measurable definition: 
+- Ideal measurement: 
+- Feasible measurement: 
+- Measurement of program effect: 
+
+### Attribute 2: NAME
+
+- Measurable definition: 
+- Ideal measurement: 
+- Feasible measurement: 
+- Measurement of program effect: 
+
+### Attribute 3: NAME
+
+- Measurable definition: 
+- Ideal measurement: 
+- Feasible measurement: 
+- Measurement of program effect: 
+
+
+## Outcome 2: NAME OF IT HERE
+
+Using the concept of the "ladder of abstraction" that we discussed in class (e.g. identifying a witch, measuring poverty, etc.), make a list of all the possible attributes of the outcome:
+
+- List
+- Lots
+- Of
+- Things
+- Here
+
+Narrow this list down to 3-4 key attributes. Discuss how you decided to narrow the concepts and justify why you think these attributes capture the outcome. *(≈100 words)*
+
+*For each of these attributes*, answer these questions:
+
+### Attribute 1: NAME
+
+- Measurable definition: 
+- Ideal measurement: 
+- Feasible measurement: 
+- Measurement of program effect: 
+
+### Attribute 2: NAME
+
+- Measurable definition: 
+- Ideal measurement: 
+- Feasible measurement: 
+- Measurement of program effect: 
+
+### Attribute 3: NAME
+
+- Measurable definition: 
+- Ideal measurement: 
+- Feasible measurement: 
+- Measurement of program effect: 

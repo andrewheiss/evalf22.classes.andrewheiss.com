@@ -1,0 +1,36 @@
+---
+title: "Hot dogs"
+output: html_document
+---
+
+```{r warning=FALSE, message=FALSE}
+library(tidyverse)
+library(broom)
+
+# This way is hard to read and can be miserable
+hotdogs <- tibble(price = c(2.00, 2.35, 2.35, 2.70),
+                  cheese = c(FALSE, TRUE, FALSE, TRUE),
+                  chili = c(FALSE, FALSE, TRUE, TRUE))
+
+# This way lets you specify tables row-wise (hence t*r*ibble) and is far easier to read
+hotdogs <- tribble(
+  ~price, ~cheese, ~chili,
+  2.00,   FALSE,   FALSE,
+  2.35,   TRUE,    FALSE,
+  2.35,   FALSE,   TRUE,
+  2.70,   TRUE,    TRUE
+)
+
+model <- lm(price ~ cheese + chili + cheese * chili, data = hotdogs)
+```
+
+```{r}
+tidy(model)
+```
+
+```{r}
+tidy(model) %>% 
+  select(term, estimate) %>% 
+  mutate(estimate = round(estimate, 2))
+```
+

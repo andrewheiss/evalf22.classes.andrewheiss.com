@@ -1,0 +1,138 @@
+---
+title: "Threats to validity"
+author: "YOUR NAME HERE"
+date: "DATE GOES HERE"
+output: 
+  html_document: 
+    toc: yes
+  pdf_document: 
+    latex_engine: xelatex
+    toc: yes
+  word_document: 
+    toc: yes
+---
+
+**Feel free to remove any/all of the placeholder text and instructions here!**
+
+# Conditional cash transfers and education in Mexico
+
+## Internal validity
+
+1. **Selection**: 
+2. **Attrition**: 
+3. **Maturation**: 
+4. **Secular trends**: 
+5. **Seasonality**: 
+6. **Testing**: 
+7. **Regression to the mean**: 
+8. **Measurement error**: 
+9. **Time frame of study**: 
+10. **Hawthorne effects**: 
+11. **John Henry effects**: 
+12. **Spillovers**: 
+13. **Intervening events**: 
+
+Final score: 
+
+General summary: (i.e. is this an internally valid study?)
+
+## External validity
+
+Stuff goes here.
+
+## Construct validity
+
+Stuff goes here.
+
+
+# *Sesame Street* and school readiness
+
+## Internal validity
+
+1. **Selection**: 
+2. **Attrition**: 
+3. **Maturation**: 
+4. **Secular trends**: 
+5. **Seasonality**: 
+6. **Testing**: 
+7. **Regression to the mean**: 
+8. **Measurement error**: 
+9. **Time frame of study**: 
+10. **Hawthorne effects**: 
+11. **John Henry effects**: 
+12. **Spillovers**: 
+13. **Intervening events**: 
+
+Final score: 
+
+General summary: (i.e. is this an internally valid study?)
+
+## External validity
+
+Stuff goes here.
+
+## Construct validity
+
+Stuff goes here.
+
+
+# Police deployment and crime in Argentina
+
+## Internal validity
+
+1. **Selection**: 
+2. **Attrition**: 
+3. **Maturation**: 
+4. **Secular trends**: 
+5. **Seasonality**: 
+6. **Testing**: 
+7. **Regression to the mean**: 
+8. **Measurement error**: 
+9. **Time frame of study**: 
+10. **Hawthorne effects**: 
+11. **John Henry effects**: 
+12. **Spillovers**: 
+13. **Intervening events**: 
+
+Final score: 
+
+General summary: (i.e. is this an internally valid study?)
+
+## External validity
+
+Stuff goes here.
+
+## Construct validity
+
+Stuff goes here.
+
+
+# Early childhood development and migration in Jamaica
+
+## Internal validity
+
+1. **Selection**: 
+2. **Attrition**: 
+3. **Maturation**: 
+4. **Secular trends**: 
+5. **Seasonality**: 
+6. **Testing**: 
+7. **Regression to the mean**: 
+8. **Measurement error**: 
+9. **Time frame of study**: 
+10. **Hawthorne effects**: 
+11. **John Henry effects**: 
+12. **Spillovers**: 
+13. **Intervening events**: 
+
+Final score: 
+
+General summary: (i.e. is this an internally valid study?)
+
+## External validity
+
+Stuff goes here.
+
+## Construct validity
+
+Stuff goes here.

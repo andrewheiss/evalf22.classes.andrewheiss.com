@@ -1,0 +1,230 @@
+---
+title: "Problem set 4: The EITC and diff-in-diff"
+author: "YOUR NAME HERE"
+date: "DATE GOES HERE"
+output: 
+  html_document: 
+    toc: yes
+  pdf_document: 
+    latex_engine: xelatex
+    toc: yes
+  word_document: 
+    toc: yes
+---
+
+---
+
+In 1996, Nada Eissa and Jeffrey B. Liebman [published a now-classic study on the effect of the Earned Income Tax Credit (EITC) on employment](http://darp.lse.ac.uk/papersdb/Eissa-Liebman_(QJE96).pdf). The EITC is a special tax credit for low income workers that changes depending on (1) how much a family earns (the lowest earners and highest earners don't receive a huge credit, as the amount received phases in and out), and (2) the number of children a family has (more kids = higher credit). See [this brief explanation](https://www.cbpp.org/research/federal-tax/policy-basics-the-earned-income-tax-credit) for an interactive summary of how the EITC works. 
+
+Eissa and Liebman's study looked at the effects of the EITC on women's employment and wages after it was initially substantially expanded in 1986. The credit was expanded substantially again in 1993. For this problem set, you'll measure the causal effect of this 1993 expansion on the employment levels and annual income for women.
+
+A family must have children in order to quality for the EITC, which means the presence of 1 or more kids in a family assigns low-income families to the EITC program (or "treatment"). We have annual data on earnings from 1991–1996, and because the expansion of EITC occurred in 1993, we also have data both before and after the expansion. This treatment/control before/after situation allows us to use a difference-in-differences approach to identify the causal effect of the EITC.
+
+The dataset I've provided (`eitc.dta`) is a Stata data file containing more than 13,000 observations. This is non-experimental data—the data comes from the US Census's Current Population Survey (CPS) and includes all women in the CPS sample between the ages of 20–54 with less than a high school education between 1991–1996. There are 11 variables:
+
+- `state`: The woman's state of residence. The numbers are Census/CPS state numbers: [http://unionstats.gsu.edu/State_Code.htm](http://unionstats.gsu.edu/State_Code.htm)
+- `year`: The tax year
+- `urate`: The unemployment rate in the woman's state of residence
+- `children`: The number of children the woman has
+- `nonwhite`: Binary variable indicating if the woman is not white (1 = Hispanic/Black)
+- `finc`: The woman's family income in 1997 dollars
+- `earn`: The woman's personal income in 1997 dollars
+- `age`: The woman's age
+- `ed`: The number of years of education the woman has
+- `unearn`: The woman's family income minus her personal income, in *thousands* of 1997 dollars
+
+```{r setup, warning=FALSE, message=FALSE}
+library(tidyverse)  # For ggplot, %>%, mutate, filter, group_by, and friends
+library(haven)      # For loading data from Stata
+library(broom)      # For showing models as data frames
+
+# This turns off this message that appears whenever you use summarize():
+# `summarise()` ungrouping output (override with `.groups` argument)
+options(dplyr.summarise.inform = FALSE)
+
+# Load EITC data
+eitc <- read_stata("data/eitc.dta") %>% 
+  # case_when() is a fancy version of ifelse() that takes multiple conditions
+  # and outcomes. Here, we make a new variable named children_cat(egorical) 
+  # with three different levels: 0, 1, and 2+
+  mutate(children_cat = case_when(
+    children == 0 ~ "0",
+    children == 1 ~ "1",
+    children >= 2 ~ "2+"
+  ))
+```
+
+# 1. Exploratory data analysis
+
+Create a new variable that shows if women have 0 children, 1 child, or 2+ children (I did this for you already above). 
+
+What is the average of `work`, `finc`, `earn`, `nonwhite`, `ed`, and `age` across each of these different levels of children? How are these groups different? Describe your findings in a paragraph.
+
+## Work
+
+```{r}
+# Work
+eitc %>% 
+  group_by(children_cat) %>% 
+  summarize(avg_work = mean(work))
+
+# stat_summary() here is a little different from the geom_*() layers you've seen
+# in the past. stat_summary() takes a function (here mean_se()) and runs it on
+# each of the children_cat groups to get the average and standard error. It then
+# plots those with geom_pointrange. The fun.args part of this lets us pass an
+# argument to mean_se() so that we can multiply the standard error by 1.96,
+# giving us the 95% confidence interval
+ggplot(eitc, aes(x = children_cat, y = work)) +
+  stat_summary(geom = "pointrange", fun.data = "mean_se", fun.args = list(mult = 1.96))
+```
+
+## Family income
+
+## Earnings
+
+## Race
+
+## Education
+
+## Age
+
+## General summary
+
+**Describe your findings in a paragraph. How do these women differ depending on the number of kids they have?**
+
+
+# 2. Create treatment variables
+
+Create a new variable for treatment named `any_kids` (should be TRUE or 1 if `children` > 0) and a variable for the timing named `after_1993` (should be TRUE or 1 if `year` > 1993).
+
+Remember you can use the following syntax for creating a new binary variable based on a test:
+
+```r
+new_dataset <- original_dataset %>%
+  mutate(new_variable = some_column > some_number)
+```
+
+```{r}
+# Make new dataset here. You can either do something like:
+#
+# eitc_new <- eitc %>% whatever
+# 
+# which would create a completely new data frame, or do something like:
+#
+# eitc <- eitc %>% whatever
+#
+# which would overwrite the original eitc data frame with the modified one. 
+# Either approach is fine.
+
+```
+
+
+# 3. Check pre- and post-treatment trends
+
+Create a new dataset that shows the average proportion of employed women (`work`) for every year in both the treatment and control groups (i.e. both with and without kids). (Hint: use `group_by()` and `summarize()`, and group by both `year` and `any_kids`.)
+
+```{r}
+# Find average of work across year and any_kids
+# Store this as a new object and then print it, like so:
+# 
+# eitc_by_year_kids <- eitc %>% whatever
+# print(eitc_by_year_kids)
+```
+
+Plot these trends using colored lines and points, with year on the x-axis, average employment on the y-axis. Add a vertical line at 1994 (hint: use `geom_vline(xintercept = SOMETHING)`. 
+
+```{r}
+# Add plot here, with x = year, y = average employment, and color = any_kids.
+# Add a vertical line too.
+```
+
+**Do the pre-treatment trends appear to be similar?**
+
+
+# 4. Difference-in-difference by hand-ish
+
+Calculate the average proportion of employed women in the treatment and control groups before and after the EITC expansion. (Hint: group by `any_kids` and `after_1993` and find the average of `work`.) 
+
+```{r}
+# Calculate average of work across any_kids and after_1993
+```
+
+Calculate the difference-in-difference estimate given these numbers. (Recall from class that each cell has a letter (A, B, C, and D), and that the diff-in-diff estimate represents a special combination of these cells.)
+
+```{r}
+# It might be helpful to pull these different cells out with filter() and pull()
+# like in the in-class examples from 8. Store these as objects like cell_A,
+# cell_B, etc. and do the math here (like cell_B - cell_A, etc.)
+```
+
+
+|                    | Before 1993 | After 1993 | Difference |
+|--------------------|-------------|------------|------------|
+| Women with no kids |             |            |            |
+| Women with kids    |             |            |            |
+| Difference         |             |            |            |
+
+**What is the difference-in-difference estimate? Discuss the result.** (Hint, these numbers are percents, so you can multiply them by 100 to make it easier to interpret. For instance, if the diff-in-diff number is 0.15 (it's not), you could say that the EITC caused the the proportion of mothers in the workplace to increase 15 percentage points.)
+
+
+# 5. Difference-in-difference with regression
+
+Run a regression model to find the diff-in-diff estimate of the effect of the EITC on employment (`work`) (hint: remember that you'll be using an interaction term).
+
+```{r}
+# Regression model here
+```
+
+**How does this value compare with what you found in part 4 earlier? What is the advantage of doing this instead of making a 2x2 table?**
+
+
+# 6. Difference-in-difference with regression and controls
+
+Run a new regression model with demographic controls. Eissa and Liebman used the following in their original study: non-labor income (family income minus personal earnings, or the `unearn` column), number of children, race, age, age squared, education, and education squared. You'll need to make new variables for age squared and education squared. (These are squared because higher values of age and education might have a greater effect: someone with 4 years of education would have 16 squared years, while someone with 8 years (twice as much) would have 64 squared years (way more than twice as much).)
+
+```{r}
+# Make new dataset with columns for age squared and education squared
+# Regression model with demographic controls here
+#
+# R tends to put interaction terms last in regression tables, so you might not
+# see the any_kids * after_1993 coefficient on the first page of the table here
+```
+
+**Does the treatment effect change? Interpret these findings.**
+
+
+# 7. Varying treatment effects
+
+Make two new binary indicator variables showing if the woman has one child or not and two children or not. Name them `one_kid` and `two_plus_kids` (hint: use `mutate(BLAH = children == SOMETHING)`. 
+
+```{r}
+# Make new dataset with one_kid and two_plus_kids indicator variables
+```
+
+Rerun the regression model from part 6 (i.e. with all the demographic controls), but remove the `any_kids` and `any_kids * after_1993` terms and replace them with two new interaction terms: `one_kid * after_1993` and `two_plus_kids * after_1993`. 
+
+```{r}
+# Run regression with both of the new interaction terms instead of 
+# any_kids * after_1993
+```
+
+**For which group of women is the EITC treatment the strongest for (i.e. which group sees the greatest change in employment)? Why do you think that is?**
+
+
+# 8. Check parallel trends with fake treatment
+
+To make sure this effect isn't driven by any pre-treatment trends, we can pretend that the EITC was expanded in 1991 (starting in 1992) instead of 1993. 
+
+Create a new dataset that only includes data from 1991–1993 (hint: use `filter()`). Create a new binary before/after indicator named `after_1991` (hint: `year >= 1992`). Use regression to find the diff-in-diff estimate of the EITC on `work` (don't worry about adding demographic controls). 
+
+```{r}
+eitc_fake_treatment <- eitc %>% 
+  filter(year < 1994) %>% 
+  mutate(after_1991 = year >= 1992)
+# Make new dataset that only includes rows less than 1994 (with filter), and add
+# a new binary indicator variable for after_1991
+
+# Run simple regression with interaction term any_kids * after_1991
+```
+
+**Is there a significant diff-in-diff effect? What does this mean for pre-treatment trends?**

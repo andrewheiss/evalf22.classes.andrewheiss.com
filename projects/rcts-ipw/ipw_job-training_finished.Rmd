@@ -1,0 +1,149 @@
+---
+title: "IPW: Job training"
+output: html_document
+date: '2022-02-24'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Do people who quit smoking gain weight?
+
+> The National Supported Work Demonstration project [was] a transitional, subsidized work experience program for four target groups of people with longstanding employment problems: ex-offenders, former drug addicts, women who were long-term recipients of welfare benefits, and school dropouts, many with criminal records. The program provided up to 12-18 months of employment to about 10,000 individuals at 15 locations across the country for four years. In ten of these sites -- Atlanta, Chicago, Hartford, Jersey City, Newark, New York, Philadelphia, Oakland, San Francisco, and Wisconsin, 6,600 eligible applicants were randomly assigned either to experimental groups (offered a job in supported work) or to control groups, and an evaluation was conducted on the effects of the Supported Work Program. ([See here](https://www.icpsr.umich.edu/web/ICPSR/studies/7865) for more details.)
+
+In 1986, Robert LaLonde [analyzed the results](https://www.jstor.org/stable/1806062) from this experiment and later compared it to observational data. We're going to use his data to see if participating in the job training program increased incomes.
+
+
+## Load data
+
+```{r libraries-data, warning=FALSE, message=FALSE}
+library(tidyverse)
+library(broom)
+library(ggdag)
+
+lalonde <- read_csv("data/lalonde.csv")
+```
+
+**Causal variables**:
+
+- Treatment/exposure: `treat` (Individual was assigned to the job training program, 1 = yes, 0 = no)
+- Outcome: `re78` (Individual's income in 1978, in US dollars)
+
+**Possible confounders**:
+
+- `age`: age in years
+- `educ`: education in number of years of schooling
+- `race`: the individual's race/ethnicity, (Black, Hispanic, or White)
+- `married`: an indicator for marital status (1 = married, 0 = not married)
+- `nodegree`: an indicator for whether the individual has a high school degree (1 = no degree, 0 = degree)
+- `re74`: income in 1974, in US dollars
+- `re75`: income in 1975, in US dollars
+
+
+## Check difference in outcome across treatment status
+
+Is there a visual difference?
+
+```{r}
+ggplot(lalonde, aes(x = re78, fill = factor(treat))) +
+  geom_density(alpha = 0.5)
+```
+
+```{r}
+lalonde %>% 
+  group_by(treat) %>% 
+  summarize(avg_income = mean(re78))
+```
+
+```{r}
+model_naive <- lm(re78 ~ treat, data = lalonde)
+tidy(model_naive, conf.int = TRUE)
+```
+
+
+## Draw a DAG
+
+```{r fig.height=5, fig.width=7}
+set.seed(1234)
+
+treat_income_dag <- dagify(
+  # Specify causes of job training program and 1978 income:
+  treat ~ educ + race + married + nodegree + re74 + re75,
+  re78 ~ educ + race + married + nodegree + re74 + re75,
+  # Specify causal question:
+  exposure = "treat", 
+  outcome = "re78"
+)
+
+ggdag_status(treat_income_dag)
+```
+
+## Treatment model
+
+```{r}
+treatment_model <- glm(treat ~ age + educ + race + married +
+                         nodegree + re74 + re75,
+                       data = lalonde,
+                       family = binomial(link = "logit"))
+tidy(treatment_model)
+```
+
+
+## Propensity scores and weights
+
+```{r}
+lalonde_wts <- augment(treatment_model, lalonde, type.predict = "response") %>% 
+  rename(propensity = .fitted) %>% 
+  mutate(ipw = (treat / propensity) + ((1 - treat) / (1 - propensity)))
+```
+
+Investigate your weights. They should be clustered around 1 (with an average of 1), without any huge values.
+
+```{r}
+ggplot(lalonde_wts, aes(x = ipw)) +
+  geom_density(fill = "darkred")
+```
+
+```{r}
+lalonde_wts %>% summarize(avg_wt = mean(ipw))
+mean(lalonde_wts$ipw)
+```
+
+
+## Outcome model
+
+```{r}
+outcome_model <- lm(re78 ~ treat, data = lalonde_wts, weights = ipw)
+tidy(outcome_model, conf.int = TRUE)
+```
+
+```{r warning=FALSE, message=FALSE, results="hide"}
+library(brms)
+library(broom.mixed)
+library(tidybayes)
+
+outcome_bayes <- brm(
+  bf(re78 | weights(ipw) ~ treat),
+  data = lalonde_wts,
+  cores = 4
+)
+```
+
+```{r}
+tidy(outcome_bayes)
+```
+
+```{r}
+get_variables(outcome_bayes)
+
+outcome_draws <- outcome_bayes %>% 
+  gather_draws(b_treat)
+
+ggplot(outcome_draws, aes(x = .value)) +
+  stat_halfeye() +
+  geom_vline(xintercept = 0)
+
+outcome_draws %>% 
+  summarize(prob_gt_0 = sum(.value > 0) / n())
+```

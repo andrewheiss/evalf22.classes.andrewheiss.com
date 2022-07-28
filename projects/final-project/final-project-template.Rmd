@@ -1,0 +1,110 @@
+---
+title: "TITLE GOES HERE"
+author: "YOUR NAME HERE"
+date: "DATE GOES HERE"
+output: 
+  html_document: 
+    toc: yes
+  pdf_document: 
+    latex_engine: xelatex
+    toc: yes
+  word_document: 
+    toc: yes
+---
+
+---
+
+<!-- IMPORTANT: Make sure you delete all the placeholder text here. Keep the headings and subheadings, but get rid of all the instructions and wordcounts. You can delete this comment too if you want. -->
+
+```{r setup, include=FALSE}
+# Change this to `echo = FALSE` to hide all code
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Introduction
+
+Describe the motivation for this evaluation, briefly describe the program to be evaluated, and explain why it matters for society. (**≈150 words**)
+
+
+# Program overview
+
+Provide in-depth background about the program. Include details about (1) when it was started, (2) why it was started, (3) what it was designed to address in society. If the program hasn't started yet, explain why it's under consideration. (**≈300 words**)
+
+
+# Program theory and implementation
+
+## Program theory and impact theory graph
+
+Explain and explore the program's underlying theory. Sometimes programs will explain why they exist in a mission statement, but often they don't and you have to infer the theory from what the program looks like when implemented. What did the program designers plan on occurring? Was this theory based on existing research? If so, cite it. (**≈300 words**)
+
+Include a simple impact theory graph showing the program's basic activities and outcomes. Recall from class and your reading that this is focused primarily on the theory and mechanisms, not on the implementation of the program.
+
+## Logic model
+
+Describe the program's inputs, activities, outputs, and outcomes. Pay careful attention to how they are linked—remember that every input needs to flow into an activity and every output must flow out of an activity. (**≈150 words**)
+
+Use flowchart software to connect the inputs, activities, outputs, and outcomes and create a complete logic model. Include this as a figure. 
+
+
+# Outcome and causation
+
+## Main outcome
+
+Select one of the program's outcomes to evaluate. Explain why you've chosen this (is it the most important? easiest to measure? has the greatest impact on society?) (**≈50 words**)
+
+## Measurement
+
+Using the concept of the "ladder of abstraction" that we discussed in class (e.g. identifying a witch, measuring poverty, etc.), make a list of all the possible attributes of the outcome. Narrow this list down to 3-4 key attributes. Discuss how you decided to narrow the concepts and justify why you think these attributes capture the outcome. Then, for each of these attributes, answer these questions:
+
+- *Measurable definition*: How would you specifically define this attribute? (i.e. if the attribute is "reduced crime", define it as "The percent change in crime in a specific neighborhood during a certain time frame" or something similar)
+- *Ideal measurement*: How would you measure this attribute in an ideal world?
+- *Feasible measurement*: How would you measure this given reality and given limitations in budget, time, etc.?
+- *Measurement of program effect*: How would to connect this measure to people in the program? How would you check to see if the program itself had an effect?
+
+(**≈150 words** in this section)
+
+## Causal theory
+
+Given your measurement approach, describe and draw a causal diagram (DAG) that shows how your program causes the outcome. Note that this is not the same thing as the logic model—you'll likely have nodes in the DAG that aren't related to the program at all (like socioeconomic status, gender, experience, or other factors). The logic model provides the framework for the actual implementation of your program and connects all the moving parts to the outcomes. The DAG is how you can prove causation with statistical approaches. (**≈150 words**)
+
+## Hypotheses
+
+Make predictions of your program's effect. Declare what you think will happen. (**≈50 words**)
+
+
+# Data and methods
+
+## Identification strategy
+
+How will you measure the actual program effect? Will you rely on an RCT? Differences-in-differences? Regression discontinuity? Instrumental variables? How does your approach account for selection bias and endogeneity? How does your approach isolate the causal effect of the program on the outcome?
+
+Also briefly describe what kinds of threats to internal and external validity you face in your study.
+
+(**≈300 words**)
+
+## Data
+
+Given your measurement approach, limits on feasibility, and identification strategy, describe the data you will use. Will you rely on administrative data collected by a government agency or nonprofit? Will you collect your own data? If so, what variables will you measure, and how? Will you conduct a survey or rely on outside observers or do something else? What does this data look like? What variables does it (or should it) include?
+
+(**≈100 words**)
+
+
+# Synthetic analysis
+
+
+Generate a synthetic (fake) dataset in R with all the variables you'll need for the real life analysis. Analyze the data using your identification strategy. For instance:
+
+- If you're relying on observational data, close all the backdoors with matching or inverse probability weighting, don't adjust for colliders, and make a strong argument for isolation of the causal effect in the absence of treatment/control groups
+- If you're doing an RCT, test the differences in means in the treatment and control groups (and follow all other best practices listed in the World Bank book, checking for balance across groups, etc.)
+- If you're doing diff-in-diff, run a regression model with an interaction term to show the diff-in-diff
+- If you're doing regression discontinuity, check for a jump in the outcome variable at the cutoff in the running variable
+- If you're using instrumental variables, check the validity of your instrument and run a 2SLS model
+
+Include robustness checks to ensure the validity of your effect (i.e. if you're doing regression discontinuity, test different bandwidths and kernel types; etc.)
+
+(**As many words as you need to fully describe your analysis and results**)
+
+
+# Conclusion
+
+What would the findings from this analysis mean for your selected program? What would it mean if you found an effect? What would it mean if you didn't find an effect? Why does any of this matter? (**≈75 words**)

@@ -19,10 +19,20 @@ tar_option_set(
 here_rel <- function(...) {fs::path_rel(here::here(...))}
 
 # Load functions for the pipeline
-source("R/tar_save-files.R")
+source("R/tar_slides.R")
+source("R/tar_projects.R")
+source("R/tar_data.R")
 
-# THE PIPELINE ----
+# THE MAIN PIPELINE ----
 list(
+  ## Run all the data building and copying targets ----
+  save_data,
+
+  ### Link all these data building and copying targets into individual dependencies ----
+  tar_combine(copy_data, tar_select_targets(save_data, starts_with("copy_"))),
+  tar_combine(build_data, tar_select_targets(save_data, starts_with("data_"))),
+
+
   ## xaringan stuff ----
   #
   ### Knit xaringan slides ----
@@ -55,16 +65,8 @@ list(
              pattern = map(xaringan_html_files),
              format = "file"),
 
-  ## Project folders ----
-  ### Save any data files from packages ----
-  tar_target(data_penguins,
-             save_csv(tidyr::drop_na(palmerpenguins::penguins, body_mass_g),
-                      here_rel("projects", "problem-set-2", "data", "penguins.csv"))),
 
-  # Link all these data files into one dependency
-  tar_target(build_data, {
-    data_penguins
-  }),
+  ## Project folders ----
 
   ### Zip up each project folder ----
   #
@@ -74,19 +76,26 @@ list(
   # with `format = "file"`
   #
   # The main index.qmd page loads project_zips as a target to link it as a dependency
-  tar_target(project_paths,
-             list.dirs(here_rel("projects"),
-                       full.names = FALSE, recursive = FALSE)),
+  #
+  # Use tar_force() and always run this because {targets} seems to overly cache
+  # the results of list.dirs()
+  tar_force(project_paths,
+            list.dirs(here_rel("projects"),
+                      full.names = FALSE, recursive = FALSE),
+            force = TRUE),
   tar_target(project_files, project_paths, pattern = map(project_paths)),
   tar_target(project_zips, {
+    copy_data
     build_data
     zippy(project_files, "projects")
   },
   pattern = map(project_files),
   format = "file"),
 
+
   ## Build site ----
   tar_quarto(site, path = ".")
+
 
   ## Upload site ----
 )

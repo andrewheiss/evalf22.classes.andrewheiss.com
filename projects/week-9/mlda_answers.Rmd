@@ -1,0 +1,112 @@
+---
+title: "Effect of lowering the minimum legal drinking age on mortality"
+output: html_document
+---
+
+```{r setup, warning=FALSE, message=FALSE}
+library(tidyverse)
+library(broom)
+library(fixest)
+library(tigris)
+
+# Mastering 'Metrics R code
+# - https://jrnold.github.io/masteringmetrics/
+# Original Stata file:
+# - http://masteringmetrics.com/wp-content/uploads/2015/01/deaths.dta
+# Original Stata .do file:
+# - http://masteringmetrics.com/wp-content/uploads/2015/01/analysis.do
+deaths_raw <- read_csv("data/deaths.csv")
+```
+
+```{r}
+fips <- fips_codes %>% 
+  mutate(state_code = as.numeric(state_code)) %>% 
+  group_by(state_code) %>% 
+  slice(1) %>% 
+  select(-county, -county_code)
+```
+
+```{r}
+deaths <- deaths_raw %>% 
+  mutate(state = as.numeric(state)) %>% 
+  left_join(fips, by = c("state" = "state_code"))
+```
+
+```{r}
+al_ar <- deaths %>% 
+  filter(state_name %in% c("Alabama", "Arkansas")) %>% 
+  mutate(after_change = year >= 1975,
+         is_alabama = state_name == "Alabama") %>% 
+  filter(year <= 1983, agegr == "18-20 yrs", dtype == "all")
+```
+
+```{r}
+ggplot(al_ar, aes(x = year, y = mrate, color = state_name)) +
+  geom_line()
+```
+
+```{r}
+al_ar %>% 
+  group_by(is_alabama, after_change) %>% 
+  summarize(avg_mrate = mean(mrate))
+```
+
+$$
+\begin{aligned}
+\text{Mortality}\ =&\ \beta_0 + \beta_1\ \text{Alabama} + \beta_2\ \text{After 1975}\ + \\
+&\ \beta_3\ (\text{Alabama} \times \text{After 1975})
+\end{aligned}
+$$
+
+```{r}
+model_al_ar <- lm(mrate ~ after_change + is_alabama + 
+                    (after_change * is_alabama),
+                  data = al_ar)
+tidy(model_al_ar)
+```
+
+```{r}
+deaths_filtered <- deaths %>% 
+  filter(year <= 1983, agegr == "18-20 yrs", dtype == "all")
+```
+
+$$
+\text{Mortality}\ =\ \beta_0 + \beta_1\ \text{Treatment} + \beta_2\ \text{State} + \beta_3\ \text{Year}
+$$
+
+```{r}
+model <- lm(mrate ~ legal + state_name + year, 
+            data = deaths_filtered)
+tidy(model)
+
+model_fe <- feols(mrate ~ legal | state_name + year,
+                  cluster = ~ state_name,
+                  data = deaths_filtered,
+                  ssc = ssc(fixef.K = "full"))
+tidy(model_fe)
+```
+
+```{r}
+ggplot(deaths_filtered, aes(x = year, y = mrate, color = state_name)) +
+  geom_line()
+```
+
+$$
+\begin{aligned}
+\text{Mortality}\ =\ & \beta_0 + \beta_1\ \text{Treatment} + \beta_2\ \text{State} + \beta_3\ \text{Year} +\\
+&\beta_4\ (\text{State} \times \text{Year})
+\end{aligned}
+$$
+
+```{r}
+model2 <- lm(mrate ~ legal + state_name + factor(year) + state_name:year, 
+             data = deaths_filtered)
+tidy(model2)
+
+model2_fe <- feols(mrate ~ legal + i(state_name, factor(year)) | state_name + year,
+                   cluster = ~ state_name,
+                   data = deaths_filtered,
+                   ssc = ssc(fixef.K = "full"))
+tidy(model2)
+```
+

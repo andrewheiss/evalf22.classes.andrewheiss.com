@@ -1,0 +1,129 @@
+---
+title: "RCT: Vaccine payments"
+output: html_document
+date: '2022-02-24'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Does paying people cause people to get vaccinated against COVID-19?
+
+An RCT in Sweden found that giving people 200 Swedish kroner (≈$24 USD) increased vaccination rates by 4.2 percentage points. ([See here](https://www.science.org/doi/full/10.1126/science.abm0475) for full details.) 
+
+We're going to re-analyze their data.
+
+
+## Load and clean data
+
+```{r libraries-data, warning=FALSE, message=FALSE}
+library(tidyverse)
+library(broom)
+library(haven)  # For reading Stata files
+
+vaccines_raw <- read_stata("data/vaccines.dta")
+```
+
+```{r}
+print_labels(vaccines_raw$treatment)
+```
+
+```{r}
+# Clean up treatment variable and check treatment assignment
+```
+
+
+```{r}
+# group_by + summarize to see averages of vaccinated and intention1
+```
+
+
+```{r}
+# Basic model with lm
+```
+
+
+```{r}
+# Cleaner data
+# vaccines_clean <- vaccines_raw %>% 
+#   mutate(across(c(female, age_band, region, covid1_2, civilstatus, 
+#                   haschildren, education, occupation, 
+#                   mother, father, income),
+#                 factor)) %>% 
+#   filter(already_vacced == 0, !is.na(intention1))
+```
+
+
+```{r}
+model_vacc <- lm(vaccinated ~ treat_pay + 
+                   treat_soc + treat_arg + treat_info + treat_min +
+                   female + age_band*region + covid1_2 + civilstatus +
+                   haschildren + education + occupation + 
+                   mother + father + income,
+                 data = vaccines_clean)
+
+tidy(model_vacc)
+```
+
+```{r}
+model_intent <- lm(intention1 ~ treat_pay + 
+                     treat_soc + treat_arg + treat_info + treat_min +
+                     female + age_band*region + covid1_2 + civilstatus +
+                     haschildren + education + occupation + 
+                     mother + father + income,
+                   data = vaccines_clean)
+
+tidy(model_intent)
+```
+
+```{r}
+model_vacc_nudge <- lm(vaccinated ~ treat_pay + nudge + treat_min +
+                         female + age_band*region + covid1_2 + civilstatus +
+                         haschildren + education + occupation + 
+                         mother + father + income,
+                       data = vaccines_clean)
+
+tidy(model_vacc_nudge)
+
+model_intent_nudge <- lm(intention1 ~ treat_pay + nudge + treat_min +
+                           female + age_band*region + covid1_2 + civilstatus +
+                           haschildren + education + occupation + 
+                           mother + father + income,
+                         data = vaccines_clean)
+
+tidy(model_intent_nudge)
+```
+
+```{r}
+plot_stuff <- bind_rows(Uptake_Payment = tidy(model_vacc, conf.int = TRUE), 
+                        Intentions_Payment = tidy(model_intent, conf.int = TRUE), 
+                        Uptake_Nudges = tidy(model_vacc_nudge, conf.int = TRUE),
+                        Intentions_Nudges = tidy(model_intent_nudge, conf.int = TRUE),
+                        .id = "outcome") %>% 
+  separate(outcome, into = c("outcome", "condition"))
+
+plot_filtered <- plot_stuff %>% 
+  filter((condition == "Payment" & str_detect(term, "treat_")) |
+           (condition == "Nudges" & term == "nudge")) %>% 
+  mutate(term = factor(term, levels = c("treat_pay", "nudge", "treat_soc", 
+                                        "treat_arg", "treat_info", "treat_min")))
+
+
+ggplot(plot_filtered, aes(x = estimate, y = fct_rev(term), color = outcome)) +
+  geom_vline(xintercept = 0) +
+  geom_pointrange(aes(xmin = conf.low, xmax = conf.high),
+                  position = position_dodge(width = 0.25))
+```
+
+## Nicer way with `feols()`
+
+```{r}
+# fixest::feols() with robust SEs
+```
+
+# Bayesian stuff
+
+```{r warning=FALSE, message=FALSE, results="hide"}
+# For fun
+```

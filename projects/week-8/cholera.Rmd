@@ -1,0 +1,51 @@
+---
+title: "Cholera"
+output: html_document
+---
+
+```{r warning=FALSE, message=FALSE}
+library(tidyverse)
+library(broom)
+
+# This way lets you specify tables row-wise (hence t*r*ibble) and is far easier to read
+cholera <- tribble(
+  ~deaths, ~year, ~location,
+  1349,    1849,  "Southwark & Vauxhall",
+  847,     1849,  "Lambeth",
+  1466,    1854,  "Southwark & Vauxhall",
+  193,     1854,  "Lambeth"
+) %>% 
+  mutate(year = factor(year)) %>% 
+  mutate(location = fct_relevel(location, "Southwark & Vauxhall"))
+
+model <- lm(deaths ~ year + location + year * location, data = cholera)
+```
+
+```{r}
+tidy(model)
+```
+
+```{r}
+results <- tidy(model)
+
+before_treatment <- results %>% filter(term == "(Intercept)") %>% pull(estimate) + 
+  results %>% filter(term == "locationLambeth") %>% pull(estimate)
+
+year_effect <- results %>% filter(term == "year1854") %>% pull(estimate)
+
+after_treatment <- before_treatment + year_effect
+
+dd_effect <- results %>% filter(term == "year1854:locationLambeth") %>% pull(estimate)
+
+ggplot(cholera, aes(x = year, 
+                    y = deaths, 
+                    color = location)) + 
+  geom_line(aes(group = location)) +
+  annotate(geom = "segment", x = "1849", xend = "1854",
+           y = before_treatment, yend = before_treatment + year_effect,
+           linetype = "dashed", color = "grey50") +
+  annotate(geom = "segment", x = "1854", xend = "1854",
+           y = after_treatment, yend = before_treatment + year_effect + dd_effect,
+           linetype = "dotted", color = "blue")
+```
+

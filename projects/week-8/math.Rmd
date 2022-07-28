@@ -1,0 +1,78 @@
+---
+title: "Effect of reading a math story on math anxiety"
+output: html_document
+---
+
+```{r warning=FALSE, message=FALSE}
+library(tidyverse)
+library(broom)
+library(scales)  # For things like percent()
+
+results <- read_csv("data/math_survey.csv") %>% 
+  mutate(anxious_num = recode(math_anxiety, Yes = 1, No = 0)) %>% 
+  mutate(treatment = fct_relevel(treatment, "Normal story"))
+```
+
+
+# Difference-in-differences by hand
+
+```{r}
+group_props <- results %>% 
+  drop_na(math_anxiety) %>% 
+  group_by(wave, treatment, math_anxiety) %>% 
+  summarize(num = n()) %>% 
+  group_by(wave, treatment) %>% 
+  mutate(total = sum(num),
+         prop_math_anxious = num / total) %>% 
+  filter(math_anxiety == "Yes")
+group_props
+```
+
+We care about the difference in the differences:
+
+$$
+(\text{After} - \text{before})_{\text{treatment}} - (\text{After} - \text{before})_{\text{control}}
+$$
+
+```{r}
+after_treatment <- group_props %>% 
+  filter(treatment == "Math story", wave == 2) %>% 
+  pull(prop_math_anxious)
+
+# TODO: Calculate these other values and make a table with cells for A, B, C,
+# and D; then calculate the difference in differences
+
+# before_treatment
+# after_control
+# before_control
+```
+
+```{r}
+dd_effect <- (after_treatment - before_treatment) - (after_control - before_control)
+dd_effect
+```
+
+
+# Difference-in-differences with regression
+
+```{r}
+# TODO: Calculate the same effect using regression instead of a 2x2 matrix
+```
+
+
+# Plot
+
+```{r}
+ggplot(group_props, aes(x = as.factor(wave), 
+                        y = prop_math_anxious, 
+                        color = treatment)) + 
+  geom_line(aes(group = treatment)) #+
+  # annotate(geom = "segment", x = "1", xend = "2", 
+  #          y = before_treatment, yend = after_treatment - dd_effect,
+  #          linetype = "dashed", color = "grey50") +
+  # annotate(geom = "segment", x = "2", xend = "2",
+  #          y = after_treatment, yend = after_treatment - dd_effect,
+  #          linetype = "dotted", color = "blue") +
+  # annotate(geom = "label", x = "2", y = 0.42, label = "Program effect",
+  #          size = 3)
+```

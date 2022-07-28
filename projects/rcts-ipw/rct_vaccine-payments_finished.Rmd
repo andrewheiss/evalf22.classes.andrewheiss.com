@@ -1,0 +1,171 @@
+---
+title: "RCT: Vaccine payments"
+output: html_document
+date: '2022-02-24'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Does paying people cause people to get vaccinated against COVID-19?
+
+An RCT in Sweden found that giving people 200 Swedish kroner (≈$24 USD) increased vaccination rates by 4.2 percentage points. ([See here](https://www.science.org/doi/full/10.1126/science.abm0475) for full details.) 
+
+We're going to re-analyze their data.
+
+
+## Load and clean data
+
+```{r libraries-data, warning=FALSE, message=FALSE}
+library(tidyverse)
+library(broom)
+library(haven)  # For reading Stata files
+
+vaccines_raw <- read_stata("data/vaccines.dta")
+```
+
+```{r}
+print_labels(vaccines_raw$treatment)
+```
+
+```{r}
+vaccines_trt_ctrl <- vaccines_raw %>% 
+  filter(treatment %in% c(0, 5)) %>% 
+  mutate(treatment_nice = case_when(
+    treatment == 0 ~ "Received payment",
+    treatment == 5 ~ "Control group"
+  ))
+
+vaccines_trt_ctrl %>%
+  count(treatment_nice)
+```
+
+
+```{r}
+vaccines_trt_ctrl %>% 
+  group_by(treatment_nice) %>% 
+  summarize(vaccination = mean(vaccinated),
+            intention = mean(intention1))
+```
+
+
+```{r}
+lm(vaccinated ~ treatment_nice, data = vaccines_trt_ctrl) %>% tidy()
+```
+
+
+```{r}
+vaccines_clean <- vaccines_raw %>% 
+  mutate(across(c(female, age_band, region, covid1_2, civilstatus, 
+                  haschildren, education, occupation, 
+                  mother, father, income),
+                factor)) %>% 
+  filter(already_vacced == 0, !is.na(intention1))
+```
+
+
+```{r}
+model_vacc <- lm(vaccinated ~ treat_pay + 
+                   treat_soc + treat_arg + treat_info + treat_min +
+                   female + age_band*region + covid1_2 + civilstatus +
+                   haschildren + education + occupation + 
+                   mother + father + income,
+                 data = vaccines_clean)
+
+tidy(model_vacc)
+```
+
+```{r}
+model_intent <- lm(intention1 ~ treat_pay + 
+                     treat_soc + treat_arg + treat_info + treat_min +
+                     female + age_band*region + covid1_2 + civilstatus +
+                     haschildren + education + occupation + 
+                     mother + father + income,
+                   data = vaccines_clean)
+
+tidy(model_intent)
+```
+
+```{r}
+model_vacc_nudge <- lm(vaccinated ~ treat_pay + nudge + treat_min +
+                         female + age_band*region + covid1_2 + civilstatus +
+                         haschildren + education + occupation + 
+                         mother + father + income,
+                       data = vaccines_clean)
+
+tidy(model_vacc_nudge)
+
+model_intent_nudge <- lm(intention1 ~ treat_pay + nudge + treat_min +
+                           female + age_band*region + covid1_2 + civilstatus +
+                           haschildren + education + occupation + 
+                           mother + father + income,
+                         data = vaccines_clean)
+
+tidy(model_intent_nudge)
+```
+
+```{r}
+plot_stuff <- bind_rows(Uptake_Payment = tidy(model_vacc, conf.int = TRUE), 
+                        Intentions_Payment = tidy(model_intent, conf.int = TRUE), 
+                        Uptake_Nudges = tidy(model_vacc_nudge, conf.int = TRUE),
+                        Intentions_Nudges = tidy(model_intent_nudge, conf.int = TRUE),
+                        .id = "outcome") %>% 
+  separate(outcome, into = c("outcome", "condition"))
+
+plot_filtered <- plot_stuff %>% 
+  filter((condition == "Payment" & str_detect(term, "treat_")) |
+           (condition == "Nudges" & term == "nudge")) %>% 
+  mutate(term = factor(term, levels = c("treat_pay", "nudge", "treat_soc", 
+                                        "treat_arg", "treat_info", "treat_min")))
+
+
+ggplot(plot_filtered, aes(x = estimate, y = fct_rev(term), color = outcome)) +
+  geom_vline(xintercept = 0) +
+  geom_pointrange(aes(xmin = conf.low, xmax = conf.high),
+                  position = position_dodge(width = 0.25))
+```
+
+## Nicer way with `feols()`
+
+```{r}
+library(fixest)
+
+example_model <- feols(vaccinated ~ treat_pay + 
+                         treat_soc + treat_arg + treat_info + treat_min |
+                         female + age_band^region + covid1_2 + civilstatus +
+                         haschildren + education + occupation + 
+                         mother + father + income,
+                       data = vaccines_clean,
+                       vcov = "hetero")
+
+tidy(example_model)
+```
+
+# Bayesian stuff
+
+```{r warning=FALSE, message=FALSE, results="hide"}
+library(brms)
+library(tidybayes)
+
+model_bayes <- brm(
+  bf(vaccinated ~ treat_pay + treat_soc + treat_arg + treat_info + treat_min +
+       female + covid1_2 + civilstatus + haschildren),
+  data = vaccines_clean,
+  cores = 4,
+)
+```
+
+```{r}
+get_variables(model_bayes)
+
+model_draws <- model_bayes %>% 
+  gather_draws(c(b_treat_pay, b_treat_min)) 
+
+ggplot(model_draws, aes(x = .value, y = .variable)) +
+  stat_halfeye()
+
+model_draws %>% 
+  filter(.variable == "b_treat_pay") %>% 
+  summarize(prop_gt_0 = sum(.value > 0) / n())
+```

@@ -1,0 +1,253 @@
+---
+title: "Does education increase civic engagement?"
+date: '`r format(Sys.time(), "%B %e, %Y")`'
+bibliography: references.bib
+link-citations: true
+editor_options: 
+  chunk_output_type: console
+---
+
+Social scientists have long been interested in the causal effects of education. We've seen a ton of examples of economists looking at the causal effect of education on wages or income. Political scientists, not surprisingly, are less interested in income and more interested in the effect of education on civil behavior. For instance, does education make people vote more?
+
+For this example, we'll use a subset of data from @Dee:2004 (preprocessed and cleaned by @stevedata) to explore whether college education causes people to register to vote. ([See another version of this at Steve's website](http://post8000.svmiller.com/lab-scripts/instrumental-variables-lab.html#An_Application:_Are_There_Civics_Returns_to_Education))
+
+- Treatment = `college`: A binary variable indicating if the person attended a junior, community, or 4-year college by 1984
+- Outcome = `register`: A binary variable indicating if the person is currently registered to vote
+- Instrument = `distance`: Miles from respondent's high school to the nearest 2-year college
+
+```{r setup, warning=FALSE, message=FALSE}
+library(tidyverse)
+library(haven)
+library(broom)
+library(ggdag)
+library(estimatr)
+library(fixest)
+library(modelsummary)
+
+voting <- read_stata("data/Dee04.dta")
+```
+
+
+## Exploratory data analysis
+
+What proportion of college attendees are registered to vote? Group by `register` and `college`, summarize to get the number or rows in each group, then add a column that calculates the proportion.
+
+```{r}
+group_props <- voting %>% 
+  group_by(register, college) %>% 
+  summarize(total = n()) %>% 
+  group_by(college) %>% 
+  mutate(prop = total / sum(total))
+group_props
+```
+
+Visualize these proportions with `ggplot()` and `geom_col()`
+
+```{r}
+ggplot(group_props, aes(x = factor(college), y = prop, fill = factor(register))) +
+  geom_col()
+```
+
+
+## Naive model
+
+Run a super wrong and naive model that estimates the effect of college attendance on voter registration (`register ~ college`).
+
+```{r}
+model_naive <- lm(register ~ college, data = voting)
+tidy(model_naive)
+```
+
+For fun, make a scatterplot of this relationship:
+
+```{r}
+ggplot(voting, aes(x = college, y = register)) +
+  geom_point(alpha = 0.05, position = position_jitter(width = 0.1, height = 0.1)) + 
+  geom_smooth(method = "lm")
+```
+
+TODO: Interpret this finding. Why is this estimate wrong?
+
+### Bonus fun! Logistic regression
+
+```{r}
+model_logit <- glm(register ~ college, family = binomial(link = "logit"), data = voting)
+tidy(model_logit)
+# College attendance is associated with a 0.805 increase in the log odds of registering to vote, whatever that means
+
+# Odds ratio
+exp(0.805)
+# College attendees are 2.23 times more likely to register to vote
+
+# plogis((intercept + coefficient)) - plogis(intercept)
+plogis((0.298 + 0.805)) - plogis(0.298)
+# College attendance leads to a 17.6 percentage point increase in the probability of registering to vote
+
+library(emmeans)
+model_logit %>% 
+  emmeans(~ college, transform = "response") %>% 
+  contrast(method = "revpairwise")
+
+# "Divide by 4" trick/rule
+0.805 / 4
+```
+
+
+## Distance to college as an instrument
+
+We're stuck with endogeneity. There are things that cause both education and voter registration that confound the relationship, and we can't control for all of them.
+
+In his paper, @Dee:2004 uses distance to the nearest college as an instrument to help remove this exogeneity. He essentially creates this DAG (though without actually making a DAG):
+
+```{r iv-dag, fig.align="center", fig.width=6, fig.height=4.5, echo=FALSE}
+distance_dag <- dagify(outcome ~ treatment + unmeasured,
+                       treatment ~ unmeasured + instrument,
+                       exposure = "treatment",
+                       outcome = "outcome",
+                       latent = "unmeasured",
+                       coords = list(x = c(treatment = 1, outcome = 3, 
+                                           unmeasured = 2, instrument = 0),
+                                     y = c(treatment = 1, outcome = 1, 
+                                           unmeasured = 2, instrument = 1)),
+                       labels =  c(treatment = "College", outcome = "Registration", 
+                                   unmeasured = "Other stuff", instrument = "Distance"))
+
+set.seed(1234)
+ggdag_status(distance_dag, use_labels = "label", text = FALSE) +
+  guides(fill = "none", color = "none") +  # Disable the legend
+  theme_dag()
+```
+
+
+At first glance, this feels like it could be a good instrument:
+
+1. **Relevance** (Z → X *and* cor(Z, X) ≠ 0): Distance to college should be associated with college attendance. The closer a college is, the cheapter it is to attend, and the more opportunity there is to attend.
+2. **Excludability** (Z → X → Y *and* Z not → Y *and* cor(Z, Y | X) = 0): Distance affects college attendance which affects voting registration. But distance should influence voting registration *only because* people go to college (and no other reason).
+3. **Exogeneity** (U not → Z *and* Cor(Z, U) = 0): Colleges should exist before students exist; students and their voting patterns don't influence whether pre-existing colleges exist (i.e. there should be no arrows going into the instrument node).
+
+Let's check these conditions
+
+### Relevance
+
+See if there's correlation between the instrument (`distance`) and the treatment (`college`). Use the `cor()` function (and `cor.test()` if you want a p-value):
+
+```{r}
+model_check_relevance <- lm(college ~ distance, data = voting)
+tidy(model_check_relevance)
+
+voting %>% 
+  summarize(relevance = cor(distance, college))
+
+cor.test(voting$distance, voting$college)
+```
+
+Plot the relationship between the instrument and treatment:
+
+```{r}
+ggplot(voting, aes(x = distance, y = college)) +
+  geom_point(alpha = 0.01) +
+  geom_smooth(method = "lm")
+```
+
+Yep!
+
+
+### Exclusion
+
+See if there's a relationship between the instrument (`distance`) and the outcome (`register`).
+
+```{r}
+model_check_exclusion <- lm(distance ~ register, data = voting)
+tidy(model_check_exclusion)
+
+voting %>% 
+  summarize(relevance = cor(distance, register))
+
+cor.test(voting$distance, voting$register)
+```
+
+To help check the "only through" condition, see if there's a relationship between `distance` and other possibly confounding variables (like `black`, `female`, `hispanic`, and so on). If it's related, that's a good sign that there's an arrow between those nodes, thus breaking the exclusion requirement.
+
+```{r}
+voting %>% 
+  summarize(rel_black = cor(distance, black),
+            rel_female = cor(distance, female),
+            rel_hispanic = cor(distance, hispanic))
+```
+
+Nope :(
+
+### Exogeneity
+
+There's no statistical test here. Instead we have to tell a theoretical story that distance is uncorrelated with anything else in the DAG. 
+
+In theory, living closer to a college should explain or increase the likelihood of attending college, but shouldn't in turn influence outcomes as an adult, like the propensity to vote.
+
+But in real life, that's not the case! Black and Hispanic Americans are more likely to live in urban areas, and there are more colleges in urban areas, and race/ethnicity are correlated with voting patterns.
+
+
+## IV estimation
+
+Let's pretend that this is a good instrument, regardless of whatever we concluded above. 
+
+### By hand, to make your life miserable
+
+Make a first stage model that predicts college attendance based on distance to college. Control for `black`, `hispanic`, and `female`, since they're potential confounders (and because Dee originally did that too).
+
+```{r}
+first_stage <- lm(college ~ distance + black + hispanic + female,
+                  data = voting)
+```
+
+Plug the original dataset into the first stage model with `augment_columns()` to generate predicted values of `college` (or the exogenous part of `college`):
+
+```{r}
+voting_with_prediction <- augment_columns(first_stage, voting) %>% 
+  rename(college_hat = .fitted)
+```
+
+Make a second stage model that estimates the effect of *predicted* college on voter registration, also controlling for `black`, `hispanic`, and `female`.
+
+What is the causal effect of attending college?
+
+```{r}
+second_stage <- lm(register ~ college_hat + black + hispanic + female,
+                   data = voting_with_prediction)
+tidy(second_stage)
+```
+
+
+### All at once, to make your life wonderful
+
+Use `iv_robust()` to run a 2SLS model all at the same time:
+
+```{r}
+model_all_at_once <- iv_robust(register ~ college + black + hispanic + female |
+                                 distance + black + hispanic + female,
+                               data = voting, diagnostics = TRUE)
+tidy(model_all_at_once)
+summary(model_all_at_once)
+```
+
+Use `feols()` to run a 2SLS model all the same time:
+
+```{r}
+# y ~ exogenous | fe | endogenous ~ instrument
+model_feols <- feols(register ~ black + hispanic + female | college ~ distance,
+                     data = voting)
+tidy(model_feols)
+# model_feols$iv_first_stage
+# summary(model_feols, stage = 1)
+```
+
+## Causal effect
+
+TODO: What is the final causal effect of college attendance on registering to vote?
+
+```{r}
+modelsummary(list(second_stage, model_all_at_once, model_feols))
+```
+
+Assuming this is a good instrument, going to college causes a 22 percentage point increase in the probability of registering to vote.
+
+## References

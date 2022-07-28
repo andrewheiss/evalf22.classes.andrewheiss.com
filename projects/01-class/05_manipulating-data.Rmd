@@ -1,0 +1,112 @@
+---
+title: "Manipulating data with dplyr"
+output: html_document
+---
+
+
+```{r setup, warning=FALSE, message=FALSE}
+library(tidyverse)  # For ggplot, dplyr, and friends
+
+gapminder <- read_csv("data/gapminder.csv")
+```
+
+## gapminder
+
+```{r}
+gapminder
+```
+
+
+## Your turn 1
+
+- `filter()` selects rows based on logical tests
+
+The data for Canada:
+
+```{r}
+filter(gapminder, country == "New Zealand")
+```
+
+All data for countries in Oceania:
+
+```{r}
+filter(gapminder, country == "New Zealand")
+```
+
+Rows where the life expectancy is greater than 82:
+
+```{r}
+filter(gapminder, country == "New Zealand")
+```
+
+
+## Your turn 2
+
+Canada before 1970:
+
+```{r}
+filter(gapminder, country == "New Zealand", year > 2000)
+```
+
+Countries where life expectancy in 2007 is below 50:
+
+```{r}
+filter(gapminder, country == "New Zealand", year > 2000)
+```
+
+Countries where life expectancy in 2007 is below 50, and are not in Africa:
+
+```{r}
+filter(gapminder, country == "New Zealand", year > 2000)
+```
+
+
+## Your turn 3
+
+Write code to:
+
+- Add an `africa` column that is TRUE if the country is on the African continent
+- Add a column for logged GDP per capita (hint: use `log()`)
+- Add an `africa_asia` column that says “Africa or Asia” if the country is in Africa or Asia, and “Not Africa or Asia” if it’s not
+
+```{r}
+mutate(gapminder)
+```
+
+
+## Your turn 4
+
+Use `summarize()` to compute four statistics about the data:
+
+- The first (minimum) year in the dataset
+- The last (maximum) year in the dataset
+- The number of rows in the dataset (use the cheatsheet)
+- The number of distinct countries in the dataset (use the cheatsheet)
+
+```{r}
+gapminder 
+```
+
+
+## Your turn 5
+
+Use `filter()` and `summarize()` to calculate the (1) the number of unique countries and (2) the median life expectancy on the African continent in 2007.
+
+```{r}
+gapminder 
+```
+
+
+## Your turn 6
+
+Find the minimum, maximum, and median life expectancy for each continent.
+
+```{r}
+gapminder 
+```
+
+Find the minimum, maximum, and median life expectancy for each continent in 2007 only.
+
+```{r}
+gapminder
+```

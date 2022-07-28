@@ -1,0 +1,84 @@
+---
+title: "Causal models"
+author: "YOUR NAME HERE"
+date: "DATE GOES HERE"
+output: 
+  html_document: 
+    toc: yes
+  pdf_document: 
+    latex_engine: xelatex
+    toc: yes
+  word_document: 
+    toc: yes
+---
+
+**Feel free to remove any/all of the placeholder text and instructions here!**
+
+
+## 1: DAG I
+
+Find a news article that makes a causal claim and interpret that claim by drawing an appropriate diagram. The article likely won't explain all the things the researchers controlled for, so you'll need to create an ideal DAG. What should be included in the causal process to measure the effect of X on Y? 
+
+INCLUDE IMAGE HERE
+
+Export the figure from dagitty and include it in your assignment, or use this code to draw the DAG with R:
+
+```{r setup, warning=FALSE, message=FALSE}
+library(tidyverse)
+library(ggdag)
+```
+
+```{r example-dag-code}
+# Remember that you can change the variable names here--they can be basically
+# anything, but cannot include spaces. The labels can have spaces. Adjust the
+# variable names (y, x2, etc) and labels ("Outcome", "Something", etc.) as
+# necessary.
+my_dag <- dagify(y ~ x1 + x2 + z,
+                 z ~ x1, 
+                 x2 ~ x1 + z,
+                 labels = c("y" = "Outcome",
+                            "x1" = "Something",
+                            "x2" = "Something else",
+                            "z" = "Yet another thing"),
+                 exposure = "z",
+                 outcome = "y")
+
+# If you set text = TRUE, you'll see the variable names in the DAG points
+# The `seed` argument makes it so that the random layout is the same every time
+ggdag(my_dag, text = FALSE, use_labels = "label", seed = 1234) + 
+  theme_dag()
+
+# If you want the treatment and outcomes colored differently, 
+# replace ggdag() with ggdag_status()
+ggdag_status(my_dag, text = FALSE, use_labels = "label", seed = 1234) + 
+  theme_dag() + 
+  theme(legend.position = "bottom")
+```
+
+Summarize the causal claim. Describe what the authors controlled for and what else you included in the DAG. Justify the inclusion of each node (point) and connection (line) in the graph. *(≈150 words)*
+
+Identify all the frontdoor and backdoor paths between your exposure and outcome. What variables need to be controlled for / adjusted to close the backdoors? Did this happen in the study or article? *(≈100 words)*
+
+
+## 2: DAG II
+
+Find a different news article with a causal claim and do the same thing as above. 
+
+Draw and include a DAG.
+
+INCLUDE IMAGE HERE
+
+Summarize the causal claim. Describe what the authors controlled for and what else you included in the DAG. Justify the inclusion of each node (point) and connection (line) in the graph. *(≈150 words)*
+
+Identify all the frontdoor and backdoor paths between your exposure and outcome. What variables need to be controlled for / adjusted to close the backdoors? Did this happen in the study or article? *(≈100 words)*
+
+
+## 3: DAG for your program
+
+Identify the outcome you care most about from your final project program. Draw a DAG that shows the causal effect of your program's intervention on the outcome.
+
+INCLUDE IMAGE HERE
+
+Summarize the causal claim. Describe what needs to be controlled for and what else you included in the DAG. Justify the inclusion of each node (point) and connection (line) in the graph. *(≈150 words)*
+
+Identify all the frontdoor and backdoor paths between your exposure and outcome. What variables need to be controlled for / adjusted to close the backdoors? How might you do this with your evaluation? *(≈100 words)*

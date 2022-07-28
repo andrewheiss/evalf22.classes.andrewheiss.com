@@ -1,0 +1,203 @@
+---
+title: "Problem set 6: Mandatory school attendance program"
+author: "YOUR NAME HERE"
+date: "DATE GOES HERE"
+output: 
+  html_document: 
+    toc: yes
+  pdf_document: 
+    latex_engine: xelatex
+    toc: yes
+  word_document: 
+    toc: yes
+---
+
+---
+
+There is substantial research and evidence that [class attendance has a positive and significant effect on student performance](http://graphics8.nytimes.com/packages/pdf/nyregion/20110617attendancereport.pdf). Because of this, state and local government agencies and school districts have designed programs and policies that incentivize students to not miss school days. Examples include tangible prizes like [colorful pendants and free tickets to events](https://www.nytimes.com/2011/06/17/nyregion/city-reduces-chronic-absenteeism-in-public-schools.html), [automated calls from celebrities](https://cityroom.blogs.nytimes.com/2011/02/10/schools-use-celebrity-robo-calls-to-battle-truancy/), or [class policies that mandate attendance](https://people.ucsc.edu/~cdobkin/Papers/2010%20Skipping%20class%20in%20college%20and%20exam%20performance%20Evidence%20from%20a%20regression%20discontinuity%20classroom%20experiment.pdf). 
+
+Existing research has used a range of methods to test the relationship between attendance programs and student performance, including [simple regression analysis](https://dx.doi.org/10.1016/j.sbspro.2016.07.051), [randomized experiments](https://dx.doi.org/10.3200/JECE.39.3.213-227), and [regression discontinuity approaches](https://people.ucsc.edu/~cdobkin/Papers/2010%20Skipping%20class%20in%20college%20and%20exam%20performance%20Evidence%20from%20a%20regression%20discontinuity%20classroom%20experiment.pdf).
+
+In this assignment, you will use regression discontinuity approaches to measure the effect of a hypothetical program on hypothetical student grades (this data is 100% fake). 
+
+In this simulated program, high school students who have less than 80% attendance during their junior year (11th grade) are assigned to a mandatory school attendance program during their senior year (12th grade). This program requires them to attend school and also provides them with additional support and tutoring to help them attend and remain in school. At the end of their senior year, students take a final test to assess their overall learning in high school.
+
+The dataset I've provided contains four columns:
+
+- `id`: A randomly assigned student ID number
+- `attendance`: The proportion of days of school attended during a student's junior year (ranges from 0 to 100)
+- `treatment`: Binary variable indicating if a student was assigned to the attendance program during their senior year
+- `grade`: A student's final test grade at the end of their senior year
+
+
+```{r setup, warning=FALSE, message=FALSE}
+library(tidyverse)
+library(rdrobust)
+library(rddensity)
+library(broom)
+library(modelsummary)
+
+# This turns off this message that appears whenever you use summarize():
+# `summarise()` ungrouping output (override with `.groups` argument)
+options(dplyr.summarise.inform = FALSE)
+
+program <- read_csv("data/attendance_program.csv")
+```
+
+
+# Step 1: Determine if process of assigning treatment is rule-based
+
+**Was assignment to this program based on an arbitrary rule? Is it a good candidate for a regression discontinuity approach? Why or why not?**
+
+
+# Step 2: Determine if the design is fuzzy or sharp
+
+Make a plot that shows the running variable (`attendance`) on the x-axis and the program indicator variable (`treatment`) on the y-axis. Show the relationship using points (`geom_point`) and color the points by `treatment`.
+
+**How strict was the application of the rule? Did any students with attendance above 80% get into the attendance program, or did any students with attendance under 80% not get into the program? Is there a sharp difference in treatment at the cutpoint?**
+
+```{r}
+# Dot plot with attendance on the x-axis and treatment on the y-axis
+```
+
+
+# Step 3: Check for discontinuity in running variable around cutpoint
+
+Next, you should check that there was no manipulation in the running variable. We don't want to see a ton of students with 81% or 79% attendance, since that could be a sign that administrators fudged the numbers to either push students into the program or out of the program. 
+
+First, make a histogram of the running variable and see if there are any big jumps around the threshold. Fill the histogram by `treatment` and add a vertical line at 80 (`geom_vline(xintercept = 80)`) to show the cutoff. Use an approprite bin width. If the column near 80 is split into two different colors (it might be, since it might be showing 79 and 80 together), add `boundary = 80` inside `geom_histogram()` to force ggplot to start a bar at 80 and not include 79.
+
+**Does it look like there's an unexpected jump in the running variable around the cutoff?**
+
+```{r}
+# Histogram of attendance
+```
+
+Next, conduct a McCrary density test with `rdplotdensity()` from the `rddensity` library. Refer to the in-class example for the syntax (you'll need to specify `rdd`, `X` (note that it's capitalized), and `type = "both"`). Also, if you don't want two plots to show up when you knit, make sure you assign the output of `rdplotdensity()` to a variable.
+
+**Is there a substantial jump at the cutpoint?**
+
+```{r}
+# McCrary test
+```
+
+
+# Step 4: Check for discontinuity in outcome across running variable
+
+Make a scatterplot with the running variable on the x-axis (`attendance`) and the outcome variable on the y-axis (`grade`), with the points colored by treatment (`treatment`). Make the points small (`size = 0.5` or something similar) and semitransparent (`alpha = 0.5` or something similar) since there are a lot of them. Add a vertical line at the cutoff point. Add two `geom_smooth()` lines: one using data before the cutoff and one using data after the cutoff. Make sure both lines use `method = "lm"`. Refer to the example for the code you need to do this.
+
+**Based on this graph, does the program have an effect? Is there a discontinuity in outcome around the cutpoint? Interpret the effect (or non-effect) of the program.**
+
+```{r}
+# Graph showing discontinuity in grades across levels of attendance
+```
+
+
+# Step 5: Measure the size of the effect
+
+Now you need to measure the size and statistical significance of the discontinuity. If there's a jump because of the program, how big is it and how much can we trust it? You'll do this two ways: (1) parametrically with linear regression and (2) nonparametrically with curvy lines and fancy econometrics algorithms built in to the `rdrobust()` function.
+
+## Parametric estimation
+
+Create a new dataset based on `program` that has a new variable in it named `attendance_centered`. This will be the value of `attendance` minus 80. This centers student attendance around the cutpoint (if a student had 85% attendance, they'd have a value of 5; if they had 70% attendance, they'd have a value of 10; etc.) and makes it easier to interpret the intercept coefficient in linear models since it shifts the y-intercept up to the cutpoint instead of zero.
+
+```{r}
+# Add column to program that centers attendance
+```
+
+Run a regression model explaining `grade` with `attendance_centered + treatment`:
+
+$$
+\text{Grade} = \beta_0 + \beta_1 \text{Attendance (centered)} + \beta_2 \text{Program} + \epsilon
+$$
+
+Make sure you use the data frame that has your new `attendance_centered` variable.
+
+**Interpret the three coefficients. How big is the effect of the program? Is it statistically significant?**
+
+```{r}
+# Linear model
+```
+
+Now make two new datasets based on the one you made previously with the `attendance_centered` variable. Filter one so that it only contains observations where `attendance_centered` is between -5 and 5, and filter the other so that it only contains observations where `attendance_centered` is between -10 and 10. 
+
+Run the same model (`grade ~ attendance_centered + program`) using each of these data frames. Interpret the coefficients. Are they different from the model that uses the complete data?
+
+```{r}
+# Data and model with bandwidth = 5
+```
+
+```{r}
+# Data and model with bandwidth = 10
+```
+
+**Put all three models in a side-by-side table with `modelsummary()`. How does the coefficient for `program` change across the model specifications? How does the number of observations change? What advantages and disadvantages are there to restricting the data to ±5 or ±10 around the cutpoint? Which program effect do you believe the most? Why?**
+
+```{r}
+# All three models
+```
+
+
+## Nonparametric estimation
+
+Next you'll use nonparametric estimation to figure out the size of the gap around the cutpoint. Remember from class that this means we're not using straight lines anymore---we're using curvy lines that don't really have neat $y = mx + b$ equations behind them, so we can't use `lm()` and regular coefficients. Instead, we can use `rdrobust` to measure the size of the gap.
+
+Use `rdrobust` with all its default options to find the effect of the program. You'll need to specify `y`, `x`, and `c`. Recall from the in-class example that you'll need to type the name of the variables slighlty differently. To refer to the grade column in the program data frame, you'll have to type `program$grade`. Also, make sure you pipe the output of `rdrobust()` to `summary()`, otherwise you won't see the actual program effect (so make sure you type `rdrobust(...) %>% summary()`).
+
+**How big of an effect does the program have at the cutpoint? Is the effect statistically significant?** Important: if you see a negative number, you can pretend that it's positive. It's negative because the change in trend goes down.
+
+```{r}
+# rdrobust()
+# Note: You don't need to use attendance_centered anymore; that was just for lm()
+```
+
+Make a plot of the effect using `rdplot()`. You'll use the same `y`, `x`, and `c` that you did in `rdrobust()` above. 
+
+```{r}
+# Plot
+```
+
+## Nonparametric sensitivity checks
+
+Now that we have an effect, we can adjust some of the default options to see how robust the effect size is. 
+
+First we'll play with the bandwidth. Find the ideal bandwidth with with `rdbwselect()`, then run `rdrobust` with twice that bandwidth and half that bandwidth (hint: use `h = SOMETHING`).
+
+```{r}
+# Find the ideal bandwidth. Make sure rdbwselect() pipes into summary() so you
+# can see the results: rdbwselect() %>% summary()
+#
+# You'll use the same y, x, and c as before
+```
+
+```{r}
+# rdrobust() with half bandwidth
+
+# rdrobust() with two times the bandwidth
+```
+
+Next we'll play with the kernel. Use the default ideal bandwidth and adjust the kernel to change how heavily weighted the observations right by the cutoff are. You already used a triangular kernel---that was the first `rdrobust()` model you ran, since triangular is the default. Try using Epanechnikov and uniform kernels (look at the help file for `rdrobust` or look at the in-class example to see how to specify different kernels):
+
+```{r}
+# rdrobust() with an Epanechnikov kernel
+
+# rdrobust() with a uniform kernel
+```
+
+
+# Step 6: Compare all the effects
+
+**Make a list of all the effects you found. Which one do you trust the most? Why?**
+
+Write them in this table if it's helpful:
+
+|     Method    | Bandwidth |        Kernel        | Estimate |
+|:-------------:|:---------:|:--------------------:|:--------:|
+|   Parametric  | Full data |      Unweighted      |          |
+|   Parametric  |     10    |      Unweighted      |          |
+|   Parametric  |     5     |      Unweighted      |          |
+| Nonparametric |    ???    |      Triangular      |          |
+|      etc      |           |          etc         |          |
+
+
+**Does the program have an effect? Should it be rolled out to all schools? Why or why not?**

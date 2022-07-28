@@ -1,0 +1,10 @@
+student_id,group,ivy1,ivy2,ivy3,public1,public2,public3,enrolled,earnings
+1,A,NA,Reject,Admit,NA,Admit,NA,ivy3,110000
+2,A,NA,Reject,Admit,NA,Admit,NA,ivy3,100000
+3,A,NA,Reject,Admit,NA,Admit,NA,public2,110000
+4,B,Admit,NA,NA,Admit,NA,Admit,ivy1,60000
+5,B,Admit,NA,NA,Admit,NA,Admit,public3,30000
+6,C,NA,Admit,NA,NA,NA,NA,ivy2,115000
+7,C,NA,Admit,NA,NA,NA,NA,ivy2,75000
+8,D,Reject,NA,NA,Admit,Admit,NA,public1,90000
+9,D,Reject,NA,NA,Admit,Admit,NA,public2,60000

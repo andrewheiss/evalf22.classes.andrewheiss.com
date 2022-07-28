@@ -1,0 +1,109 @@
+---
+title: "Effect of reading a math story on math anxiety"
+output: html_document
+---
+
+```{r warning=FALSE, message=FALSE}
+library(tidyverse)
+library(broom)
+library(scales)  # For things like percent()
+
+results <- read_csv("data/math_survey.csv") %>% 
+  mutate(anxious_num = recode(math_anxiety, Yes = 1, No = 0)) %>% 
+  mutate(treatment = fct_relevel(treatment, "Normal story"))
+```
+
+
+# Difference-in-differences by hand
+
+```{r}
+group_props <- results %>% 
+  drop_na(math_anxiety) %>% 
+  group_by(wave, treatment, math_anxiety) %>% 
+  summarize(num = n()) %>% 
+  group_by(wave, treatment) %>% 
+  mutate(total = sum(num),
+         prop_math_anxious = num / total) %>% 
+  filter(math_anxiety == "Yes")
+group_props
+```
+
+
+We care about the difference in the differences:
+
+$$
+(\text{After} - \text{before})_{\text{treatment}} - (\text{After} - \text{before})_{\text{control}}
+$$
+
+```{r}
+after_treatment <- group_props %>% 
+  filter(treatment == "Math story", wave == 2) %>% 
+  pull(prop_math_anxious)
+
+before_treatment <- group_props %>% 
+  filter(treatment == "Math story", wave == 1) %>% 
+  pull(prop_math_anxious)
+
+after_control <- group_props %>% 
+  filter(treatment == "Normal story", wave == 2) %>% 
+  pull(prop_math_anxious)
+
+before_control <- group_props %>% 
+  filter(treatment == "Normal story", wave == 1) %>% 
+  pull(prop_math_anxious)
+```
+
+
+```{r}
+dd_effect <- (after_treatment - before_treatment) - (after_control - before_control)
+dd_effect
+```
+
+# Difference-in-differences with regression and interaction terms
+
+```{r}
+dd_regression <- lm(anxious_num ~ wave + treatment + wave * treatment,
+                    data = results)
+tidy(dd_regression)
+```
+
+
+# Plot
+
+```{r}
+hypothetical_trend <- after_control - before_control
+
+ggplot(group_props, 
+                 aes(x = as.factor(wave), y = prop_math_anxious, 
+                     color = treatment, group = treatment)) +
+  geom_line(size = 2) + 
+  geom_segment(aes(x = 1, y = before_treatment, xend = 2, 
+                   yend = (before_treatment + hypothetical_trend)), 
+               linetype = "dotted", color = "grey10") + 
+  geom_segment(aes(x = 2, xend = 2, 
+                   y = (before_treatment + hypothetical_trend - .005), 
+                   yend = after_treatment + 0.005),
+               color = "#BD1550", size = 2) +
+  annotate("label", x = 1.5, y = .27, label = "Normal story",
+           size = 3.5, color = "#490A3D") + 
+  annotate("label", x = 1.5, y = .40, label = "Math story",
+           size = 3.5, color = "#8A9B0F") + 
+  annotate("label", x = 2.05, y = (before_treatment + hypothetical_trend), 
+           label = "Predicted trend\nwithout story",
+           size = 3.5, color = "grey10", hjust = 0) + 
+  annotate("label", x = 2.05, 
+           y = (before_treatment + hypothetical_trend) - (abs(dd_effect) / 2), 
+           label = paste0("Effect of story\non anxiety: ", percent(dd_effect)),
+           size = 3.5, color = "#BD1550", hjust = 0, fontface = "bold") + 
+  scale_color_manual(values = c("Math story" = "#8A9B0F", "Normal story" = "#490A3D")) +
+  scale_y_continuous(labels = percent_format(accuracy = 1)) + 
+  scale_x_discrete(labels = c("Before", "After")) +
+  guides(color = "none") +
+  coord_cartesian(clip = "off", xlim = c(1.5, 1.85)) +
+  labs(x = NULL, y = "Proportion of class feeling math anxiety",
+       title = "Reading a story about math reduces math anxiety",
+       subtitle = "Experiment in four 4th grade classes") + 
+  theme_minimal() + 
+  theme(plot.title = element_text(face = "bold", size = rel(1.6)))
+```
+

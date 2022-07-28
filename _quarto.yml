@@ -4,9 +4,8 @@ project:
     - "*.qmd"
     - "!slides/"
   resources:
-    - "img/"
-    - "projects/"
     - "files/"
+    - "projects/"
     - "slides/*.html"
     - "slides/*.pdf"
     - "slides/img/"

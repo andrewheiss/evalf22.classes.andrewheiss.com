@@ -1,0 +1,96 @@
+---
+title: "Effect of lowering the minimum legal drinking age on mortality"
+output: html_document
+---
+
+## Load and clean data
+
+```{r setup, warning=FALSE, message=FALSE}
+library(tidyverse)
+library(broom)
+library(fixest)
+library(tigris)
+
+deaths_raw <- read_csv("data/deaths.csv")
+```
+
+The original data has a column called `fips` that contains id numbers for each state based on the Federal Information Processing Standards (FIPS) system ([see this](https://en.wikipedia.org/wiki/Federal_Information_Processing_Standard_state_code) for a list of all state FIPS codes). We can add state names and abbreviations to the dataset by merging a lookup table of FIPS codes (`fips_codes`) from the **tigris** package:
+
+```{r}
+fips <- fips_codes %>% 
+  mutate(state_code = as.numeric(state_code)) %>% 
+  group_by(state_code) %>% 
+  slice(1) %>% 
+  select(-county, -county_code)
+```
+
+```{r}
+deaths <- deaths_raw %>% 
+  mutate(state = as.numeric(state)) %>% 
+  left_join(fips, by = c("state" = "state_code"))
+```
+
+
+## Simple diff-in-diff with Alabama and Arkansas
+
+```{r}
+# TODO: Make a new dataset based on `deaths` that only contains Alabama and Arkansas
+# TODO: Make a new column called `after_change` that is TRUE (or 1) if year >= 1975
+# TODO: Make a new column called `is_alabama` that is TRUE (or 1) if the state is Alabama
+# TODO: Filter the data so that it (1) only includes years <= 1983, (2) only includes the 18-20 age group (agegr), and (3) includes only the death type (dtype) of "all"
+```
+
+```{r}
+# TODO: Use group_by() and summarize() to find the average mortality rate (mrate) in Alabama and Arkansas before and after the change (after_change)
+```
+
+```{r}
+# TODO: Use lm() to calculate the diff-in-diff effect with this model:
+```
+
+$$
+\begin{aligned}
+\text{Mortality}\ =&\ \beta_0 + \beta_1\ \text{Alabama} + \beta_2\ \text{After 1975}\ + \\
+&\ \beta_3\ (\text{Alabama} \times \text{After 1975})
+\end{aligned}
+$$
+
+```{r}
+# TODO: Using the data for only Alabama and Arkansas, create a plot that shows
+# the mortality rate over time, colored by state. Add a vertical line at 1975.
+# Determine if the two states' trends are parallel pre-1975.
+```
+
+
+## TWFE with all states
+
+```{r}
+# TODO: Create a new dataset based on `deaths_raw` that (1) only includes years
+# <= 1983, (2) only includes the 18-20 age group (agegr), and (3) includes only
+# the death type (dtype) of "all"
+```
+
+```{r}
+# TODO: Use that new data to create a TWFE model like this:
+#
+# HINT: The year column is currently numeric (like 1981, 1982, etc.), and R
+# thinks that it's truly numeric (with possible values like 1980.432, etc.). To
+# treat the year column like a categorical fixed effect, you need to make it a
+# factor, so use factor(year) in your model code (or use mutate() above where
+# you filter the data to create a factor version of the year column)
+```
+
+$$
+\text{Mortality}\ =\ \beta_0 + \beta_1\ \text{Treatment} + \beta_2\ \text{State} + \beta_3\ \text{Year}
+$$
+
+```{r}
+# TODO: Create another TWFE model that incorporates state-specific time trends by including the interaction of state and year:
+```
+
+$$
+\begin{aligned}
+\text{Mortality}\ =\ & \beta_0 + \beta_1\ \text{Treatment} + \beta_2\ \text{State} + \beta_3\ \text{Year} +\\
+&\beta_4\ (\text{State} \times \text{Year})
+\end{aligned}
+$$

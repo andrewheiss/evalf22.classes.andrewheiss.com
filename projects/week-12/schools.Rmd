@@ -1,0 +1,41 @@
+---
+title: "Teacher salary bonuses"
+date: '`r format(Sys.time(), "%B %e, %Y")`'
+---
+
+Teachers in North Carolina Public schools earn a bonus of \$750 if the students in their school meet a standard called "expected growth." A summary statistic called "average growth" is computed for each school; the expected growth standard is met when this summary measure exceeds zero. (This is based on [actual econometric research](https://my.vanderbilt.edu/performanceincentives/files/2012/10/200803_Vigdor_TeacherBonusesNC.pdf).)
+
+For this example, we'll use regression discontinuity techniques to see if failing to receive a bonus motivates teachers to improve their performance in the subsequent school year.
+
+- Running variable = `avgrow05`
+- Treatment = `expgrow`
+- Outcome = `avgrow06`
+
+```{r setup, warning=FALSE, message=FALSE}
+library(tidyverse)
+library(haven)
+library(broom)
+library(rdrobust)
+library(rddensity)
+library(modelsummary)
+
+schools <- read_stata("data/nc_schools.dta")
+```
+
+# Step 1: Rule based?
+
+Yep.
+
+# Step 2: Fuzzy or sharp?
+
+# Step 3: Check for discontinuity in running variable around cutpoint
+
+# Step 4: Check for discontinuity in outcome across running variable
+
+# Step 5: Measure the size of the effect
+
+## Parametric estimation
+
+## Nonparametric estimation
+
+# Step 6: Compare all the effects

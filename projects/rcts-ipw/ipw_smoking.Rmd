@@ -1,0 +1,144 @@
+---
+title: "IPW: Smoking and weight gain"
+output: html_document
+date: '2022-02-24'
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Do people who quit smoking gain weight?
+
+The NHANES I Epidemiologic Follow-up Study (NHEFS) is a national longitudinal study that was jointly initiated by the National Center for Health Statistics and the National Institute on Aging in collaboration with other agencies of the Public Health Service. The NHEFS was designed to investigate the relationships between clinical, nutritional, and behavioral factors. ([See here](https://wwwn.cdc.gov/nchs/nhanes/nhefs/) for complete details.)
+
+You're going to use data from the NHEFS to find the causal effect of quitting smoking on weight gain.
+
+
+## Load data
+
+```{r libraries-data, warning=FALSE, message=FALSE}
+library(tidyverse)
+library(broom)
+library(ggdag)
+
+# TODO: Use read_csv() to load data/nhefs.csv
+
+# TODO: Use read_csv() to load data/nhefs_codebook.csv (so you can know what the
+# different columns are actually measuring)
+```
+
+**Causal variables**:
+
+- Treatment/exposure: `qsmk` (Respondent quit smoking between 1st questionnaire and 1982, 1 = yes, 0 = no)
+- Outcome: `wt82_71` (Respondent weight change between 1971 and 1982 in kilograms)
+
+**Confounders**:
+
+- Demographics
+  - `age`: age
+  - `sex`: sex
+  - `race`: race
+  - `education`: education
+- Health
+  - `wt71`: baseline weight in 1971
+  - `active`: daily activity level
+  - `exercise`: exercise
+- Smoking history
+  - `smokeintensity`: smoking intensity
+  - `smokeyrs`: years of smoking
+
+
+## Check difference in outcome across treatment status
+
+Is there a visual difference?
+
+```{r}
+# TODO: Make a density plot of wt82_71 that is filled by factor(qsmk) (so that
+# the 0/1 is treated as a categorical variable)
+```
+
+```{r}
+# TODO: Use group_by() and summarize() to find the average weight gain among
+# smokers and nonsmokers
+```
+
+```{r}
+# TODO: Use lm() to calculate a naive estimate of the "effect" of quitting
+# smoking on weight gain
+```
+
+
+## Draw a DAG
+
+```{r fig.height=5, fig.width=8}
+set.seed(1234)
+
+smk_wt_dag <- dagify(
+  # Specify causes of quitting smoking and weight gain:
+  qsmk ~ sex + race + age + education + 
+    smokeintensity + smokeyrs + exercise + active + wt71,
+  wt82_71 ~ qsmk + sex + race + age + education + 
+    smokeintensity + smokeyrs + exercise + active + wt71,
+  # Specify causal question:
+  exposure = "qsmk", 
+  outcome = "wt82_71"
+)
+
+ggdag_status(smk_wt_dag)
+```
+
+## Treatment model
+
+```{r}
+# TODO: Create a model that predicts quitting smoking (qsmk) based on all the
+# confounders. For fun, try accounting for nonlinearities in age,
+# smokeintensity, smokeyrs, and wt71 too (hint: include a term like I(age^2) in
+# addition to age)
+```
+
+
+
+## Propensity scores and weights
+
+```{r}
+# TODO: Plug the original dataset into the model using augment() and generate
+# propensity scores for each observation
+#
+# TODO: Create a new column of inverse probability weights using this formula:
+#
+# (treatment / propensity) - ((1 - treatment) / (1 - propensity))
+# 
+# It should look something like this:
+# mutate(ipw = (qsmk / propensity) + ((1 - qsmk) / (1 - propensity)))
+```
+
+Investigate your weights. They should be clustered around 1 (with an average of 1), without any huge values.
+
+```{r}
+# Visualize the distribution of weights. 
+```
+
+```{r}
+# Calculate the average of your weights. It should be around 1
+```
+
+## Outcome model
+
+```{r}
+# TODO: Use lm() to estimate the effect of quitting smoking (qsmk) on weight
+# gain (wt82_71) and incorporate the inverse probability weights. How much
+# weight gain does quitting smoking *cause*?
+#
+# TODO: Is this effect significant? Interpret the confidence interval.
+```
+
+```{r}
+# TODO: For bonus fun and games, run a Bayesian outcome model with the brms
+# package so that you can talk about credible intervals. Specifying weights with
+# brms is a little different than with lm(). There's no weights argument.
+# Instead, you have to include the weights in the formula like this:
+#
+# brm(bf(outcome | weights(ipw) ~ treatment), 
+#     data = whatever)
+```
