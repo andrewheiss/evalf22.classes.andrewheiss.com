@@ -1,5 +1,102 @@
 ---
-title: R, RStudio, and the tidyverse
+title: "R, RStudio, and the tidyverse"
 ---
 
-Here's a page.
+## Part 1: The basics of R and dplyr
+
+For this week's problem set, you need to work through a few of RStudio's introductory primers. You'll do these in your browser and type code and see results there.
+
+You'll learn some of the basics of R, as well as some powerful methods for manipulating data with the **dplyr** package.
+
+Complete these primers. It seems like there are a lot, but they're short and go fairly quickly (especially as you get the hang of the syntax). Also, **I have no way of seeing what you do or what you get wrong or right**, and that's totally fine! If you get stuck and want to skip some (or if it gets too easy), go right ahead and skip them!
+
+- **The Basics**
+	- [Visualization Basics](https://rstudio.cloud/learn/primers/1.1)
+	- [Programming Basics](https://rstudio.cloud/learn/primers/1.2)
+- **Work with Data**
+	- [Working with Tibbles](https://rstudio.cloud/learn/primers/2.1)
+	- [Isolating Data with dplyr](https://rstudio.cloud/learn/primers/2.2)
+	- [Deriving Information with dplyr](https://rstudio.cloud/learn/primers/2.3)
+- **Visualize Data**
+  - [Exploratory Data Analysis](https://rstudio.cloud/learn/primers/3.1)
+  - [Bar Charts](https://rstudio.cloud/learn/primers/3.2)
+  - [Histograms](https://rstudio.cloud/learn/primers/3.3)
+  - [Boxplots and Counts](https://rstudio.cloud/learn/primers/3.4)
+  - [Scatterplots](https://rstudio.cloud/learn/primers/3.5)
+  - [Line plots](https://rstudio.cloud/learn/primers/3.6)
+  - [Overplotting and Big Data](https://rstudio.cloud/learn/primers/3.7)
+  - [Customize Your Plots](https://rstudio.cloud/learn/primers/3.8)
+- **Tidy Your Data**
+  - [Reshape Data](https://rstudio.cloud/learn/primers/4.1)
+
+:::{.callout-note}
+Recent versions of **tidyr** have renamed these core functions: `gather()` is now `pivot_longer()` and `spread()` is now `pivot_wider()`. The syntax for these `pivot_*()` functions is *slightly* different from what it was in `gather()` and `spread()`, so you can't just replace the names. Fortunately, both `gather()` and `spread()` still work and won't go away for a while, so you can still use them as you learn about reshaping and tidying data. It would be worth learning how the newer `pivot_*()` functions work, eventually, though ([see here for examples](https://tidyr.tidyverse.org/articles/pivot.html)).
+:::
+
+The content from these primers comes from the (free and online!) book [*R for Data Science* by Garrett Grolemund and Hadley Wickham](https://r4ds.had.co.nz/). I highly recommend the book as a reference and for continuing to learn and use R in the future.
+
+
+## Part 2: Getting familiar with RStudio
+
+The RStudio primers you just worked through are a great introduction to writing and running R code, but you typically won't type code in a browser when you work with R. Instead, you'll use a nicer programming environment like RStudio, which lets you type and save code in scripts, run code from those scripts, and see the output of that code, all in the same program.
+
+To get familiar with RStudio, watch this video (it's from PMAP 8921, but the content still applies here): 
+
+<div class="ratio ratio-16x9">
+<iframe src="https://www.youtube.com/embed/cnQ-v1UUWyE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+
+## Part 3: RStudio Projects
+
+One of the most powerful and useful aspects of RStudio is its ability to manage projects. 
+
+When you first open R, it is "pointed" at some folder on your computer, and anything you do will be relative to that folder. The technical term for this is a "working directory."
+
+When you first open RStudio, look in the area right at the top of the Console pane to see your current working directory. Most likely you'll see something cryptic: `~/`
+
+```{r working-directory, echo=FALSE, out.width="50%"}
+knitr::include_graphics("/img/example/working-directory.png", error = FALSE)
+```
+
+That tilde sign (`~`) is a shortcut that stands for your user directory. On Windows this is `C:\Users\your_user_name\`; on macOS this is `/Users/your_user_name/`. With the working directory set to `~/`, R is "pointed" at that folder, and anything you save will end up in that folder, and R will expect any data that you load to be there too.
+
+It's always best to point R at some other directory. If you don't use RStudio, you need to manually set the working directory to where you want it with `setwd()`, and many R scripts in the wild include something like `setwd("C:\\Users\\bill\\Desktop\\Important research project")` at the beginning to change the directory. **THIS IS BAD THOUGH** ([see here for an explanation](https://www.tidyverse.org/blog/2017/12/workflow-vs-script/)). If you ever move that directory somewhere else, or run the script on a different computer, or share the project with someone, the path will be wrong and nothing will run and you will be sad.
+
+The best way to deal with working directories with RStudio is to use RStudio Projects. These are special files that RStudio creates for you that end in a `.Rproj` extension. When you open one of these special files, a new RStudio instance will open up and be pointed at the correct directory automatically. If you move the folder later or open it on a different computer, it will work just fine and you will not be sad.
+
+[Read this super short chapter on RStudio projects to learn how to create and use them](https://r4ds.had.co.nz/workflow-projects.html#rstudio-projects)
+
+In general, you can create a new project by going to File > New Project > New Directory > Empty Project, which will create a new folder on your computer that is empty except for a single `.Rproj` file. Double click on that file to open an RStudio instance that is pointed at the correct folder.
+
+
+## Part 4: Getting familiar with R Markdown
+
+To ensure that the analysis and graphics you make are reproducible, you'll do the majority of your work in this class using **R Markdown** files.
+
+Do the following things: 
+
+1. Watch this video:
+
+<div class="ratio ratio-16x9">
+<iframe src="https://player.vimeo.com/video/178485416?color=428bca" frameborder="0"  allow="autoplay; fullscreen" allowfullscreen></iframe>
+</div>
+
+&nbsp;
+
+2. Skim through the content at these pages:
+
+    - [Using Markdown](/resource/markdown/)
+    - [Using R Markdown](/resource/rmarkdown/)
+    - [How it Works](http://rmarkdown.rstudio.com/lesson-2.html)
+    - [Code Chunks](http://rmarkdown.rstudio.com/lesson-3.html)
+    - [Inline Code](http://rmarkdown.rstudio.com/lesson-4.html)
+    - [Markdown Basics](http://rmarkdown.rstudio.com/lesson-8.html) (The [R Markdown Reference Guide](https://www.rstudio.com/wp-content/uploads/2015/03/rmarkdown-reference.pdf) is super useful here.)
+    - [Output Formats](http://rmarkdown.rstudio.com/lesson-9.html)
+
+3. Watch this video (again, it's from PMAP 8921, but the content works for this class):
+
+    <div class="ratio ratio-16x9">
+    <iframe src="https://www.youtube.com/embed/fT5xI1cmE2c" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+

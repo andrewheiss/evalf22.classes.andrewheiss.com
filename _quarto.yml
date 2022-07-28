@@ -110,7 +110,33 @@ website:
         - section: "Overview"
           contents:
             - example/index.qmd
-        - example/rstudio-tidyverse.qmd
+        - section: "Simulated data"
+          contents:
+            - text: "Random numbers"
+              file: example/random-numbers.qmd
+            - text: "Synthetic data"
+              file: example/synthetic-data.qmd
+        - section: "Examples"
+          contents:
+            - example/rstudio-tidyverse.qmd
+            - example/regression.qmd
+            - example/dags.qmd
+            - example/po-ate-cate.qmd
+            - text: "RCTs"
+              file: example/rcts.qmd
+            - text: "Matching and IPW"
+              file: example/matching-ipw.qmd
+            - text: "Robust standard errors"
+              file: example/standard-errors.qmd
+            - text: "Unobserved confounding"
+              file: example/confounding-sensitivity.qmd
+            - text: "Diff-in-diff"
+              file: example/diff-in-diff.qmd
+            - example/rdd.qmd
+            - example/iv.qmd
+            - text: "ITT and CACE"
+              file: example/cace.qmd
+            - example/rdd-fuzzy.qmd
 
     - title: "Resources"
       contents:

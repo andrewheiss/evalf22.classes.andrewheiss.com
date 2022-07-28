@@ -1,0 +1,1501 @@
+---
+title: "The ultimate guide to generating synthetic data for causal inference"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(fig.width = 6, fig.asp = 0.618, fig.align = "center",
+                      fig.retina = 3, out.width = "75%", collapse = TRUE)
+set.seed(1234)
+options("digits" = 4, "width" = 170)
+options(dplyr.summarise.inform = FALSE)
+```
+
+In the [example guide for generating random numbers](/example/random-numbers/), we explored how to use a bunch of different statistical distributions to create variables that had reasonable values. However, each of the columns that we generated there were completely independent of each other. In the final example, we made some data with columns like age, education, and income, but none of those were related, though in real life they would be.
+
+Generating random variables is fairly easy: choose some sort of distributional shape, set parameters like a mean and standard deviation, and let randomness take over. Forcing variables to be related is a little trickier and involves a little math. But don't worry! That math is all just regression stuff!
+
+```{r libraries, warning=FALSE, message=FALSE}
+library(tidyverse)
+library(broom)
+library(patchwork)
+library(scales)
+library(ggdag)
+```
+
+## Basic example
+
+### Relationships and regression
+
+Let's pretend we want to predict someone's happiness on a 10-point scale based on the number of cookies they've eaten and whether or not their favorite color is blue.
+
+$$
+\text{Happiness} = \beta_0 + \beta_1 \text{Cookies eaten} + \beta_2 \text{Favorite color is blue} + \varepsilon
+$$
+
+We can generate a fake dataset with columns for happiness (Beta distribution clustered around 7ish), cookies (Poisson distribution), and favorite color (binomial distribution for blue/not blue):
+
+```{r fake-simple-data}
+set.seed(1234)
+
+n_people <- 1000
+happiness_simple <- tibble(
+  id = 1:n_people,
+  happiness = rbeta(n_people, shape1 = 7, shape2 = 3),
+  cookies = rpois(n_people, lambda = 1),
+  color_blue = sample(c("Blue", "Not blue"), n_people, replace = TRUE)
+) %>%
+  # Adjust some of the columns
+  mutate(happiness = round(happiness * 10, 1),
+         cookies = cookies + 1,
+         color_blue = fct_relevel(factor(color_blue), "Not blue"))
+
+head(happiness_simple)
+```
+
+We have a neat dataset now, so let's run a regression. Is eating more cookies or liking blue associated with greater happiness?
+
+```{r}
+model_happiness1 <- lm(happiness ~ cookies + color_blue, data = happiness_simple)
+tidy(model_happiness1)
+```
+
+Not really. The coefficients for both `cookies` and `color_blueBlue` are basically 0 and not statistically significant. That makes sense since the three columns are completely independent of each other. If there were any significant effects, that'd be strange and solely because of random chance.
+
+**For the sake of your final project, you can just leave all the columns completely independent of each other if you want.** None of your results will be significant and you won't see any effects anywhere, but you can still build models, run all the pre-model diagnostics, and create graphs and tables based on this data.
+
+***HOWEVER***, it will be far more useful to you if you generate relationships. The whole goal of this class is to find causal effects in observational, non-experimental data. If you can generate synthetic non-experimental data and bake in a known causal effect, you can know if your different methods for recovering that effect are working.
+
+So how do we bake in correlations and causal effects?
+
+### Explanatory variables linked to outcome; no connection between explanatory variables
+
+To help with the intuition of how to link these columns, think about the model we're building:
+
+$$
+\text{Happiness} = \beta_0 + \beta_1 \text{Cookies eaten} + \beta_2 \text{Favorite color is blue} + \varepsilon
+$$
+
+This model provides estimates for all those betas. Throughout the semester, we've used the analogy of sliders and switches to describe regression coefficients. Here we have both:
+
+- $\beta_0$: The average baseline happiness.
+- $\beta_1$: The additional change in happiness that comes from eating one cookie. This is a *slider*: move cookies up by one and happiness changes by $\beta_1$.
+- $\beta_2$: The change in happiness that comes from having your favorite color be blue. This is a *switch*: turn on "blue" for someone and their happiness changes by $\beta_2$.
+
+We can invent our own coefficients and use some math to build them into the dataset. Let's use these numbers as our targets:
+
+- $\beta_0$: Average happiness is 7
+- $\beta_1$: Eating one more cookie boosts happiness by 0.25 points
+- $\beta_2$: People who like blue have 0.75 higher happiness
+
+When generating the data, we can't just use `rbeta()` by itself to generate happiness, since happiness depends on both cookies and favorite color (that's why we call it a dependent variable). To build in this effect, we can add a new column that uses math and modifies the underlying `rbeta()`-based happiness score:
+
+```{r}
+happiness_with_effect <- happiness_simple %>%
+  # Turn the categorical favorite color column into TRUE/FALSE so we can do math with it
+  mutate(color_blue_binary = ifelse(color_blue == "Blue", TRUE, FALSE)) %>%
+  # Make a new happiness column that uses coefficients for cookies and favorite color
+  mutate(happiness_modified = happiness + (0.25 * cookies) + (0.75 * color_blue_binary))
+head(happiness_with_effect)
+```
+
+Now that we have a new `happiness_modified` column we can run a model using it as the outcome:
+
+```{r}
+model_happiness2 <- lm(happiness_modified ~ cookies + color_blue, data = happiness_with_effect)
+tidy(model_happiness2)
+```
+
+Whoa! Look at those coefficients! They're exactly what we tried to build in! The baseline happiness (intercept) is ≈7, eating one cookie is associated with a ≈0.25 increase in happiness, and liking blue is associated with a ≈0.75 increase in happiness.
+
+However, we originally said that happiness was a 0-10 point scale. After boosting it with extra happiness for cookies and liking blue, there are some people who score higher than 10:
+
+```{r happiness-dist-normal}
+# Original scale
+ggplot(happiness_with_effect, aes(x = happiness)) +
+  geom_histogram(binwidth = 1, color = "white") +
+  scale_x_continuous(breaks = 0:11) +
+  coord_cartesian(xlim = c(0, 11))
+```
+
+```{r happiness-dist-scaled-up}
+# Scaled up
+ggplot(happiness_with_effect, aes(x = happiness_modified)) +
+  geom_histogram(binwidth = 1, color = "white") +
+  scale_x_continuous(breaks = 0:11) +
+  coord_cartesian(xlim = c(0, 11))
+```
+
+To fix that, we can use the `rescale()` function from the **scales** package to force the new `happiness_modified` variable to fit back in its original range:
+
+```{r happiness-scaled-down}
+happiness_with_effect <- happiness_with_effect %>%
+  mutate(happiness_rescaled = rescale(happiness_modified, to = c(3, 10)))
+
+ggplot(happiness_with_effect, aes(x = happiness_rescaled)) +
+  geom_histogram(binwidth = 1, color = "white") +
+  scale_x_continuous(breaks = 0:11) +
+  coord_cartesian(xlim = c(0, 11))
+```
+
+Everything is back in the 3–10 range now. However, the rescaling also rescaled our built-in effects. Look what happens if we use the `happiness_rescaled` in the model:
+
+```{r}
+model_happiness3 <- lm(happiness_rescaled ~ cookies + color_blue, data = happiness_with_effect)
+tidy(model_happiness3)
+```
+
+Now the baseline happiness is 6.3, the cookies effect is 0.2, and the blue effect is 0.63. These effects shrunk because we shrunk the data back down to have a maximum of 10.
+
+There are probably fancy mathy ways to rescale data *and* keep the coefficients the same size, but rather than figure that out (who even wants to do that?!), my strategy is just to play with numbers until the results look good. Instead of using a 0.25 cookie effect and 0.75 blue effect, I make those effects bigger so that the rescaled version is roughly what I really want. There's no systematic way to do this—I ran this chunk below a bunch of times until the numbers worked.
+
+```{r}
+set.seed(1234)
+
+n_people <- 1000
+happiness_real_effect <- tibble(
+  id = 1:n_people,
+  happiness_baseline = rbeta(n_people, shape1 = 7, shape2 = 3),
+  cookies = rpois(n_people, lambda = 1),
+  color_blue = sample(c("Blue", "Not blue"), n_people, replace = TRUE)
+) %>%
+  # Adjust some of the columns
+  mutate(happiness_baseline = round(happiness_baseline * 10, 1),
+         cookies = cookies + 1,
+         color_blue = fct_relevel(factor(color_blue), "Not blue")) %>%
+  # Turn the categorical favorite color column into TRUE/FALSE so we can do math with it
+  mutate(color_blue_binary = ifelse(color_blue == "Blue", TRUE, FALSE)) %>%
+  # Make a new happiness column that uses coefficients for cookies and favorite color
+  mutate(happiness_effect = happiness_baseline +
+           (0.31 * cookies) +  # Cookie effect
+           (0.91 * color_blue_binary)) %>%  # Blue effect
+  # Rescale to 3-10, since that's what the original happiness column looked like
+  mutate(happiness = rescale(happiness_effect, to = c(3, 10)))
+
+model_does_this_work_yet <- lm(happiness ~ cookies + color_blue, data = happiness_real_effect)
+tidy(model_does_this_work_yet)
+```
+
+There's nothing magical about the 0.31 and 0.91 numbers I used here; I just kept changing those to different things until the regression coefficients ended up at ≈0.25 and ≈0.75. Also, I gave up on trying to make the baseline happiness 7. It's possible to do—you'd just need to also shift the underlying Beta distribution up (like `shape1 = 9, shape2 = 2` or something). But then you'd also need to change the coefficients more. You'll end up with 3 moving parts and it can get complicated, so I don't worry too much about it, since what we care about the most here is the effect of cookies and favorite color, not baseline levels of happiness.
+
+Phew. We successfully connected cookies and favorite color to happiness and we have effects that are measurable with regression! One last thing that I would do is get rid of some of the intermediate columns like `color_blue_binary` or `happiness_effect`—we only used those for the behind-the-scenes math of creating the effect. Here's our final synthetic dataset:
+
+```{r}
+happiness <- happiness_real_effect %>%
+  select(id, happiness, cookies, color_blue)
+head(happiness)
+```
+
+We can save that as a CSV file with `write_csv()`:
+
+```{r eval=FALSE}
+write_csv(happiness, "data/happiness_fake_data.csv")
+```
+
+### Explanatory variables linked to outcome; connection between explanatory variables
+
+In that cookie example, we assumed that both cookie consumption and favorite color are associated with happiness. We also assumed that cookie consumption and favorite color are *not* related to each other. But what if they are? What if people who like blue eat more cookies?
+
+We've already used regression-based math to connect explanatory variables to outcome variables. We can use that same intuition to connect explanatory variables to each other.
+
+The easiest way to think about this is with DAGs. Here's the DAG for the model we just ran:
+
+```{r happiness-dag-rct}
+happiness_dag1 <- dagify(hap ~ cook + blue,
+                         coords = list(x = c(hap = 3, cook = 1, blue = 2),
+                                       y = c(hap = 1, cook = 1, blue = 2)))
+
+ggdag(happiness_dag1) +
+  theme_dag()
+```
+
+Both cookies and favorite color cause happiness, but there's no link between them. Notice that `dagify()` uses the same model syntax that `lm()` does: `hap ~ cook + blue`. If we think of this just like a regression model, we can pretend that there are coefficients there too: `hap ~ 0.25*cook + 0.75*blue`. We don't actually include any coefficients in the DAG or anything, but it helps with the intuition.
+
+But what if people who like blue eat more cookies on average? For whatever reason, let's pretend that liking blue causes you to eat 0.5 more cookies, on average. Here's the new DAG:
+
+```{r happiness-dag-confounding}
+happiness_dag2 <- dagify(hap ~ cook + blue,
+                         cook ~ blue,
+                         coords = list(x = c(hap = 3, cook = 1, blue = 2),
+                                       y = c(hap = 1, cook = 1, blue = 2)))
+
+ggdag(happiness_dag2) +
+  theme_dag()
+```
+
+Now we have two different equations: `hap ~ cook + blue` and `cook ~ blue`. Conveniently, these both translate to models, and we know the coefficients we want!
+
+- `hap ~ 0.25*cook + 0.75*blue`: This is what we built before—cookies boost happiness by 0.25 and liking blue boosts happiness by 0.75
+- `cook ~ 0.3*blue`: This is what we just proposed—liking blue boosts cookies by 0.5
+
+We can follow the same process we did when building the cookie and blue effects into happiness to also build a blue effect into cookies!
+
+```{r}
+set.seed(1234)
+
+n_people <- 1000
+happiness_cookies_blue <- tibble(
+  id = 1:n_people,
+  happiness_baseline = rbeta(n_people, shape1 = 7, shape2 = 3),
+  cookies = rpois(n_people, lambda = 1),
+  color_blue = sample(c("Blue", "Not blue"), n_people, replace = TRUE)
+) %>%
+  # Adjust some of the columns
+  mutate(happiness_baseline = round(happiness_baseline * 10, 1),
+         cookies = cookies + 1,
+         color_blue = fct_relevel(factor(color_blue), "Not blue")) %>%
+  # Turn the categorical favorite color column into TRUE/FALSE so we can do math with it
+  mutate(color_blue_binary = ifelse(color_blue == "Blue", TRUE, FALSE)) %>%
+  # Make blue have an effect on cookie consumption
+  mutate(cookies = cookies + (0.5 * color_blue_binary)) %>%
+  # Make a new happiness column that uses coefficients for cookies and favorite color
+  mutate(happiness_effect = happiness_baseline +
+           (0.31 * cookies) +  # Cookie effect
+           (0.91 * color_blue_binary)) %>%  # Blue effect
+  # Rescale to 3-10, since that's what the original happiness column looked like
+  mutate(happiness = rescale(happiness_effect, to = c(3, 10)))
+head(happiness_cookies_blue)
+```
+
+Notice now that people who like blue eat partial cookies, as expected. We can verify that there's a relationship between liking blue and cookies by running a model:
+
+```{r}
+lm(cookies ~ color_blue, data = happiness_cookies_blue) %>%
+  tidy()
+```
+
+Yep. Liking blue is associated with 0.46 more cookies on average (it's not quite 0.5, but that's because of randomness).
+
+Now let's do some neat DAG magic. Let's say we're interested in the causal effect of cookies on happiness. We could run a naive model:
+
+```{r}
+model_happiness_naive <- lm(happiness ~ cookies, data = happiness_cookies_blue)
+tidy(model_happiness_naive)
+```
+
+Based on this, eating a cookie causes you to have 0.325 more happiness points. But that's wrong! Liking the color blue is a confounder and opens a path between cookies and happiness. You can see the confounding both in the DAG (since blue points to both the cookie node and the happiness node) and in the math (liking blue boosts happiness + liking blue boosts cookie consumption, which boosts happiness).
+
+To fix this confounding, we need to statistically adjust for liking blue and close the backdoor path. Ordinarily we'd do this with something like [matching or inverse probability weighting](/example/matching-ipw/), but here we can just include liking blue as a control variable (since it's linearly related to both cookies and happiness):
+
+```{r}
+model_happiness_ate <- lm(happiness ~ cookies + color_blue, data = happiness_cookies_blue)
+tidy(model_happiness_ate)
+```
+
+After adjusting for backdoor confounding, eating one additional cookie *causes* a 0.249 point increase in happiness. This is the effect we originally built into the data!
+
+If you wanted, we could rescale the number of cookies just like we rescaled happiness before, since sometimes adding effects to columns changes their reasonable ranges.
+
+Now that we have a good working dataset, we can keep the columns we care about and save it as a CSV file for later use:
+
+```{r}
+happiness <- happiness_cookies_blue %>%
+  select(id, happiness, cookies, color_blue)
+head(happiness)
+```
+
+```{r eval=FALSE}
+write_csv(happiness, "data/happiness_fake_data.csv")
+```
+
+### Adding extra noise
+
+We've got columns that follow specific distributions, and we've got columns that are statistically related to each other. We can add one more wrinkle to make our fake data even more fun (and even more reflective of real life). We can add some noise.
+
+Right now, the effects we're finding are *too* perfect. When we used `mutate()` to add a 0.25 boost in happiness for every cookie people ate, we added *exactly* 0.25 happiness points. If someone ate 2 cookies, they got 0.5 more happiness; if they ate 5, they got 1.25 more.
+
+What if the cookie effect isn't exactly 0.25, but somewhere *around* 0.25? For some people it's 0.1, for others it's 0.3, for others it's 0.22. We can use the same ideas we talked about in the [random numbers example](/example/random-numbers/) to generate a *distribution* of an effect. For instance, let's say that the average cookie effect is 0.25, but it can vary somewhat with a standard deviation of 0.15:
+
+```{r random-cookie-effect}
+temp_data <- tibble(x = rnorm(10000, mean = 0.25, sd = 0.15))
+
+ggplot(temp_data, aes(x = x)) +
+  geom_histogram(binwidth = 0.05, boundary = 0, color = "white")
+```
+
+Sometimes it can go as low as −0.25; sometimes it can go as high as 0.75; normally it's around 0.25.
+
+Nothing in the model explains why it's higher or lower for some people—it's just random noise. Remember that the model accounts for that! This random variation is what the $\varepsilon$ is for in this model equation:
+
+$$
+\text{Happiness} = \beta_0 + \beta_1 \text{Cookies eaten} + \beta_2 \text{Favorite color is blue} + \varepsilon
+$$
+
+We can build that uncertainty into the fake column! Instead of using `0.31 * cookies` when generating `happiness` (which is technically 0.25, but shifted up to account for rescaling happiness back down after), we'll make a column for the cookie effect and then multiply *that* by the number of cookies.
+
+```{r}
+set.seed(1234)
+
+n_people <- 1000
+happiness_cookies_noisier <- tibble(
+  id = 1:n_people,
+  happiness_baseline = rbeta(n_people, shape1 = 7, shape2 = 3),
+  cookies = rpois(n_people, lambda = 1),
+  cookie_effect = rnorm(n_people, mean = 0.31, sd = 0.2),
+  color_blue = sample(c("Blue", "Not blue"), n_people, replace = TRUE)
+) %>%
+  # Adjust some of the columns
+  mutate(happiness_baseline = round(happiness_baseline * 10, 1),
+         cookies = cookies + 1,
+         color_blue = fct_relevel(factor(color_blue), "Not blue")) %>%
+  # Turn the categorical favorite color column into TRUE/FALSE so we can do math with it
+  mutate(color_blue_binary = ifelse(color_blue == "Blue", TRUE, FALSE)) %>%
+  # Make blue have an effect on cookie consumption
+  mutate(cookies = cookies + (0.5 * color_blue_binary)) %>%
+  # Make a new happiness column that uses coefficients for cookies and favorite
+  # color. Importantly, instead of using 0.31 * cookies, we'll use the random
+  # cookie effect we generated earlier
+  mutate(happiness_effect = happiness_baseline +
+           (cookie_effect * cookies) +
+           (0.91 * color_blue_binary)) %>%
+  # Rescale to 3-10, since that's what the original happiness column looked like
+  mutate(happiness = rescale(happiness_effect, to = c(3, 10)))
+head(happiness_cookies_noisier)
+```
+
+Now let's look at the cookie effect in this noisier data:
+
+```{r}
+model_noisier <- lm(happiness ~ cookies + color_blue, data = happiness_cookies_noisier)
+tidy(model_noisier)
+```
+
+The effect is a little smaller now because of the extra noise, so we'd need to mess with the 0.31 and 0.91 coefficients more to get those numbers back up to 0.25 and 0.75.
+
+While this didn't influence the findings too much here, it can have consequences for other variables. For instance, in the previous section we said that the color blue influences cookie consumption. If the blue effect on cookies isn't precisely 0.5 but follows some sort of distribution (sometimes small, sometimes big, sometimes negative, sometimes zero), that will influence cookies differently. That random effect on cookie consumption will then work together with the random effect of cookies on happiness, resulting in multiple varied values.
+
+For instance, imagine the average effect of liking blue on cookies is 0.5, and the average effect of cookies on happiness is 0.25. For one person, their blue-on-cookie effect might be 0.392, which changes the number of cookies they eat. Their cookie-on-happiness effect is 0.573, which changes their happiness. Both of those random effects work together to generate the final happiness.
+
+If you want more realistic-looking synthetic data, it's a good idea to add some random noise wherever you can.
+
+
+## Visualizing variables and relationships
+
+Going through this process requires *a ton* of trial and error. You will change all sorts of numbers to make sure the relationships you're building work. This is especially the case if you rescale things, since that rescales your effects. There are a lot of moving parts and this is a complicated process.
+
+You'll run your data generation chunks lots and lots and lots of times, tinkering with the numbers as you go. This example makes it look easy, since it's the final product, but I ran all these chunks over and over again until I got the causal effect and relationships just right.
+
+It's best if you also create plots and models to see what the relationships look like
+
+### Visualizing one variable
+
+We covered a bunch of distributions in the [random number generation](/example/random-numbers/) example, but it's hard to think about what a standard deviation of 2 vs 10 looks like, or what happens when you mess with the shape parameters in a Beta distribution.
+
+It's best to visualize these variables. You could build the variable into your official dataset and then look at it, but I find it's often faster to just look at what a general distribution looks like first. The easiest way to do this is generate a dataset with just one column in it and look at it, either with a histogram or a density plot.
+
+For instance, what does a Beta distribution with `shape1 = 3` and `shape2 = 16` look like? The math says it should peak around 0.15ish ($\frac{3}{3 + 16}$), and that looks like the case:
+
+```{r vis-beta-example, out.width="65%", fig.height=3, fig.asp=NULL}
+temp_data <- tibble(x = rbeta(10000, shape1 = 3, shape2 = 16))
+
+plot1 <- ggplot(temp_data, aes(x = x)) +
+  geom_histogram(binwidth = 0.05, boundary = 0, color = "white")
+
+plot2 <- ggplot(temp_data, aes(x = x)) +
+  geom_density()
+
+plot1 + plot2
+```
+
+What if we want a normal distribution centered around 100, with most values range from 50 to 150. That's range of ±50, but that doesn't mean the `sd` will be 50—it'll be much smaller than that, like 25ish. Tinker with the numbers until it looks right.
+
+```{r vis-normal-example, out.width="65%", fig.height=3, fig.asp=NULL}
+temp_data <- tibble(x = rnorm(10000, mean = 100, sd = 25))
+
+plot1 <- ggplot(temp_data, aes(x = x)) +
+  geom_histogram(binwidth = 10, boundary = 0, color = "white")
+
+plot2 <- ggplot(temp_data, aes(x = x)) +
+  geom_density()
+
+plot1 + plot2
+```
+
+### Visualizing two continuous variables
+
+If you have two continuous/numeric columns, it's best to use a scatterplot. For instance, let's make two columns based on the Beta and normal distributions above, and we'll make it so that y goes up by 0.25 for every increase in x, along with some noise:
+
+```{r vis-two-continuous, message=FALSE}
+set.seed(1234)
+
+temp_data <- tibble(
+  x = rnorm(1000, mean = 100, sd = 25)
+) %>%
+  mutate(y = rbeta(1000, shape1 = 3, shape2 = 16) +  # Baseline distribution
+           (0.25 * x) +  # Effect of x
+           rnorm(1000, mean = 0, sd = 10))  # Add some noise
+
+ggplot(temp_data, aes(x = x, y = y)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+
+We can confirm the effect with a model:
+
+```{r}
+lm(y ~ x, data = temp_data) %>%
+  tidy()
+```
+
+### Visualizing a binary variable and a continuous variable
+
+If you have one binary column and one continuous/numeric column, it's generally best to *not* use a scatterplot. Instead, either look at the distribution of the continuous variable across the binary variable with a faceted histogram or overlaid density plot, or look at the average of the continuous variable across the different values of the binary variable with a point range.
+
+Let's make two columns: a continuous outcome (y) and a binary treatment (x). Being in the treatment group causes an increase of 20 points, on average.
+
+```{r}
+set.seed(1234)
+
+temp_data <- tibble(
+  treatment = rbinom(1000, size = 1, prob = 0.5)  # Make 1000 0/1 values with 50% chance of each
+) %>%
+  mutate(outcome = rbeta(1000, shape1 = 3, shape2 = 16) +  # Baseline distribution
+           (20 * treatment) +  # Effect of treatment
+           rnorm(1000, mean = 0, sd = 20)) %>%   # Add some noise
+  mutate(treatment = factor(treatment))  # Make treatment a factor/categorical variable
+```
+
+We can check the numbers with a model:
+
+```{r}
+lm(outcome ~ treatment, data = temp_data) %>% tidy()
+```
+
+Here's what that looks like as a histogram:
+
+```{r vis-histogram}
+ggplot(temp_data, aes(x = outcome, fill = treatment)) +
+  geom_histogram(binwidth = 5, color = "white", boundary = 0) +
+  guides(fill = "none") +  # Turn off the fill legend since it's redundant
+  facet_wrap(vars(treatment), ncol = 1)
+```
+
+And as overlapping densities:
+
+```{r vis-density}
+ggplot(temp_data, aes(x = outcome, fill = treatment)) +
+  geom_density(alpha = 0.5)
+```
+
+And with a point range:
+
+```{r vis-pointrange}
+# hahaha these error bars are tiny
+ggplot(temp_data, aes(x = treatment, y = outcome, color = treatment)) +
+  stat_summary(geom = "pointrange", fun.data = "mean_se") +
+  guides(color = "none")  # Turn off the color legend since it's redundant
+```
+
+
+## Specific examples
+
+### tl;dr: The general process
+
+Those previous sections go into a lot of detail. In general, here's the process you should follow when building relationships in synthetic data:
+
+1. Draw a DAG that maps out how all the columns you care about are related.
+2. Specify how those nodes are measured.
+3. Specify the relationships between the nodes based on the DAG equations.
+4. Generate random columns that stand alone. Generate related columns using regression math. Consider adding random noise. This is an entirely trial and error process until you get numbers that look good. Rely *heavily* on plots as you try different coefficients and parameters. Optionally rescale any columns that go out of reasonable bounds. If you rescale, you'll need to tinker with the coefficients you used since the final effects will also get rescaled.
+5. Verify all relationships with plots and models.
+6. Try it out!
+7. Save the data.
+
+### Creating an effect in an observational DAG
+
+1. **Draw a DAG that maps out how all the columns you care about are related.**
+
+    Here's a simple DAG that shows the causal effect of mosquito net usage on malaria risk. Income and health both influence and confound net use and malaria risk, and income also influences health.
+
+```{r observational-dag, indent="    "}
+mosquito_dag <- dagify(mal ~ net + inc + hlth,
+                       net ~ inc + hlth,
+                       hlth ~ inc,
+                       coords = list(x = c(mal = 4, net = 1, inc = 2, hlth = 3),
+                                     y = c(mal = 1, net = 1, inc = 2, hlth = 2)))
+ggdag(mosquito_dag) +
+  theme_dag()
+```
+
+2. **Specify how those nodes are measured.**
+
+    For the sake of this example, we'll measure these nodes like so. See [the random number example](/example/random-numbers) for more details about the distributions.
+
+    - **Malaria risk**: scale from 0–100, mostly around 40, but ranging from 10ish to 80ish. Best to use a Beta distribution.
+
+    - **Net use**: binary 0/1, TRUE/FALSE variable, where 50% of people use nets. Best to use a binomial distribution. However, since we want to use other variables that increase the likelihood of using a net, we'll do some cool tricky stuff, explained later.
+
+    - **Income**: weekly income, measured in dollars, mostly around 500 ± 300. Best to use a normal distribution.
+
+    - **Health**: scale from 0–100, mostly around 70, but ranging from 50ish to 100. Best to use a Beta distribution.
+
+3. **Specify the relationships between the nodes based on the DAG equations.**
+
+    There are three models in this DAG:
+
+    - **`hlth ~ inc`**: Income influences health. We'll assume that every 10 dollars/week is associated with a 1 point increase in health (so a 1 dollar incrrease is associated with a 0.02 point increase in health)
+
+    - **`net ~ inc + hlth`**: Income and health both increase the probability of net usage. This is where we do some cool tricky stuff.
+
+      Both income and health have an effect on the probability of bed net use, but bed net use is measured as a 0/1, TRUE/FALSE variable. If we run a regression with `net` as the outcome, we can't really interpret the coefficients like "a 1 point increase in health is associated with a 0.42 point increase in bed net being TRUE." That doesn't even make sense.
+
+      Ordinarily, when working with binary outcome variables, you use logistic regression models (see [the crash course we had when talking about propensity scores here](/example/matching-ipw/#oversimplified-crash-course-in-logistic-regression)). In this kind of regression, the coefficients in the model represent changes in the *log odds* of using a net. As we discuss in [the crash course section](/example/matching-ipw/#oversimplified-crash-course-in-logistic-regression), log odds are typically impossible to interpet. If you exponentiate them, you get odds ratios, which let you say things like "a 1 point increase in health is associated with a 15% increase in the likelihood of using a net." Technically we could include coefficients for a logistic regression model and simulate probabilities of using a net or not using log odds and odds ratios (and that's what I do in the rain barrel data from Problem Set 3 ([see code here](https://github.com/andrewheiss/evalsp22.classes.andrewheiss.com/blob/main/content/assignment/03-problem-set.Rmd#L225))), but that's really hard to wrap your head around since you're dealing with strange uninterpretable coefficients. So we won't do that here.
+
+      Instead, we'll do some fun trickery. We'll create something called a "bed net score" that gets bigger as income and health increase. We'll say that a 1 point increase in health score is associated with a 1.5 point increase in bed net score, and a 1 dollar increase in income is associated with a 0.5 point increase in bed net score. This results in a column that ranges all over the place, from 200 to 500 (in this case; that won't always be true). This column definitely doesn't look like a TRUE/FALSE binary column—it's just a bunch of numbers. That's okay!
+
+      We'll then use the `rescale()` function from the **scales** package to take this bed net score and scale it down so that it goes from 0.05 to 0.95. This represents a person's probability of using a bed net.
+
+      Finally, we'll use that probability in the `rbinom()` function to generate a 0 or 1 for each person. Some people will have a high probability because of their income and health, like 0.9, and will most likely use a net. Some people might have a 0.15 probability and will likely not use a net.
+
+      When you generate binary variables like this, it's hard to know the exact effect you'll get, so it's best to tinker with the numbers until you see relationships that you want.
+
+    - **`mal ~ net + inc + hlth`**: Finally net use, income, and health all have an effect on the risk of malaria. Building this relationship is easy since it's just a regular linear regression model (since malaria risk is not binary). We'll say that a 1 dollar increase in income is associated with a *decrease* in risk, a 1 point increase in health is associated with a *decrease* in risk, and using a net is associated with a 15 point *decrease* in risk. That's the casual effect we're building in to the DAG.
+
+4. **Generate random columns that stand alone. Generate related columns using regression math. Consider adding random noise. This is an entirely trial and error process until you get numbers that look good. Rely *heavily* on plots as you try different coefficients and parameters. Optionally rescale any columns that go out of reasonable bounds. If you rescale, you'll need to tinker with the coefficients you used since the final effects will also get rescaled.**
+
+    Here we go! Let's make some data. I'll comment the code below so you can see what's happening at each step.
+
+```{r indent="    "}
+# Make this randomness consistent
+set.seed(1234)
+
+# Simulate 1138 people (just for fun)
+n_people <- 1138
+
+net_data <- tibble(
+  # Make an ID column (not necessary, but nice to have)
+  id = 1:n_people,
+  # Generate income variable: normal, 500 ± 300
+  income = rnorm(n_people, mean = 500, sd = 75)
+) %>%
+  # Generate health variable: beta, centered around 70ish
+  mutate(health_base = rbeta(n_people, shape1 = 7, shape2 = 4) * 100,
+         # Health increases by 0.02 for every dollar in income
+         health_income_effect = income * 0.02,
+         # Make the final health score and add some noise
+         health = health_base + health_income_effect + rnorm(n_people, mean = 0, sd = 3),
+         # Rescale so it doesn't go above 100
+         health = rescale(health, to = c(min(health), 100))) %>%
+  # Generate net variable based on income, health, and random noise
+  mutate(net_score = (0.5 * income) + (1.5 * health) + rnorm(n_people, mean = 0, sd = 15),
+         # Scale net score down to 0.05 to 0.95 to create a probability of using a net
+         net_probability = rescale(net_score, to = c(0.05, 0.95)),
+         # Randomly generate a 0/1 variable using that probability
+         net = rbinom(n_people, 1, net_probability)) %>%
+  # Finally generate a malaria risk variable based on income, health, net use,
+  # and random noise
+  mutate(malaria_risk_base = rbeta(n_people, shape1 = 4, shape2 = 5) * 100,
+         # Risk goes down by 10 when using a net. Because we rescale things,
+         # though, we have to make the effect a lot bigger here so it scales
+         # down to -10. Risk also decreases as health and income go up. I played
+         # with these numbers until they created reasonable coefficients.
+         malaria_effect = (-30 * net) + (-1.9 * health) + (-0.1 * income),
+         # Make the final malaria risk score and add some noise
+         malaria_risk = malaria_risk_base + malaria_effect + rnorm(n_people, 0, sd = 3),
+         # Rescale so it doesn't go below 0,
+         malaria_risk = rescale(malaria_risk, to = c(5, 70)))
+
+# Look at all these columns!
+head(net_data)
+```
+
+5. **Verify all relationships with plots and models.**
+
+    Let's see if we have the relationships we want. Income looks like it's associated with health:
+
+```{r check-income-health, indent="    ", message=FALSE}
+ggplot(net_data, aes(x = income, y = health)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+lm(health ~ income, data = net_data) %>% tidy()
+```
+
+    It looks like richer and healthier people are more likely to use nets:
+
+```{r check-income-health-nets, fig.width=8, fig.height=4, fig.asp=NULL, indent="    "}
+net_income <- ggplot(net_data, aes(x = income, fill = as.factor(net))) +
+  geom_density(alpha = 0.7) +
+  theme(legend.position = "bottom")
+
+net_health <- ggplot(net_data, aes(x = health, fill = as.factor(net))) +
+  geom_density(alpha = 0.7) +
+  theme(legend.position = "bottom")
+
+net_income + net_health
+```
+
+    Income increasing makes it 1% more likely to use a net; health increasing make it 2% more likely to use a net:
+
+```{r indent="    "}
+glm(net ~ income + health, family = binomial(link = "logit"), data = net_data) %>%
+  tidy(exponentiate = TRUE)
+```
+
+6. **Try it out!**
+
+    Is the effect in there? Let's try finding it by controlling for our two backdoors: health and income. Ordinarily we should do something like [matching or inverse probability weighting](/example/matching-ipw/), but we'll just do regular regression here (which is okay-ish, since all these variables are indeed linearly related with each other—we made them that way!)
+
+    If we just look at the effect of nets on malaria risk without any statistical adjustment, we see that net cause a decrease of 13 points in malaria risk. This is wrong though becuase there's confounding.
+
+```{r indent="    "}
+# Wrong correlation-is-not-causation effect
+model_net_naive <- lm(malaria_risk ~ net, data = net_data)
+tidy(model_net_naive)
+```
+
+    If we control for the confounders, we get the 10 point ATE. It works!
+
+```{r indent="    "}
+# Correctly adjusted ATE effect
+model_net_ate <- lm(malaria_risk ~ net + health + income, data = net_data)
+tidy(model_net_ate)
+```
+
+7. **Save the data.**
+
+    Since it works, let's save it:
+
+```{r indent="    "}
+# In the end, all we need is id, income, health, net, and malaria risk:
+net_data_final <- net_data %>%
+  select(id, income, health, net, malaria_risk)
+head(net_data_final)
+```
+
+```{r eval=FALSE, indent="    "}
+# Save it as a CSV file
+write_csv(net_data_final, "data/bed_nets.csv")
+```
+
+
+### Brief pep talk intermission
+
+Generating data for a full complete observational DAG like the example above is complicated and hard. These other forms of causal inference are *design-based* (i.e. tied to specific contexts like before/after treatment/control or arbitrary cutoffs) instead of *model-based*, so they're actually a lot easier to simulate! So don't be scared away yet!
+
+
+### Creating an effect for RCTs
+
+1. **Draw a DAG that maps out how all the columns you care about are related.**
+
+    RCTs are great because they make DAGs really easy! In a well-randomized RCT, you get to delete all arrows going into the treatment node in a DAG. We'll stick with the same mosquito net situation we just used, but make it randomized:
+
+```{r rct-dag, indent="    "}
+rct_dag <- dagify(mal ~ net + inc + hlth,
+                  hlth ~ inc,
+                  coords = list(x = c(mal = 4, net = 1, inc = 2, hlth = 3),
+                                y = c(mal = 1, net = 1, inc = 2, hlth = 2)))
+ggdag(rct_dag) +
+  theme_dag()
+```
+
+2. **Specify how those nodes are measured.**
+
+    We'll measure these nodes the same way as before:
+
+    - **Malaria risk**: scale from 0–100, mostly around 40, but ranging from 10ish to 80ish. Best to use a Beta distribution.
+
+    - **Net use**: binary 0/1, TRUE/FALSE variable, where 50% of people use nets. Best to use a binomial distribution.
+
+    - **Income**: weekly income, measured in dollars, mostly around 500 ± 300. Best to use a normal distribution.
+
+    - **Health**: scale from 0–100, mostly around 70, but ranging from 50ish to 100. Best to use a Beta distribution.
+
+3. **Specify the relationships between the nodes based on the DAG equations.**
+
+    This is where RCTs are great. Because we removed all the arrows going into `net`, we don't need to build any relationships that influence net use. Net use is randomized! We don't need to make strange "bed net scores" and give people boosts according to income or health or anything. There are only two models in this DAG:
+
+    - **`hlth ~ inc`**: Income influences health. We'll assume that every 10 dollars/week is associated with a 1 point increase in health (so a 1 dollar incrrease is associated with a 0.02 point increase in health)
+
+    - **`mal ~ net + inc + hlth`**: Net use, income, and health all have an effect on the risk of malaria. We'll say that a 1 dollar increase in income is associated with a *decrease* in risk, a 1 point increase in health is associated with a *decrease* in risk, and using a net is associated with a 15 point *decrease* in risk. That's the casual effect we're building in to the DAG.
+
+4. **Generate random columns that stand alone. Generate related columns using regression math. Consider adding random noise. This is an entirely trial and error process until you get numbers that look good. Rely *heavily* on plots as you try different coefficients and parameters. Optionally rescale any columns that go out of reasonable bounds. If you rescale, you'll need to tinker with the coefficients you used since the final effects will also get rescaled.**
+
+    Let's make this data. It'll be a lot easier than the full DAG we did before. Again, I'll comment the code below so you can see what's happening at each step.
+
+```{r indent="    "}
+# Make this randomness consistent
+set.seed(1234)
+
+# Simulate 793 people (just for fun)
+n_people <- 793
+
+rct_data <- tibble(
+  # Make an ID column (not necessary, but nice to have)
+  id = 1:n_people,
+  # Generate income variable: normal, 500 ± 300
+  income = rnorm(n_people, mean = 500, sd = 75)
+) %>%
+  # Generate health variable: beta, centered around 70ish
+  mutate(health_base = rbeta(n_people, shape1 = 7, shape2 = 4) * 100,
+         # Health increases by 0.02 for every dollar in income
+         health_income_effect = income * 0.02,
+         # Make the final health score and add some noise
+         health = health_base + health_income_effect + rnorm(n_people, mean = 0, sd = 3),
+         # Rescale so it doesn't go above 100
+         health = rescale(health, to = c(min(health), 100))) %>%
+  # Randomly assign people to use a net (this is nice and easy!)
+  mutate(net = rbinom(n_people, 1, 0.5)) %>%
+  # Finally generate a malaria risk variable based on income, health, net use,
+  # and random noise
+  mutate(malaria_risk_base = rbeta(n_people, shape1 = 4, shape2 = 5) * 100,
+         # Risk goes down by 10 when using a net. Because we rescale things,
+         # though, we have to make the effect a lot bigger here so it scales
+         # down to -10. Risk also decreases as health and income go up. I played
+         # with these numbers until they created reasonable coefficients.
+         malaria_effect = (-35 * net) + (-1.9 * health) + (-0.1 * income),
+         # Make the final malaria risk score and add some noise
+         malaria_risk = malaria_risk_base + malaria_effect + rnorm(n_people, 0, sd = 3),
+         # Rescale so it doesn't go below 0,
+         malaria_risk = rescale(malaria_risk, to = c(5, 70)))
+
+# Look at all these columns!
+head(rct_data)
+```
+
+5. **Verify all relationships with plots and models.**
+
+     Income still looks like it's associated with health (which isn't surprising, since it's the same code we used for the full DAG earlier):
+
+```{r check-income-health-rct, indent="    ", message=FALSE}
+ggplot(net_data, aes(x = income, y = health)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+lm(health ~ income, data = net_data) %>% tidy()
+```
+
+6. **Try it out!**
+
+    Is the effect in there? With an RCT, all we really need to do is compare the outcome across treatment and control groups—because there's no confounding, we don't need to control for anything. Ordinarily we should check for balance across characteristics like health and income (and maybe generate other demographic columns) like [we did in the RCT example](/example/rcts/), but we'll skip all that here since we're just checking to see if the effect is there.
+
+    It looks like using nets *causes* an average decrease of 10 risk points. Great!
+
+```{r indent="    "}
+# Correct RCT-based ATE
+model_rct <- lm(malaria_risk ~ net, data = rct_data)
+tidy(model_rct)
+```
+
+    Just for fun, if we control for health and income, we'll get basically the same effect, since they don't actualy confound the relationship and don't really explain anything useful.
+
+```{r indent="    "}
+# Controlling for stuff even though we don't need to
+model_rct_controls <- lm(malaria_risk ~ net + health + income, data = rct_data)
+tidy(model_rct_controls)
+```
+
+7. **Save the data.**
+
+    The data works, so let's get rid of the intermediate columns we don't need and save it as a CSV file.
+
+```{r indent="    "}
+# In the end, all we need is id, income, health, net, and malaria risk:
+rct_data_final <- rct_data %>%
+  select(id, income, health, net, malaria_risk)
+head(rct_data_final)
+```
+
+```{r eval=FALSE, indent="    "}
+# Save it as a CSV file
+write_csv(rct_data_final, "data/bed_nets_rct.csv")
+```
+
+
+### Creating an effect for diff-in-diff
+
+1. **Draw a DAG that maps out how all the columns you care about are related.**
+
+    Difference-in-differences approaches to causal inference are not based on *models* but on *context* or research design. You need comparable treatment and control groups before and after some policy or program is implemented.
+
+    We'll keep with our mosquito net example and pretend that two cities in some country are dealing with malaria infections. City B rolls out a free net program in 2017; City A does not. Here's what the DAG looks like:
+
+```{r did-dag, indent="    "}
+did_dag <- dagify(mal ~ net + year + city,
+                  net ~ year + city,
+                  coords = list(x = c(mal = 3, net = 1, year = 2, city = 2),
+                                y = c(mal = 2, net = 2, year = 3, city = 1)))
+ggdag(did_dag) +
+  theme_dag()
+```
+
+2. **Specify how those nodes are measured.**
+
+    Here's how we'll measure these nodes:
+
+    - **Malaria risk**: scale from 0–100, mostly around 60, but ranging from 30ish to 90ish. Best to use a Beta distribution.
+
+    - **Net use**: binary 0/1, TRUE/FALSE variable. This is technically binomial, but we don't need to simulate it since it will only happen for people who are in the treatment city after the universal net rollout.
+
+    - **Year**: year ranging from 2013 to 2020. Best to use a uniform distribution.
+
+    - **City**: binary 0/1, City A/City B variable. Best to use a binomial distribution.
+
+3. **Specify the relationships between the nodes based on the DAG equations.**
+
+    There are two models in the DAG:
+
+    - **`net ~ year + city`**: Net use is determined by being in City B *and* being after 2017. We'll assume perfect compliance here (but it's fairly easy to simulate non-compliance and have some people in City A use nets after 2017, and some people in both cities use nets before 2017).
+
+    - **`mal ~ net + year + city`**: Malaria risk is determined by net use, year, and city. It's determined by lots of other things too (like we saw in the previous DAGs), but since we're assuming that the two cities are comparable treatment and control groups, we don't need to worry about things like health, income, age, etc.
+
+        We'll pretend that in general, City B has historicallly had a problem with malaria and people there have had higher risk: being in City B increases malaria risk by 5 points, on average. Over time, both cities have worked on mosquito abatement, so average malaria risk has decreased by 2 points per year (in both cities, because we believe in parallel trends). Using a mosquito net causes a decrease of 10 points on average. That's our causal effect.
+
+4. **Generate random columns that stand alone. Generate related columns using regression math. Consider adding random noise. This is an entirely trial and error process until you get numbers that look good. Rely *heavily* on plots as you try different coefficients and parameters. Optionally rescale any columns that go out of reasonable bounds. If you rescale, you'll need to tinker with the coefficients you used since the final effects will also get rescaled.**
+
+    Generation time! Heavily annotated code below:
+
+```{r indent="    "}
+# Make this randomness consistent
+set.seed(1234)
+
+# Simulate 2567 people (just for fun)
+n_people <- 2567
+
+did_data <- tibble(
+  # Make an ID column (not necessary, but nice to have)
+  id = 1:n_people,
+  # Generate year variable: uniform, between 2013 and 2020. Round so it's whole.
+  year = round(runif(n_people, min = 2013, max = 2020), 0),
+  # Generate city variable: binomial, 50% chance of being in a city. We'll use
+  # sample() instead of rbinom()
+  city = sample(c("City A", "City B"), n_people, replace = TRUE)
+) %>%
+  # Generate net variable. We're assuming perfect compliance, so this will only
+  # be TRUE for people in City B after 2017
+  mutate(net = ifelse(city == "City B" & year > 2017, TRUE, FALSE)) %>%
+  # Generate a malaria risk variable based on year, city, net use, and random noise
+  mutate(malaria_risk_base = rbeta(n_people, shape1 = 6, shape2 = 3) * 100,
+         # Risk goes up if you're in City B because they have a worse problem.
+         # We could just say "city_effect = 5" and give everyone in City A an
+         # exact 5-point boost, but to add some noise, we'll give people an
+         # average boost using rnorm(). Some people might go up 7, some might go
+         # up 1, some might go down 2
+         city_effect = ifelse(city == "City B", rnorm(n_people, mean = 5, sd = 2), 0),
+         # Risk goes down by 2 points on average every year. Creating this
+         # effect with regression would work fine (-2 * year), except the years
+         # are huge here (-2 * 2013 and -2 * 2020, etc.) So first we create a
+         # smaller year column where 2013 is year 1, 2014 is year 2, and so on,
+         # that way we can say -2 * 1 and -2 * 6, or whatever.
+         # Also, rather than make risk go down by *exactly* 2 every year, we'll
+         # add some noise with rnorm(), so for some people it'll go down by 1 or
+         # 4 or up by 1, and so on
+         year_smaller = year - 2012,
+         year_effect = rnorm(n_people, mean = -2, sd = 0.1) * year_smaller,
+         # Using a net causes a decrease of 10 points, on average. Again, rather
+         # than use exactly 10, we'll use a distribution around 10. People only
+         # get a net boost if they're in City B after 2017.
+         net_effect = ifelse(city == "City B" & year > 2017,
+                             rnorm(n_people, mean = -10, sd = 1.5),
+                             0),
+         # Finally combine all these effects to create the malaria risk variable
+         malaria_risk = malaria_risk_base + city_effect + year_effect + net_effect,
+         # Rescale so it doesn't go below 0 or above 100
+         malaria_risk = rescale(malaria_risk, to = c(0, 100))) %>%
+  # Make an indicator variable showing if the row is after 2017
+  mutate(after = year > 2017)
+
+head(did_data)
+```
+
+5. **Verify all relationships with plots and models.**
+
+    Is risk higher in City B? Yep.
+
+```{r check-risk-increase, indent="    "}
+ggplot(did_data, aes(x = city, y = malaria_risk, color = city)) +
+  stat_summary(geom = "pointrange", fun.data = "mean_se") +
+  guides(color = "none")
+```
+
+    Does risk decrease over time? And are the trends parallel? There was a weird random spike in City B in 2017 for whatever reason, but in general, the trends in the two cities are pretty parallel from 2013 to 2017.
+
+```{r check-parallel-trends, indent="    "}
+plot_data <- did_data %>%
+  group_by(year, city) %>%
+  summarize(mean_risk = mean(malaria_risk),
+            se_risk = sd(malaria_risk) / sqrt(n()),
+            upper = mean_risk + (1.96 * se_risk),
+            lower = mean_risk + (-1.96 * se_risk))
+
+ggplot(plot_data, aes(x = year, y = mean_risk, color = city)) +
+  geom_vline(xintercept = 2017.5) +
+  geom_ribbon(aes(ymin = lower, ymax = upper, fill = city), alpha = 0.3, color = FALSE) +
+  geom_line() +
+  theme(legend.position = "bottom")
+```
+
+
+6. **Try it out!**
+
+    Let's see if it works! For diff-in-diff we need to use this model:
+
+    $$
+    \text{Malaria risk} = \alpha + \beta\ \text{City B} + \gamma\ \text{After 2017} + \delta\ (\text{City B} \times \text{After 2017}) + \varepsilon
+    $$
+
+```{r indent="    "}
+model_did <- lm(malaria_risk ~ city + after + city * after, data = did_data)
+tidy(model_did)
+```
+
+    It works! Being in City B is associated with a 5-point higher risk on average; being after 2017 is associated with a 7.5-point lower risk on average, and being in City B after 2017 causes risk to drop by −10. The number isn't exactly −10 here, since we rescaled the `malaria_risk` column a little, but still, it's close. It'd probably be a good idea to build in some more noise and noncompliance, since the p-values are really really tiny here, but this is good enough for now.
+
+    Here's an obligatory diff-in-diff visualization:
+
+```{r show-diff-diff, indent="    "}
+plot_data <- did_data %>%
+  group_by(after, city) %>%
+  summarize(mean_risk = mean(malaria_risk),
+            se_risk = sd(malaria_risk) / sqrt(n()),
+            upper = mean_risk + (1.96 * se_risk),
+            lower = mean_risk + (-1.96 * se_risk))
+
+# Extract parts of the model results for adding annotations
+model_results <- tidy(model_did)
+before_treatment <- filter(model_results, term == "(Intercept)")$estimate +
+  filter(model_results, term == "cityCity B")$estimate
+diff_diff <- filter(model_results, term == "cityCity B:afterTRUE")$estimate
+after_treatment <- before_treatment + diff_diff +
+  filter(model_results, term == "afterTRUE")$estimate
+
+ggplot(plot_data, aes(x = after, y = mean_risk, color = city, group = city)) +
+  geom_pointrange(aes(ymin = lower, ymax = upper)) +
+  geom_line() +
+  annotate(geom = "segment", x = FALSE, xend = TRUE,
+           y = before_treatment, yend = after_treatment - diff_diff,
+           linetype = "dashed", color = "grey50") +
+  annotate(geom = "segment", x = 2.1, xend = 2.1,
+           y = after_treatment, yend = after_treatment - diff_diff,
+           linetype = "dotted", color = "blue") +
+  theme(legend.position = "bottom")
+```
+
+7. **Save the data.**
+
+    The data works, so let's get rid of the intermediate columns we don't need and save it as a CSV file.
+
+```{r indent="    "}
+did_data_final <- did_data %>%
+  select(id, year, city, net, malaria_risk)
+head(did_data_final)
+```
+
+```{r indent="    ", eval=FALSE}
+# Save data
+write_csv(did_data_final, "data/diff_diff.csv")
+```
+
+
+### Creating an effect for regression discontinuity
+
+1. **Draw a DAG that maps out how all the columns you care about are related.**
+
+    Regression discontinuity designs are also based on context instead of models, so the DAG is pretty simple. We'll keep with our mosquito net example and pretend that families that earn less than \$450 a week qualify for a free net. Here's the DAG:
+
+```{r rdd-dag, indent="    "}
+rdd_dag <- dagify(mal ~ net + inc,
+                  net ~ cut,
+                  cut ~ inc,
+                  coords = list(x = c(mal = 4, net = 1, inc = 3, cut = 2),
+                                y = c(mal = 1, net = 1, inc = 2, cut = 1.75)))
+ggdag(rdd_dag) +
+  theme_dag()
+```
+
+2. **Specify how those nodes are measured.**
+
+    Here's how we'll measure these nodes:
+
+    - **Malaria risk**: scale from 0–100, mostly around 60, but ranging from 30ish to 90ish. Best to use a Beta distribution.
+
+    - **Net use**: binary 0/1, TRUE/FALSE variable. This is technically binomial, but we don't need to simulate it since it will only happen for people who below the cutoff.
+
+    - **Income**: weekly income, measured in dollars, mostly around 500 ± 300. Best to use a normal distribution.
+
+    - **Cutoff**: binary 0/1, below/above $450 variable. This is technically binomial, but we don't need to simulate it since it is entirely based on income.
+
+3. **Specify the relationships between the nodes based on the DAG equations.**
+
+    There are three models in the DAG:
+
+    - **`cut ~ inc`**: Being above or below the cutpoint is determined by income. We know the cutoff is 450, so we just make an indicator showing if people are below that.
+
+    - **`net ~ cut`**: Net usage is determined by the cutpoint. If people are below the cutpoint, they'll use a net; if not, they won't. We can build in noncompliance here if we want and use fuzzy regression discontinuity. For the sake of this example, we'll do it both ways, just so you can see both sharp and fuzzy synthetic data.
+
+    - **`mal ~ net + inc`**: Malaria risk is determined by both net usage and income. It's also determined by lots of other things (age, education, city, etc.), but we don't need to include those in the DAG because we're using RDD to say that we have good treatment and control groups right around the cutoff.
+
+        We'll pretend that a 1 dollar increase in income is associated with a drop in risk of 0.01, and that using a mosquito net causes a decrease of 10 points on average. That's our causal effect.
+
+4. **Generate random columns that stand alone. Generate related columns using regression math. Consider adding random noise. This is an entirely trial and error process until you get numbers that look good. Rely *heavily* on plots as you try different coefficients and parameters. Optionally rescale any columns that go out of reasonable bounds. If you rescale, you'll need to tinker with the coefficients you used since the final effects will also get rescaled.**
+
+    Let's fake some data! Heavily annotated code below:
+
+```{r indent="    "}
+# Make this randomness consistent
+set.seed(1234)
+
+# Simulate 5441 people (we need a lot bc we're throwing most away)
+n_people <- 5441
+
+rdd_data <- tibble(
+  # Make an ID column (not necessary, but nice to have)
+  id = 1:n_people,
+  # Generate income variable: normal, 500 ± 300
+  income = rnorm(n_people, mean = 500, sd = 75)
+) %>%
+  # Generate cutoff variable
+  mutate(below_cutoff = ifelse(income < 450, TRUE, FALSE)) %>%
+  # Generate net variable. We'll make two: one that's sharp and has perfect
+  # compliance, and one that's fuzzy
+  # Here's the sharp one. It's easy. If you're below the cutoff you use a net.
+  mutate(net_sharp = ifelse(below_cutoff == TRUE, TRUE, FALSE)) %>%
+  # Here's the fuzzy one, which is a little trickier. If you're far away from
+  # the cutoff, you follow what you're supposed to do (like if your income is
+  # 800, you don't use the program; if your income is 200, you definitely use
+  # the program). But if you're close to the cutoff, we'll pretend that there's
+  # an 80% chance that you'll do what you're supposed to do.
+  mutate(net_fuzzy = case_when(
+    # If your income is between 450 and 500, there's a 20% chance of using the program
+    income >= 450 & income <= 500 ~ sample(c(TRUE, FALSE), n_people, replace = TRUE, prob = c(0.2, 0.8)),
+    # If your income is above 500, you definitely don't use the program
+    income > 500 ~ FALSE,
+    # If your income is between 400 and 450, there's an 80% chance of using the program
+    income < 450 & income >= 400 ~ sample(c(TRUE, FALSE), n_people, replace = TRUE, prob = c(0.8, 0.2)),
+    # If your income is below 400, you definitely use the program
+    income < 400 ~ TRUE
+  )) %>%
+  # Finally we can make the malaria risk score, based on income, net use, and
+  # random noise. We'll make two outcomes: one using the sharp net use and one
+  # using the fuzzy net use. They have the same effect built in, we just have to
+  # use net_sharp and net_fuzzy separately.
+  mutate(malaria_risk_base = rbeta(n_people, shape1 = 4, shape2 = 5) * 100) %>%
+  # Make the sharp version. There's really a 10 point decrease, but because of
+  # rescaling, we use 15. I only chose 15 through lots of trial and error (i.e.
+  # I used -11, ran the RDD model, and the effect was too small; I used -20, ran
+  # the model, and the effect was too big; I kept changing numbers until landing
+  # on -15). Risk also goes down as income increases.
+  mutate(malaria_effect_sharp = (-15 * net_sharp) + (-0.01 * income),
+         malaria_risk_sharp = malaria_risk_base + malaria_effect_sharp + rnorm(n_people, 0, sd = 3),
+         malaria_risk_sharp = rescale(malaria_risk_sharp, to = c(5, 70))) %>%
+  # Do the same thing, but with net_fuzzy
+  mutate(malaria_effect_fuzzy = (-15 * net_fuzzy) + (-0.01 * income),
+         malaria_risk_fuzzy = malaria_risk_base + malaria_effect_fuzzy + rnorm(n_people, 0, sd = 3),
+         malaria_risk_fuzzy = rescale(malaria_risk_fuzzy, to = c(5, 70))) %>%
+  # Make a version of income that's centered at the cutpoint
+  mutate(income_centered = income - 450)
+
+head(rdd_data)
+```
+
+5. **Verify all relationships with plots and models.**
+
+    Is there a cutoff in the running variable when we use the sharp net variable? Yep!
+
+```{r sharp-running-var-cutoff, indent="    "}
+ggplot(rdd_data, aes(x = income, y = net_sharp, color = below_cutoff)) +
+  geom_vline(xintercept = 450) +
+  geom_point(alpha = 0.3, position = position_jitter(width = NULL, height = 0.2)) +
+  guides(color = "none")
+```
+
+    Is there a cutoff in the running variable when we use the fuzzy net variable? Yep! There are some richer people using the program and some poorer people not using it.
+
+```{r fuzzy-running-var-cutoff, indent="    "}
+ggplot(rdd_data, aes(x = income, y = net_fuzzy, color = below_cutoff)) +
+  geom_vline(xintercept = 450) +
+  geom_point(alpha = 0.3, position = position_jitter(width = NULL, height = 0.2)) +
+  guides(color = "none")
+```
+
+6. **Try it out!**
+
+    Let's test it! For sharp RDD we need to use this model:
+
+    $$
+    \text{Malaria risk} = \beta_0 + \beta_1 \text{Income}_\text{centered} + \beta_2 \text{Net} + \varepsilon
+    $$
+
+    We'll use a bandwidth of ±$50, because why not. In real life you'd be more careful about bandwidth selection (or use `rdbwselect()` from the **rdrobust** package to find the optimal bandwidth)
+
+```{r sharp-results, indent="    ", message=FALSE}
+ggplot(rdd_data, aes(x = income, y = malaria_risk_sharp, color = net_sharp)) +
+  geom_vline(xintercept = 450) +
+  geom_point(alpha = 0.2, size = 0.5) +
+  # Add lines for the full range
+  geom_smooth(data = filter(rdd_data, income_centered <= 0),
+              method = "lm", se = FALSE, size = 1, linetype = "dashed") +
+  geom_smooth(data = filter(rdd_data, income_centered > 0),
+              method = "lm", se = FALSE, size = 1, linetype = "dashed") +
+  # Add lines for bandwidth = 50
+  geom_smooth(data = filter(rdd_data, income_centered >= -50 & income_centered <= 0),
+              method = "lm", se = FALSE, size = 2) +
+  geom_smooth(data = filter(rdd_data, income_centered > 0 & income_centered <= 50),
+              method = "lm", se = FALSE, size = 2) +
+  theme(legend.position = "bottom")
+```
+
+```{r indent="    "}
+model_sharp <- lm(malaria_risk_sharp ~ income_centered + net_sharp,
+                  data = filter(rdd_data,
+                                income_centered >= -50 & income_centered <= 50))
+tidy(model_sharp)
+```
+
+    There's an effect! For people in the bandwidth, the local average treatment effect of nets is a 10.6 point reduction in malaria risk.
+
+    Let's check if it works with the fuzzy version where there are noncompliers:
+
+```{r fuzzy-results, indent="    ", message=FALSE}
+ggplot(rdd_data, aes(x = income, y = malaria_risk_fuzzy, color = net_fuzzy)) +
+  geom_vline(xintercept = 450) +
+  geom_point(alpha = 0.2, size = 0.5) +
+  # Add lines for the full range
+  geom_smooth(data = filter(rdd_data, income_centered <= 0),
+              method = "lm", se = FALSE, size = 1, linetype = "dashed") +
+  geom_smooth(data = filter(rdd_data, income_centered > 0),
+              method = "lm", se = FALSE, size = 1, linetype = "dashed") +
+  # Add lines for bandwidth = 50
+  geom_smooth(data = filter(rdd_data, income_centered >= -50 & income_centered <= 0),
+              method = "lm", se = FALSE, size = 2) +
+  geom_smooth(data = filter(rdd_data, income_centered > 0 & income_centered <= 50),
+              method = "lm", se = FALSE, size = 2) +
+  theme(legend.position = "bottom")
+```
+
+    There's a gap, but it's hard to measure since there are noncompliers on both sides. We can deal with the noncompliance if we use above/below the cutoff as an instrument (see the [fuzzy regression discontinuity guide](/example/rdd-fuzzy/) for a complete example). We should run this set of models:
+
+    $$
+    \begin{aligned}
+    \widehat{\text{Net}} &= \gamma_0 + \gamma_1 \text{Income}_{\text{centered}} + \gamma_2 \text{Below 450} + \omega \\\\
+    \text{Malaria risk} &= \beta_0 + \beta_1 \text{Income}\_{\text{centered}} + \beta_2 \widehat{\text{Net}} + \epsilon
+    \end{aligned}
+    $$
+
+    Instead of doing these two stages by hand (ugh), we'll do the 2SLS regression with the `iv_robust()` function from the **estimatr** package:
+
+```{r indent="    "}
+library(estimatr)
+
+model_fuzzy <- iv_robust(malaria_risk_fuzzy ~ income_centered + net_fuzzy |
+                           income_centered + below_cutoff,
+                         data = filter(rdd_data,
+                                       income_centered >= -50 & income_centered <= 50))
+tidy(model_fuzzy)
+```
+
+    The effect is slightly larger now (−11.2), but that's because we are looking at a doubly local ATE: compliers in the bandwidth. But still, it's close to −10, so that's good. And we could probably get it closer if we did other mathy shenanigans like adding squared and cubed terms or using nonparametric estimation with `rdrobust()` in the **rdrobust** package.
+
+7. **Save the data.**
+
+    The data works, so let's get rid of the intermediate columns we don't need and save it as a CSV file. We'll make two separate CSV files for fuzzy and sharp, just because.
+
+```{r indent="    "}
+rdd_data_final_sharp <- rdd_data %>%
+  select(id, income, net = net_sharp, malaria_risk = malaria_risk_sharp)
+head(rdd_data_final_sharp)
+
+rdd_data_final_fuzzy <- rdd_data %>%
+  select(id, income, net = net_fuzzy, malaria_risk = malaria_risk_fuzzy)
+head(rdd_data_final_fuzzy)
+```
+
+```{r indent="    ", eval=FALSE}
+# Save data
+write_csv(rdd_data_final_sharp, "data/rdd_sharp.csv")
+write_csv(rdd_data_final_fuzzy, "data/rdd_fuzzy.csv")
+```
+
+
+### Creating an effect for instrumental variables
+
+1. **Draw a DAG that maps out how all the columns you care about are related.**
+
+    As with diff-in-diff and regression discontinuity, instrumental variables are a design-based approach to causal inference and thus don't require complicated models (but you can still add control variables!), so their DAGs are simpler. Once again we'll look at the effect of mosquito nets on malaria risk, but this time we'll say that we cannot possibly measure all the confounding factors between net use and malaria risk, so we'll use an instrument to extract the exogeneity from net use.
+
+    [As we talked about in Session 11](/content/11-content/), good plausible instruments are hard to find: they have to cause bed net use and *not* be related to malaria risk *except through* bed net use.
+
+    For this example, we'll pretend that free bed nets are distributed from town halls around the country. We'll use "distance to town hall" as our instrument, since it could arguably maybe work perhaps. Being closer to a town hall makes you more likely to use a net, but being closer to a town halls doesn't make put you at higher or lower risk for malaria on its own—it does that only because it changes your likelihood of getting a net.
+
+    This is where the story for the instrument falls apart, actually; in real life, if you live far away from a town hall, you probably live further from health services and live in more rural places with worse mosquito abatement policies, so you're probably at higher risk of malaria. It's probably a bad instrument, but just go with it.
+
+    Here's the DAG:
+
+```{r iv-dag, indent="    "}
+iv_dag <- dagify(mal ~ net + U,
+                 net ~ dist + U,
+                 coords = list(x = c(mal = 4, net = 2, U = 3, dist = 1),
+                               y = c(mal = 1, net = 1, U = 2, dist = 1.5)),
+                 latent = "U")
+
+ggdag_status(iv_dag) +
+  guides(color = "none") +
+  theme_dag()
+```
+
+2. **Specify how those nodes are measured.**
+
+    Here's how we'll measure these nodes:
+
+    - **Malaria risk**: scale from 0–100, mostly around 60, but ranging from 30ish to 90ish. Best to use a Beta distribution.
+
+    - **Net use**: binary 0/1, TRUE/FALSE variable. However, since we want to use other variables that increase the likelihood of using a net, we'll do some cool tricky stuff with a bed net score, like we did in the observational DAG example earlier.
+
+    - **Distance**: distance to nearest town hall, measured in kilometers, mostly around 3, with a left skewed long tail (i.e. most people live fairly close, some people live far away). Best to use a Beta distribution (to get the skewed shape) that we then rescale.
+
+    - **Unobserved**: who knows?! There are a lot of unknown confounders. We could generate columns like income, age, education, and health, make them mathematically related to malaria risk and net use, and then throw those columns away in the final data so they're unobserved. That would be fairly easy and intuitive.
+
+        For the sake of simplicity here, we'll make a column called "risk factors," kind of like we did with the "ability" column in [the instrumental variables example](/example/iv/#education-wages-and-fathers-education-fake-data)—it's a magical column that is unmeasurable, but it'll open a backdoor path between net use and malaria risk and thus create endogeneity. It'll be normally distributed around 50, with a standard deviation of 25.
+
+3. **Specify the relationships between the nodes based on the DAG equations.**
+
+    There are two models in the DAG:
+
+    - **`net ~ dist + U`**: Net usage is determined by both distance and our magical unobserved risk factor column. Net use is technically binomial, but in order to change the likelihood of net use based on distance to town hall and unobserved stuff, we'll do the fancy tricky stuff we did in the observational DAG section above: we'll create a bed net score, increase or decrease that score based on risk factors and distance, scale that score to a 0-1 scale of probabilities, and then draw a binomial 0/1 outcome using those probabilities.
+
+        We'll say that a one kilometer increase in the distance to a town halls reduces the bed net score and a one point increase in risk factors reduces the bed net score.
+
+    - **`mal ~ net + U`**: Malaria risk is determined by both net usage and unkown stuff, or the magical column we're calling "risk factors." We'll say that a one point increase in risk factors increases malaria risk, and that using a mosquito net causes a decrease of 10 points on average. That's our causal effect.
+
+4. **Generate random columns that stand alone. Generate related columns using regression math. Consider adding random noise. This is an entirely trial and error process until you get numbers that look good. Rely *heavily* on plots as you try different coefficients and parameters. Optionally rescale any columns that go out of reasonable bounds. If you rescale, you'll need to tinker with the coefficients you used since the final effects will also get rescaled.**
+
+    Fake data time! Here's some heavily annotated code:
+
+```{r indent="    "}
+# Make this randomness consistent
+set.seed(1234)
+
+# Simulate 1578 people (just for fun)
+n_people <- 1578
+
+iv_data <- tibble(
+  # Make an ID column (not necessary, but nice to have)
+  id = 1:n_people,
+  # Generate magical unobserved risk factor variable: normal, 500 ± 300
+  risk_factors = rnorm(n_people, mean = 100, sd = 25),
+  # Generate distance to town hall variable
+  distance = rbeta(n_people, shape1 = 1, shape2 = 4)
+) %>%
+  # Scale up distance to be 0.1-15 instead of 0-1
+  mutate(distance = rescale(distance, to = c(0.1, 15))) %>%
+  # Generate net variable based on distance, risk factors, and random noise
+  # Note: These -40 and -2 effects are entirely made up and I got them through a
+  # lot of trial and error and rerunning this stupid chunk dozens of times
+  mutate(net_score = 0 +
+           (-40 * distance) +  # Distance effect
+           (-2 * risk_factors) +  # Risk factor effect
+           rnorm(n_people, mean = 0, sd = 50),  # Random noise
+        net_probability = rescale(net_score, to = c(0.15, 1)),
+        # Randomly generate a 0/1 variable using that probability
+        net = rbinom(n_people, 1, net_probability)) %>%
+  # Generate malaria risk variable based on net use, risk factors, and random noise
+  mutate(malaria_risk_base = rbeta(n_people, shape1 = 7, shape2 = 5) * 100,
+         # We're aiming for a -10 net effect, but need to boost it because of rescaling
+         malaria_effect = (-20 * net) + (0.5 * risk_factors),
+         # Make the final malaria risk score
+         malaria_risk = malaria_risk_base + malaria_effect,
+         # Rescale so it doesn't go below 0
+         malaria_risk = rescale(malaria_risk, to = c(5, 80)))
+iv_data
+```
+
+5. **Verify all relationships with plots and models.**
+
+    Is there a relationship between unobserved risk factors and malaria risk? Yep.
+
+```{r check-risk-malaria, indent="    ", message=FALSE}
+ggplot(iv_data, aes(x = risk_factors, y = malaria_risk)) +
+  geom_point(aes(color = as.factor(net))) +
+  geom_smooth(method = "lm")
+```
+
+    Is there a relationship between distance to town hall and net use? Yeah, those who live further away are less likely to use a net.
+
+```{r check-distance-net, indent="    "}
+ggplot(iv_data, aes(x = distance, fill = as.factor(net))) +
+  geom_density(alpha = 0.7)
+```
+
+    Is there a relationship between net use and malaria risk? Haha, yeah, that's a huge highly significant effect. Probably too perfect. We could increase those error bars if we tinker with some of the numbers in the code, but for the sake of this example, we'll leave them like this.
+
+```{r check-net-risk, indent="    "}
+ggplot(iv_data, aes(x = as.factor(net), y = malaria_risk, color = as.factor(net))) +
+  stat_summary(geom = "pointrange", fun.data = "mean_se")
+```
+
+
+6. **Try it out!**
+
+    Cool, let's see if this works. Remember, we can't actually use the `risk_factors` column in real life, but we will here just to make sure the effect we built in exists. Here's the true effect, where using a net causes a decrease of 10.9 malaria risk points
+
+```{r indent="    "}
+model_forbidden <- lm(malaria_risk ~ net + risk_factors, data = iv_data)
+tidy(model_forbidden)
+```
+
+    Since we can't actually use that column, we'll use distance to town hall as an instrument. We should run this set of models:
+
+    $$
+    \begin{aligned}
+    \widehat{\text{Net}} &= \gamma_0 + \gamma_1 \text{Distance to town hall} + \omega \\\\
+    \text{Malaria risk} &= \beta_0 + \beta_1 \widehat{\text{Net}} + \epsilon
+    \end{aligned}
+    $$
+
+    We'll run this 2SLS model with the `iv_robust()` function from the **estimatr** package:
+
+```{r indent="    "}
+library(estimatr)
+
+model_iv <- iv_robust(malaria_risk ~ net | distance, data = iv_data)
+tidy(model_iv)
+```
+
+    …and it's relatively close, I guess, at −8.2. Getting instrumental variables to find exact causal effects is tricky, but I'm fine with this for simulated data.
+
+7. **Save the data.**
+
+    The data works well enough, so we'll get rid of the extra intermediate columns and save it as a CSV file. We'll keep the forbidden `risk_factors` column just for fun.
+
+```{r indent="    "}
+iv_data_final <- iv_data %>%
+  select(id, net, distance, malaria_risk, risk_factors)
+
+head(iv_data_final)
+```
+
+```{r indent="    ", eval=FALSE}
+# Save data
+write_csv(iv_data_final, "data/bed_nets_iv.csv")
+```
+
+
+## Use synthetic data packages
+
+There are several R packages that let you generate synthetic data with built-in relationships in a more automatic way. They all work a little differently, and if you're interested in trying them out, make sure you check the documentation for details.
+
+### fabricatr
+
+The [**fabricatr** package](https://declaredesign.org/r/fabricatr/) is a very powerful package for simulating data. It was invented specifically for using in preregistered studies, so it can handle a ton of different data structures like [panel data](https://declaredesign.org/r/fabricatr/articles/cross_classified.html) and [time series data](https://declaredesign.org/r/fabricatr/articles/time_series.html). You can build in causal effects and force columns to be correlated with each other.
+
+**fabricatr** has exceptionally well-written documentation with like a billion detailed examples (see [the right sidebar here](https://declaredesign.org/r/fabricatr/)). This is a gold standard package and you should most definitely check it out.
+
+Here's a simple example of simulating a bunch of voters and making older ones more likely to vote:
+
+```{r}
+library(fabricatr)
+
+set.seed(1234)
+
+fake_voters <- fabricate(
+  # Make 100 people
+  N = 100,
+  # Age uniformly distributed between 18 and 85
+  age = round(runif(N, 18, 85)),
+  # Older people more likely to vote
+  turnout = draw_binary(prob = ifelse(age < 40, 0.4, 0.7), N = N)
+)
+
+head(fake_voters)
+```
+
+And here's an example of country-year panel data where there are country-specific and year-specific effects on GDP:
+
+```{r}
+set.seed(1234)
+
+panel_global_data <- fabricate(
+  years = add_level(
+    N = 10,
+    ts_year = 0:9,
+    year_shock = rnorm(N, 0, 0.3)
+  ),
+  countries = add_level(
+    N = 5,
+    base_gdp = runif(N, 15, 22),
+    growth_units = runif(N, 0.25, 0.5),
+    growth_error = runif(N, 0.15, 0.5),
+    nest = FALSE
+  ),
+  country_years = cross_levels(
+    by = join_using(years, countries),
+    gdp_measure = base_gdp + year_shock + (ts_year * growth_units) +
+      rnorm(N, sd = growth_error)
+  )
+) %>%
+  # Scale up the years to be actual years instead of 1, 2, 3, etc.
+  mutate(year = ts_year + 2010)
+
+head(panel_global_data)
+```
+
+```{r fake-panel-data}
+ggplot(panel_global_data, aes(x = year, y = gdp_measure, color = countries)) +
+  geom_line() +
+  labs(x = "Year", y = "Log GDP", color = "Countries")
+```
+
+That all just scratches the surface of what **fabricatr** can do. Again, check the examples and documentation and play around with it to see what else it can do.
+
+### wakefield
+
+The [**wakefield** package](https://github.com/trinker/wakefield) is jokingly named after [Andrew Wakefield](https://en.wikipedia.org/wiki/Andrew_Wakefield), the British researcher who invented fake data to show that the MMR vaccine causes autism. This package lets you quickly generate random fake datasets. It has a bunch of pre-set column possibilities, like age, color, Likert scales, political parties, religion, and so on, and you can also use standard R functions like `rnorm()`, `rbinom()`, or `rbeta()`. It also lets you create repeated measures (1st grade score, 2nd grade score, 3rd grade score, etc.) and build correlations between variables.
+
+You should *definitely* [look at the documentation](https://github.com/trinker/wakefield) to see a ton of examples of how it all works. Here's a basic example:
+
+```{r message=FALSE, warning=FALSE}
+library(wakefield)
+
+set.seed(1234)
+
+wakefield_data <- r_data_frame(
+  n = 500,
+  id,
+  treatment = rbinom(1, 0.3),  # 30% chance of being in treatment
+  outcome = rnorm(mean = 500, sd = 100),
+  race,
+  age = age(x = 18:45),
+  sex = sex_inclusive(),
+  survey_question_1 = likert(),
+  survey_question_2 = likert()
+)
+head(wakefield_data)
+```
+
+### faux
+
+The [**faux** package](https://debruine.github.io/faux/) does some really neat things. We can create data that has built-in correlations without going through all the math. For instance, let's say we have 3 variables A, B, and C that are normally distributed with these parameters:
+
+- **A**: mean = 10, sd = 2
+- **B**: mean = 5, sd = 1
+- **C**: mean = 20, sd = 5
+
+We want A to correlate with B at r = 0.8 (highly correlated), A to correlate with C at r = 0.3 (less correlated), and B to correlate with C at r = 0.4 (moderately correlated). Here's how to create that data with **faux**:
+
+```{r warning=FALSE, message=FALSE}
+library(faux)
+
+set.seed(1234)
+
+faux_data <- rnorm_multi(n = 100,
+                         mu = c(10, 5, 20),
+                         sd = c(2, 1, 5),
+                         r = c(0.8, 0.3, 0.4),
+                         varnames = c("A", "B", "C"),
+                         empirical = FALSE)
+head(faux_data)
+
+# Check averages and standard deviations
+faux_data %>%
+  # Convert to long/tidy so we can group and summarize
+  pivot_longer(cols = everything(), names_to = "variable", values_to = "value") %>%
+  group_by(variable) %>%
+  summarize(mean = mean(value),
+            sd = sd(value))
+
+# Check correlations
+cor(faux_data$A, faux_data$B)
+cor(faux_data$A, faux_data$C)
+cor(faux_data$B, faux_data$C)
+```
+
+**faux** can do a ton of other things too, so make sure you check out [the documentation and all the articles with examples here](https://debruine.github.io/faux/).

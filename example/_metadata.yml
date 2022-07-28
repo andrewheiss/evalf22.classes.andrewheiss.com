@@ -1,0 +1,4 @@
+format:
+  html:
+    code-fold: show
+    code-tools: true
