@@ -63,6 +63,11 @@ h2 {
   border-bottom: none;
 }
 
+ul,
+ol {
+  font-family: $font-family-serif;
+}
+
 // Content page stuff
 // Date bar
 .date-block {
@@ -127,6 +132,11 @@ main {
 
 #toc-title {
   font-weight: 700;
+}
+
+.sidebar nav[role="doc-toc"] > ul li a {
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
 }
 
 

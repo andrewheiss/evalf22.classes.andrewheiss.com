@@ -13,6 +13,10 @@ project:
     - "slides/css/"
     - "slides/*_files/"
 
+# See https://quarto.org/docs/projects/code-execution.html#freeze
+execute:
+  freeze: auto  # Re-render only when source changes
+
 bibliography: bib/references.bib
 csl: bib/chicago-author-date.csl
 
@@ -95,6 +99,12 @@ website:
         - section: "Overview"
           contents:
             - resource/index.qmd
+            - resource/r.qmd
+            - resource/style.qmd
+            - resource/data.qmd
+            - resource/citations.qmd
+            - resource/bayes.qmd
+            - resource/zilch.qmd
 
 format:
   html:
