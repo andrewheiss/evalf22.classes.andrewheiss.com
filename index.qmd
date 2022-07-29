@@ -2,7 +2,7 @@
 title: "Program Evaluation for Public Service"
 subtitle: "Combine research design, causal inference, and econometric tools to measure the effects of social programs"
 details: |
-  PMAP 8521 • Spring 2022<br>Andrew Young School of Policy Studies<br>Georgia State University
+  PMAP 8521 • Fall 2022<br>Andrew Young School of Policy Studies<br>Georgia State University
 sidebar: false
 toc: false
 page-layout: full
