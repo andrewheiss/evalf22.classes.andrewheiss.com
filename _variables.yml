@@ -2,6 +2,7 @@ author: Andrew Heiss
 
 instructor:
   name: Dr. Andrew Heiss
+  name_no_title: Andrew Heiss
   email: aheiss@gsu.edu
   url: "https://www.andrewheiss.com"
   twitter: andrewheiss
@@ -18,8 +19,8 @@ course:
   time: "7:15–9:45 PM"
   location: "Aderhold Learning Center 224"
   dates: "January 10–May 3, 2022"
-  github: "andrewheiss/evalsp22.classes.andrewheiss.com"
-  copyrightYear: "2022"
+  github: "https://www.github.com/andrewheiss/evalf22.classes.andrewheiss.com"
+  copyright_year: "2022"
   slack: "https://gsuevalsp2022.slack.com"
 
 university:

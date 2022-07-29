@@ -106,6 +106,25 @@ ol {
   line-height: 1.5;
 }
 
+.course-details-smaller li {
+  font-size: 1rem;
+}
+
+.course-details-smaller h3 {
+  font-size: 1.4rem;
+}
+
+
+// Footer stuff
+.nav-footer-left {
+  text-align: left;
+}
+
+.nav-footer-right {
+  text-align: right;
+}
+
+
 // Schedule stuff
 .content-title {
   font-weight: 700;
@@ -117,6 +136,7 @@ ol {
   border-bottom: 3px solid $orange;
   padding-bottom: 0.5rem;
 }
+
 
 // Content page stuff
 // Date bar

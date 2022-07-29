@@ -22,6 +22,7 @@ csl: files/bib/chicago-author-date.csl
 
 website:
   title: "Program Evaluation"
+
   navbar:
     pinned: true
     background: "#EE6A24"
@@ -164,6 +165,15 @@ website:
             - resource/markdown.qmd
             - resource/rmarkdown.qmd
             - resource/unzipping.qmd
+  page-footer:
+    left: |
+      Content {{< fa brands creative-commons >}} {{< var course.copyright_year >}} by [{{< var instructor.name_no_title >}}]({{< var instructor.url >}}) <br>
+      All content licensed under a {{< fa brands creative-commons >}}
+      {{< fa brands creative-commons-by >}} {{< fa brands creative-commons-nc >}}
+      [Creative Commons Attribution-NonCommercial 4.0 International license (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/)
+    right: |
+      Made with {{< fa brands r-project >}} and [Quarto](https://quarto.org/)<br>
+      [View the source at {{< fa brands github >}} GitHub]({{< var course.github >}})
 
 format:
   html:
@@ -172,3 +182,5 @@ format:
       - html/custom.scss
     toc: true
     highlight-style: monokai
+    body-header: |
+      This page brought to you by <https://example.com>
