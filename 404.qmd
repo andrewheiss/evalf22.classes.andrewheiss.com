@@ -1,0 +1,14 @@
+---
+title: Page Not Found
+sidebar: false
+toc: false
+---
+
+OH NO! The page you were looking for isn't here!
+
+```{r echo=FALSE, out.width="80%", fig.align="center"}
+# https://twitter.com/allison_horst/status/1213275783675822080
+knitr::include_graphics(here::here("files", "404.gif"), error = FALSE)
+```
+
+<p style="font-size: 0.6rem; text-align: center;">GIF by <a href="https://twitter.com/stephcd/status/880512544934432768">Steph Davidson</a>.</p>
