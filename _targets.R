@@ -98,8 +98,15 @@ list(
 
 
   ## Build site ----
-  tar_quarto(site, path = ".")
+  tar_quarto(site, path = "."),
 
 
   ## Upload site ----
+  tar_target(deploy_script, here_rel("deploy.sh"), format = "file"),
+  tar_target(deploy_site, {
+    # Force a dependency
+    site
+    # Run the deploy script
+    if (Sys.getenv("UPLOAD_WEBSITES") == "TRUE") processx::run(paste0("./", deploy_script))
+  })
 )
