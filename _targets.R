@@ -93,6 +93,10 @@ list(
   format = "file"),
 
 
+  ## Class schedule file ----
+  tar_target(schedule_file, here_rel("data", "schedule.csv"), format = "file"),
+
+
   ## Build site ----
   tar_quarto(site, path = ".")
 

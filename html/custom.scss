@@ -106,6 +106,18 @@ ol {
   line-height: 1.5;
 }
 
+// Schedule stuff
+.content-title {
+  font-weight: 700;
+}
+
+.schedule-page h3 {
+  text-align: center;
+  margin-top: 3rem;
+  border-bottom: 3px solid $orange;
+  padding-bottom: 0.5rem;
+}
+
 // Content page stuff
 // Date bar
 .date-block {

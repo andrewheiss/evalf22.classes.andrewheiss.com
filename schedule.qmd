@@ -1,5 +1,88 @@
 ---
 title: "Schedule"
+sidebar: false
+toc: false
+page-layout: full
 ---
 
-Schedule goes here.
+::: {.schedule-page}
+
+Here's your roadmap for the semester!
+
+- [**Content**](/content/) ({{< fa book-open-reader >}}): This page contains the readings, slides, and recorded lectures for the week. Read and watch these **before** our in-person class.
+- [**Example**](/example/) ({{< fa laptop-code >}}): This page contains fully annotated R code and other supplementary information that you can use as a reference for your assignments and project. This is only a reference page—you don't have to necessarily do anything here. Some sections also contain videos of me live coding the examples so you can see what it looks like to work with R in real time. This page will be *very* helpful as you work on your assignments.
+- [**Assignment**](/assignment/) ({{< fa pen-ruler >}}): This page contains the instructions for each assignment. Weekly reports are due by *noon* on the day of class. Other assignments are due by *11:59 PM* on the day they're listed.
+
+```{r build-table, include=FALSE}
+library(tidyverse)
+library(glue)
+library(knitr)
+library(kableExtra)
+
+withr::with_dir(here::here(), {
+  targets::tar_load(schedule_file)
+})
+
+schedule_raw <- read_csv(schedule_file)
+
+schedule <- schedule_raw %>% 
+  mutate(group = fct_inorder(group)) %>% 
+  mutate(subgroup = fct_inorder(subgroup)) %>% 
+  mutate(var_title = ifelse(!is.na(content), 
+                            glue('<span class="content-title">{title}</span>'),
+                            glue('{title}'))) %>% 
+  mutate(var_deadline = ifelse(!is.na(deadline),
+                               glue('&emsp;&emsp;<small>(submit by {deadline})</small>'),
+                               "")) %>%
+  mutate(var_content = ifelse(!is.na(content),
+                              glue('<a href="{content}.qmd"><i class="fa-solid fa-book-open-reader fa-lg"></i></a>'),
+                              glue('<font color="#e9ecef"><i class="fa-solid fa-book-open-reader fa-lg"></i></font>'))) %>%
+  mutate(var_example = ifelse(!is.na(example),
+                              glue('<a href="{example}.qmd"><i class="fa-solid fa-laptop-code fa-lg"></i></a>'),
+                              glue('<font color="#e9ecef"><i class="fa-solid fa-laptop-code fa-lg"></i></font>'))) %>%
+  mutate(var_assignment = ifelse(!is.na(assignment),
+                                 glue('<a href="{assignment}.qmd"><i class="fa-solid fa-pen-ruler fa-lg"></i></a>'),
+                                 glue('<font color="#e9ecef"><i class="fa-solid fa-pen-ruler fa-lg"></i></font>'))) %>%
+  mutate(col_date = ifelse(is.na(date_end),
+                           glue('<strong>{format(date, "%B %e")}</strong>'),
+                           glue('<strong>{format(date, "%B %e")}</strong>–<strong>{format(date_end, "%B %e")}</strong>'))) %>% 
+  mutate(col_title = glue('{var_title}{var_deadline}')) %>% 
+  mutate(col_content = var_content,
+         col_example = var_example,
+         col_assignment = var_assignment)
+
+schedule_nested <- schedule %>% 
+  select(group, subgroup, 
+         ` ` = col_date, Title = col_title, Content = col_content, 
+         Example = col_example, Assignment = col_assignment) %>% 
+  group_by(group) %>% 
+  nest() %>% 
+  mutate(subgroup_count = map(data, ~count(.x, subgroup)),
+         subgroup_index = map(subgroup_count, ~{
+           .x %>% pull(n) %>% set_names(.x$subgroup)
+         }))
+
+show_table <- function(group_id) {
+  # Add a heading
+  cat(as.character(paste("\n\n###", schedule_nested$group[[group_id]], "\n\n")))
+  
+  # Make the table
+  tbl <- schedule_nested$data[[group_id]] %>% 
+    select(-subgroup) %>% 
+    kbl(escape = FALSE, align = "rlccc", table.attr = 'class="schedule-table"') %>% 
+    kable_styling() %>% 
+    column_spec(1, width = "20%", extra_css = "padding-right: 20px;") %>% 
+    column_spec(2, width = "50%") %>% 
+    column_spec(3:5, width = "10%") %>% 
+    pack_rows(index = schedule_nested$subgroup_index[[group_id]],
+              label_row_css = "border-bottom: 2px solid #000000;")
+  
+  cat(tbl)
+}
+```
+
+```{r show-table, echo=FALSE, results="asis"}
+walk(seq(1, nrow(schedule_nested)), ~show_table(.x))
+```
+
+:::
