@@ -68,6 +68,44 @@ ol {
   font-family: $font-family-serif;
 }
 
+// Home page stuff
+.title-block {
+  margin: 1em 0;
+  border-bottom: 3px solid $gray-200;
+  padding-bottom: 1em;
+}
+
+.course-details {
+  margin: 0 0 1em;
+  border-bottom: 3px solid $gray-200;
+  padding-bottom: 1em;
+}
+
+.course-title {
+  font-size: 3.6rem;
+  margin-top: 0;
+}
+
+.course-subtitle {
+  font-size: 1.7rem;
+}
+
+.course-meta {
+  font-size: 1.2rem;
+  color: $gray-500;
+}
+
+.course-details ul {
+  list-style: none;
+  text-indent: -0.7rem;
+  padding-left: 1.4rem;
+}
+
+.contact-policy p {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
 // Content page stuff
 // Date bar
 .date-block {

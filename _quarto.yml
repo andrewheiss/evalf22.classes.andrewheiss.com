@@ -24,6 +24,7 @@ website:
   title: "Program Evaluation"
   navbar:
     pinned: true
+    background: "#EE6A24"
     right:
       - syllabus.qmd
       - schedule.qmd

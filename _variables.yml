@@ -1,0 +1,31 @@
+author: Andrew Heiss
+
+instructor:
+  name: Dr. Andrew Heiss
+  email: aheiss@gsu.edu
+  url: "https://www.andrewheiss.com"
+  twitter: andrewheiss
+  github: andrewheiss
+  office: "357 Andrew Young School"
+  contact_policy: >-
+    E-mail and Slack are the best ways to get in contact with me. I will try to respond to all course-related e-mails and Slack messages within 24 hours (*really*), but also remember that life can be busy and chaotic for everyone (including me!), so if I don't respond right away, don't worry!
+  appointment_url: https://calendly.com/andrewheiss/
+
+course:
+  number: "PMAP 8521"
+  semester: "Spring 2022"
+  days: "Thursdays"
+  time: "7:15–9:45 PM"
+  location: "Aderhold Learning Center 224"
+  dates: "January 10–May 3, 2022"
+  github: "andrewheiss/evalsp22.classes.andrewheiss.com"
+  copyrightYear: "2022"
+  slack: "https://gsuevalsp2022.slack.com"
+
+university:
+  name: Georgia State University
+  url: "https://www.gsu.edu"
+
+school:
+  name: Andrew Young School of Policy Studies
+  url: "https://aysps.gsu.edu/"

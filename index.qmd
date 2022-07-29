@@ -1,5 +1,16 @@
 ---
-title: "evalf22"
+title: "Program Evaluation for Public Service"
+subtitle: "Combine research design, causal inference, and econometric tools to measure the effects of social programs"
+details: |
+  PMAP 8521 • Spring 2022<br>Andrew Young School of Policy Studies<br>Georgia State University
+sidebar: false
+toc: false
+page-layout: full
+format:
+  html:
+    template-partials:
+      - html/home/title-block.html
+course-logo: /files/img/eval-hires.png
 ---
 
 ```{r set-dependencies, include=FALSE}
@@ -10,10 +21,40 @@ withr::with_dir(here::here(), {
 })
 ```
 
-This is a Quarto website.
+::: {.home}
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+::: {.grid .course-details}
 
-```{r}
-1 + 1
+::: {.g-col-4}
+### Instructor
+
+- {{< fa user >}} &nbsp; [{{< var instructor.name >}}]({{< var instructor.url >}})
+- {{< fa university >}} &nbsp; {{< var instructor.office >}}
+- {{< fa envelope >}} &nbsp; <a href="mailto:{{< var instructor.email >}}">{{< var instructor.email >}}</a>
+- {{< fa brands twitter >}} &nbsp; [{{< var instructor.twitter >}}](https://www.twitter.com/{{< var instructor.twitter >}})
+- {{< fa calendar-check >}} &nbsp; [Schedule an appointment]({{< var instructor.appointment_url >}})
+:::
+
+::: {.g-col-4}
+### Course details
+
+- {{< fa calendar >}} &nbsp; {{< var course.days >}}
+- {{< fa calendar-alt >}} &nbsp; {{< var course.dates >}}
+- {{< fa clock >}} &nbsp; {{< var course.time >}}
+- {{< fa location-dot >}} &nbsp; {{< var course.location >}}
+- {{< fa brands slack >}} &nbsp; [Slack]({{< var course.slack >}})
+:::
+
+::: {.g-col-4 .contact-policy}
+### Contacting me
+
+{{< var instructor.contact_policy >}}
+:::
+
+:::
+
+```{r echo=FALSE}
+knitr::include_graphics(here::here("files", "img", "eval-flowchart.png"), error = FALSE)
 ```
+
+:::
