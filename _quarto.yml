@@ -22,6 +22,20 @@ csl: files/bib/chicago-author-date.csl
 
 website:
   title: "Program Evaluation"
+  site-url: "https://evalf22.classes.andrewheiss.com"
+  description-meta: "Use modern statistical and data scientific tools to measure causal effects and evaluate public policy"
+
+  favicon: "/files/icon-512.png"
+
+  twitter-card:
+    image: "/files/social-image-f22.png"
+    card-style: summary_large_image
+    creator: "@andrewheiss"
+    site: "@andrewheiss"
+
+  open-graph:
+    image: "/files/social-image-f22.png"
+    locale: en_US
 
   navbar:
     pinned: true
@@ -182,5 +196,3 @@ format:
       - html/custom.scss
     toc: true
     highlight-style: monokai
-    body-header: |
-      This page brought to you by <https://example.com>
