@@ -1,0 +1,703 @@
+---
+title: "Class 6: Validity + confidence intervals"
+author: "Andrew Heiss"
+date: "`r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    lib_dir: "libs"
+    chakra: "libs/remark-latest.min.js"
+    css: ["default", "css/ath-slides.css", "css/ath-inferno-fonts.css", "css/animate.css"]
+    seal: false
+    anchor_sections: false
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+      navigation:
+        scroll: false
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, 
+                      fig.retina = 3, fig.align = "center")
+```
+
+```{r packages-data, include=FALSE}
+library(tidyverse)
+library(ggdag)
+library(palmerpenguins)
+library(modelsummary)
+```
+
+```{r xaringanExtra, echo=FALSE}
+xaringanExtra::use_xaringan_extra(c("tile_view"))
+```
+
+class: center middle main-title section-title-3
+
+# In-person<br>session 6
+
+.class-info[
+
+**February 17, 2022**
+
+.light[PMAP 8521: Program evaluation<br>
+Andrew Young School of Policy Studies
+]
+
+]
+
+---
+
+name: outline
+class: title title-inv-8
+
+# Plan for today
+
+--
+
+.box-1.medium.sp-after-half[Exam 1]
+
+--
+
+.box-3.medium.sp-after-half[FAQs]
+
+--
+
+.box-5.medium.sp-after-half[Confidence intervals, credible intervals,<br>and a crash course on Bayesian statistics]
+
+---
+
+layout: false
+name: exam-1
+class: center middle section-title section-title-1 animated fadeIn
+
+# Exam 1
+
+---
+
+layout: true
+class: middle
+
+---
+
+.box-1.large[Tell us about Exam 1!]
+
+---
+
+layout: false
+name: faqs
+class: center middle section-title section-title-3 animated fadeIn
+
+# FAQs
+
+---
+
+layout: true
+class: middle
+
+---
+
+.box-3.large[Are *p*-values really misinterpreted<br>in published research?]
+
+---
+
+.box-3.large[Power calculations and sample size]
+
+.box-3.medium[Won't we always be able to find<br>a significant effect if the<br>sample size is big enough?]
+
+.box-inv-3.small[Yes!]
+
+---
+
+.box-3.huge[Math with computers]
+
+.box-inv-3[andhs.co/live]
+
+---
+
+.box-3.large[Are the results from<br>p-hacking actually a<br>threat to validity?]
+
+???
+
+<https://projects.fivethirtyeight.com/p-hacking/>
+
+---
+
+.box-3.large[Do people actually post<br>their preregistrations?]
+
+---
+
+.box-3.large.sp-after[Yes!]
+
+.box-3.medium[[OSF](https://osf.io/prereg/)]
+
+.box-inv-3.sp-after[See [this](https://stats.andrewheiss.com/ngo-crackdowns-philanthropy/preregistration.html) and [this](https://stats.andrewheiss.com/why-donors-donate/preregistration.html) for examples]
+
+.box-3.medium[[As Predicted](https://aspredicted.org/)]
+
+.box-inv-3[See [this](https://aspredicted.org/blind.php?x=jr2hr3)]
+
+---
+
+.box-3.medium[Do you have any tips for identifying the<br>threats to validity in articles since<br>they're often not super clear?]
+
+.box-3[Especially things like spillovers,<br>Hawthorne effects, and John Henry effects?]
+
+---
+
+.box-3.medium[Using a control group of some kind<br>seems to be the common fix<br>for all of these issues.]
+
+.box-3.medium[What happens if you can't do that?<br>Is the study just a lost cause?]
+
+???
+
+That's the point of DAGs and quasi experiments; simulate having treatment and control groups
+
+---
+
+layout: false
+name: bayes
+class: center middle section-title section-title-5 animated fadeIn
+
+# Confidence intervals,<br>credible intervals,<br>and a crash course on Bayesian statistics
+
+---
+
+class: middle
+
+.box-5.large[In the absence of p-values,<br>I'm confused about how<br>we report… significance?]
+
+---
+
+layout: true
+class: title title-5
+
+---
+
+# Imbens and p-values
+
+.box-inv-5[Nobody really cares about p-values]
+
+--
+
+.box-inv-5[Decision makers want to know<br>a number or a range of numbers—<br>some sort of effect and uncertainty]
+
+--
+
+.box-inv-5[Nobody cares how likely a number would be<br>in an imaginary null world!]
+
+---
+
+# Imbens's solution
+
+.box-inv-5[Report point estimates and some sort of range]
+
+> "It would be preferable if reporting standards emphasized confidence intervals or standard errors, and, even better, Bayesian posterior intervals."
+
+--
+
+.pull-left[
+.box-inv-5[Point estimate]
+
+.box-5.small[The single number you calculate<br>(mean, coefficient, etc.)]
+]
+
+.pull-right[
+.box-inv-5[Uncertainty]
+
+.box-5.small[A range of possible values]
+]
+
+---
+
+# Greek, Latin, and extra markings
+
+.box-inv-5[Statistics: use a sample to make inferences about a population]
+
+--
+
+.pull-left[
+.box-5[Greek]
+
+Letters like $\beta_1$ are the ***truth***
+
+Letters with extra markings like $\hat{\beta_1}$ are our ***estimate*** of the truth based on our sample
+]
+
+--
+
+.pull-right[
+.box-5[Latin]
+
+Letters like $X$ are ***actual data*** from our sample
+
+Letters with extra markings like $\bar{X}$ are ***calculations*** from our sample
+]
+
+---
+
+# Estimating truth
+
+.box-inv-5.sp-after[Data → Calculation → Estimate → Truth]
+
+--
+
+.pull-left[
+<table>
+  <tr>
+    <td class="cell-left">Data</td>
+    <td class="cell-center">\(X\)</td>
+  </tr>
+  <tr>
+    <td class="cell-left">Calculation&ensp;</td>
+    <td class="cell-center">\(\bar{X} = \frac{\sum{X}}{N}\)</td>
+  </tr>
+  <tr>
+    <td class="cell-left">Estimate</td>
+    <td class="cell-center">\(\hat{\mu}\)</td>
+  </tr>
+  <tr>
+    <td class="cell-left">Truth</td>
+    <td class="cell-center">\(\mu\)</td>
+  </tr>
+</table>
+]
+
+--
+
+.pull-right[
+$$
+\bar{X} = \hat{\mu}
+$$
+
+$$
+X \rightarrow \bar{X} \rightarrow \hat{\mu} \xrightarrow{\text{🤞 hopefully 🤞}} \mu
+$$
+]
+
+---
+
+# Population parameter
+
+.box-inv-5.large[Truth = Greek letter]
+
+.box-5[An single unknown number that is true for the entire population]
+
+--
+
+.box-inv-5.small[Proportion of left-handed students at GSU]
+
+.box-inv-5.small[Median rent of apartments in NYC]
+
+.box-inv-5.small[Proportion of red M&Ms produced in a factory]
+
+.box-inv-5.small[ATE of your program]
+
+---
+
+# Samples and estimates
+
+.box-inv-5.medium[We take a sample and make a guess] 
+
+--
+
+.box-5[This single value is a *point estimate*]
+
+.box-5.small[(This is the Greek letter with a hat)]
+
+---
+
+# Variability
+
+.box-inv-5.medium[You have an estimate,<br>but how different might that<br>estimate be if you take another sample?]
+
+---
+
+# Left-handedness
+
+.box-inv-5.medium[You take a random sample of<br>50 GSU students and 5 are left-handed.]
+
+--
+
+.box-5.less-medium[If you take a different random sample of<br>50 GSU students, how many would you<br>expect to be left-handed?]
+
+--
+
+.box-inv-5[3 are left-handed. Is that surprising?]
+
+--
+
+.box-inv-5[40 are left-handed. Is that surprising?]
+
+---
+
+# Nets and confidence intervals
+
+.box-inv-5.medium[How confident are we that the sample<br>picked up the population parameter?]
+
+--
+
+.box-inv-5.medium[Confidence interval is a net]
+
+--
+
+.box-5[We can be X% confident that our net is<br>picking up that population parameter]
+
+.box-inv-5.small[If we took 100 samples, at least 95 of them would have the<br>true population parameter in their 95% confidence intervals]
+
+---
+
+layout: false
+
+> A city manager wants to know the true average property value of single-value homes in her city. She takes a random sample of 200 houses and builds a 95% confidence interval. The interval is ($180,000, $300,000).
+
+--
+
+.box-5[We're 95% confident that the<br>interval ($180,000, $300,000)<br>captured the true mean value]
+
+---
+
+layout: true
+class: title title-5
+
+---
+
+# WARNING
+
+--
+
+.box-inv-5.medium[It is way too tempting to say <br>“We’re 95% sure that the<br>population parameter is X”]
+
+--
+
+.box-5[People do this all the time! People with PhDs!]
+
+--
+
+.box-5[YOU will try to do this too]
+
+???
+
+OpenIntro Stats p. 186
+
+First, notice that the statements are always about the population parameter, which considers all American adults for the energy polls or all New York adults for the quarantine poll.
+
+We also avoided another common mistake: incorrect language might try to describe the confidence interval as capturing the population parameter with a certain probability. Making a probability interpretation is a common error: while it might be useful to think of it as a probability, the confidence level only quantifies how plausible it is that the parameter is in the given interval.
+
+Another important consideration of confidence intervals is that they are only about the population parameter. A confidence interval says nothing about individual observations or point estimates. Confidence intervals only provide a plausible range for population parameters.
+
+---
+
+# Nets
+
+.box-inv-5.medium[If you took lots of samples,<br>95% of their confidence intervals<br>would have the single true value in them]
+
+---
+
+layout: false
+
+.center[
+<figure>
+  <img src="img/06-class/reliable-se-1.png" alt="Lots of confidence intervals" title="Lots of confidence intervals" width="80%">
+</figure>
+]
+
+---
+
+layout: true
+class: title title-5
+
+---
+
+# Frequentism
+
+.box-inv-5.medium[This kind of statistics is called "frequentism"]
+
+--
+
+.box-5[The population parameter θ is fixed and singular<br>while the data can vary]
+
+$$
+P(\text{Data} \mid \theta)
+$$
+
+--
+
+.box-5[You can do an experiment over and over again;<br>take more and more samples and polls]
+
+---
+
+# Frequentist confidence intervals
+
+.box-inv-5.medium.sp-before["We are 95% confident that this net<br>captures the true population parameter"]
+
+--
+
+.box-5.medium.sp-before[~~"There's a 95% chance that the<br>true value falls in this range"~~]
+
+---
+
+layout: false
+class: middle
+
+.box-5.huge[Weekends and<br>restaurant scores]
+
+---
+
+layout: true
+class: title title-5
+
+---
+
+# Bayesian statistics
+
+.pull-left[
+.center[
+<figure>
+  <img src="img/06-class/bayes.jpg" alt="Thomas Bayes" title="Thomas Bayes" width="80%">
+  <figcaption>Rev. Thomas Bayes</figcaption>
+</figure>
+]
+]
+
+.pull-right.small[
+
+$$P(\theta \mid \text{Data})$$
+
+&nbsp;
+
+$$\color{orange}{P(\text{H} \mid \text{E})} = \frac{\color{red}{P(\text{H})} \times\color{blue}{P(\text{E} \mid \text{H})}}{\color{black}{P(\text{E})}}$$
+
+]
+
+
+---
+
+# Bayesianism in WWII
+
+.pull-left[
+.center[
+<figure>
+  <img src="img/06-class/turing.jpg" alt="Alan Turing" title="Alan Turing" width="65%">
+  <figcaption>Alan Turing</figcaption>
+</figure>
+]
+]
+
+.pull-right[
+.center[
+<figure>
+  <img src="img/06-class/enigma.jpg" alt="Enigma machine" title="Enigma machine" width="85%">
+  <figcaption>An enigma machine</figcaption>
+</figure>
+]
+]
+
+---
+
+layout: true
+class: middle
+
+---
+
+$$\color{orange}{P(\text{H} \mid \text{E})} = \frac{\color{red}{P(\text{H})} \times\color{blue}{P(\text{E} \mid \text{H})}}{\color{black}{P(\text{E})}}$$
+
+&nbsp;
+
+$$
+\color{orange}{P(\text{Hypothesis} \mid \text{Evidence})} = 
+$$
+
+$$
+\frac{
+\color{red}{P(\text{Hypothesis})} \times
+\color{blue}{P(\text{Evidence} \mid \text{Hypothesis})}
+}{
+\color{black}{P(\text{Evidence})}
+}
+$$
+
+---
+
+.center[
+<figure>
+  <img src="img/06-class/step1.png" alt="Bayesian formulas" title="Bayesian formulas" width="100%">
+</figure>
+]
+
+---
+
+.center[
+<figure>
+  <img src="img/06-class/step2.png" alt="Bayesian formulas" title="Bayesian formulas" width="100%">
+</figure>
+]
+
+---
+
+.box-5.huge[Bayesian statistics and<br>more complex questions]
+
+---
+
+.center[
+<figure>
+  <img src="img/06-class/step3.png" alt="Bayesian formulas" title="Bayesian formulas" width="100%">
+</figure>
+]
+
+---
+
+.box-5.huge[But the math is too hard!]
+
+.box-inv-5[So we simulate!]
+
+.box-inv-5.small[(Monte Carlo Markov Chains, or MCMC)]
+
+---
+
+.box-5.huge[Weekends and<br>restaurant scores again]
+
+---
+
+layout: true
+class: title title-5
+
+---
+
+# Bayesianism and parameters
+
+.center[
+.pull-left-wide[
+.box-inv-5[In the world of frequentism,<br>there's a fixed population parameter<br>and the data can hypothetically vary]
+]
+
+.pull-right-narrow[
+$$
+P(\text{Data} \mid \theta)
+$$
+]
+]
+
+--
+
+.center[
+.pull-left-wide[
+.box-inv-5[In the world of Bayesianism,<br>the data is fixed .small[(you collected it just once!)]<br>and the population parameter can vary]
+]
+
+.pull-right-narrow[
+$$
+P(\theta \mid \text{Data})
+$$
+]
+]
+
+???
+
+In frequentism land, the parameter is fixed and singular and the data can vary - you can do an experiment over and over again, take more and more samples and polls
+
+In Bayes land, the data is fixed (you collected it, that's it), and the parameter can vary
+
+---
+
+# Bayesian credible intervals
+
+.box-5.small[(AKA posterior intervals)]
+
+.box-inv-5.medium.sp-before["Given the data, there is a 95% probability<br>that the true population parameter<br>falls in the credible interval"]
+
+???
+
+> a Bayesian statistician would say “given our observed data, there is a 95% probability that the true value of θ falls within the credible region” while a Frequentist statistician would say “there is a 95% probability that when I compute a confidence interval from data of this sort, the true value of θ will fall within it”.
+(https://freakonometrics.hypotheses.org/18117)
+
+> Note how this drastically improve the interpretability of the Bayesian interval compared to the frequentist one. Indeed, the Bayesian framework allows us to say “given the observed data, the effect has 95% probability of falling within this range”, compared to the less straightforward, frequentist alternative (the 95% Confidence* Interval) would be “there is a 95% probability that when computing a confidence interval from data of this sort, the effect falls within this range”.
+(https://easystats.github.io/bayestestR/articles/credible_interval.html)
+
+---
+
+# Intervals
+
+.pull-left[
+.box-inv-5.medium[Frequentism]
+
+.box-5[There's a 95% probability<br>that the range contains the true value]
+
+.box-5[Probability of the range]
+
+.box-inv-5[Few people naturally<br>think like this]
+]
+
+.pull-right[
+.box-inv-5.medium[Bayesianism]
+
+.box-5[There's a 95% probability<br>that the true value falls in this range]
+
+.box-5[Probability of the actual value]
+
+.box-inv-5[People *do* naturally<br>think like this!]
+]
+
+???
+
+There's a 95% probability that the range contains the true value (freq) - We are 95% confident that this net captures the true population parameter
+vs.
+There's a 95% probability that the the true value falls in this range (bayes)
+
+This is a minor linguistic difference but it actually matters a lot! With frequentism, you have a range of possible values - you don't really know the true parameter, but it's in that range somewhere. Could be at the very edge, could be in the middle. With Bayesianism, you focus on the parameter itself, which has a distribution around it. It could be on the edge, but is most likely in the middle
+
+Probability of range boundaries vs probability of parameter values
+
+Bayesian p-value = probability that it's greater than 0 - you can say that there's a 100% chance that the coefficient is not zero, no more null worlds!
+
+---
+
+# Thinking Bayesianly
+
+.box-inv-5.less-medium[We all think Bayesianly,<br>even if you've never heard of Bayesian stats]
+
+.box-5[Every time you look at a confidence interval, you inherently think that the parameter is around that value, but that's wrong!]
+
+--
+
+.box-inv-5.less-medium.sp-before[BUT Imbens cites research that<br>that's actually generally okay] 
+
+.box-5[Often credible intervals are super similar to confidence intervals]
+
+
+---
+
+# Bayesian inference
+
+.box-inv-5.medium[What do you do without p-values then?]
+
+--
+
+.pull-left[
+.box-5.small[Probability<br>of direction]
+
+<figure>
+  <img src="img/06-class/plot-pd-1.png" alt="Probability of direction" title="Probability of direction" width="100%">
+</figure>
+]
+
+--
+
+.pull-right[
+.box-5.small[Region of practical<br>equivalence (ROPE)]
+
+<figure>
+  <img src="img/06-class/plot-rope-1.png" alt="ROPE" title="ROPE" width="100%">
+</figure>
+]
+
+---
+
+layout: false
+class: middle
+
+.box-5.huge[Weekends and<br>restaurant scores<br>once more]

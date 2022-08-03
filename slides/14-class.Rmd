@@ -1,0 +1,227 @@
+---
+title: "Class 14: Fake data, ethics, and curiosity"
+author: "Andrew Heiss"
+date: "`r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    lib_dir: "libs"
+    chakra: "libs/remark-latest.min.js"
+    css: ["default", "css/ath-slides.css", "css/ath-inferno-fonts.css", "css/animate.css"]
+    seal: false
+    anchor_sections: false
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+      navigation:
+        scroll: false
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, 
+                      fig.retina = 3, fig.align = "center")
+```
+
+```{r packages-data, include=FALSE}
+library(tidyverse)
+library(kableExtra)
+library(scales)
+```
+
+```{r xaringanExtra, echo=FALSE}
+xaringanExtra::use_xaringan_extra(c("tile_view"))
+```
+
+class: center middle main-title section-title-3
+
+# In-person<br>session 14
+
+.class-info[
+
+**November 29, 2021**
+
+.light[PMAP 8521: Program evaluation<br>
+Andrew Young School of Policy Studies
+]
+
+]
+
+---
+
+name: outline
+class: title title-inv-8
+
+# Plan for today
+
+--
+
+.box-5.medium[Control variables and confounding]
+
+--
+
+.box-3.medium[Ethics + pre-analysis plans]
+
+--
+
+.box-2.medium[Sharing your stuff]
+
+--
+
+.box-6.medium[Simulating data]
+
+---
+
+layout: false
+name: controls-confounding
+class: center middle section-title section-title-5 animated fadeIn
+
+# Control variables<br>and confounding
+
+---
+
+layout: true
+class: middle
+
+---
+
+.box-5.less-medium[Why do we teach stats with the idea of throwing<br>in a bunch of control variables if that's<br>really not the best way to evaluate impact?]
+
+.box-5.less-medium[What is the point of using control variables<br>if they aren't going to be interpreted?<br><br>When do we or when do we not interpret our controls?]
+
+---
+
+.box-5.large[How can you NOT have unobserved confounders unless you're doing a laboratory study where you can control everything?]
+
+---
+
+.box-5.medium[Design-based inference seems easier since<br>there's no unobserved confounding?<br><br>Why don't we just do that all the time?]
+
+???
+
+Yeah, but you have to discover weird situations. Like WWII submarine thing!
+
+- https://braddelong.substack.com/p/podcast-hexapodia-is-e-key-insight-331
+-  Matthew Suandi, "Promoting to Opportunity: Evidence and Implications from the U.S. Submarine Service" - https://are.berkeley.edu/sites/are.berkeley.edu/files/job-candidates/paper/MatthewSuandi_JMP_Nov_21_Berkeley.pdf
+
+---
+
+.center[
+<figure>
+  <img src="img/14-class/torpedo.png" alt="WWII torpedo" title="WWII torpedo" width="70%">
+</figure>
+]
+
+???
+
+Via <https://braddelong.substack.com/p/podcast-hexapodia-is-e-key-insight-331>:
+
+- In the early stages of the Pacific War, whether a US submarine-launched torpedo exploded was a matter of luck.
+- If a submarine captain had an enlisted man marked out for promotion, those promotions happened much more often if the submarine returned from its cruise having succeeded in sinking ships.
+- Those promoted because they happened to be on lucky submarines with torpedoes that exploded lived 2.4 years longer than their counterparts who happened to be on unlucky submarines and were not promoted.
+- Those promoted because they happened to be on lucky submarines with torpedoes that exploded are recorded as having a last known address in a zip code with housing prices higher by 7 percentiles than their counterparts who happened to be on unlucky submarines and were not promoted.
+- Early promotion to a job with more responsibility and scope—at least in the WWII-era USN—shapes your life to a remarkable degree by giving you scope to develop and exercise your talents.
+- If the WWII-era USN is typical, we waste huge amounts of human potential by not giving people workplace opportunities to show what they can learn to do.
+- Equality isn’t just about money: it is about scope for action, about developing and exercising talents, and about receiving external validation.
+- A good society would give people much more opportunity to discover how big a deal they are and can become, and remind them of this at every opportunity.
+
+---
+
+layout: false
+name: ethics
+class: center middle section-title section-title-3 animated fadeIn
+
+# Ethics +<br>pre-analysis plans
+
+---
+
+layout: true
+class: middle
+
+---
+
+.box-3.medium[Do people really provide all their code<br>and analysis in advance?<br>What if you realize you made a mistake<br>or want to explore something later?]
+
+.box-3.medium[Does pre-registration kill<br>creativity and "ah-ha" moments?]
+
+---
+
+.box-3.medium[[Example of confirmatory vs.<br>exploratory preregistration](https://osf.io/hsbyd)]
+
+.box-3.medium[[Standard operating procedures](https://github.com/acoppock/Green-Lab-SOP)]
+
+---
+
+layout: false
+name: sharing
+class: center middle section-title section-title-2 animated fadeIn
+
+# Sharing your stuff
+
+---
+
+class: middle
+
+.box-2.large[What can we put<br>on our resumes now?]
+
+---
+
+class: middle
+
+.box-2.large[Can I really just post R stuff<br>on a website or on Twitter?]
+
+.box-2.large[It seems like that's what<br>the experts do, not me!]
+
+.center.small[[(Public work)](https://evalsp22.classes.andrewheiss.com/slides/14-slides.html#133)]
+
+---
+
+class: title title-2
+
+# Websites for sharing R stuff
+
+.box-inv-2[Super easiest (but least flexible): [RPubs](https://rpubs.com/)]
+
+--
+
+.box-inv-2[Easiest (but less flexible): [R Markdown websites](https://rmarkdown.rstudio.com/lesson-13.html)]
+
+.box-2.small[[Example](https://stats.andrewheiss.com/who-cares-about-crackdowns/); [example](https://talks.andrewheiss.com/2021-seacen/)]
+
+--
+
+.box-inv-2.sp-before[Medium-est: [Distill](https://rstudio.github.io/distill/)]
+
+.box-2.small[[Example](https://www.pipinghotdata.com/)]
+
+--
+
+.box-inv-2.sp-before[Hardest (but most flexible): [Blogdown](https://pkgs.rstudio.com/blogdown/)]
+
+.box-2.small[[Example](https://evalsp22.classes.andrewheiss.com/); [example](https://www.andrewheiss.com/)]
+
+---
+
+layout: false
+name: fake-data
+class: center middle section-title section-title-6 animated fadeIn
+
+# Simulating data
+
+---
+
+class: title title-6
+
+# Basic process
+
+.box-inv-6.medium[1: Create individual columns]
+
+.box-inv-6.medium[2: Connect columns]
+
+.box-inv-6.medium[3: Polish columns]
+
+--
+
+.box-6.large.sp-before[Iterate. Iterate so so much.]

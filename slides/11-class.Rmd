@@ -1,0 +1,230 @@
+---
+title: "Class 11: IV I"
+author: "Andrew Heiss"
+date: "`r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    lib_dir: "libs"
+    chakra: "libs/remark-latest.min.js"
+    css: ["default", "css/ath-slides.css", "css/ath-inferno-fonts.css", "css/animate.css"]
+    seal: false
+    anchor_sections: false
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+      navigation:
+        scroll: false
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, 
+                      fig.retina = 3, fig.align = "center")
+```
+
+```{r packages-data, include=FALSE}
+library(tidyverse)
+library(kableExtra)
+library(scales)
+library(ggdag)
+
+set.seed(123456)
+
+status_colors <- c(exposure = "#0074D9", outcome = "#FF851B", latent = "grey50")
+status_colors_backdoor <- c(exposure = "#0074D9", outcome = "#FF851B", latent = "#FF4136")
+
+node_details <- tribble(
+  ~plot1, ~plot2, ~plot3, ~name, ~label, ~x, ~y, ~generic, ~mathy,
+  TRUE, TRUE, TRUE, "treatment", "Education", 1, 1, "Program/policy", "X",
+  TRUE, TRUE, TRUE, "outcome", "Earnings", 3, 1, "Outcome", "Y",
+  FALSE, TRUE, TRUE, "unmeasured", "Ability", 2, 2, "Unmeasured confounders", "U",
+  FALSE, FALSE, TRUE, "instrument", "Father's education", 0, 1, "Instrument", "Z"
+)
+
+node_labels <- node_details$label %>% 
+  set_names(node_details$name)
+
+node_labels_generic <- node_details$generic %>% 
+  set_names(node_details$name)
+```
+
+```{r xaringanExtra, echo=FALSE}
+xaringanExtra::use_xaringan_extra(c("tile_view"))
+```
+
+class: center middle main-title section-title-3
+
+# In-person<br>session 11
+
+.class-info[
+
+**March 31, 2022**
+
+.light[PMAP 8521: Program evaluation<br>
+Andrew Young School of Policy Studies
+]
+
+]
+
+---
+
+name: outline
+class: title title-inv-8
+
+# Plan for today
+
+--
+
+.box-5.medium[Super quick R thing]
+
+--
+
+.box-2.medium[IV questions]
+
+--
+
+.box-6.medium[IV fun times]
+
+---
+
+layout: false
+name: r-stuff
+class: center middle section-title section-title-5 animated fadeIn
+
+# Quick R stuff
+
+---
+
+class: middle
+
+.box-5.large[Why can't we use `rdrobust()`<br>with `tidy()` or `modelsummary()`?]
+
+---
+
+layout: false
+name: iv
+class: center middle section-title section-title-2 animated fadeIn
+
+# IV questions
+
+---
+
+layout: true
+class: middle
+
+---
+
+.box-2[Given the strict criteria for instrumental variables,<br>they seem pretty impractical and uncommon<br>(especially compared to diff-in-diff and RDD).<br><br>Why do you include instrumental variables<br>as a part of this course?]
+
+.box-2[What's really the point of doing IV if finding instruments<br>is so difficult and easy to mess up?]
+
+.box-2.large[Why even bother?]
+
+---
+
+.box-2.medium[Is there like a “bank” of good IVs?<br>Finding the right IV seems like<br>taking a bunny out of a magician’s hat.]
+
+.box-2.medium[Do you have a method that helps you think of instruments, or a popular process that people usually use to come up with ideas?]
+
+---
+
+.box-2.medium[What does it mean to tell a good story about excludability and exogeneity?]
+
+???
+
+- https://braddelong.substack.com/p/podcast-hexapodia-is-e-key-insight-331
+- Matthew Suandi, "Promoting to Opportunity: Evidence and Implications from the U.S. Submarine Service" - https://are.berkeley.edu/sites/are.berkeley.edu/files/job-candidates/paper/MatthewSuandi_JMP_Nov_21_Berkeley.pdf
+
+---
+
+.center[
+<figure>
+  <img src="img/14-class/torpedo.png" alt="WWII torpedo" title="WWII torpedo" width="70%">
+</figure>
+]
+
+???
+
+Via <https://braddelong.substack.com/p/podcast-hexapodia-is-e-key-insight-331>:
+
+- In the early stages of the Pacific War, whether a US submarine-launched torpedo exploded was a matter of luck.
+- If a submarine captain had an enlisted man marked out for promotion, those promotions happened much more often if the submarine returned from its cruise having succeeded in sinking ships.
+- Those promoted because they happened to be on lucky submarines with torpedoes that exploded lived 2.4 years longer than their counterparts who happened to be on unlucky submarines and were not promoted.
+- Those promoted because they happened to be on lucky submarines with torpedoes that exploded are recorded as having a last known address in a zip code with housing prices higher by 7 percentiles than their counterparts who happened to be on unlucky submarines and were not promoted.
+- Early promotion to a job with more responsibility and scope—at least in the WWII-era USN—shapes your life to a remarkable degree by giving you scope to develop and exercise your talents.
+- If the WWII-era USN is typical, we waste huge amounts of human potential by not giving people workplace opportunities to show what they can learn to do.
+- Equality isn’t just about money: it is about scope for action, about developing and exercising talents, and about receiving external validation.
+- A good society would give people much more opportunity to discover how big a deal they are and can become, and remind them of this at every opportunity.
+
+---
+
+.box-2[Why would we use instrumental variables when we can simply use DAGs to control for things instead?]
+
+.box-2[What is the advantage of using an IV versus trying to find a variable that is correlated with the excluded variable of interest? For example, trying to find a variable highly correlated with "ability"? This seems also difficult but less difficult than finding a true IV.]
+
+.box-2[Could we assume that things like “ability” are latent variables and then try to model them directly?]
+
+---
+
+```{r iv-dag-example, echo=FALSE, fig.width=12, fig.height=6, out.width="100%"}
+iv_dag2 <- dagify(outcome ~ treatment + unmeasured,
+                  treatment ~ unmeasured,
+                  exposure = "treatment",
+                  outcome = "outcome",
+                  latent = "unmeasured",
+                  coords = filter(node_details, plot2),
+                  labels =  node_labels) %>% 
+  tidy_dagitty() %>% 
+  node_status() %>% 
+  node_exogenous() %>% 
+  node_dconnected() %>% 
+  control_for("unmeasured")
+
+ggplot(iv_dag2, aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_dag_edges(aes(edge_colour = adjusted),
+                 start_cap = ggraph::circle(3, "lines"),
+                 end_cap = ggraph::circle(3, "lines"),
+                 edge_width = 1.5, 
+                 arrow_directed = grid::arrow(length = grid::unit(0.75, "lines"), type = "closed")) +
+  geom_dag_point(aes(color = status), size = 30) +
+  geom_dag_label_repel(aes(label = label, fill = status), seed = 1234,
+                       color = "white", fontface = "bold", size = 14,
+                       family = "Fira Sans Condensed",
+                       label.padding = grid::unit(0.75, "lines"),
+                       box.padding = grid::unit(6, "lines"),
+                       direction = "y") +
+  scale_color_manual(values = status_colors_backdoor, na.value = "grey20") +
+  ggraph::scale_edge_colour_manual(values = c(unadjusted = "black", adjusted = "#FF4136")) +
+  scale_fill_manual(values = status_colors_backdoor, na.value = "grey20") +
+  guides(color = "none", fill = "none", edge_colour = "none") +
+  theme_dag(base_size = 28)
+```
+
+---
+
+.box-2.less-medium[In the lecture you mentioned that the instrumental variable should be weird (or make people say huh?). However, in *The Effect*, the author states that the instrument should be relevant. This is a bit mixed messaging. Which approach should we use?]
+
+&nbsp;
+
+.center[[Formal definitions of relevancy, excludability, and exogeneity](/slides/11-slides.html#43)]
+
+---
+
+.box-2.less-medium[Why are things like weather, distance, or terrain bad instruments? How do they violate the exclusion restriction?]
+
+.center[[Lecture slides](/slides/11-slides.html#75)]
+
+---
+
+.box-2.medium[Fuzzy RDD requires an instrument,<br>but instruments seem impossible to find,<br>so can we ever really do fuzzy RDD?]
+
+---
+
+layout: false
+name: iv
+class: center middle section-title section-title-6 animated fadeIn
+
+# IV fun times

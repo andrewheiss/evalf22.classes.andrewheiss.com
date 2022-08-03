@@ -1,0 +1,453 @@
+---
+title: "Class 10: Regression discontinuity I"
+author: "Andrew Heiss"
+date: "`r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    lib_dir: "libs"
+    chakra: "libs/remark-latest.min.js"
+    css: ["default", "css/ath-slides.css", "css/ath-inferno-fonts.css", "css/animate.css"]
+    seal: false
+    anchor_sections: false
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+      navigation:
+        scroll: false
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, 
+                      fig.retina = 3, fig.align = "center")
+```
+
+```{r packages-data, include=FALSE}
+library(tidyverse)
+library(kableExtra)
+library(scales)
+```
+
+```{r xaringanExtra, echo=FALSE}
+xaringanExtra::use_xaringan_extra(c("tile_view"))
+```
+
+class: center middle main-title section-title-3
+
+# In-person<br>session 10
+
+.class-info[
+
+**March 24, 2022**
+
+.light[PMAP 8521: Program evaluation<br>
+Andrew Young School of Policy Studies
+]
+
+]
+
+---
+
+name: outline
+class: title title-inv-8
+
+# Plan for today
+
+--
+
+.box-2.medium.sp-after-half[Diff-in-diff effect sizes]
+
+--
+
+.box-5.medium.sp-after-half[Miscellaneous R stuff]
+
+--
+
+.box-6.medium.sp-after-half[RDD fun times]
+
+---
+
+layout: false
+name: ps5
+class: center middle section-title section-title-2 animated fadeIn
+
+# Diff-in-diff effect sizes
+
+---
+
+layout: true
+class: middle
+
+---
+
+.box-2.large[What the heck is happening at<br>the end of problem set 5?!]
+
+---
+
+layout: false
+name: r-stuff
+class: center middle section-title section-title-5 animated fadeIn
+
+# Miscellaneous R stuff
+
+---
+
+layout: true
+class: middle
+
+---
+
+.box-5.large[Is there a way to make<br>the date update automatically<br>in the title area?]
+
+---
+
+.box-5.large[Lines across categories]
+
+---
+
+.box-5.large[What do all those things like<br>"AIC" mean in model tables?]
+
+.box-inv-5.medium[(And do we care about them?)]
+
+???
+
+<https://evalsp22.classes.andrewheiss.com/slides/02-class.html#16>
+
+Goodness of fit stats focus on the outcome; good for prediction
+
+We don’t care so much about that - we care about the one single predictor X - the point of DAGs and quasi-experiments, etc. is identification, which is a theoretical thing, not a numerical thing, so you don’t really need to try to maximize R2 or minimize AIC or whatever
+
+---
+
+.box-5.large[Can we control what<br>shows up in those tables?]
+
+.center[[See this](https://vincentarelbundock.github.io/modelsummary/articles/modelsummary.html)]
+
+---
+
+layout: false
+name: rdd
+class: center middle section-title section-title-6 animated fadeIn
+
+# RDD fun times
+
+---
+
+layout: true
+class: middle
+
+---
+
+.box-6.medium[With RDD we rely on "the rule" to<br>determine treatment and control groups]
+
+.box-6[How do you decide on the rule?<br>You mentioned that it's arbitrary—<br>we can choose whatever rule we want?]
+
+---
+
+.box-6.medium[Can we use RDD to evaluate a program<br>that doesn't have a rule for participation?]
+
+---
+
+.box-6.medium[Is there a rule of thumb to determine which<br>quasi-experimental method we should use?]
+
+.box-6.medium[How do we know which method applies<br>to which circumstance? Does the data tell us?]
+
+---
+
+.pull-left-narrow[
+<figure>
+  <img src="img/10-class/vigdor.png" alt="Jake Vigdor working paper" title="Jake Vigdor working paper" width="100%">
+</figure>
+]
+
+.pull-right-wide.small[
+> Teachers in North Carolina Public schools earn a bonus of $750 if the students in their school meet a standard called "expected growth." A summary statistic called "average growth" is computed for each school; the expected growth standard is met when this summary measure exceeds zero.
+
+> Does getting a bonus in year $t$ cause improved student performance in year $t + 1$?
+]
+
+---
+
+.box-6.large[How common are these kinds of rules<br>in the real world?]
+
+???
+
+- Anything income-based or means-tested - sliding scale community health clinics, school truancy programs
+- Anything with a test: SAT/ACT, AIG programs
+- Elections - causal effect of candidates
+- Grades - 89.49 vs. 89.51
+- Poverty, EITC
+
+---
+
+.center[
+<figure>
+  <img src="img/10-class/goodreads.png" alt="Goodreads" title="Goodreads" width="80%">
+</figure>
+]
+
+---
+
+.box-6.medium[Where do these eligibility thresholds come from? Do policy makers research them first and reexamine them later?]
+
+---
+
+layout: true
+class: title title-6
+
+---
+
+# Discontinuities everywhere!
+
+.pull-left-wide.small[
+```{r poverty-table, echo=FALSE}
+poverty_line <- tibble::tribble(
+  ~Size, ~Annual, ~Monthly, ~`138%`, ~`150%`, ~`200%`,
+  1,     12760,   1063,     17609,   19140,   25520,  
+  2,     17240,   1437,     23791,   25860,   34480,  
+  3,     21720,   1810,     29974,   32580,   43440,  
+  4,     26200,   2183,     36156,   39300,   52400,  
+  5,     30680,   2557,     42338,   46020,   61360,  
+  6,     35160,   2930,     48521,   52740,   70320,  
+  7,     39640,   3303,     54703,   59460,   79280,  
+  8,     44120,   3677,     60886,   66180,   88240
+)
+
+poverty_line %>% 
+  mutate(across(-Size, dollar)) %>% 
+  kbl(align = "c")
+```
+]
+
+.pull-right-narrow[
+.box-inv-6.smaller[**Medicaid**<br>138%*]
+
+.box-inv-6.smaller[**ACA subsidies**<br>138–400%*]
+
+.box-inv-6.smaller[**CHIP**<br>200%]
+
+.box-inv-6.smaller[**SNAP/Free lunch**<br>130%]
+
+.box-inv-6.smaller[**Reduced lunch**<br>130–185%]
+]
+
+---
+
+# The US's official poverty measure
+
+.pull-left.center[
+<figure>
+  <img src="img/10-class/orshansky.jpg" alt="Mollie Orshansky" title="Mollie Orshansky" width="70%">
+  <figcaption>Mollie Orshansky</figcaption>
+</figure>
+]
+
+.pull-right[
+.box-inv-6[Formula created in 1963]
+
+.box-inv-6[Based solely on food expenses from a survey of household budgets in 1955]]
+
+???
+
+- <https://www.census.gov/topics/income-poverty/poverty/about/history-of-the-poverty-measure.html>
+- <https://www.ssa.gov/policy/docs/ssb/v68n3/v68n3p79.html>
+
+---
+
+# The US's official poverty measure
+
+.box-inv-6[Official formula:]
+
+--
+
+.box-6.medium[**1955 annual food budget × 3**]
+
+--
+
+.box-inv-6[That's all!]
+
+<br>
+
+--
+
+.box-inv-6[In 1963 poverty line was 50% of median income;<br>in 2005 it was 28%; 18% today]
+
+---
+
+layout: true
+class: middle
+
+---
+
+.box-6[Why don't we change it?]
+
+.center[
+<iframe width="800" height="450" src="https://www.youtube.com/embed/q9EehZlw-zk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+]
+
+---
+
+.center[
+<figure>
+  <img src="img/10-class/eitc-phaseout.png" alt="EITC phase out" title="EITC phase out" width="75%">
+</figure>
+]
+
+---
+
+.center[
+<figure>
+  <img src="img/10-class/ctc-phase-out.jpg" alt="CTC phase out" title="CTC phase out" width="75%">
+</figure>
+]
+
+---
+
+.box-6.medium[What if there are multiple cutoffs?]
+
+.box-inv-6[College admission is based on GPA *and* test scores…]
+
+.box-inv-6[WIC/SNAP/Medicaid are based on income *and* family size…]
+
+---
+
+.pull-left[
+<figure>
+  <img src="img/10-class/one-running-var.png" alt="One running variable" title="One running variable" width="100%">
+</figure>
+]
+
+--
+
+.pull-left[
+<figure>
+  <img src="img/10-class/multiple-running-vars.png" alt="Multiple running variables" title="Multiple running variables" width="100%">
+</figure>
+]
+
+---
+
+.box-6.large[Why do we center<br>the running variable?]
+
+---
+
+.box-6.large[Regression is just fancy averages!]
+
+---
+
+```{r tutoring-plot, echo=FALSE, fig.width=8, fig.height=4.25, out.width="100%"}
+library(tidyverse)
+library(broom)
+
+tutoring <- read_csv("data/tutoring_program.csv")
+
+ggplot(tutoring, aes(x = entrance_exam, y = exit_exam)) +
+  geom_point(size = 1, alpha = 0.5) +
+  # x
+  geom_smooth(data = filter(tutoring, entrance_exam <= 70, entrance_exam >= 60),
+              method = "lm", se = FALSE, size = 2) +
+  geom_smooth(data = filter(tutoring, entrance_exam > 70, entrance_exam <= 80),
+              method = "lm", se = FALSE, size = 2) +
+  coord_cartesian(xlim = c(60, 80)) +
+  geom_vline(xintercept = 70) +
+  labs(x = "Entrance exam score", y = "Exit exam score", color = "Used tutoring")
+```
+
+---
+
+```{r}
+lm(exit_exam ~ entrance_exam + tutoring,
+   data = filter(tutoring, entrance_exam <= 80, 
+                 entrance_exam >= 60)) %>% 
+  tidy()
+```
+
+---
+
+```{r}
+tutoring_centered <- tutoring %>%
+  mutate(entrance_centered = entrance_exam - 70)
+
+lm(exit_exam ~ entrance_centered + tutoring,
+   data = filter(tutoring_centered, entrance_exam <= 80, 
+                 entrance_exam >= 60)) %>% 
+  tidy()
+```
+
+---
+
+```{r tutoring-plot-3, echo=FALSE, fig.width=8, fig.height=4.25, out.width="100%"}
+ggplot(tutoring, aes(x = entrance_exam, y = exit_exam)) +
+  geom_point(size = 1, alpha = 0.5) +
+  # x
+  geom_smooth(data = filter(tutoring, entrance_exam <= 70, entrance_exam >= 60),
+              method = "lm", se = FALSE, size = 2, aes(color = "x")) +
+  geom_smooth(data = filter(tutoring, entrance_exam > 70, entrance_exam <= 80),
+              method = "lm", se = FALSE, size = 2, aes(color = "x")) +
+  # x^3
+  geom_smooth(data = filter(tutoring, entrance_exam <= 70, entrance_exam >= 60),
+              method = "lm", formula = y ~ poly(x, 3),
+              se = FALSE, size = 2, aes(color = "x^3")) +
+  geom_smooth(data = filter(tutoring, entrance_exam > 70, entrance_exam <= 80),
+              method = "lm", formula = y ~ poly(x, 3),
+              se = FALSE, size = 2, aes(color = "x^3")) +
+  coord_cartesian(xlim = c(60, 80)) +
+  geom_vline(xintercept = 70) +
+  labs(x = "Entrance exam score", y = "Exit exam score", color = "Used tutoring")
+```
+
+---
+
+.box-6.large[What's the difference between weighting with kernels and inverse probability weighting?]
+
+???
+
+- <https://evalsp22.classes.andrewheiss.com/slides/07-slides.html#122>
+- <https://evalsp22.classes.andrewheiss.com/slides/10-slides.html#87>
+- <https://evalsp22.classes.andrewheiss.com/slides/10-slides.html#95>
+
+---
+
+.box-6.medium[There must be some math behind for the non-parametric lines. Should we care about that or should we just trust in R?]
+
+???
+
+- <https://evalsp22.classes.andrewheiss.com/slides/10-slides.html#75>
+
+---
+
+.box-6.medium[How do we decide on the right model?]
+
+.center[
+- Parametric with $y = x$?
+- With $y = x^2 + x$? 
+- With $y = x^\text{whatever} + x^\text{whatever} + x$? 
+- Nonparametric? 
+- `rdrobust()` or just `lm()`? 
+- Controls or no controls?
+]
+
+---
+
+.box-6.medium[How do you justify a bandwidth?]
+
+.box-6.medium[Does the bandwidth need to be<br>the same on both sides?]
+
+---
+
+.box-6.less-medium[How should we think about the impact of the program on people who score really high or low on the running variable?]
+
+.box-6.less-medium[If we're throwing most of the data away and only looking at a narrow bandwidth of people, what does this say about generalizability?]
+
+---
+
+.box-6.medium[What do we do about noncompliance?]
+
+.box-6.medium[What is fuzzy regression discontinuity?]
+
+---
+
+.box-6.huge[RD play time!]

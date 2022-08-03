@@ -1,0 +1,401 @@
+---
+title: "Class 9: Diff-in-diff II"
+author: "Andrew Heiss"
+date: "`r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    lib_dir: "libs"
+    chakra: "libs/remark-latest.min.js"
+    css: ["default", "css/ath-slides.css", "css/ath-inferno-fonts.css", "css/animate.css"]
+    seal: false
+    anchor_sections: false
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+      navigation:
+        scroll: false
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, 
+                      fig.retina = 3, fig.align = "center")
+```
+
+```{r packages-data, include=FALSE}
+library(tidyverse)
+library(ggdag)
+library(palmerpenguins)
+library(modelsummary)
+```
+
+```{r xaringanExtra, echo=FALSE}
+xaringanExtra::use_xaringan_extra(c("tile_view"))
+```
+
+class: center middle main-title section-title-3
+
+# In-person<br>session 9
+
+.class-info[
+
+**March 10, 2022**
+
+.light[PMAP 8521: Program evaluation<br>
+Andrew Young School of Policy Studies
+]
+
+]
+
+---
+
+name: outline
+class: title title-inv-8
+
+# Plan for today
+
+--
+
+.box-3.medium[General questions]
+
+--
+
+.box-7.medium[Final project]
+
+--
+
+.box-1.medium[Simple diff-in-diff]
+
+--
+
+.box-6.medium[Two-way fixed effects]
+
+--
+
+.box-2.medium[Sensitivity analysis]
+
+---
+
+layout: false
+name: general-questions
+class: center middle section-title section-title-3 animated fadeIn
+
+# General questions
+
+---
+
+class: middle
+
+.box-3.large[Should we control for variables<br>to close as many backdoors as<br>possible in our diff-in-diff model?]
+
+---
+
+class: title title-3
+
+# Design-based identification
+
+.box-inv-3[Use a special situation to isolate arrow]
+
+.pull-left[
+.box-3[RCTs]
+
+.box-inv-3.small[Use randomization<br>to remove confounding]
+
+.center[
+<figure>
+  <img src="05-slides_files/figure-html/experimental-dag-1.png" alt="RCT DAG" title="RCT DAG" width="60%">
+</figure>
+]
+]
+
+--
+
+.pull-right[
+.box-3[Difference-in-differences]
+
+.box-inv-3.small[Use before/after & treatment/control<br>differences to remove confounding]
+
+.center[
+<figure>
+  <img src="08-slides_files/figure-html/min-wage-dag-1.png" alt="Diff-in-diff DAG" title="Diff-in-diff DAG" width="90%">
+</figure>
+]
+]
+
+---
+
+layout: true
+class: middle
+
+---
+
+.box-3.large[How does moving time back<br>let us check for parallel trends?]'
+
+---
+
+.center[
+<figure>
+  <img src="img/08-class/mm-fig-5-4.png" alt="Mastering Metrics Figure 5.4" title="Mastering Metrics Figure 5.4" width="65%">
+</figure>
+]
+
+---
+
+.box-3.large[Can you conduct diff-in-diff<br>with a binary outcome?]
+
+---
+
+.box-3.large[I keep reading about estimates, estimands, and estimators.<br>What are these and are they the same thing?]
+
+---
+
+layout: false
+class: title title-3
+
+# Estima(and|or|ate)s
+
+.box-inv-3.less-medium[Estimand]
+
+.box-3.sp-after[Theoretical thing you want to know (β)]
+
+.box-inv-3.less-medium[Estimator]
+
+.box-3.sp-after[Process for guessing the thing .small[(e.g., diff-in-diff with interaction term)]]
+
+.box-inv-3.less-medium[Estimate]
+
+.box-3[The guess (β-hat)]
+
+---
+
+class: middle
+
+.center[
+<figure>
+  <img src="img/09-class/estimandateor.jpg" alt="Estimandateor" title="Estimandateor" width="45%">
+</figure>
+]
+
+???
+
+<https://twitter.com/WomenInStat/status/1449068312873287682>
+
+---
+
+class: middle
+
+.center[
+<figure>
+  <img src="img/09-class/estimands-methods.png" alt="Estimand methods" title="Estimand methods" width="75%">
+</figure>
+]
+
+???
+
+<https://arxiv.org/abs/2106.10577>
+
+---
+
+class: middle
+
+.center[
+<figure>
+  <img src="img/09-class/flowchart.png" alt="Estimand flowchart" title="Estimand flowchart" width="100%">
+</figure>
+]
+
+---
+
+class: middle
+
+.center[
+<figure>
+  <img src="img/09-class/three-step-process.png" alt="Three-step process" title="Three-step process" width="75%">
+</figure>
+]
+
+---
+
+layout: false
+name: final-project
+class: center middle section-title section-title-7 animated fadeIn
+
+# Final project
+
+---
+
+class: middle
+
+.box-7.large[Tell us more about<br>the final project!]
+
+---
+
+layout: false
+name: diff-in-diff
+class: center middle section-title section-title-1 animated fadeIn
+
+# Simple diff-in-diff
+
+---
+
+layout: true
+class: middle
+
+---
+
+.box-1.large[Minimum legal drinking age]
+
+---
+
+.box-inv-1.medium[MLDA reduction]
+
+.box-1.medium[Two states: Alabama vs. Arkansas]
+
+$$\begin{aligned}
+\text{Mortality}\ =&\ \beta_0 + \beta_1\ \text{Alabama} + \beta_2\ \text{After 1975}\ + \\
+&\ \beta_3\ (\text{Alabama} \times \text{After 1975})
+\end{aligned}$$
+
+---
+
+.box-inv-1.medium[Organ donations]
+
+.box-1.medium[Two states: California vs. New Jersey]
+
+$$\begin{aligned}
+\text{Donation rate}\ =&\ \beta_0 + \beta_1\ \text{California} + \beta_2\ \text{After Q22011}\ + \\
+&\ \beta_3\ (\text{California} \times \text{After Q22011})
+\end{aligned}$$
+
+---
+
+layout: false
+name: twfe
+class: center middle section-title section-title-6 animated fadeIn
+
+# Two-way fixed effects<br>(TWFE)
+
+---
+
+layout: true
+class: middle
+
+---
+
+.box-6.medium[Two states: Alabama vs. Arkansas]
+
+$$\begin{aligned}
+\text{Mortality}\ =&\ \beta_0 + \beta_1\ \text{Alabama} + \beta_2\ \text{After 1975}\ + \\
+&\ \beta_3\ (\text{Alabama} \times \text{After 1975})
+\end{aligned}$$
+
+---
+
+.box-6.medium[All states: `Treatment == 1`<br>if legal for 18-20-year-olds to drink]
+
+$$\text{Mortality}\ =\ \beta_0 + \beta_1\ \text{Treatment} + \beta_2\ \text{State} + \beta_3\ \text{Year}$$
+
+---
+
+$$\begin{aligned}
+\text{Mortality}\ =&\ \beta_0 + \beta_1\ \text{Alabama} + \beta_2\ \text{After 1975}\ + \\
+&\ \color{red}{\beta_3}\ (\text{Alabama} \times \text{After 1975})
+\end{aligned}$$
+
+.center[vs.]
+
+$$\text{Mortality}\ =\ \beta_0 + \color{red}{\beta_1}\ \text{Treatment} + \beta_2\ \text{State} + \beta_3\ \text{Year}$$
+
+---
+
+$$\begin{aligned}
+\text{Mortality}\ =&\ \beta_0 + \beta_1\ \text{Alabama} + \beta_2\ \text{After 1975}\ + \\
+&\ \color{red}{\beta_3}\ (\text{Alabama} \times \text{After 1975})
+\end{aligned}$$
+
+.center[vs.]
+
+$$\text{Mortality}\ =\ \beta_0 + \color{red}{\beta_1}\ \text{Treatment} + \beta_2\ \text{State} + \beta_3\ \text{Year}$$
+
+.center[vs.]
+
+$$\begin{aligned}
+\text{Mortality}\ =\ & \beta_0 + \color{red}{\beta_1}\ \text{Treatment} + \beta_2\ \text{State} + \beta_3\ \text{Year}\ +\\
+&\beta_4\ (\text{State} \times \text{Year})
+\end{aligned}$$
+
+---
+
+.center[
+<figure>
+  <img src="img/08-class/mm-tbl-5-2.png" alt="Mastering Metrics Table 5.2" title="Mastering Metrics Table 5.2" width="55%">
+</figure>
+]
+
+---
+
+$$\begin{aligned}
+\text{Donation rate}\ =&\ \beta_0 + \beta_1\ \text{California} + \beta_2\ \text{After Q22011}\ + \\
+&\ \color{red}{\beta_3}\ (\text{California} \times \text{After Q22011})
+\end{aligned}$$
+
+.center[vs.]
+
+$$
+\begin{aligned}
+\text{Donation rate}\ =\ & \beta_0 + \color{red}{\beta_1}\ \text{Treatment}\ + \\
+& \beta_2\ \text{State} + \beta_3\ \text{Quarter}
+\end{aligned}
+$$
+
+---
+
+.box-6.large[What about this<br>staggered treatment stuff?]
+
+.box-inv-6[[See this](https://www.andrewheiss.com/blog/2021/08/25/twfe-diagnostics/)]
+
+???
+
+This is good for ethical reasons!
+
+Blog post
+
+---
+
+.box-6.large[What are random effects?]
+
+.box-inv-6[[See this](https://www.andrewheiss.com/blog/2021/12/01/multilevel-models-panel-data-guide/)]
+
+---
+
+layout: false
+name: sensitivity
+class: center middle section-title section-title-2 animated fadeIn
+
+# Sensitivity analysis
+
+---
+
+layout: true
+class: middle
+
+---
+
+.box-2.medium.sp-after[How do we know when we've got<br>the right confounders in our DAG?]
+
+.box-2.medium[How do we solve the fact that<br>we have so many unknowns in our DAG?]
+
+---
+
+.center[
+<figure>
+  <img src="img/08-class/2020-2021-meme-garnick-1.jpg" alt="OVB" title="OVB" width="40%">
+</figure>
+]
+
+???
+
+https://owenozier.github.io/teaching/2020-2021-memes

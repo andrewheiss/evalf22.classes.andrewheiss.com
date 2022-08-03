@@ -1,0 +1,484 @@
+---
+title: "Class 5: DAGs, do()ing stuff, and measuring stuff"
+author: "Andrew Heiss"
+date: "`r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    lib_dir: "libs"
+    chakra: "libs/remark-latest.min.js"
+    css: ["default", "css/ath-slides.css", "css/ath-inferno-fonts.css", "css/animate.css"]
+    seal: false
+    anchor_sections: false
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+      navigation:
+        scroll: false
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, 
+                      fig.retina = 3, fig.align = "center")
+```
+
+```{r packages-data, include=FALSE}
+library(tidyverse)
+library(ggdag)
+library(palmerpenguins)
+library(modelsummary)
+```
+
+```{r xaringanExtra, echo=FALSE}
+xaringanExtra::use_xaringan_extra(c("tile_view"))
+```
+
+class: center middle main-title section-title-3
+
+# In-person<br>session 5
+
+.class-info[
+
+**February 10, 2022**
+
+.light[PMAP 8521: Program evaluation<br>
+Andrew Young School of Policy Studies
+]
+
+]
+
+---
+
+name: outline
+class: title title-inv-8
+
+# Plan for today
+
+--
+
+.box-2.medium.sp-after-half[Potential outcomes vs. do() notation]
+
+--
+
+.box-4.medium.sp-after-half[do-calculus, adjustment, and CATEs]
+
+--
+
+.box-6.medium.sp-after-half[Logic models, DAGs, and measurement]
+
+---
+
+layout: false
+name: po-do
+class: center middle section-title section-title-2 animated fadeIn
+
+# Potential outcomes<br>vs. do() notation
+
+---
+
+layout: true
+class: title title-2
+
+---
+
+# Expectations
+
+<br>
+
+.large[
+$$\operatorname{E}(\cdot), \mathbf{E}(\cdot), \mathbb{E}(\cdot) \quad \text{vs.}\quad \operatorname{P}(\cdot)$$
+]
+
+.box-inv-2.small[Basically a fancy way of saying "average"]
+
+---
+
+# Causal effects with potential outcomes
+
+$$
+\begin{aligned}
+& \textbf{Potential outcomes notation:} \\
+\delta\ =&\ {\textstyle \frac{1}{n} \sum_{i=1}^n} Y_i (1) - Y_i (0) \\
+& \\
+& \text{or alternatively with } \textbf{E} \\
+\delta\ =&\ \textbf{E} [Y_i (1) - Y_i (0)] \\
+\end{aligned}
+$$
+
+---
+
+# Causal effects with do()
+
+$$
+\begin{aligned}
+& \textbf{Pearl notation:} \\
+\delta\ =&\ \textbf{E}[Y_i \mid \operatorname{do}(X = 1) - Y_i \mid \operatorname{do}(X = 0)] \\
+& \\
+& \text{or more simply} \\
+\delta\ =&\ \textbf{E} [Y_i \mid \operatorname{do}(X)] \\
+\end{aligned}
+$$
+
+---
+
+layout: false
+class: middle
+
+<br>
+
+.large[
+$$
+\begin{aligned}
+\textbf{E} [Y_i\ \mid\ &\operatorname{do}(X)] \quad  \\
+&= \\
+\quad \textbf{E} [Y_i (1&) - Y_i (0)]
+\end{aligned}
+$$
+]
+
+---
+
+.box-2.medium[We can't see this]
+
+$$\textbf{E} [Y_i \mid \operatorname{do}(X)] \quad \text{or} \quad \textbf{E} [Y_i (1) - Y_i (0)]$$
+
+.box-2.medium[So we find the average causal effect (ACE)]
+
+$$
+\hat{\delta} = \textbf{E} [Y_i \mid X = 1] - \textbf{E} [Y_i \mid X = 0]
+$$
+
+---
+
+.center[
+<figure>
+  <img src="img/05-class/cor-not-cause.png" alt="Correlation is not causation" title="Correlation is not causation" width="100%">
+</figure>
+]
+
+---
+
+layout: false
+name: po-do
+class: center middle section-title section-title-4 animated fadeIn
+
+# do-calculus,<br>adjustment, and CATEs
+
+---
+
+layout: true
+class: title title-4
+
+---
+
+# DAGs and identification
+
+--
+
+.box-inv-4.medium[DAGs are a statistical tool, but they don't<br>tell you what statistical method to use]
+
+--
+
+.box-inv-4.medium[DAGs help you with the **identification strategy**]
+
+---
+
+layout: false
+class: middle
+
+<figure>
+  <img src="img/05-class/massie-tweet.png" alt="Thomas Massie tweet" title="Thomas Massie tweet" width="100%">
+</figure>
+
+???
+
+<https://twitter.com/RepThomasMassie/status/1491441851748204546>
+
+---
+
+class: middle
+
+.box-4[.medium[What are the data requirements to use<br>do-calculus to answer a research question]<br>.small[(e.g., variables, sample size, distribution of values, etc.)?]]
+
+---
+
+class: title title-4
+
+# Easist identification
+
+.box-inv-4.medium[Identification through research design]
+
+.box-inv-4.sp-after[RCTs]
+
+.box-4[When treatment is randomized, delete all arrows going into it]
+
+.box-4.medium[No need for any do-calculus!]
+
+---
+
+class: title title-4
+
+# Most other identification
+
+.box-inv-4.medium[Identification through do-calculus]
+
+.box-inv-4.sp-after[Rules for graph surgery]
+
+.box-4[Backdoor adjustment and frontdoor adjustment<br>are special common patterns of do-calculus]
+
+---
+
+class: middle
+
+.box-4.medium[Where can we learn more about *do*-calculus?]
+
+.center[[Here!](https://www.andrewheiss.com/blog/2021/09/07/do-calculus-backdoors/)]
+
+.center[
+<figure>
+  <img src="img/05-class/do-calculus-math.png" alt="Do-calculus" title="Do-calculus" width="70%">
+</figure>
+]
+
+---
+
+**Rule 1**: Decide if we can ignore an observation
+
+.small[
+$$P(y \mid z, \operatorname{do}(x), w) = P(y \mid \operatorname{do}(x), w) \qquad \text{ if } (Y \perp Z \mid W, X)_{G_{\overline{X}}}$$
+]
+
+<br>**Rule 2**: Decide if we can treat an intervention as an observation
+
+.small[
+$$P(y \mid \operatorname{do}(z), \operatorname{do}(x), w) = P(y \mid z, \operatorname{do}(x), w) \qquad \text{ if } (Y \perp Z \mid W, X)_{G_{\overline{X}, \underline{Z}}}$$
+]
+
+<br>**Rule 3**: Decide if we can ignore an intervention
+
+.small[
+$$P(y \mid \operatorname{do}(z), \operatorname{do}(x), w) = P(y \mid \operatorname{do}(x), w) \qquad \text{ if } (Y \perp Z \mid W, X)_{G_{\overline{X}, \overline{Z(W)}}}$$
+]
+
+---
+
+class: middle
+
+<figure>
+  <img src="img/05-class/backdoor-derivation.png" alt="Backdoor adjustment derivation" title="Backdoor adjustment derivation" width="100%">
+</figure>
+
+---
+
+.box-4.medium[Adjusting for backdoor confounding]
+
+.center[
+<figure>
+  <img src="img/05-class/backdoor.png" alt="Backdoor adjustment" title="Backdoor adjustment" width="100%">
+</figure>
+]
+
+
+---
+
+layout: true
+class: middle
+
+---
+
+.box-4.medium[Adjusting for frontdoor confounding]
+
+???
+
+Smoking/tar + Uber
+
+Effect of shared rides on tips; use frontdoor magic
+
+Like IV but in reverse:
+
+- IV: instrument → treatment → outcome
+- Frontdoor: treatment → instrumenty-mediator → outcome
+
+```text
+dag {
+bb="0,0,1,1"
+"Actually take shared ride" [pos="0.528,0.508"]
+"Authorize shared ride" [exposure,pos="0.288,0.504"]
+"Lots of unobserved stuff" [pos="0.521,0.342"]
+"Tip driver" [outcome,pos="0.743,0.518"]
+"Actually take shared ride" -> "Tip driver"
+"Authorize shared ride" -> "Actually take shared ride"
+"Lots of unobserved stuff" -> "Authorize shared ride"
+"Lots of unobserved stuff" -> "Tip driver"
+}
+```
+
+<https://twitter.com/andrewheiss/status/1361686426820222977>
+
+---
+
+.box-4.medium[More complex DAGs without<br>obvious backdoor or frontdoor solutions]
+
+.box-4.sp-after[Chug through the rules of do-calculus<br>to see if the relationship is identifiable]
+
+.center[[Causal Fusion](https://causalfusion.net/)]
+
+---
+
+.center[
+<figure>
+  <img src="img/05-class/fusion1.png" alt="Causal Fusion example" title="Causal Fusion example" width="100%">
+</figure>
+]
+
+---
+
+.center[
+<figure>
+  <img src="img/05-class/fusion2.png" alt="Causal Fusion example" title="Causal Fusion example" width="100%">
+</figure>
+]
+
+---
+
+.center[
+<figure>
+  <img src="img/05-class/fusion3.png" alt="Causal Fusion example" title="Causal Fusion example" width="100%">
+</figure>
+]
+
+---
+
+.center[
+<figure>
+  <img src="img/05-class/fusion4.png" alt="Causal Fusion example" title="Causal Fusion example" width="100%">
+</figure>
+]
+
+---
+
+.box-4.less-medium.sp-after[When things are identified, there are<br>still arrows leading into Y.<br>What do we do with those?<br>How do you explain those relationships?]
+
+--
+
+.box-4.less-medium[Outcomes have multiple causes.<br>How do you justify that your proposed<br>cause is the most causal factor?]
+
+???
+
+100% depends on your research question
+
+---
+
+.box-4.medium[How do we know if the<br>DAG is correct or complete?]
+
+---
+
+.box-4.medium[Why can't we just subtract the averages<br>between treated and untreated groups?]
+
+---
+
+.box-4.medium[When you're making groups for CATE, how do<br>you decide what groups to put people in?]
+
+---
+
+layout: false
+class: title title-4
+
+# Unconfoundedness assumption
+
+.box-inv-4[How can we assume/pretend that treatment was<br>randomly assigned within each age?]
+
+.box-inv-4[It seems unlikely. Wouldn't there be other factors within the older/younger group that make a person more/less likely to engage in treatment (e.g., health status)?]
+
+<br>
+
+.center[[Slides from lecture](https://evalsp22.classes.andrewheiss.com/slides/05-slides.html#58)]
+
+---
+
+class: middle
+
+.box-4.medium[Does every research question<br>need an identification strategy?]
+
+--
+
+.box-inv-4.huge.sp-after[No!]
+
+.box-4[Correlation alone is okay!<br>Can lead to more focused causal questions later!]
+
+---
+
+class: middle
+
+.center[
+<figure>
+  <img src="img/05-class/moderna-ebv.png" alt="Moderna EBV trials" title="Moderna EBV trials" width="65%">
+</figure>
+]
+
+???
+
+A correlational study found that MS was strongly associated with Epstein-Barr virus (EBV) - they don't know the exact mechanism yet, but because of mRNA vaccine technology, they can develop vaccines against EBV and help stop MS. They'll figure out exact mechanisms later. For now, they've started clinical trials.
+
+<https://www.forbes.com/sites/roberthart/2022/01/14/moderna-starts-human-trials-of-mrna-vaccine-for-virus-that-likely-causes-multiple-sclerosis/?sh=74f52ca51a04>
+
+---
+
+layout: false
+name: logic-dag
+class: center middle section-title section-title-6 animated fadeIn
+
+# Logic models, DAGs,<br>and measurement
+
+---
+
+layout: true
+class: middle
+
+---
+
+.box-6.large[What's the difference between<br>logic models and DAGs?]
+
+.box-inv-6[Can't I just remake my logic model in Dagitty and be done?]
+
+---
+
+layout: false
+class: title title-6
+
+# DAGs vs. Logic models
+
+.box-6.large[DAGs are a *statistical* tool]
+
+.box-inv-6[Describe a data-generating process<br>and isolate/identify relationships]
+
+--
+
+.box-6.large.sp-before[Logic models are a *managerial* tool]
+
+.box-inv-6[Oversee the inner workings of a program and its theory]
+
+---
+
+class: middle
+
+.pull-left[
+<figure>
+  <img src="img/04-class/greenspace-eater.png" alt="Green space in Berkeley" title="Green space in Berkeley" width="100%">
+</figure>
+]
+
+.pull-right[
+<figure>
+  <img src="img/04-class/greenspace-conversation.png" alt="Covid green spaces" title="Covid green spaces" width="100%">
+</figure>
+]
+
+???
+
+<https://theconversation.com/how-cities-can-add-accessible-green-space-in-a-post-coronavirus-world-139194>
+
+<https://sf.eater.com/2020/5/14/21258980/berkeley-coronavirus-covid-19-jesse-arreguin-street-closures>

@@ -1,0 +1,1374 @@
+---
+title: "Ethics, stories, and curiosity"
+author: "Andrew Heiss"
+date: "`r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    lib_dir: "libs"
+    chakra: "libs/remark-latest.min.js"
+    css: ["default", "css/ath-slides.css", "css/ath-inferno-fonts.css", "css/animate.css"]
+    seal: false
+    anchor_sections: false
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+      navigation:
+        scroll: false
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, 
+                      fig.retina = 3, fig.align = "center")
+```
+
+```{r xaringanExtra, echo=FALSE}
+xaringanExtra::use_xaringan_extra(c("tile_view"))
+```
+
+class: center middle main-title section-title-7
+
+# Ethics, stories,<br>and curiosity
+
+.class-info[
+
+**Session 14**
+
+.light[PMAP 8521: Program evaluation<br>
+Andrew Young School of Policy Studies
+]
+
+]
+
+---
+
+name: outline
+class: title title-inv-8
+
+# Plan for today
+
+--
+
+.box-4.medium.sp-after-half[What did we just learn?]
+
+--
+
+.box-6.medium.sp-after-half[Ethics of data analytics]
+
+--
+
+.box-2.medium.sp-after-half[Ethics of storytelling]
+
+--
+
+.box-5.medium.sp-after-half[Curiosity]
+
+---
+
+layout: false
+name: overview
+class: center middle section-title section-title-4 animated fadeIn
+
+# What did we just learn?
+
+---
+
+.center[
+<figure>
+  <img src="img/14/course-objectives.png" alt="Course objectives" title="Course objectives" width="68%">
+</figure>
+]
+
+---
+
+class: middle
+
+.center[
+<figure>
+  <img src="img/01/eval-flowchart.png" alt="Class flowchart" title="Class flowchart" width="100%">
+</figure>
+]
+
+---
+
+class: title title-4
+
+# Main takeaways
+
+--
+
+.box-inv-4.medium.sp-after[Don't be afraid of causal language!]
+
+--
+
+.box-4.medium[With careful use of DAGs<br>and special research designs,<br>you can make causal claims]
+
+---
+
+class: bg-full
+background-image: url("img/14/the-c-word.png")
+
+---
+
+layout: false
+name: ethics-analysis
+class: center middle section-title section-title-6 animated fadeIn
+
+# Ethics of data analytics
+
+---
+
+layout: true
+class: title title-6
+
+---
+
+# Powerful tools
+
+--
+
+.box-inv-6.medium.sp-after-half[R is an incredibly valuable skill]
+
+--
+
+.box-inv-6.medium.sp-after-half[Causal inference is an incredibly valuable skill]
+
+--
+
+.box-6.medium.sp-after-half[These tools can be used to improve the world!]
+
+--
+
+.box-6.medium[And potentially harm it]
+
+---
+
+# Possible pitfalls
+
+--
+
+.box-inv-6.medium[Manipulation]
+
+.box-6.small[Don't coerce people]
+
+--
+
+.box-inv-6.medium[Bias]
+
+.box-6.small[There's no such thing as objective data or models]
+
+--
+
+.box-inv-6.medium[Accidental evil]
+
+.box-6.small[Don't let stupidity transform into evil]
+
+---
+
+layout: false
+name: analysis-manipulation
+class: center middle section-title-inv section-title-inv-6
+
+# Manipulation
+
+---
+
+class: middle
+
+.center[
+<figure>
+  <img src="img/14/good-place.jpg" alt="The Good Place" title="The Good Place" width="95%">
+</figure>
+]
+
+---
+
+class: middle
+
+.center[
+<figure>
+  <img src="img/14/good-place-points.jpeg" alt="The Good Place point system" title="The Good Place point system" width="95%">
+</figure>
+]
+
+---
+
+class: middle
+
+.center[
+<figure>
+  <img src="img/14/wired-cover.jpg" alt="Wired social score cover" title="Wired social score cover" width="40%">
+</figure>
+]
+
+???
+
+<https://www.wired.com/story/age-of-social-credit/>
+
+---
+
+class: middle
+
+.center[
+<figure>
+  <img src="img/14/china-bus.jpg" alt="China bus" title="China bus" width="85%">
+</figure>
+]
+
+???
+
+<https://boingboing.net/2018/11/26/just-dont-have-a-face.html>
+
+---
+
+class: middle
+
+.center[
+<figure>
+  <img src="img/14/instagram-ranking.png" alt="Instagram ranking" title="Instagram ranking" width="50%">
+</figure>
+]
+
+???
+
+<https://techcrunch.com/2018/06/01/how-instagram-feed-works/>
+
+---
+
+class: middle
+
+.center[
+<figure>
+  <img src="img/14/blue-feed-red-feed.png" alt="Blue Feed, Red Feed" title="Blue Feed, Red Feed" width="100%">
+</figure>
+]
+
+???
+
+<http://graphics.wsj.com/blue-feed-red-feed/>
+
+---
+
+class: middle
+
+.center[
+<figure>
+  <img src="img/14/blue-feed-red-feed-example.png" alt="Blue Feed, Red Feed Example" title="Blue Feed, Red Feed Example" width="40%">
+</figure>
+]
+
+???
+
+<http://graphics.wsj.com/blue-feed-red-feed/#/president-trump>
+
+---
+
+class: middle
+
+.center[
+<figure>
+  <img src="img/14/fb-like-everything.png" alt="Facebook like everything" title="Facebook like everything" width="80%">
+</figure>
+]
+
+???
+
+<https://www.wired.com/2014/08/i-liked-everything-i-saw-on-facebook-for-two-days-heres-what-it-did-to-me/>
+
+---
+
+class: middle
+
+.center[
+<figure>
+  <img src="img/14/fb-spying.png" alt="Reply All Facebook Spying" title="Reply All Facebook Spying" width="100%">
+</figure>
+]
+
+???
+
+<https://www.gimletmedia.com/reply-all/109-facebook-spying>
+
+---
+
+class: middle
+
+.center[
+<figure>
+  <img src="img/14/target-pregnant.png" alt="Target pregnant teen" title="Target pregnant teen" width="78%">
+</figure>
+]
+
+???
+
+<https://www.forbes.com/sites/kashmirhill/2012/02/16/how-target-figured-out-a-teen-girl-was-pregnant-before-her-father-did/#74dc8acf6668>
+
+---
+
+class: middle
+
+.center[
+<figure>
+  <img src="img/14/airline-seating.png" alt="Airline seating" title="Airline seating" width="100%">
+</figure>
+]
+
+???
+
+<https://www.independent.co.uk/travel/news-and-advice/airline-flights-pay-extra-to-sit-together-split-up-family-algorithm-minister-a8640771.html>
+
+---
+
+class: title title-6
+
+# It's not all dystopian!
+
+.pull-left.center[
+<figure>
+  <img src="img/14/precision-health.png" alt="Precision medicine Obama" title="Precision medicine Obama" width="100%">
+</figure>
+]
+
+.pull-right.center[
+<figure>
+  <img src="img/14/crisis-text-line.png" alt="Crisis text line" title="Crisis text line" width="100%">
+</figure>
+]
+
+???
+
+<https://obamawhitehouse.archives.gov/the-press-office/2015/01/30/fact-sheet-president-obama-s-precision-medicine-initiative>
+
+<https://www.crisistextline.org/community/what-ive-been-been-up-to/>
+
+---
+
+class: middle
+
+.box-6.medium[What makes the social score<br>and the crisis score<br>ethically different?]
+
+.box-inv-6.medium[Or are they the same thing?]
+
+---
+
+class: title title-6
+
+# Avoid manipulation
+
+--
+
+.box-inv-6.medium.sp-after-half[Think about people]
+
+--
+
+.box-inv-6.medium.sp-after-half[Think about autonomy]
+
+--
+
+.box-inv-6.medium.sp-after-half[Don't rely 100% on data!]
+
+---
+
+layout: false
+name: analysis-bias
+class: center middle section-title-inv section-title-inv-6
+
+# Bias
+
+---
+
+class: middle
+
+.center[
+<figure>
+  <img src="img/14/predictim-headline.png" alt="Predictim article" title="Predictim article" width="100%">
+</figure>
+]
+
+???
+
+<https://gizmodo.com/predictim-claims-its-ai-can-flag-risky-babysitters-so-1830913997>
+
+---
+
+class: middle
+
+.center[
+<figure>
+  <img src="img/14/predictim-excerpt.png" alt="Predictim article excerpt" title="Predictim article excerpt" width="100%">
+</figure>
+]
+
+---
+
+class: middle
+
+.center[
+<figure>
+  <img src="img/14/predictim-score.png" alt="Predictim score" title="Predictim score" width="90%">
+</figure>
+]
+
+---
+
+class: bg-full
+background-image: url("img/14/bias-books.png")
+
+---
+
+.center[
+<figure>
+  <img src="img/14/amazon-hiring.png" alt="Amazon hiring" title="Amazon hiring" width="70%">
+</figure>
+]
+
+--
+
+.center[
+<figure>
+  <img src="img/14/compas-bad.png" alt="COMPAS bias" title="COMPAS bias" width="60%">
+</figure>
+]
+
+???
+
+<https://qz.com/1427621/companies-are-on-the-hook-if-their-hiring-algorithms-are-biased/>
+
+<https://www.popsci.com/recidivism-algorithm-random-bias>
+
+---
+
+class: middle
+
+.center[
+<figure>
+  <img src="img/14/fb-pro-publica.png" alt="Facebook in ProPublica" title="Facebook in ProPublica" width="80%">
+</figure>
+]
+
+???
+
+<https://www.propublica.org/article/facebook-lets-advertisers-exclude-users-by-race>
+
+---
+
+class: middle
+
+.center[
+<figure>
+  <img src="img/14/fb-hud.png" alt="Facebook HUD case" title="Facebook HUD case" width="100%">
+</figure>
+]
+
+???
+
+<https://www.hud.gov/sites/dfiles/Main/documents/HUD_v_Facebook.pdf>
+
+---
+
+class: middle
+
+.center[
+<figure>
+  <img src="img/14/apple-card.png" alt="Apple card" title="Apple card" width="60%">
+</figure>
+]
+
+---
+
+class: title title-6
+
+# Avoid bias
+
+--
+
+.box-inv-6.medium.sp-after-half[Make sure your sample is representative]
+
+--
+
+.box-inv-6.medium.sp-after-half[Think about theory]
+
+--
+
+.box-6.medium.sp-after-half[Remember that **NO** data,<br>models, or algorithms are neutral]
+
+---
+
+class: title title-6
+
+# Fight the algorithms
+
+.center.tiny.light[*Very feebly, but still…*]
+
+--
+
+.box-inv-6.medium.sp-before.sp-after-half[Incognito / private windows]
+
+--
+
+.box-inv-6.medium[adsettings.google.com]
+
+---
+
+layout: false
+name: analysis-evil
+class: center middle section-title-inv section-title-inv-6
+
+# Accidental(?) evil
+
+---
+
+class: middle
+
+.center[
+<figure>
+  <img src="img/14/algorithmic-cruelty.png" alt="Eric Meyer algorithmic cruelty" title="Eric Meyer algorithmic cruelty" width="70%">
+</figure>
+]
+
+???
+
+<https://meyerweb.com/eric/thoughts/2014/12/24/inadvertent-algorithmic-cruelty/>
+
+---
+
+class: middle
+
+.center[
+<figure>
+  <img src="img/14/uber-crash.png" alt="Uber self-driving car crash" title="Uber self-driving car crash" width="75%">
+</figure>
+]
+
+???
+
+<https://www.npr.org/2019/11/07/777438412/feds-say-self-driving-uber-suv-did-not-recognize-jaywalking-pedestrian-in-fatal->
+
+---
+
+class: middle
+
+.center[
+<figure>
+  <img src="img/14/fake-news.png" alt="NYT fake news on Facebook" title="NYT fake news on Facebook" width="60%">
+</figure>
+]
+
+???
+
+<https://www.nytimes.com/2019/01/10/us/politics/facebook-fake-news-2016-election.html>
+
+---
+
+class: bg-full
+background-image: url("img/14/youtube-radicalization.png")
+
+???
+
+<https://www.nytimes.com/interactive/2019/06/08/technology/youtube-radical.html>
+
+---
+
+class: bg-full
+background-image: url("img/14/youtube-algorithm.jpg")
+
+???
+
+<https://www.youtube.com/watch?v=BSpAWkQLlgM>
+
+---
+
+class: bg-full
+background-image: url("img/14/bad-ai-tweets.png")
+
+???
+
+<https://twitter.com/CBSNews/status/1203801451941765120>
+
+<https://twitter.com/colourmeamused_/status/1309141783427919876>
+
+---
+
+layout: false
+name: telling-stories
+class: center middle section-title section-title-2 animated fadeIn
+
+# Ethics of storytelling
+
+---
+
+layout: true
+class: title title-2
+
+---
+
+# Stories as art
+
+.box-inv-2.large[**Stories** are an *art form* for<br>translating core, essential **content**<br>to different **forms**<br>for specific **audiences**.]
+
+---
+
+# Every story is the same
+
+.center[
+<iframe width="800" height="450" src="https://www.youtube.com/embed/LuD2Aa0zFiA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+]
+
+???
+
+Will Schoder, "Every Story is the Same", https://www.youtube.com/watch?v=LuD2Aa0zFiA
+
+---
+
+# Heroes
+
+.pull-left.center[
+<figure>
+  <img src="img/14/1019px-Heroesjourney.svg.png" alt="The Hero's Journey" title="The Hero's Journey" width="80%">
+</figure>
+]
+
+.pull-right.center[
+<figure>
+  <img src="img/14/story-cycle.png" alt="The Story Cycle" title="The Story Cycle" width="100%">
+</figure>
+]
+
+???
+
+https://commons.wikimedia.org/wiki/File:Heroesjourney.svg
+
+5:35 from Will Schoder, "Every Story is the Same", https://www.youtube.com/watch?v=LuD2Aa0zFiA
+
+---
+
+# You are not the hero
+
+&nbsp;
+
+.center[
+<figure>
+  <img src="img/14/bad-slides.png" alt="Bad slides" title="Bad slides" width="100%">
+  <figcaption>From Cole Nussbaumer Knaflic, <i>Storytelling with Data: A Data Visualization Guide for Business Professionals</i></figcaption>
+</figure>
+]
+
+---
+
+# Should you tell stories though?
+
+.pull-left.center[
+<figure>
+  <img src="img/14/pro-storytelling.png" alt="Storytelling" title="Storytelling" width="100%">
+</figure>
+]
+
+--
+
+.pull-right.center[
+<figure>
+  <img src="img/14/against-storytelling.png" alt="Against storytelling" title="Against storytelling" width="100%">
+</figure>
+]
+
+???
+
+https://www.nature.com/articles/nmeth.2699
+
+https://www.nature.com/articles/nmeth.2571
+
+---
+
+# Possible pitfalls
+
+--
+
+.box-inv-2.medium[Manipulation]
+
+.box-2.small[Don't lie or manipulate data]
+
+&nbsp;
+
+--
+
+.pull-left[
+.box-inv-2.medium[Misinterpretation]
+
+.box-2.small[Temper expectations]
+]
+
+--
+
+.pull-right[
+.box-inv-2.medium[Equity]
+
+.box-2.small[Don't dumb down]
+
+.box-2.small[Amplify underrepresented voices]
+]
+
+---
+
+layout: false
+name: stories-manipulation
+class: center middle section-title-inv section-title-inv-2
+
+# Manipulation
+
+---
+
+class: center middle
+
+<figure>
+  <img src="img/14/tal-story.png" alt="This American Life" title="This American Life" width="100%">
+</figure>
+
+???
+
+https://www.thisamericanlife.org/555/the-incredible-rarity-of-changing-your-mind
+
+---
+
+class: bg-full
+background-image: url("img/14/lacour-story.png")
+
+???
+
+[The Case of the Amazing Gay-Marriage Data: How a Grad Student Uncovered a Huge Fraud](https://slate.com/culture/2015/06/gay-marriage-study-faked-how-grad-student-david-broockman-uncovered-a-huge-scientific-fraud.html)
+
+---
+
+&nbsp;
+
+.pull-left.center[
+<figure>
+  <img src="img/14/broockman-kalla.png" alt="Irregularities in LaCour" title="Irregularities in LaCour" width="100%">
+</figure>
+]
+
+--
+
+.pull-right.center[
+<figure>
+  <img src="img/14/broockman-kalla-truth.png" alt="Durably reducing transphobia" title="Durably reducing transphobia" width="100%">
+</figure>
+]
+
+???
+
+https://dx.doi.org/10.1126/science.aad9713
+
+---
+
+class: title title-2
+
+# Manipulation
+
+--
+
+.box-inv-2.medium.sp-after[Don't lie]
+
+--
+
+.box-inv-2.medium[Emphasize the story,<br>but make full data available]
+
+---
+
+name: stories-misrepresentation
+class: center middle section-title-inv section-title-inv-2
+
+# Misrepresentation
+
+---
+
+.pull-left.center[
+<figure>
+  <img src="img/14/outliers.jpg" alt="Outliers" title="Outliers" width="50%">
+</figure>
+]
+
+--
+
+.pull-right.center[
+.box-2.medium[**10,000 hours**]
+
+.box-inv-2["the magic number<br>of greatness"]
+]
+
+--
+
+.center[
+<figure>
+  <img src="img/14/deliberate-practice.png" alt="Deliberate practice" title="Deliberate practice" width="70%">
+</figure>
+]
+
+???
+
+https://doi.org/10.1037/0033-295X.100.3.363
+
+https://graphics8.nytimes.com/images/blogs/freakonomics/pdf/DeliberatePractice(PsychologicalReview).pdf
+
+---
+
+.pull-left.center[
+<figure>
+  <img src="img/14/training-history.png" alt="Training history" title="Training history" width="100%">
+</figure>
+]
+
+--
+
+.pull-right.center[
+.box-inv-2[“[A] popularized but simplistic view of our work, which suggests that anyone who has accumulated sufficient number of hours of practice in a given domain will automatically become an expert and a champion.”]
+]
+
+
+--
+
+.center[
+.box-2[10,000 is average&ensp;•&ensp;Quality matters&ensp;•&ensp;There are other factors]
+]
+
+
+???
+
+https://bjsm.bmj.com/content/47/9/533.long
+
+---
+
+class: title title-2
+
+# Misinterpretation
+
+--
+
+.box-inv-2.medium.sp-after[Be narrative, but not too narrative]
+
+--
+
+.box-inv-2.medium[Temper expectations]
+
+---
+
+layout: false
+name: stories-equity
+class: center middle section-title-inv section-title-inv-2
+
+# Equity
+
+---
+
+layout: true
+class: title title-2
+
+---
+
+# Dumbing down vs. translation
+
+.center[
+<iframe width="800" height="450" src="https://www.youtube.com/embed/opqIa5Jiwuw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+]
+
+???
+
+Wired, "Neuroscientist Explains One Concept in 5 Levels of Difficulty", https://www.youtube.com/watch?v=opqIa5Jiwuw
+
+Alvin Stone, ["The arrogance of 'dumbing it down'"](https://www.linkedin.com/pulse/arrogance-dumbing-down-alvin-stone/)
+
+---
+
+# Translation
+
+.pull-left.center[
+<figure>
+  <img src="img/14/walter-benjamin.jpg" alt="Walter Benjamin" title="Walter Benjamin" width="80%">
+</figure>
+]
+
+.pull-right[
+.box-inv-2[“…the task of the translator consists in finding that intended effect upon the language into which he is translating which produces in it the echo of the original”]
+
+.box-2.small[Walter Benjamin,<br>*The Task of the Translator*]
+]
+
+???
+
+https://en.wikipedia.org/wiki/Walter_Benjamin#/media/File:Walter_Benjamin_vers_1928.jpg
+
+---
+
+layout: false
+class: bg-full
+background-image: url("img/14/up-goer-five@3x.png")
+
+???
+
+https://xkcd.com/1133/
+
+<https://splasho.com/upgoer5/>
+
+---
+
+class: center middle
+
+<figure>
+  <img src="img/14/dilbert.png" alt="Dilbert on sexism" title="Dilbert on sexism" width="100%">
+</figure>
+
+???
+
+https://slate.com/human-interest/2014/04/how-to-explain-bitcoin-to-y-our-mom-the-new-york-times-thinks-mothers-are-idiots.html
+
+https://geekfeminism.wikia.org/wiki/So_simple,_your_mother_could_do_it
+
+---
+
+class: center middle
+
+<figure>
+  <img src="img/14/caseyjohnston.png" alt="Casey Johnston mansplained" title="Casey Johnston mansplained" width="60%">
+</figure>
+
+???
+
+https://twitter.com/caseyjohnston/status/541246857385893888
+
+https://twitter.com/tsancio/status/541284790314762240
+
+---
+
+class: bg-full
+background-image: url("img/14/gender-citation-gap.png")
+
+???
+
+Women engineers publish their papers in journals with higher impact factors than their male peers, but their work receives lower recognition (fewer citations) from the scientific community
+
+---
+
+class: bg-full
+background-image: url("img/14/news-gender-balance.png")
+
+???
+
+http://www.womensmediacenter.com/reports/whotalks-cable-news-analysts-gender-in-2016-presidential-election-project-t
+28% overall average
+
+---
+
+.pull-left.center[
+<figure>
+  <img src="img/14/waks.png" alt="Women Also Know Stuff" title="Women Also Know Stuff" width="100%">
+</figure>
+]
+
+???
+
+https://womenalsoknowstuff.com/
+
+https://twitter.com/LGBTscholars
+
+https://twitter.com/POCalsoknow
+
+https://twitter.com/AWPARocks
+
+--
+
+.pull-right.center[
+<figure>
+  <img src="img/14/others-know-stuff.png" alt="Other 'know stuff' accounts" title="Other 'know stuff' accounts" width="85%">
+</figure>
+]
+
+---
+
+.center[
+<figure>
+  <img src="img/14/gbat.png" alt="Gender Balance Assessment Tool" title="Gender Balance Assessment Tool" width="85%">
+</figure>
+]
+
+.box-2[https://jlsumner.shinyapps.io/syllabustool/]
+
+---
+
+class: title title-2
+
+# Equity
+
+--
+
+.box-inv-2.medium.sp-after-half[Don't dumb down your findings]
+
+--
+
+.box-inv-2.medium.sp-after-half[You are a translator]
+
+--
+
+.box-inv-2.medium.sp-after-half[Treat audience with respect]
+
+--
+
+.box-inv-2.medium[Amplify underrepresented voices]
+
+---
+
+layout: false
+name: curiosity
+class: center middle section-title section-title-5 animated fadeIn
+
+# Curiosity
+
+---
+
+layout: true
+class: title title-5
+
+---
+
+# How do I keep learning R?
+
+.box-inv-5.medium[What class should I take next?]
+
+.box-inv-5.medium[What book should I read next?]
+
+---
+
+# How do I keep learning R?
+
+.box-inv-5.medium[~~What class should I take next?~~]
+
+.box-inv-5.medium.sp-after[~~What book should I read next?~~]
+
+--
+
+.box-5.large[Be curious!]
+
+---
+
+# Teaching yourself
+
+.center[
+<figure>
+  <img src="img/14/katiemack-tweet.png" alt="@AstroKatie on googling" title="@AstroKatie on googling" width="70%">
+</figure>
+]
+
+
+???
+
+https://twitter.com/AstroKatie/status/1071442842873159681
+
+---
+
+layout: false
+class: bg-full
+background-image: url("img/14/slate-coding.png")
+
+???
+
+https://slate.com/human-interest/2018/12/against-teaching-kids-to-code-creativity-problem-solving.html
+
+---
+
+class: bg-full
+background-image: url("img/14/slate-coding-text.png")
+
+
+???
+
+https://slate.com/human-interest/2018/12/against-teaching-kids-to-code-creativity-problem-solving.html
+
+---
+
+layout: true
+class: title title-5
+
+---
+
+# Two secrets to master R
+
+--
+
+.box-inv-5.large.sp-after[1: Find excuses to use it]
+
+--
+
+.box-inv-5.large[2: Share and work in public]
+
+---
+
+layout: false
+class: center middle section-title-inv section-title-inv-5
+
+# Find excuses to use R
+
+---
+
+layout: true
+class: title title-5
+
+---
+
+# Playing with R
+
+--
+
+.box-inv-5.medium[Little exploration projects]
+
+--
+
+.box-inv-5.medium[\#TidyTuesday]
+
+--
+
+.box-inv-5.medium[Data play time]
+
+--
+
+.box-inv-5.medium[Actual projects]
+
+---
+
+layout: false
+
+.center[
+<figure>
+  <img src="img/14/mini-projects.png" alt="Mini projects folder" title="Mini projects folder" width="80%">
+</figure>
+]
+
+---
+
+.center[
+<figure>
+  <img src="img/14/top_5.png" alt="Most aggressive characters in Harry Potter" title="Most aggressive characters in Harry Potter" width="70%">
+</figure>
+]
+
+???
+
+https://github.com/andrewheiss/Harry-Potter-aggression
+
+---
+
+.center[
+<figure>
+  <img src="img/14/walks_2014.png" alt="2014 family walks" title="2014 family walks" width="80%">
+</figure>
+]
+
+---
+
+.center[
+<figure>
+  <img src="img/14/plot_authors.png" alt="Rachel 2014 books" title="Rachel 2014 books" width="80%">
+</figure>
+]
+
+---
+
+layout: false
+class: center middle section-title-inv section-title-inv-5
+
+# Radical transparency<br>and public work
+
+---
+
+class: middle
+
+.box-5.medium[How we normally think of our work and goals]
+
+.center[
+<figure>
+  <img src="img/14/sharing-normal.png" alt="How we normally think of our work and goals" title="How we normally think of our work and goals" width="100%">
+</figure>
+]
+
+???
+
+https://rstudio.com/resources/rstudioconf-2019/the-unreasonable-effectiveness-of-public-work/
+
+---
+
+class: middle
+
+.box-5.medium[How we should think of our work and goals]
+
+.center[
+<figure>
+  <img src="img/14/sharing-good.png" alt="How we should think of our work and goals" title="How we should think of our work and goals" width="100%">
+  <figcaption>David Robinson, <a href="https://rstudio.com/resources/rstudioconf-2019/the-unreasonable-effectiveness-of-public-work/" target="_blank">The unreasonable effectiveness of public work"</a></figcaption>
+</figure>
+]
+
+???
+
+https://rstudio.com/resources/rstudioconf-2019/the-unreasonable-effectiveness-of-public-work/
+
+---
+
+layout: true
+class: title title-5
+
+---
+
+# Benefits of working in public
+
+--
+
+.box-inv-5[Build reputation]
+
+--
+
+.box-inv-5[Learn more]
+
+--
+
+.box-inv-5[Grow the community]
+
+--
+
+.box-inv-5[Early feedback on ideas]
+
+--
+
+.box-inv-5[Validation]
+
+---
+
+layout: false
+class: bg-full
+background-image: url("img/14/blog-rejection-map.png")
+
+???
+
+https://www.andrewheiss.com/blog/2018/12/17/academic-job-market-visualized/
+
+---
+
+class: bg-full
+background-image: url("img/14/blog-rejection-website.png")
+
+???
+
+https://www.andrewheiss.com/blog/2018/12/17/academic-job-market-visualized/
+
+---
+
+class: bg-full
+background-image: url("img/14/blog-rejection-github.png")
+
+???
+
+https://www.andrewheiss.com/blog/2018/12/17/academic-job-market-visualized/
+
+---
+
+layout: true
+class: title title-5
+
+---
+
+# How to work in public
+
+--
+
+.box-inv-5.medium[Tweet, blog, and meet people]
+
+--
+
+.box-inv-5.medium[Play with data in public]
+
+--
+
+.box-inv-5.medium[Teach concepts (for yourself too!)]
+
+---
+
+# Communities
+
+--
+
+.box-inv-5.medium[\#rstats]
+
+--
+
+.box-inv-5.medium[R User Groups]
+
+--
+
+.box-inv-5.medium[\#rladies]
+
+--
+
+.box-inv-5.medium[Rmd websites, blogdown, bookdown]
+
+---
+
+# Play with data in public
+
+.center[
+<figure>
+  <img src="img/14/blog-polity.png" alt="Blog post on Polity IV data" title="Blog post on Polity IV data" width="100%">
+</figure>
+]
+
+???
+
+https://www.andrewheiss.com/blog/2017/08/26/quickly-play-with-polity-iv-and-oecd-data-and-see-the-danger-of-us-democracy/
+
+---
+
+layout: false
+class: bg-full
+background-image: url("img/14/blog-nlp.png")
+
+???
+
+https://www.andrewheiss.com/blog/2018/12/26/tidytext-pos-john/
+
+https://www.andrewheiss.com/blog/2018/12/28/tidytext-pos-arabic/
+
+---
+
+class: title title-5
+
+# Teach a concept
+
+.center[
+<figure>
+  <img src="img/14/blog-diff-means.png" alt="Blog post on finding the difference in means" title="Blog post on finding the difference in means" width="100%">
+</figure>
+]
+
+???
+
+https://www.andrewheiss.com/blog/2019/01/29/diff-means-half-dozen-ways/
+
+---
+
+class: bg-full
+background-image: url("img/14/blog-chidi.png")
+
+???
+
+https://www.andrewheiss.com/blog/2019/02/16/algebra-calculus-r-yacas/
+
+---
+
+layout: false
+class: center middle section-title section-title-5 animated fadeIn
+
+# You are all expert<br>enough now.
+
+---
+
+class: center middle section-title section-title-5 animated fadeIn
+
+# Go correctly<br>find causal effects!

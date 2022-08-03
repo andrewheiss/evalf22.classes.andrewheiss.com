@@ -1,0 +1,181 @@
+---
+title: "Class 12: IV II and RDD II"
+author: "Andrew Heiss"
+date: "`r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    lib_dir: "libs"
+    chakra: "libs/remark-latest.min.js"
+    css: ["default", "css/ath-slides.css", "css/ath-inferno-fonts.css", "css/animate.css"]
+    seal: false
+    anchor_sections: false
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+      navigation:
+        scroll: false
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, 
+                      fig.retina = 3, fig.align = "center")
+```
+
+```{r packages-data, include=FALSE}
+library(tidyverse)
+library(kableExtra)
+library(scales)
+```
+
+```{r xaringanExtra, echo=FALSE}
+xaringanExtra::use_xaringan_extra(c("tile_view"))
+```
+
+class: center middle main-title section-title-3
+
+# In-person<br>session 12
+
+.class-info[
+
+**April 7, 2022**
+
+.light[PMAP 8521: Program evaluation<br>
+Andrew Young School of Policy Studies
+]
+
+]
+
+---
+
+name: outline
+class: title title-inv-8
+
+# Plan for today
+
+--
+
+.box-5.medium[FAQs]
+
+--
+
+.box-3.medium[Synthetic data fun times!]
+
+---
+
+layout: false
+name: faqs
+class: center middle section-title section-title-5 animated fadeIn
+
+# FAQs
+
+---
+
+layout: true
+class: middle
+
+---
+
+.box-5.medium[Why are my estimates for OLS and 2SLS<br>in opposite direction in problem set 7?]
+
+---
+
+.box-5.medium[What happened to the "huh?" factor<br>with these more logical instruments?]
+
+???
+
+Instruments address endogeneity - they let you split treatments into their endogenous and exogenous parts as long as they meet that criteria. The huh? factor is great for that - it’s a good shorthand for the “only through” exclusion argument. The simpler more logical instruments still work—the only way someone will have a change in their outcome because of assignment to treatment will be because of going through the treatment
+
+---
+
+.box-5.less-medium[The World Bank book mentions that "the promotion itself should not directly affect the outcomes of interest." How can we be sure that this has been adhered to when promotion campaign is run to increase enrollment rates which I assume is because of a change in the outcome interest of the new enrollees?]
+
+???
+
+Yeah, it’s the only-through story. If a random promoter encourages someone to sign up for Obamacare and then drives that person to the hospital, that’s bad.
+
+---
+
+.box-5.medium[How ethical is randomized promotion<br>for universal programs?]
+
+---
+
+.box-5.medium[Do programs ever consider always-takers, never-takers, compliers, etc. before starting the program, or just deal with them when analyzing the data?]
+
+---
+
+.box-5.medium[How often do we have data on non-compliers?]
+
+.box-5.medium[Why can we assume an equal distribution of always takers, never takers, and compliers in treatment groups and control groups since that's all unobserved?]
+
+???
+
+Same logic applies to necessity of checking for balance - we technically don’t need to check for balance but instead trust the random assignment process. Compliance-ness is unobserved, but we’re assuming it’s equal enough
+
+---
+
+.box-5.medium[How often do people "sneak into" treatment? What does this say about the program?]
+
+???
+
+ACA exchanges and thresholds
+
+---
+
+.box-5.medium[Can we really ignore defiers?]
+
+.box-5[I definitely think there are people who would do things<br>like tear down all existing bed nets out of spite.]
+
+---
+
+.box-5.large[Why do we care about ITT?]
+
+???
+
+ITT - treatment group = people assigned to treatment, not people who necessarily did it
+Provides causal effect of the policy (or assignment to policy), not really the causal effect of a specific treatment
+
+Fixes attrition issues! If people drop out of the study (or die), the ATE will be wrong. Look at the ITT and you’ll see the effect of assignment. BUT you can’t use ITT as the actual causal effect of the treatment!
+
+If you use treatment status as an instrument in 2SLS, though, you can get the complier ATE of the *treatment* (not just the assignment)
+
+---
+
+.box-5.medium[When we say "local", as in LATE,<br>does local just mean that we're only talking about the specific groups treated?<br>And that's why it's not very generalizable?]
+
+.box-5.medium[Are LATE and CACE the same?]
+
+.box-5.medium[What if you are looking for the global effect<br>(instead of local)? What then?]
+
+???
+
+Heterogenous vs. homogenous treatment effects
+
+---
+
+layout: false
+name: synthetic-data
+class: center middle section-title section-title-3 animated fadeIn
+
+# Synthetic data<br>fun times!
+
+---
+
+class: title title-3
+
+# Basic process
+
+.box-inv-3.medium[1: Draw a DAG]
+
+.box-inv-3.medium[2: Create standalone exogenous columns]
+
+.box-inv-3.medium[3: Connect endogenous columns]
+
+.box-inv-3.medium[4: Polish columns]
+
+--
+
+.box-3.large.sp-before-half[Iterate. Iterate so so much.]

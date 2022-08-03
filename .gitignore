@@ -5,9 +5,11 @@
 
 /.quarto/
 /_site/
-/slides/
 /_freeze/
 
+slides/*.pdf
+slides/*.html
+slides/**/*_cache/*
 projects/*.zip
 
 # knitr and caching stuff

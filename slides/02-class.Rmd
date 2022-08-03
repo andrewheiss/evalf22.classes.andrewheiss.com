@@ -1,0 +1,236 @@
+---
+title: "Class 2: Regression and inference"
+author: "Andrew Heiss"
+date: "`r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    lib_dir: "libs"
+    chakra: "libs/remark-latest.min.js"
+    css: ["default", "css/ath-slides.css", "css/ath-inferno-fonts.css", "css/animate.css"]
+    seal: false
+    anchor_sections: false
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+      navigation:
+        scroll: false
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, 
+                      fig.retina = 3, fig.align = "center")
+```
+
+```{r packages-data, include=FALSE}
+library(tidyverse)
+library(broom)
+library(patchwork)
+```
+
+```{r xaringanExtra, echo=FALSE}
+xaringanExtra::use_xaringan_extra(c("tile_view"))
+```
+
+class: center middle main-title section-title-3
+
+# In-person<br>session 2
+
+.class-info[
+
+**January 20, 2022**
+
+.light[PMAP 8521: Program evaluation<br>
+Andrew Young School of Policy Studies
+]
+
+]
+
+---
+
+name: outline
+class: title title-inv-8
+
+# Plan for today
+
+--
+
+.box-5.medium.sp-after-half[Regression FAQs]
+
+--
+
+.box-6.medium.sp-after-half[Miscellaneous R stuff]
+
+--
+
+.box-1.medium.sp-after-half[Visualizing data with **ggplot2**]
+
+--
+
+.box-2.medium.sp-after-half[Transforming data with **dplyr**]
+
+---
+
+layout: false
+name: regression-faqs
+class: center middle section-title section-title-5 animated fadeIn
+
+# Regression FAQs
+
+---
+
+layout: true
+class: middle
+
+---
+
+.box-5.large.sp-after[Histogram bin widths]
+
+.box-5.large[Density plots]
+
+---
+
+.box-5.medium.sp-after[Why use two steps to create a regression in R?<br>(i.e. assigning it to an object with `<-`?)]
+
+.box-5.medium[Why use `tidy()`<br>from the broom package?]
+
+???
+
+Show model with `lm()`; show t-test with `t.test()`; show both through `tidy()`
+
+Use **marginaleffects**
+
+---
+
+.box-5.medium[How was the 0.05 significance<br>threshold determined?] 
+
+.box-5.medium[Could we say something is significant<br>if p > 0.05, but just note that it is at<br>a higher p-value?<br>Or does it have to fall under 0.05?]
+
+---
+
+.box-5.large[Why all this convoluted<br>logic of null worlds?]
+
+---
+
+layout: false
+class: title title-5
+
+# Different "dialects" of statistics
+
+.pull-left[
+.box-5.medium[Frequentist]
+
+$$P(\text{data} \mid H_0)$$
+
+.box-inv-5["Regular" statistics;<br>what you've learned<br><small>(and are learning here)</small>]
+
+]
+
+--
+
+.pull-right[
+.box-5.medium[Bayesian]
+
+$$P(H \mid \text{data})$$
+
+.box-inv-5[Requires lots of<br>computational power]
+
+]
+
+---
+
+layout: true
+class: middle
+
+---
+
+.box-5.medium[Do we care about the actual coefficients<br>or just whether or not they're significant?]
+
+.box-5.medium[How does significance relate to causation?]
+
+.box-5.medium[If we can't use statistics to assert causation<br>how are we going to use this information<br>in program evaluation?]
+
+---
+
+.box-5.large[What counts as a "good" R²?]
+
+---
+
+.center[
+<figure>
+  <img src="img/02-class/nice-plot-1.png" alt="Euler diagram" title="Euler diagram" width="45%">
+</figure>
+]
+
+---
+
+.center[
+<figure>
+  <img src="img/02-class/plot-diagram-prediction-1.png" alt="R2 prediction" title="R2 prediction" width="75%">
+</figure>
+]
+
+---
+
+.center[
+<figure>
+  <img src="img/02-class/plot-diagram-estimation-1.png" alt="R2 estimation" title="R2 estimation" width="75%">
+</figure>
+]
+
+---
+
+.center[
+<figure>
+  <img src="img/02-class/prediction-vs-estimation.jpg" alt="R2 estimation vs prediction" title="R2 estimation vs prediction" width="100%">
+</figure>
+]
+
+---
+
+.box-5.large[Why do we log things?]
+
+---
+
+layout: false
+name: r-questions
+class: center middle section-title section-title-6 animated fadeIn
+
+# Miscellaneous R stuff
+
+---
+
+class: title title-6
+
+# Miscellaneous R stuff
+
+.box-inv-6.medium[File paths, working directories,<br>and RStudio projects]
+
+--
+
+.box-inv-6.medium[Markdown things]
+
+???
+
+- Working directories and RStudio projects
+- Markdown metadata and outputs, figure sizes
+- Show final Rmd products. Explanatory, like blog post code through or a problem set vs. stand-alone research paper
+
+---
+
+layout: false
+name: ggplot
+class: center middle section-title section-title-1 animated fadeIn
+
+# Visualizing<br>data with ggplot2
+
+---
+
+layout: false
+name: dplyr
+class: center middle section-title section-title-2 animated fadeIn
+
+# Transforming<br>data with dplyr
