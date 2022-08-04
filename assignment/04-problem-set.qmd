@@ -13,14 +13,14 @@ For this problem set, you'll practice running difference-in-differences analysis
 
 You'll be doing all your R work in R Markdown. You can download a zipped file of a pre-made project here:
 
-- [<i class="fas fa-file-archive"></i> `problem-set-4.zip`](/projects/problem-set-4.zip)
+- [{{< fa file-archive >}} `problem-set-4.zip`](/projects/problem-set-4.zip)
 
 And as always, if you're struggling, *please* talk to me. Work with classmates too (especially for this assignment!). Don't suffer in silence!
 
 
 ## Instructions
 
-1. If you're using R on your own computer, download this file, [*unzip it*](/resource/unzipping.qmd), and double click on the file named `problem-set-4.Rproj`: [<i class="fas fa-file-archive"></i> `problem-set-4.zip`](/projects/problem-set-4.zip)
+1. If you're using R on your own computer, download this file, [*unzip it*](/resource/unzipping.qmd), and double click on the file named `problem-set-4.Rproj`: [{{< fa file-archive >}} `problem-set-4.zip`](/projects/problem-set-4.zip)
 
     You'll need to make sure you have these packages installed on your computer: `tidyverse`, `haven`, and `broom`. If you try to load one of those packages with `library(tidyverse)` or `library(haven)`, etc., and R gives an error that the package is missing, use the "Packages" panel in RStudio to install it.
 

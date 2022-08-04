@@ -31,8 +31,8 @@ This project is due by **11:59 PM on Monday, December 12, 2022.** <span style="c
 
 You can either run the analysis in RStudio locally on your computer (highly recommended(!!), since you won't have to worry about keeping all your work on RStudio's servers), or use an RStudio.cloud project. You can make a copy of this RStudio.cloud project—it doesn't have anything in it, but I have preinstalled all the packages we've used over the course of the semester, so you don't have to.
 
-- [<i class="fas fa-external-link-square-alt"></i> Empty RStudio.cloud project](https://rstudio.cloud/spaces/205054/project/3424201)
-- [<i class="fas fa-file-archive"></i> Empty RStudio project you can download and unzip on your computer](/projects/final-project.zip) (doesn't include any packages, since you're responsible for installing those)
+- [{{< fa arrow-up-right-from-square >}} Empty RStudio.cloud project](https://rstudio.cloud/spaces/205054/project/3424201)
+- [{{< fa file-archive >}} Empty RStudio project you can download and unzip on your computer](/projects/final-project.zip) (doesn't include any packages, since you're responsible for installing those)
 
 
 ## Resources
@@ -41,15 +41,15 @@ Most importantly, **do not hesitate** to work with classmates. You all must choo
 
 You might find this evaluation (and its proposal) of a truancy program in the Provo School District in Utah helpful as an example for the first half of this assignment (program overview, theory, implementation, threats to validity, and outcomes). The PSD evaluation doesn't have DAGs or fancy econometrics models like RCTs, diff-in-diff, RDD, IVs, or anything like that, so you can't use it as an example of that part, but these should provide a good template for the program-specific sections. *This is longer than expected for this class*. I provide suggested word counts in the outline below.
 
-- [<i class="fas fa-file-pdf"></i> `psd-proposal-2011`](/files/psd-proposal-2011.pdf)
-- [<i class="fas fa-file-pdf"></i> `psd-final-report-2012`](/files/psd-final-report-2012.pdf)
+- [{{< fa file-pdf >}} `psd-proposal-2011`](/files/psd-proposal-2011.pdf)
+- [{{< fa file-pdf >}} `psd-final-report-2012`](/files/psd-final-report-2012.pdf)
 
 
 ## Suggested outline
 
 Here's an outline of what you'll need to do. You did lots of this work in your evaluation assignments. Please don't just copy/paste those assignments as is into this final project—you'll want to polish it up for this final report. You can download this as an RMarkdown file and change the text if you want. I've also included this as an RMarkdown file in the empty RStudio.cloud project.
 
-- [<i class="fab fa-r-project"></i> `final-project-template.Rmd`](/projects/final-project/final-project-template.Rmd)
+- [{{< fa brands r-project >}} `final-project-template.Rmd`](/projects/final-project/final-project-template.Rmd)
 
 ---
 

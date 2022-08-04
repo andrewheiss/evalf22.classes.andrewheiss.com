@@ -51,9 +51,9 @@ youtube_list(slide_details, playlist_id)
 Here are all the materials we'll use in class:
 
 - [**Session 3 FAQ slides**](/slides/03-class.html) ([PDF](/slides/03-class.pdf))
-- [<i class="fab fa-r-project"></i> Live R script](https://www.dropbox.com/s/2fpzcybu3nvmwzl/live.R)
-- [<i class="fas fa-file-csv"></i> `atl-weather-2019.csv`](https://datavizs21.classes.andrewheiss.com/data/atl-weather-2019.csv)
-- [<i class="fas fa-file-csv"></i> `restaurant_inspections.csv`](https://vincentarelbundock.github.io/Rdatasets/csv/causaldata/restaurant_inspections.csv)
+- [{{< fa brands r-project >}} Live R script](https://www.dropbox.com/s/2fpzcybu3nvmwzl/live.R)
+- [{{< fa file-csv >}} `atl-weather-2019.csv`](https://datavizs21.classes.andrewheiss.com/data/atl-weather-2019.csv)
+- [{{< fa file-csv >}} `restaurant_inspections.csv`](https://vincentarelbundock.github.io/Rdatasets/csv/causaldata/restaurant_inspections.csv)
 
 
 ```{verbatim include=FALSE}

@@ -20,7 +20,7 @@ In this example, we'll use the same situation that we used in the [the example f
 
 If you want to follow along, download this dataset and put it in a folder named `data`:
 
-- [<i class="fas fa-table"></i> `tutoring_program_fuzzy.csv`](/files/data/generated_data/tutoring_program_fuzzy.csv)
+- [{{< fa table >}} `tutoring_program_fuzzy.csv`](/files/data/generated_data/tutoring_program_fuzzy.csv)
 
 ```{r include=FALSE, warning=FALSE, message=FALSE}
 library(tidyverse)

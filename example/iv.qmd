@@ -14,9 +14,9 @@ options(dplyr.summarise.inform = FALSE)
 
 If you want to follow along with this example, you can download these three datasets:
 
-- [<i class="fas fa-table"></i> `father_education.csv`](/files/data/generated_data/father_education.csv)
-- [<i class="fas fa-table"></i> `wage2.csv`](/files/data/package_data/wage2.csv)
-- [<i class="fas fa-table"></i> `card.csv`](/files/data/package_data/card.csv)
+- [{{< fa table >}} `father_education.csv`](/files/data/generated_data/father_education.csv)
+- [{{< fa table >}} `wage2.csv`](/files/data/package_data/wage2.csv)
+- [{{< fa table >}} `card.csv`](/files/data/package_data/card.csv)
 
 
 ```{r show-youtube-list, echo=FALSE, results="asis"}
@@ -44,9 +44,9 @@ For all these examples, we're interested in the perennial econometrics question 
 
 We'll explore the question with three different datasets: a fake one I made up and two real ones from published research.
 
-- [<i class="fas fa-table"></i> `father_education.csv`](/files/data/generated_data/father_education.csv)
-- [<i class="fas fa-table"></i> `wage2.csv`](/files/data/package_data/wage2.csv)
-- [<i class="fas fa-table"></i> `card.csv`](/files/data/package_data/card.csv)
+- [{{< fa table >}} `father_education.csv`](/files/data/generated_data/father_education.csv)
+- [{{< fa table >}} `wage2.csv`](/files/data/package_data/wage2.csv)
+- [{{< fa table >}} `card.csv`](/files/data/package_data/card.csv)
 
 Make sure you load all these libraries before getting started:
 

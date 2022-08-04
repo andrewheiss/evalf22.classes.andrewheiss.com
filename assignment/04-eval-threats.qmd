@@ -7,7 +7,7 @@ date: "2022-10-03"
 
 You need to complete the ["Assessing validity" section below](/assignment/04-eval-threats.qmd#assessing-validity-1). Ideally you should type this in R Markdown and knit your document to HTML or Word or PDF, but you can also write in Word if you want (though your final project will need to be in R Markdown, and this would give you practice).
 
-**I've created an R Markdown template you can use here:** [<i class="fas fa-file-archive"></i> `threats-validity.zip`](/projects/threats-validity.zip). It's also [available on RStudio.cloud](https://rstudio.cloud/spaces/205054/project/3424200).
+**I've created an R Markdown template you can use here:** [{{< fa file-archive >}} `threats-validity.zip`](/projects/threats-validity.zip). It's also [available on RStudio.cloud](https://rstudio.cloud/spaces/205054/project/3424200).
 
 **Submit this assignment as a PDF or Word file on iCollege.**
 

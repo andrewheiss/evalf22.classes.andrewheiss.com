@@ -112,10 +112,7 @@ Let's find—and then ruin—these effects!
 
 ## Data background
 
-Let's quickly look at the data we'll be using. You can get the data files here—put them in a folder named `data` in an RStudio Project folder.
-
-- [<i class="fas fa-table"></i> `mosquito_nets.csv`](/files/data/generated_data/mosquito_nets.csv)
-- [<i class="fas fa-table"></i> `catholic.dta`](/files/data/external_data/catholic.dta)
+Let's quickly look at the data we'll be using. 
 
 ### Fake mosquito net program
 
@@ -170,10 +167,7 @@ The `.dta` file contains 25 columns, but these are the ones we'll care about for
 
 ---
 
-Let's load the data and get started! Again, if you haven't yet, download the two datasets here:
-
-- [<i class="fas fa-table"></i> `mosquito_nets.csv`](/files/data/generated_data/mosquito_nets.csv)
-- [<i class="fas fa-table"></i> `catholic.dta`](/files/data/external_data/catholic.dta)
+Let's load the data and get started!
 
 ```{r load-data-fake}
 nets <- read_csv("data/mosquito_nets.csv")

@@ -82,15 +82,15 @@ title: "Things you should know for Exam 1"
 
 **Helpful resources:**
 
-- <i class="fas fa-external-link-square-alt"></i> Malcom Barrett, ["An Introduction to Directed Acyclic Graphs"](https://cran.r-project.org/web/packages/ggdag/vignettes/intro-to-dags.html)
-- <i class="fas fa-external-link-square-alt"></i> Malcom Barrett, ["An Introduction to ggdag"](https://cran.r-project.org/web/packages/ggdag/vignettes/intro-to-ggdag.html)
-- <i class="fas fa-external-link-square-alt"></i> Judea Pearl, ["A Crash Course in Good and Bad Control"](http://causality.cs.ucla.edu/blog/index.php/2019/08/14/a-crash-course-in-good-and-bad-control/): A quick summary of back doors, front doors, confounders, colliders, and when to control/not control for DAG nodes
-- <i class="fab fa-youtube"></i> Causal Inference Bootcamp, ["Average Treatment Effects,"](https://modu.ssri.duke.edu/module/introduction-causal-inference/average-treatment-effect) Duke University
-- <i class="fab fa-youtube"></i> Causal Inference Bootcamp, ["Unit Level Effects,"](https://modu.ssri.duke.edu/module/introduction-causal-inference/unit-level-effect) Duke University
-- <i class="fab fa-youtube"></i> Causal Inference Bootcamp, ["Conditional Average Treatment Effects,"](https://modu.ssri.duke.edu/module/introduction-causal-inference/conditional-average-treatment-effect) Duke University
-- <i class="fab fa-youtube"></i> Causal Inference Bootcamp, ["Counterfactuals,"](https://modu.ssri.duke.edu/module/introduction-causal-inference/counterfactuals) Duke University
-- <i class="fas fa-external-link-square-alt"></i> Neel Ocean, ["Understanding Selection Bias"](http://www.neelocean.com/understanding-selection-bias/): explanation of how to identify selection bias from the ATT and the ATE, with an explanation of how ATE = ATT + selection bias under the potential outcomes framework
-- <i class="fas fa-external-link-square-alt"></i> Paul Hünermund, ["Sample Selection vs. Selection Into Treatment"](https://p-hunermund.com/2018/10/15/sample-selection-vs-selection-into-treatment/amp/?__twitter_impression=true)
+- {{< fa arrow-up-right-from-square >}} Malcom Barrett, ["An Introduction to Directed Acyclic Graphs"](https://cran.r-project.org/web/packages/ggdag/vignettes/intro-to-dags.html)
+- {{< fa arrow-up-right-from-square >}} Malcom Barrett, ["An Introduction to ggdag"](https://cran.r-project.org/web/packages/ggdag/vignettes/intro-to-ggdag.html)
+- {{< fa arrow-up-right-from-square >}} Judea Pearl, ["A Crash Course in Good and Bad Control"](http://causality.cs.ucla.edu/blog/index.php/2019/08/14/a-crash-course-in-good-and-bad-control/): A quick summary of back doors, front doors, confounders, colliders, and when to control/not control for DAG nodes
+- {{< fa brands youtube >}} Causal Inference Bootcamp, ["Average Treatment Effects,"](https://modu.ssri.duke.edu/module/introduction-causal-inference/average-treatment-effect) Duke University
+- {{< fa brands youtube >}} Causal Inference Bootcamp, ["Unit Level Effects,"](https://modu.ssri.duke.edu/module/introduction-causal-inference/unit-level-effect) Duke University
+- {{< fa brands youtube >}} Causal Inference Bootcamp, ["Conditional Average Treatment Effects,"](https://modu.ssri.duke.edu/module/introduction-causal-inference/conditional-average-treatment-effect) Duke University
+- {{< fa brands youtube >}} Causal Inference Bootcamp, ["Counterfactuals,"](https://modu.ssri.duke.edu/module/introduction-causal-inference/counterfactuals) Duke University
+- {{< fa arrow-up-right-from-square >}} Neel Ocean, ["Understanding Selection Bias"](http://www.neelocean.com/understanding-selection-bias/): explanation of how to identify selection bias from the ATT and the ATE, with an explanation of how ATE = ATT + selection bias under the potential outcomes framework
+- {{< fa arrow-up-right-from-square >}} Paul Hünermund, ["Sample Selection vs. Selection Into Treatment"](https://p-hunermund.com/2018/10/15/sample-selection-vs-selection-into-treatment/amp/?__twitter_impression=true)
 
 ## Threats to validity
 

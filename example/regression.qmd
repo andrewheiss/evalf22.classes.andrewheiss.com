@@ -4,11 +4,11 @@ title: "Regression"
 
 If you want to follow along with this example, you can download the data below:
 
-- [<i class="fas fa-table"></i> `sat_gpa.csv`](/files/data/external_data/sat_gpa.csv)
+- [{{< fa table >}} `sat_gpa.csv`](/files/data/external_data/sat_gpa.csv)
 
 You can also download a complete `.zip` file with a finished R Markdown file that you can knit and play with on your own:
 
-- [<i class="fas fa-file-archive"></i> `regression-example.zip`](/projects/regression-example.zip)
+- [{{< fa file-archive >}} `regression-example.zip`](/projects/regression-example.zip)
 
 
 ## Live coding example

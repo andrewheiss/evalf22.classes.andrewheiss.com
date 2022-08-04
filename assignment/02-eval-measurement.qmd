@@ -14,7 +14,7 @@ You need to complete the two sections listed below. Ideally you should type this
 
 [^citations]: And if you want to be super brave, try using [R Markdown's citation system](/resource/markdown.qmd#citations)!
 
-**I've created an R Markdown template you can use here:** [<i class="fas fa-file-archive"></i> `measurement.zip`](/projects/measurement.zip). It's also [available on RStudio.cloud](https://rstudio.cloud/spaces/205054/project/3424198).
+**I've created an R Markdown template you can use here:** [{{< fa file-archive >}} `measurement.zip`](/projects/measurement.zip). It's also [available on RStudio.cloud](https://rstudio.cloud/spaces/205054/project/3424198).
 
 **Submit this assignment as a PDF or Word file on iCollege.**
 

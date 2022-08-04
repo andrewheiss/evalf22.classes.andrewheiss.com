@@ -229,7 +229,7 @@ ggdag_status(model_from_dagitty_rounded, text = FALSE, use_labels = "name") +
 
 You can test if your stated relationships are correct by looking at the conditional independencies that are implied by the DAG. In dagitty.net, these appear in the sidebar in the "Testable implications" section. To show how this works, we'll use a simulated dataset that I generated about a fictional mosquito net program. Download the data here if you want to follow along:
 
-- [<i class="fas fa-table"></i> `mosquito_nets.csv`](/files/data/generated_data/mosquito_nets.csv)
+- [{{< fa table >}} `mosquito_nets.csv`](/files/data/generated_data/mosquito_nets.csv)
 
 Researchers are interested in whether using mosquito nets decreases an individual's risk of contracting malaria. They have collected data from 1,752 households in an unnamed country and have variables related to environmental factors, individual health, and household characteristics. Additionally, this country has a special government program that provides free mosquito nets to households that meet specific requirements: to qualify for the program, there must be more than 4 members of the household, and the household's monthly income must be lower than \$700 a month. Households are not automatically enrolled in the program, and many do not use it. The data is not experimental—researchers have no control over who uses mosquito nets, and individual households make their own choices over whether to apply for free nets or buy their own nets, as well as whether they use the nets if they have them.
 
@@ -271,7 +271,7 @@ According to the DAG, malaria risk is caused by income, temperatures, health, in
 
 First, let's download the dataset, put in a folder named `data`, and load it:
 
-- [<i class="fas fa-table"></i> `mosquito_nets.csv`](/files/data/generated_data/mosquito_nets.csv)
+- [{{< fa table >}} `mosquito_nets.csv`](/files/data/generated_data/mosquito_nets.csv)
 
 ```{r load-data-fake, eval=FALSE}
 # Load the data.
