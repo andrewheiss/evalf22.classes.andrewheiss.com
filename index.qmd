@@ -26,7 +26,7 @@ withr::with_dir(here::here(), {
 
 ::: {.grid .course-details}
 
-::: {.g-col-4}
+::: {.g-col-12 .g-col-sm-6 .g-col-md-4}
 ### Instructor
 
 - {{< fa user >}} &nbsp; [{{< var instructor.name >}}]({{< var instructor.url >}})
@@ -36,7 +36,7 @@ withr::with_dir(here::here(), {
 - {{< fa calendar-check >}} &nbsp; [Schedule an appointment]({{< var instructor.appointment_url >}})
 :::
 
-::: {.g-col-4}
+::: {.g-col-12 .g-col-sm-6 .g-col-md-4}
 ### Course details
 
 - {{< fa calendar >}} &nbsp; {{< var course.days >}}
@@ -46,7 +46,7 @@ withr::with_dir(here::here(), {
 - {{< fa brands slack >}} &nbsp; [Slack]({{< var course.slack >}})
 :::
 
-::: {.g-col-4 .contact-policy}
+::: {.g-col-12 .g-col-md-4 .contact-policy}
 ### Contacting me
 
 {{< var instructor.contact_policy >}}

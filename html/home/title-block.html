@@ -1,5 +1,5 @@
 <div class="grid title-block">
-    <div class="g-col-6 g-col-md-8">
+    <div class="g-col-12 g-col-sm-8 order-2 order-sm-1">
         <h1 class="course-title">
             $title$
         </h1>
@@ -10,7 +10,11 @@
             <p>$details$</p>
         </div>
     </div>
-    <div class="g-col-6 g-col-md-4">
-        <img src="$course-logo$" class="img-fluid">
+    <div class="g-col-12 g-col-sm-4 order-1 order-sm-2">
+      <div class="grid" style="--bs-columns: 5;">
+        <div class="g-col-1 g-col-sm-0"></div>
+        <div class="g-col-3 g-col-sm-5"><img src="$course-logo$" class="img-fluid"></div>
+        <div class="g-col-1 g-col-sm-0"></div>
+      </div>
     </div>
 </div>
