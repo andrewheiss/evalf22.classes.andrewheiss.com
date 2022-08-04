@@ -1,4 +1,4 @@
-library(scales)
+suppressPackageStartupMessages(library(scales))
 library(ggplot2)
 
 # Helpful functions ----

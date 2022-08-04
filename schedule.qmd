@@ -15,52 +15,13 @@ Here's your roadmap for the semester!
 
 ```{r build-table, include=FALSE}
 library(tidyverse)
-library(glue)
 library(knitr)
 library(kableExtra)
 
 withr::with_dir(here::here(), {
-  targets::tar_load(schedule_file)
+  schedule_nested <- targets::tar_read(schedule_page_data)
+  targets::tar_load(schedule_ical_file)
 })
-
-schedule_raw <- read_csv(schedule_file)
-
-schedule <- schedule_raw %>% 
-  mutate(group = fct_inorder(group)) %>% 
-  mutate(subgroup = fct_inorder(subgroup)) %>% 
-  mutate(var_title = ifelse(!is.na(content), 
-                            glue('<span class="content-title">{title}</span>'),
-                            glue('{title}'))) %>% 
-  mutate(var_deadline = ifelse(!is.na(deadline),
-                               glue('&emsp;&emsp;<small>(submit by {deadline})</small>'),
-                               "")) %>%
-  mutate(var_content = ifelse(!is.na(content),
-                              glue('<a href="{content}.qmd"><i class="fa-solid fa-book-open-reader fa-lg"></i></a>'),
-                              glue('<font color="#e9ecef"><i class="fa-solid fa-book-open-reader fa-lg"></i></font>'))) %>%
-  mutate(var_example = ifelse(!is.na(example),
-                              glue('<a href="{example}.qmd"><i class="fa-solid fa-laptop-code fa-lg"></i></a>'),
-                              glue('<font color="#e9ecef"><i class="fa-solid fa-laptop-code fa-lg"></i></font>'))) %>%
-  mutate(var_assignment = ifelse(!is.na(assignment),
-                                 glue('<a href="{assignment}.qmd"><i class="fa-solid fa-pen-ruler fa-lg"></i></a>'),
-                                 glue('<font color="#e9ecef"><i class="fa-solid fa-pen-ruler fa-lg"></i></font>'))) %>%
-  mutate(col_date = ifelse(is.na(date_end),
-                           glue('<strong>{format(date, "%B %e")}</strong>'),
-                           glue('<strong>{format(date, "%B %e")}</strong>–<strong>{format(date_end, "%B %e")}</strong>'))) %>% 
-  mutate(col_title = glue('{var_title}{var_deadline}')) %>% 
-  mutate(col_content = var_content,
-         col_example = var_example,
-         col_assignment = var_assignment)
-
-schedule_nested <- schedule %>% 
-  select(group, subgroup, 
-         ` ` = col_date, Title = col_title, Content = col_content, 
-         Example = col_example, Assignment = col_assignment) %>% 
-  group_by(group) %>% 
-  nest() %>% 
-  mutate(subgroup_count = map(data, ~count(.x, subgroup)),
-         subgroup_index = map(subgroup_count, ~{
-           .x %>% pull(n) %>% set_names(.x$subgroup)
-         }))
 
 show_table <- function(group_id) {
   # Add a heading
