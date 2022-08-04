@@ -137,6 +137,20 @@ ol {
   padding-bottom: 0.5rem;
 }
 
+.ical {
+  font-size: 90%;
+  text-align: center;
+  background-color: lighten(blue, 40%);
+  padding: 0.6rem 0 0.1rem;
+  margin-bottom: 2rem;
+}
+
+.download-btn {
+  padding-top: 0.25rem;
+  margin-bottom: 0;
+  text-align: center;
+}
+
 
 // Content page stuff
 // Date bar
@@ -197,7 +211,6 @@ main {
 // Increase font size in TOC
 #TOC {
   padding-bottom: 0.1em;
-  background-color: lighten($blue, 60%);
 }
 
 #toc-title {
