@@ -1,6 +1,6 @@
 ---
 title: "Final project"
-date: "2022-05-02"
+date: "2022-12-12"
 ---
 
 Evaluation research is tricky and costly. If you begin an intervention or launch a study prematurely, you can waste time and money—and potentially lives. 
@@ -27,7 +27,7 @@ You will submit **three things** via iCollege:
 2. The same PDF as above, but with all the R code in it (set `echo = TRUE` at the beginning of your document and reknit the file).
 3. A CSV file of [your fake data.](/example/synthetic-data.qmd)
 
-This project is due by **11:59 PM on Monday, May 2, 2022.** <span style="color: #81056F; font-weight: bold"> No late work will be accepted.</span>
+This project is due by **11:59 PM on Monday, December 12, 2022.** <span style="color: #81056F; font-weight: bold"> No late work will be accepted.</span>
 
 You can either run the analysis in RStudio locally on your computer (highly recommended(!!), since you won't have to worry about keeping all your work on RStudio's servers), or use an RStudio.cloud project. You can make a copy of this RStudio.cloud project—it doesn't have anything in it, but I have preinstalled all the packages we've used over the course of the semester, so you don't have to.
 

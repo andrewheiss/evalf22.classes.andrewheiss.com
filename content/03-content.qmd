@@ -1,6 +1,6 @@
 ---
 title: "Theories of change and logic models"
-date: "2022-01-27"
+date: "2022-09-05"
 ---
 
 ```{r slides-videos, echo=FALSE, include=FALSE}

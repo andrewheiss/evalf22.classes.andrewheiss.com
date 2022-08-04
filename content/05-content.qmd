@@ -1,6 +1,6 @@
 ---
 title: "DAGs and potential outcomes"
-date: "2022-02-10"
+date: "2022-09-19"
 ---
 
 ```{r slides-videos, echo=FALSE, include=FALSE}

@@ -1,6 +1,6 @@
 ---
 title: "Regression and inference"
-date: "2022-01-20"
+date: "2022-08-29"
 ---
 
 ```{r slides-videos, echo=FALSE, include=FALSE}

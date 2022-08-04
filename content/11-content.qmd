@@ -1,6 +1,6 @@
 ---
 title: "Instrumental variables I"
-date: "2022-03-31"
+date: "2022-10-31"
 ---
 
 ```{r slides-videos, echo=FALSE, include=FALSE}

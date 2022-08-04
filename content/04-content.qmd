@@ -1,6 +1,6 @@
 ---
 title: "Measurement and DAGs"
-date: "2022-02-03"
+date: "2022-09-12"
 ---
 
 ```{r slides-videos, echo=FALSE, include=FALSE}

@@ -1,6 +1,6 @@
 ---
 title: "Causal model"
-date: "2022-02-17"
+date: "2022-09-26"
 ---
 
 For your [final project](/assignment/final-project.qmd), you will conduct an evaluation for a social program of your choosing. In this assignment, you will decide how to model the causal effect of your program on your primary outcome. 

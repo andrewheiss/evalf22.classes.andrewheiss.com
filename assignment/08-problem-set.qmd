@@ -1,6 +1,6 @@
 ---
 title: "Problem set 8"
-date: "2022-04-14"
+date: "2022-11-14"
 ---
 
 This assignment is a review of all the causal inference methods we've learned this semester: RCTs, matching and inverse probability weighting, diff-in-diff, RDD, and IVs. Refer to your past assignments and all the examples for guidance:

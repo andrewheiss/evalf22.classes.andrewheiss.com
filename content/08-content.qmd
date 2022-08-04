@@ -1,6 +1,6 @@
 ---
 title: "Difference-in-differences I"
-date: "2022-03-03"
+date: "2022-10-10"
 ---
 
 ```{r slides-videos, echo=FALSE, include=FALSE}

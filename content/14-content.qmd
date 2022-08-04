@@ -1,6 +1,6 @@
 ---
 title: "Ethics, stories, and curiosity"
-date: "2022-04-21"
+date: "2022-11-28"
 ---
 
 ```{r slides-videos, echo=FALSE, include=FALSE}

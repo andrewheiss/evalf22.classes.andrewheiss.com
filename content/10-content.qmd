@@ -1,6 +1,6 @@
 ---
 title: "Regression discontinuity I"
-date: "2022-03-24"
+date: "2022-10-24"
 ---
 
 ```{r slides-videos, echo=FALSE, include=FALSE}

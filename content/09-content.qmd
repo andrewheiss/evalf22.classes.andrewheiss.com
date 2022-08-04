@@ -1,6 +1,6 @@
 ---
 title: "Difference-in-differences II"
-date: "2022-03-10"
+date: "2022-10-17"
 ---
 
 ## Readings

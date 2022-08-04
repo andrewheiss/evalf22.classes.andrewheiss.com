@@ -1,6 +1,6 @@
 ---
 title: "Choosing and planning ethical evaluations"
-date: "2022-04-14"
+date: "2022-11-14"
 ---
 
 ```{r slides-videos, echo=FALSE, include=FALSE}

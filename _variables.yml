@@ -14,15 +14,15 @@ instructor:
 
 course:
   number: "PMAP 8521"
-  semester: "Spring 2022"
-  days: "Thursdays"
-  time: "7:15–9:45 PM"
-  location: "Aderhold Learning Center 224"
+  semester: "Fall 2022"
+  days: "Mondays"
+  time: "4:30–7:00 PM"
+  location: "Aderhold Learning Center 330"
   dates: "January 10–May 3, 2022"
   github: "https://www.github.com/andrewheiss/evalf22.classes.andrewheiss.com"
   url: "https://evalf22.classes.andrewheiss.com"
   copyright_year: "2022"
-  slack: "https://gsuevalsp2022.slack.com"
+  slack: "https://gsuevalf2022.slack.com"
 
 university:
   name: Georgia State University

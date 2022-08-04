@@ -1,6 +1,6 @@
 ---
 title: "Problem set 9"
-date: "2022-04-21"
+date: "2022-11-28"
 ---
 
 This assignment will give you practice generating synthetic data and building in causal effects.

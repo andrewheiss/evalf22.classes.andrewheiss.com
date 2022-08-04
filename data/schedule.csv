@@ -1,45 +1,45 @@
 group,subgroup,date,date_end,title,deadline,content,example,assignment
-Evaluation and causation,Session 1,2022-01-13,,Evaluation and the causal revolution,,content/01-content,example/rstudio-tidyverse,
-Evaluation and causation,Session 1,2022-01-20,,Weekly check-in 1,noon,,,assignment/weekly-check-in
-Evaluation and causation,Session 1,2022-01-20,,Problem set 1,11:59 PM,,,assignment/01-problem-set
-Evaluation and causation,Session 2,2022-01-20,,Regression and inference,,content/02-content,,
-Evaluation and causation,Session 2,2022-01-27,,Weekly check-in 2,noon,,,assignment/weekly-check-in
-Evaluation and causation,Session 2,2022-01-27,,Problem set 2,11:59 PM,,,assignment/02-problem-set
-Evaluation and causation,Session 3,2022-01-27,,Theories of change and logic models,,content/03-content,,
-Evaluation and causation,Session 3,2022-01-27,,Weekly check-in 3,noon,,,assignment/weekly-check-in
-Evaluation and causation,Session 3,2022-02-03,,Evaluation: Background and theory,11:59 PM,,,assignment/01-eval-background-theory
-Evaluation and causation,Session 4,2022-02-03,,Measurement and DAGs,,content/04-content,example/dags,
-Evaluation and causation,Session 4,2022-02-03,,Weekly check-in 4,noon,,,assignment/weekly-check-in
-Evaluation and causation,Session 4,2022-02-10,,Evaluation: Measurement,11:59 PM,,,assignment/02-eval-measurement
-Evaluation and causation,Session 5,2022-02-10,,DAGs and potential outcomes,,content/05-content,example/po-ate-cate,
-Evaluation and causation,Session 5,2022-02-10,,Weekly check-in 5,noon,,,assignment/weekly-check-in
-Evaluation and causation,Session 5,2022-02-17,,Evaluation: Causal model,11:59 PM,,,assignment/03-eval-dag
-Evaluation and causation,Session 6,2022-02-17,,Threats to validity,,content/06-content,,
-Evaluation and causation,Session 6,2022-02-17,,Weekly check-in 6,noon,,,assignment/weekly-check-in
-Evaluation and causation,Session 6,2022-02-24,,Evaluation: Threats to validity,11:59 PM,,,assignment/04-eval-threats
-Evaluation and causation,Exam 1,2022-02-24,2022-03-03,Exam 1,,,,
-Tools and methods,Session 7,2022-02-24,,Randomization and matching,,content/07-content,example/matching-ipw,
-Tools and methods,Session 7,2022-02-24,,Weekly check-in 7,noon,,,assignment/weekly-check-in
-Tools and methods,Session 7,2022-03-03,,Problem set 3,11:59 PM,,,assignment/03-problem-set
-Tools and methods,Session 8,2022-03-03,,Difference-in-differences I,,content/08-content,example/diff-in-diff,
-Tools and methods,Session 8,2022-03-03,,Weekly check-in 8,noon,,,assignment/weekly-check-in
-Tools and methods,Session 8,2022-03-10,,Problem set 4,11:59 PM,,,assignment/04-problem-set
-Tools and methods,Session 9,2022-03-10,,Difference-in-differences II,,content/09-content,,
-Tools and methods,Session 9,2022-03-10,,Weekly check-in 9,noon,,,assignment/weekly-check-in
-Tools and methods,Session 9,2022-03-24,,Problem set 5,11:59 PM,,,assignment/05-problem-set
-Tools and methods,Session 10,2022-03-24,,Regression discontinuity I,,content/10-content,example/rdd,
-Tools and methods,Session 10,2022-03-24,,Weekly check-in 10,noon,,,assignment/weekly-check-in
-Tools and methods,Session 10,2022-03-31,,Problem set 6,11:59 PM,,,assignment/06-problem-set
-Tools and methods,Session 11,2022-03-31,,Instrumental variables I,,content/11-content,example/iv,
-Tools and methods,Session 11,2022-03-31,,Weekly check-in 11,noon,,,assignment/weekly-check-in
-Tools and methods,Session 11,2022-04-07,,Problem set 7,11:59 PM,,,assignment/07-problem-set
-Tools and methods,Session 12,2022-04-07,,Instrumental variables II + Regression discontinuity II,,content/12-content,example/rdd-fuzzy,
-Tools and methods,Session 12,2022-04-07,,Weekly check-in 12,noon,,,assignment/weekly-check-in
-Tools and methods,Session 12,2022-04-14,,Problem set 8,11:59 PM,,,assignment/08-problem-set
-Tools and methods,Exam 2,2022-04-14,2022-04-20,Exam 2,,,,
-Applied evaluation,Session 13,2022-04-14,,Choosing and planning ethical evaluations,,content/13-content,example/synthetic-data,
-Applied evaluation,Session 13,2022-04-14,,Weekly check-in 13,noon,,,assignment/weekly-check-in
-Applied evaluation,Session 13,2022-04-21,,Problem set 9,11:59 PM,,,assignment/09-problem-set
-Applied evaluation,Session 14,2022-04-21,,"Ethics, stories, and curiosity",,content/14-content,,
-Applied evaluation,Session 14,2022-04-21,,Weekly check-in 14,noon,,,assignment/weekly-check-in
-Final,Final project,2022-05-02,,Final project due,,,,assignment/final-project
+Evaluation and causation,Session 1,2022-08-22,,Evaluation and the causal revolution,,content/01-content,example/rstudio-tidyverse,
+Evaluation and causation,Session 1,2022-08-29,,Weekly check-in 1,noon,,,assignment/weekly-check-in
+Evaluation and causation,Session 1,2022-08-29,,Problem set 1,11:59 PM,,,assignment/01-problem-set
+Evaluation and causation,Session 2,2022-08-29,,Regression and inference,,content/02-content,,
+Evaluation and causation,Session 2,2022-08-29,,Weekly check-in 2,noon,,,assignment/weekly-check-in
+Evaluation and causation,Session 2,2022-09-05,,Problem set 2,11:59 PM,,,assignment/02-problem-set
+Evaluation and causation,Session 3,2022-09-05,,Theories of change and logic models,,content/03-content,,
+Evaluation and causation,Session 3,2022-09-05,,Weekly check-in 3,noon,,,assignment/weekly-check-in
+Evaluation and causation,Session 3,2022-09-12,,Evaluation: Background and theory,11:59 PM,,,assignment/01-eval-background-theory
+Evaluation and causation,Session 4,2022-09-12,,Measurement and DAGs,,content/04-content,example/dags,
+Evaluation and causation,Session 4,2022-09-12,,Weekly check-in 4,noon,,,assignment/weekly-check-in
+Evaluation and causation,Session 4,2022-09-19,,Evaluation: Measurement,11:59 PM,,,assignment/02-eval-measurement
+Evaluation and causation,Session 5,2022-09-19,,DAGs and potential outcomes,,content/05-content,example/po-ate-cate,
+Evaluation and causation,Session 5,2022-09-19,,Weekly check-in 5,noon,,,assignment/weekly-check-in
+Evaluation and causation,Session 5,2022-09-26,,Evaluation: Causal model,11:59 PM,,,assignment/03-eval-dag
+Evaluation and causation,Session 6,2022-09-26,,Threats to validity,,content/06-content,,
+Evaluation and causation,Session 6,2022-09-26,,Weekly check-in 6,noon,,,assignment/weekly-check-in
+Evaluation and causation,Session 6,2022-10-03,,Evaluation: Threats to validity,11:59 PM,,,assignment/04-eval-threats
+Evaluation and causation,Exam 1,2022-10-03,2022-10-09,Exam 1,,,,
+Tools and methods,Session 7,2022-10-03,,Randomization and matching,,content/07-content,example/matching-ipw,
+Tools and methods,Session 7,2022-10-03,,Weekly check-in 7,noon,,,assignment/weekly-check-in
+Tools and methods,Session 7,2022-10-10,,Problem set 3,11:59 PM,,,assignment/03-problem-set
+Tools and methods,Session 8,2022-10-10,,Difference-in-differences I,,content/08-content,example/diff-in-diff,
+Tools and methods,Session 8,2022-10-10,,Weekly check-in 8,noon,,,assignment/weekly-check-in
+Tools and methods,Session 8,2022-10-17,,Problem set 4,11:59 PM,,,assignment/04-problem-set
+Tools and methods,Session 9,2022-10-17,,Difference-in-differences II,,content/09-content,,
+Tools and methods,Session 9,2022-10-17,,Weekly check-in 9,noon,,,assignment/weekly-check-in
+Tools and methods,Session 9,2022-10-24,,Problem set 5,11:59 PM,,,assignment/05-problem-set
+Tools and methods,Session 10,2022-10-24,,Regression discontinuity I,,content/10-content,example/rdd,
+Tools and methods,Session 10,2022-10-24,,Weekly check-in 10,noon,,,assignment/weekly-check-in
+Tools and methods,Session 10,2022-10-31,,Problem set 6,11:59 PM,,,assignment/06-problem-set
+Tools and methods,Session 11,2022-10-31,,Instrumental variables I,,content/11-content,example/iv,
+Tools and methods,Session 11,2022-10-31,,Weekly check-in 11,noon,,,assignment/weekly-check-in
+Tools and methods,Session 11,2022-11-07,,Problem set 7,11:59 PM,,,assignment/07-problem-set
+Tools and methods,Session 12,2022-11-07,,Instrumental variables II + Regression discontinuity II,,content/12-content,example/rdd-fuzzy,
+Tools and methods,Session 12,2022-11-07,,Weekly check-in 12,noon,,,assignment/weekly-check-in
+Tools and methods,Session 12,2022-11-14,,Problem set 8,11:59 PM,,,assignment/08-problem-set
+Tools and methods,Exam 2,2022-11-14,2022-11-20,Exam 2,,,,
+Applied evaluation,Session 13,2022-11-14,,Choosing and planning ethical evaluations,,content/13-content,example/synthetic-data,
+Applied evaluation,Session 13,2022-11-14,,Weekly check-in 13,noon,,,assignment/weekly-check-in
+Applied evaluation,Session 13,2022-11-28,,Problem set 9,11:59 PM,,,assignment/09-problem-set
+Applied evaluation,Session 14,2022-11-28,,"Ethics, stories, and curiosity",,content/14-content,,
+Applied evaluation,Session 14,2022-11-28,,Weekly check-in 14,noon,,,assignment/weekly-check-in
+Final,Final project,2022-12-12,,Final project due,,,,assignment/final-project
