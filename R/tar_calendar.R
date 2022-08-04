@@ -15,12 +15,15 @@ build_schedule_for_page <- function(schedule_file) {
   schedule <- read_csv(schedule_file, show_col_types = FALSE) %>%
     mutate(group = fct_inorder(group)) %>%
     mutate(subgroup = fct_inorder(subgroup)) %>%
+    mutate(var_note = ifelse(!is.na(note),
+                             glue('<br><span class="content-note">{note}</span>'),
+                             glue(""))) %>%
     mutate(var_title = ifelse(!is.na(content),
                               glue('<span class="content-title">{title}</span>'),
                               glue('{title}'))) %>%
     mutate(var_deadline = ifelse(!is.na(deadline),
                                  glue('&emsp;&emsp;<small>(submit by {deadline})</small>'),
-                                 "")) %>%
+                                 glue(""))) %>%
     mutate(var_content = ifelse(!is.na(content),
                                 glue('<a href="{content}.qmd"><i class="fa-solid fa-book-open-reader fa-lg"></i></a>'),
                                 glue('<font color="#e9ecef"><i class="fa-solid fa-book-open-reader fa-lg"></i></font>'))) %>%
@@ -33,7 +36,7 @@ build_schedule_for_page <- function(schedule_file) {
     mutate(col_date = ifelse(is.na(date_end),
                              glue('<strong>{format(date, "%B %e")}</strong>'),
                              glue('<strong>{format(date, "%B %e")}</strong>–<strong>{format(date_end, "%B %e")}</strong>'))) %>%
-    mutate(col_title = glue('{var_title}{var_deadline}')) %>%
+    mutate(col_title = glue('{var_title}{var_deadline}{var_note}')) %>%
     mutate(col_content = var_content,
            col_example = var_example,
            col_assignment = var_assignment)
