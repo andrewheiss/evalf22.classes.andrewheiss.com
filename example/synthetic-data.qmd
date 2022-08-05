@@ -504,9 +504,9 @@ Those previous sections go into a lot of detail. In general, here's the process 
 
 1. **Draw a DAG that maps out how all the columns you care about are related.**
 
-    Here's a simple DAG that shows the causal effect of mosquito net usage on malaria risk. Income and health both influence and confound net use and malaria risk, and income also influences health.
+   Here's a simple DAG that shows the causal effect of mosquito net usage on malaria risk. Income and health both influence and confound net use and malaria risk, and income also influences health.
 
-```{r observational-dag, indent="    "}
+```{r observational-dag, indent="   "}
 mosquito_dag <- dagify(mal ~ net + inc + hlth,
                        net ~ inc + hlth,
                        hlth ~ inc,
@@ -518,43 +518,43 @@ ggdag(mosquito_dag) +
 
 2. **Specify how those nodes are measured.**
 
-    For the sake of this example, we'll measure these nodes like so. See [the random number example](/example/random-numbers.qmd) for more details about the distributions.
+   For the sake of this example, we'll measure these nodes like so. See [the random number example](/example/random-numbers.qmd) for more details about the distributions.
 
-    - **Malaria risk**: scale from 0–100, mostly around 40, but ranging from 10ish to 80ish. Best to use a Beta distribution.
+   - **Malaria risk**: scale from 0–100, mostly around 40, but ranging from 10ish to 80ish. Best to use a Beta distribution.
 
-    - **Net use**: binary 0/1, TRUE/FALSE variable, where 50% of people use nets. Best to use a binomial distribution. However, since we want to use other variables that increase the likelihood of using a net, we'll do some cool tricky stuff, explained later.
+   - **Net use**: binary 0/1, TRUE/FALSE variable, where 50% of people use nets. Best to use a binomial distribution. However, since we want to use other variables that increase the likelihood of using a net, we'll do some cool tricky stuff, explained later.
 
-    - **Income**: weekly income, measured in dollars, mostly around 500 ± 300. Best to use a normal distribution.
+   - **Income**: weekly income, measured in dollars, mostly around 500 ± 300. Best to use a normal distribution.
 
-    - **Health**: scale from 0–100, mostly around 70, but ranging from 50ish to 100. Best to use a Beta distribution.
+   - **Health**: scale from 0–100, mostly around 70, but ranging from 50ish to 100. Best to use a Beta distribution.
 
 3. **Specify the relationships between the nodes based on the DAG equations.**
 
-    There are three models in this DAG:
+   There are three models in this DAG:
 
-    - **`hlth ~ inc`**: Income influences health. We'll assume that every 10 dollars/week is associated with a 1 point increase in health (so a 1 dollar incrrease is associated with a 0.02 point increase in health)
+   - **`hlth ~ inc`**: Income influences health. We'll assume that every 10 dollars/week is associated with a 1 point increase in health (so a 1 dollar incrrease is associated with a 0.02 point increase in health)
 
-    - **`net ~ inc + hlth`**: Income and health both increase the probability of net usage. This is where we do some cool tricky stuff.
+   - **`net ~ inc + hlth`**: Income and health both increase the probability of net usage. This is where we do some cool tricky stuff.
 
-      Both income and health have an effect on the probability of bed net use, but bed net use is measured as a 0/1, TRUE/FALSE variable. If we run a regression with `net` as the outcome, we can't really interpret the coefficients like "a 1 point increase in health is associated with a 0.42 point increase in bed net being TRUE." That doesn't even make sense.
+     Both income and health have an effect on the probability of bed net use, but bed net use is measured as a 0/1, TRUE/FALSE variable. If we run a regression with `net` as the outcome, we can't really interpret the coefficients like "a 1 point increase in health is associated with a 0.42 point increase in bed net being TRUE." That doesn't even make sense.
 
-      Ordinarily, when working with binary outcome variables, you use logistic regression models (see [the crash course we had when talking about propensity scores here](/example/matching-ipw.qmd#oversimplified-crash-course-in-logistic-regression)). In this kind of regression, the coefficients in the model represent changes in the *log odds* of using a net. As we discuss in [the crash course section](/example/matching-ipw.qmd#oversimplified-crash-course-in-logistic-regression), log odds are typically impossible to interpet. If you exponentiate them, you get odds ratios, which let you say things like "a 1 point increase in health is associated with a 15% increase in the likelihood of using a net." Technically we could include coefficients for a logistic regression model and simulate probabilities of using a net or not using log odds and odds ratios (and that's what I do in the rain barrel data from Problem Set 3 ([see code here](https://github.com/andrewheiss/evalsp22.classes.andrewheiss.com/blob/main/content/assignment/03-problem-set.Rmd#L225))), but that's really hard to wrap your head around since you're dealing with strange uninterpretable coefficients. So we won't do that here.
+     Ordinarily, when working with binary outcome variables, you use logistic regression models (see [the crash course we had when talking about propensity scores here](/example/matching-ipw.qmd#oversimplified-crash-course-in-logistic-regression)). In this kind of regression, the coefficients in the model represent changes in the *log odds* of using a net. As we discuss in [the crash course section](/example/matching-ipw.qmd#oversimplified-crash-course-in-logistic-regression), log odds are typically impossible to interpet. If you exponentiate them, you get odds ratios, which let you say things like "a 1 point increase in health is associated with a 15% increase in the likelihood of using a net." Technically we could include coefficients for a logistic regression model and simulate probabilities of using a net or not using log odds and odds ratios (and that's what I do in the rain barrel data from Problem Set 3 ([see code here](https://github.com/andrewheiss/evalsp22.classes.andrewheiss.com/blob/main/content/assignment/03-problem-set.Rmd#L225))), but that's really hard to wrap your head around since you're dealing with strange uninterpretable coefficients. So we won't do that here.
 
-      Instead, we'll do some fun trickery. We'll create something called a "bed net score" that gets bigger as income and health increase. We'll say that a 1 point increase in health score is associated with a 1.5 point increase in bed net score, and a 1 dollar increase in income is associated with a 0.5 point increase in bed net score. This results in a column that ranges all over the place, from 200 to 500 (in this case; that won't always be true). This column definitely doesn't look like a TRUE/FALSE binary column—it's just a bunch of numbers. That's okay!
+     Instead, we'll do some fun trickery. We'll create something called a "bed net score" that gets bigger as income and health increase. We'll say that a 1 point increase in health score is associated with a 1.5 point increase in bed net score, and a 1 dollar increase in income is associated with a 0.5 point increase in bed net score. This results in a column that ranges all over the place, from 200 to 500 (in this case; that won't always be true). This column definitely doesn't look like a TRUE/FALSE binary column—it's just a bunch of numbers. That's okay!
 
-      We'll then use the `rescale()` function from the **scales** package to take this bed net score and scale it down so that it goes from 0.05 to 0.95. This represents a person's probability of using a bed net.
+     We'll then use the `rescale()` function from the **scales** package to take this bed net score and scale it down so that it goes from 0.05 to 0.95. This represents a person's probability of using a bed net.
 
-      Finally, we'll use that probability in the `rbinom()` function to generate a 0 or 1 for each person. Some people will have a high probability because of their income and health, like 0.9, and will most likely use a net. Some people might have a 0.15 probability and will likely not use a net.
+     Finally, we'll use that probability in the `rbinom()` function to generate a 0 or 1 for each person. Some people will have a high probability because of their income and health, like 0.9, and will most likely use a net. Some people might have a 0.15 probability and will likely not use a net.
 
-      When you generate binary variables like this, it's hard to know the exact effect you'll get, so it's best to tinker with the numbers until you see relationships that you want.
+     When you generate binary variables like this, it's hard to know the exact effect you'll get, so it's best to tinker with the numbers until you see relationships that you want.
 
-    - **`mal ~ net + inc + hlth`**: Finally net use, income, and health all have an effect on the risk of malaria. Building this relationship is easy since it's just a regular linear regression model (since malaria risk is not binary). We'll say that a 1 dollar increase in income is associated with a *decrease* in risk, a 1 point increase in health is associated with a *decrease* in risk, and using a net is associated with a 15 point *decrease* in risk. That's the casual effect we're building in to the DAG.
+   - **`mal ~ net + inc + hlth`**: Finally net use, income, and health all have an effect on the risk of malaria. Building this relationship is easy since it's just a regular linear regression model (since malaria risk is not binary). We'll say that a 1 dollar increase in income is associated with a *decrease* in risk, a 1 point increase in health is associated with a *decrease* in risk, and using a net is associated with a 15 point *decrease* in risk. That's the casual effect we're building in to the DAG.
 
 4. **Generate random columns that stand alone. Generate related columns using regression math. Consider adding random noise. This is an entirely trial and error process until you get numbers that look good. Rely *heavily* on plots as you try different coefficients and parameters. Optionally rescale any columns that go out of reasonable bounds. If you rescale, you'll need to tinker with the coefficients you used since the final effects will also get rescaled.**
 
-    Here we go! Let's make some data. I'll comment the code below so you can see what's happening at each step.
+   Here we go! Let's make some data. I'll comment the code below so you can see what's happening at each step.
 
-```{r indent="    "}
+```{r indent="   "}
 # Make this randomness consistent
 set.seed(1234)
 
@@ -600,9 +600,9 @@ head(net_data)
 
 5. **Verify all relationships with plots and models.**
 
-    Let's see if we have the relationships we want. Income looks like it's associated with health:
+   Let's see if we have the relationships we want. Income looks like it's associated with health:
 
-```{r check-income-health, indent="    ", message=FALSE}
+```{r check-income-health, indent="   ", message=FALSE}
 ggplot(net_data, aes(x = income, y = health)) +
   geom_point() +
   geom_smooth(method = "lm")
@@ -610,9 +610,9 @@ ggplot(net_data, aes(x = income, y = health)) +
 lm(health ~ income, data = net_data) %>% tidy()
 ```
 
-    It looks like richer and healthier people are more likely to use nets:
+   It looks like richer and healthier people are more likely to use nets:
 
-```{r check-income-health-nets, fig.width=8, fig.height=4, fig.asp=NULL, indent="    "}
+```{r check-income-health-nets, fig.width=8, fig.height=4, fig.asp=NULL, indent="   "}
 net_income <- ggplot(net_data, aes(x = income, fill = as.factor(net))) +
   geom_density(alpha = 0.7) +
   theme(legend.position = "bottom")
@@ -624,28 +624,28 @@ net_health <- ggplot(net_data, aes(x = health, fill = as.factor(net))) +
 net_income + net_health
 ```
 
-    Income increasing makes it 1% more likely to use a net; health increasing make it 2% more likely to use a net:
+   Income increasing makes it 1% more likely to use a net; health increasing make it 2% more likely to use a net:
 
-```{r indent="    "}
+```{r indent="   "}
 glm(net ~ income + health, family = binomial(link = "logit"), data = net_data) %>%
   tidy(exponentiate = TRUE)
 ```
 
 6. **Try it out!**
 
-    Is the effect in there? Let's try finding it by controlling for our two backdoors: health and income. Ordinarily we should do something like [matching or inverse probability weighting](/example/matching-ipw.qmd), but we'll just do regular regression here (which is okay-ish, since all these variables are indeed linearly related with each other—we made them that way!)
+   Is the effect in there? Let's try finding it by controlling for our two backdoors: health and income. Ordinarily we should do something like [matching or inverse probability weighting](/example/matching-ipw.qmd), but we'll just do regular regression here (which is okay-ish, since all these variables are indeed linearly related with each other—we made them that way!)
 
-    If we just look at the effect of nets on malaria risk without any statistical adjustment, we see that net cause a decrease of 13 points in malaria risk. This is wrong though becuase there's confounding.
+   If we just look at the effect of nets on malaria risk without any statistical adjustment, we see that net cause a decrease of 13 points in malaria risk. This is wrong though becuase there's confounding.
 
-```{r indent="    "}
+```{r indent="   "}
 # Wrong correlation-is-not-causation effect
 model_net_naive <- lm(malaria_risk ~ net, data = net_data)
 tidy(model_net_naive)
 ```
 
-    If we control for the confounders, we get the 10 point ATE. It works!
+   If we control for the confounders, we get the 10 point ATE. It works!
 
-```{r indent="    "}
+```{r indent="   "}
 # Correctly adjusted ATE effect
 model_net_ate <- lm(malaria_risk ~ net + health + income, data = net_data)
 tidy(model_net_ate)
@@ -653,16 +653,16 @@ tidy(model_net_ate)
 
 7. **Save the data.**
 
-    Since it works, let's save it:
+   Since it works, let's save it:
 
-```{r indent="    "}
+```{r indent="   "}
 # In the end, all we need is id, income, health, net, and malaria risk:
 net_data_final <- net_data %>%
   select(id, income, health, net, malaria_risk)
 head(net_data_final)
 ```
 
-```{r eval=FALSE, indent="    "}
+```{r eval=FALSE, indent="   "}
 # Save it as a CSV file
 write_csv(net_data_final, "data/bed_nets.csv")
 ```
@@ -677,9 +677,9 @@ Generating data for a full complete observational DAG like the example above is 
 
 1. **Draw a DAG that maps out how all the columns you care about are related.**
 
-    RCTs are great because they make DAGs really easy! In a well-randomized RCT, you get to delete all arrows going into the treatment node in a DAG. We'll stick with the same mosquito net situation we just used, but make it randomized:
+   RCTs are great because they make DAGs really easy! In a well-randomized RCT, you get to delete all arrows going into the treatment node in a DAG. We'll stick with the same mosquito net situation we just used, but make it randomized:
 
-```{r rct-dag, indent="    "}
+```{r rct-dag, indent="   "}
 rct_dag <- dagify(mal ~ net + inc + hlth,
                   hlth ~ inc,
                   coords = list(x = c(mal = 4, net = 1, inc = 2, hlth = 3),
@@ -690,29 +690,29 @@ ggdag(rct_dag) +
 
 2. **Specify how those nodes are measured.**
 
-    We'll measure these nodes the same way as before:
+   We'll measure these nodes the same way as before:
 
-    - **Malaria risk**: scale from 0–100, mostly around 40, but ranging from 10ish to 80ish. Best to use a Beta distribution.
+   - **Malaria risk**: scale from 0–100, mostly around 40, but ranging from 10ish to 80ish. Best to use a Beta distribution.
 
-    - **Net use**: binary 0/1, TRUE/FALSE variable, where 50% of people use nets. Best to use a binomial distribution.
+   - **Net use**: binary 0/1, TRUE/FALSE variable, where 50% of people use nets. Best to use a binomial distribution.
 
-    - **Income**: weekly income, measured in dollars, mostly around 500 ± 300. Best to use a normal distribution.
+   - **Income**: weekly income, measured in dollars, mostly around 500 ± 300. Best to use a normal distribution.
 
-    - **Health**: scale from 0–100, mostly around 70, but ranging from 50ish to 100. Best to use a Beta distribution.
+   - **Health**: scale from 0–100, mostly around 70, but ranging from 50ish to 100. Best to use a Beta distribution.
 
 3. **Specify the relationships between the nodes based on the DAG equations.**
 
-    This is where RCTs are great. Because we removed all the arrows going into `net`, we don't need to build any relationships that influence net use. Net use is randomized! We don't need to make strange "bed net scores" and give people boosts according to income or health or anything. There are only two models in this DAG:
+   This is where RCTs are great. Because we removed all the arrows going into `net`, we don't need to build any relationships that influence net use. Net use is randomized! We don't need to make strange "bed net scores" and give people boosts according to income or health or anything. There are only two models in this DAG:
 
-    - **`hlth ~ inc`**: Income influences health. We'll assume that every 10 dollars/week is associated with a 1 point increase in health (so a 1 dollar incrrease is associated with a 0.02 point increase in health)
+   - **`hlth ~ inc`**: Income influences health. We'll assume that every 10 dollars/week is associated with a 1 point increase in health (so a 1 dollar incrrease is associated with a 0.02 point increase in health)
 
-    - **`mal ~ net + inc + hlth`**: Net use, income, and health all have an effect on the risk of malaria. We'll say that a 1 dollar increase in income is associated with a *decrease* in risk, a 1 point increase in health is associated with a *decrease* in risk, and using a net is associated with a 15 point *decrease* in risk. That's the casual effect we're building in to the DAG.
+   - **`mal ~ net + inc + hlth`**: Net use, income, and health all have an effect on the risk of malaria. We'll say that a 1 dollar increase in income is associated with a *decrease* in risk, a 1 point increase in health is associated with a *decrease* in risk, and using a net is associated with a 15 point *decrease* in risk. That's the casual effect we're building in to the DAG.
 
 4. **Generate random columns that stand alone. Generate related columns using regression math. Consider adding random noise. This is an entirely trial and error process until you get numbers that look good. Rely *heavily* on plots as you try different coefficients and parameters. Optionally rescale any columns that go out of reasonable bounds. If you rescale, you'll need to tinker with the coefficients you used since the final effects will also get rescaled.**
 
-    Let's make this data. It'll be a lot easier than the full DAG we did before. Again, I'll comment the code below so you can see what's happening at each step.
+   Let's make this data. It'll be a lot easier than the full DAG we did before. Again, I'll comment the code below so you can see what's happening at each step.
 
-```{r indent="    "}
+```{r indent="   "}
 # Make this randomness consistent
 set.seed(1234)
 
@@ -754,9 +754,9 @@ head(rct_data)
 
 5. **Verify all relationships with plots and models.**
 
-     Income still looks like it's associated with health (which isn't surprising, since it's the same code we used for the full DAG earlier):
+    Income still looks like it's associated with health (which isn't surprising, since it's the same code we used for the full DAG earlier):
 
-```{r check-income-health-rct, indent="    ", message=FALSE}
+```{r check-income-health-rct, indent="   ", message=FALSE}
 ggplot(net_data, aes(x = income, y = health)) +
   geom_point() +
   geom_smooth(method = "lm")
@@ -766,19 +766,19 @@ lm(health ~ income, data = net_data) %>% tidy()
 
 6. **Try it out!**
 
-    Is the effect in there? With an RCT, all we really need to do is compare the outcome across treatment and control groups—because there's no confounding, we don't need to control for anything. Ordinarily we should check for balance across characteristics like health and income (and maybe generate other demographic columns) like [we did in the RCT example](/example/rcts.qmd), but we'll skip all that here since we're just checking to see if the effect is there.
+   Is the effect in there? With an RCT, all we really need to do is compare the outcome across treatment and control groups—because there's no confounding, we don't need to control for anything. Ordinarily we should check for balance across characteristics like health and income (and maybe generate other demographic columns) like [we did in the RCT example](/example/rcts.qmd), but we'll skip all that here since we're just checking to see if the effect is there.
 
-    It looks like using nets *causes* an average decrease of 10 risk points. Great!
+   It looks like using nets *causes* an average decrease of 10 risk points. Great!
 
-```{r indent="    "}
+```{r indent="   "}
 # Correct RCT-based ATE
 model_rct <- lm(malaria_risk ~ net, data = rct_data)
 tidy(model_rct)
 ```
 
-    Just for fun, if we control for health and income, we'll get basically the same effect, since they don't actualy confound the relationship and don't really explain anything useful.
+   Just for fun, if we control for health and income, we'll get basically the same effect, since they don't actualy confound the relationship and don't really explain anything useful.
 
-```{r indent="    "}
+```{r indent="   "}
 # Controlling for stuff even though we don't need to
 model_rct_controls <- lm(malaria_risk ~ net + health + income, data = rct_data)
 tidy(model_rct_controls)
@@ -786,16 +786,16 @@ tidy(model_rct_controls)
 
 7. **Save the data.**
 
-    The data works, so let's get rid of the intermediate columns we don't need and save it as a CSV file.
+   The data works, so let's get rid of the intermediate columns we don't need and save it as a CSV file.
 
-```{r indent="    "}
+```{r indent="   "}
 # In the end, all we need is id, income, health, net, and malaria risk:
 rct_data_final <- rct_data %>%
   select(id, income, health, net, malaria_risk)
 head(rct_data_final)
 ```
 
-```{r eval=FALSE, indent="    "}
+```{r eval=FALSE, indent="   "}
 # Save it as a CSV file
 write_csv(rct_data_final, "data/bed_nets_rct.csv")
 ```
@@ -805,11 +805,11 @@ write_csv(rct_data_final, "data/bed_nets_rct.csv")
 
 1. **Draw a DAG that maps out how all the columns you care about are related.**
 
-    Difference-in-differences approaches to causal inference are not based on *models* but on *context* or research design. You need comparable treatment and control groups before and after some policy or program is implemented.
+   Difference-in-differences approaches to causal inference are not based on *models* but on *context* or research design. You need comparable treatment and control groups before and after some policy or program is implemented.
 
-    We'll keep with our mosquito net example and pretend that two cities in some country are dealing with malaria infections. City B rolls out a free net program in 2017; City A does not. Here's what the DAG looks like:
+   We'll keep with our mosquito net example and pretend that two cities in some country are dealing with malaria infections. City B rolls out a free net program in 2017; City A does not. Here's what the DAG looks like:
 
-```{r did-dag, indent="    "}
+```{r did-dag, indent="   "}
 did_dag <- dagify(mal ~ net + year + city,
                   net ~ year + city,
                   coords = list(x = c(mal = 3, net = 1, year = 2, city = 2),
@@ -820,31 +820,31 @@ ggdag(did_dag) +
 
 2. **Specify how those nodes are measured.**
 
-    Here's how we'll measure these nodes:
+   Here's how we'll measure these nodes:
 
-    - **Malaria risk**: scale from 0–100, mostly around 60, but ranging from 30ish to 90ish. Best to use a Beta distribution.
+   - **Malaria risk**: scale from 0–100, mostly around 60, but ranging from 30ish to 90ish. Best to use a Beta distribution.
 
-    - **Net use**: binary 0/1, TRUE/FALSE variable. This is technically binomial, but we don't need to simulate it since it will only happen for people who are in the treatment city after the universal net rollout.
+   - **Net use**: binary 0/1, TRUE/FALSE variable. This is technically binomial, but we don't need to simulate it since it will only happen for people who are in the treatment city after the universal net rollout.
 
-    - **Year**: year ranging from 2013 to 2020. Best to use a uniform distribution.
+   - **Year**: year ranging from 2013 to 2020. Best to use a uniform distribution.
 
-    - **City**: binary 0/1, City A/City B variable. Best to use a binomial distribution.
+   - **City**: binary 0/1, City A/City B variable. Best to use a binomial distribution.
 
 3. **Specify the relationships between the nodes based on the DAG equations.**
 
-    There are two models in the DAG:
+   There are two models in the DAG:
 
-    - **`net ~ year + city`**: Net use is determined by being in City B *and* being after 2017. We'll assume perfect compliance here (but it's fairly easy to simulate non-compliance and have some people in City A use nets after 2017, and some people in both cities use nets before 2017).
+   - **`net ~ year + city`**: Net use is determined by being in City B *and* being after 2017. We'll assume perfect compliance here (but it's fairly easy to simulate non-compliance and have some people in City A use nets after 2017, and some people in both cities use nets before 2017).
 
-    - **`mal ~ net + year + city`**: Malaria risk is determined by net use, year, and city. It's determined by lots of other things too (like we saw in the previous DAGs), but since we're assuming that the two cities are comparable treatment and control groups, we don't need to worry about things like health, income, age, etc.
+   - **`mal ~ net + year + city`**: Malaria risk is determined by net use, year, and city. It's determined by lots of other things too (like we saw in the previous DAGs), but since we're assuming that the two cities are comparable treatment and control groups, we don't need to worry about things like health, income, age, etc.
 
-        We'll pretend that in general, City B has historicallly had a problem with malaria and people there have had higher risk: being in City B increases malaria risk by 5 points, on average. Over time, both cities have worked on mosquito abatement, so average malaria risk has decreased by 2 points per year (in both cities, because we believe in parallel trends). Using a mosquito net causes a decrease of 10 points on average. That's our causal effect.
+       We'll pretend that in general, City B has historicallly had a problem with malaria and people there have had higher risk: being in City B increases malaria risk by 5 points, on average. Over time, both cities have worked on mosquito abatement, so average malaria risk has decreased by 2 points per year (in both cities, because we believe in parallel trends). Using a mosquito net causes a decrease of 10 points on average. That's our causal effect.
 
 4. **Generate random columns that stand alone. Generate related columns using regression math. Consider adding random noise. This is an entirely trial and error process until you get numbers that look good. Rely *heavily* on plots as you try different coefficients and parameters. Optionally rescale any columns that go out of reasonable bounds. If you rescale, you'll need to tinker with the coefficients you used since the final effects will also get rescaled.**
 
-    Generation time! Heavily annotated code below:
+   Generation time! Heavily annotated code below:
 
-```{r indent="    "}
+```{r indent="   "}
 # Make this randomness consistent
 set.seed(1234)
 
@@ -899,17 +899,17 @@ head(did_data)
 
 5. **Verify all relationships with plots and models.**
 
-    Is risk higher in City B? Yep.
+   Is risk higher in City B? Yep.
 
-```{r check-risk-increase, indent="    "}
+```{r check-risk-increase, indent="   "}
 ggplot(did_data, aes(x = city, y = malaria_risk, color = city)) +
   stat_summary(geom = "pointrange", fun.data = "mean_se") +
   guides(color = "none")
 ```
 
-    Does risk decrease over time? And are the trends parallel? There was a weird random spike in City B in 2017 for whatever reason, but in general, the trends in the two cities are pretty parallel from 2013 to 2017.
+   Does risk decrease over time? And are the trends parallel? There was a weird random spike in City B in 2017 for whatever reason, but in general, the trends in the two cities are pretty parallel from 2013 to 2017.
 
-```{r check-parallel-trends, indent="    "}
+```{r check-parallel-trends, indent="   "}
 plot_data <- did_data %>%
   group_by(year, city) %>%
   summarize(mean_risk = mean(malaria_risk),
@@ -927,22 +927,22 @@ ggplot(plot_data, aes(x = year, y = mean_risk, color = city)) +
 
 6. **Try it out!**
 
-    Let's see if it works! For diff-in-diff we need to use this model:
+   Let's see if it works! For diff-in-diff we need to use this model:
 
-    $$
-    \text{Malaria risk} = \alpha + \beta\ \text{City B} + \gamma\ \text{After 2017} + \delta\ (\text{City B} \times \text{After 2017}) + \varepsilon
-    $$
+   $$
+   \text{Malaria risk} = \alpha + \beta\ \text{City B} + \gamma\ \text{After 2017} + \delta\ (\text{City B} \times \text{After 2017}) + \varepsilon
+   $$
 
-```{r indent="    "}
+```{r indent="   "}
 model_did <- lm(malaria_risk ~ city + after + city * after, data = did_data)
 tidy(model_did)
 ```
 
-    It works! Being in City B is associated with a 5-point higher risk on average; being after 2017 is associated with a 7.5-point lower risk on average, and being in City B after 2017 causes risk to drop by −10. The number isn't exactly −10 here, since we rescaled the `malaria_risk` column a little, but still, it's close. It'd probably be a good idea to build in some more noise and noncompliance, since the p-values are really really tiny here, but this is good enough for now.
+   It works! Being in City B is associated with a 5-point higher risk on average; being after 2017 is associated with a 7.5-point lower risk on average, and being in City B after 2017 causes risk to drop by −10. The number isn't exactly −10 here, since we rescaled the `malaria_risk` column a little, but still, it's close. It'd probably be a good idea to build in some more noise and noncompliance, since the p-values are really really tiny here, but this is good enough for now.
 
-    Here's an obligatory diff-in-diff visualization:
+   Here's an obligatory diff-in-diff visualization:
 
-```{r show-diff-diff, indent="    "}
+```{r show-diff-diff, indent="   "}
 plot_data <- did_data %>%
   group_by(after, city) %>%
   summarize(mean_risk = mean(malaria_risk),
@@ -972,15 +972,15 @@ ggplot(plot_data, aes(x = after, y = mean_risk, color = city, group = city)) +
 
 7. **Save the data.**
 
-    The data works, so let's get rid of the intermediate columns we don't need and save it as a CSV file.
+   The data works, so let's get rid of the intermediate columns we don't need and save it as a CSV file.
 
-```{r indent="    "}
+```{r indent="   "}
 did_data_final <- did_data %>%
   select(id, year, city, net, malaria_risk)
 head(did_data_final)
 ```
 
-```{r indent="    ", eval=FALSE}
+```{r indent="   ", eval=FALSE}
 # Save data
 write_csv(did_data_final, "data/diff_diff.csv")
 ```
@@ -990,9 +990,9 @@ write_csv(did_data_final, "data/diff_diff.csv")
 
 1. **Draw a DAG that maps out how all the columns you care about are related.**
 
-    Regression discontinuity designs are also based on context instead of models, so the DAG is pretty simple. We'll keep with our mosquito net example and pretend that families that earn less than \$450 a week qualify for a free net. Here's the DAG:
+   Regression discontinuity designs are also based on context instead of models, so the DAG is pretty simple. We'll keep with our mosquito net example and pretend that families that earn less than \$450 a week qualify for a free net. Here's the DAG:
 
-```{r rdd-dag, indent="    "}
+```{r rdd-dag, indent="   "}
 rdd_dag <- dagify(mal ~ net + inc,
                   net ~ cut,
                   cut ~ inc,
@@ -1004,33 +1004,33 @@ ggdag(rdd_dag) +
 
 2. **Specify how those nodes are measured.**
 
-    Here's how we'll measure these nodes:
+   Here's how we'll measure these nodes:
 
-    - **Malaria risk**: scale from 0–100, mostly around 60, but ranging from 30ish to 90ish. Best to use a Beta distribution.
+   - **Malaria risk**: scale from 0–100, mostly around 60, but ranging from 30ish to 90ish. Best to use a Beta distribution.
 
-    - **Net use**: binary 0/1, TRUE/FALSE variable. This is technically binomial, but we don't need to simulate it since it will only happen for people who below the cutoff.
+   - **Net use**: binary 0/1, TRUE/FALSE variable. This is technically binomial, but we don't need to simulate it since it will only happen for people who below the cutoff.
 
-    - **Income**: weekly income, measured in dollars, mostly around 500 ± 300. Best to use a normal distribution.
+   - **Income**: weekly income, measured in dollars, mostly around 500 ± 300. Best to use a normal distribution.
 
-    - **Cutoff**: binary 0/1, below/above $450 variable. This is technically binomial, but we don't need to simulate it since it is entirely based on income.
+   - **Cutoff**: binary 0/1, below/above $450 variable. This is technically binomial, but we don't need to simulate it since it is entirely based on income.
 
 3. **Specify the relationships between the nodes based on the DAG equations.**
 
-    There are three models in the DAG:
+   There are three models in the DAG:
 
-    - **`cut ~ inc`**: Being above or below the cutpoint is determined by income. We know the cutoff is 450, so we just make an indicator showing if people are below that.
+   - **`cut ~ inc`**: Being above or below the cutpoint is determined by income. We know the cutoff is 450, so we just make an indicator showing if people are below that.
 
-    - **`net ~ cut`**: Net usage is determined by the cutpoint. If people are below the cutpoint, they'll use a net; if not, they won't. We can build in noncompliance here if we want and use fuzzy regression discontinuity. For the sake of this example, we'll do it both ways, just so you can see both sharp and fuzzy synthetic data.
+   - **`net ~ cut`**: Net usage is determined by the cutpoint. If people are below the cutpoint, they'll use a net; if not, they won't. We can build in noncompliance here if we want and use fuzzy regression discontinuity. For the sake of this example, we'll do it both ways, just so you can see both sharp and fuzzy synthetic data.
 
-    - **`mal ~ net + inc`**: Malaria risk is determined by both net usage and income. It's also determined by lots of other things (age, education, city, etc.), but we don't need to include those in the DAG because we're using RDD to say that we have good treatment and control groups right around the cutoff.
+   - **`mal ~ net + inc`**: Malaria risk is determined by both net usage and income. It's also determined by lots of other things (age, education, city, etc.), but we don't need to include those in the DAG because we're using RDD to say that we have good treatment and control groups right around the cutoff.
 
-        We'll pretend that a 1 dollar increase in income is associated with a drop in risk of 0.01, and that using a mosquito net causes a decrease of 10 points on average. That's our causal effect.
+       We'll pretend that a 1 dollar increase in income is associated with a drop in risk of 0.01, and that using a mosquito net causes a decrease of 10 points on average. That's our causal effect.
 
 4. **Generate random columns that stand alone. Generate related columns using regression math. Consider adding random noise. This is an entirely trial and error process until you get numbers that look good. Rely *heavily* on plots as you try different coefficients and parameters. Optionally rescale any columns that go out of reasonable bounds. If you rescale, you'll need to tinker with the coefficients you used since the final effects will also get rescaled.**
 
-    Let's fake some data! Heavily annotated code below:
+   Let's fake some data! Heavily annotated code below:
 
-```{r indent="    "}
+```{r indent="   "}
 # Make this randomness consistent
 set.seed(1234)
 
@@ -1089,18 +1089,18 @@ head(rdd_data)
 
 5. **Verify all relationships with plots and models.**
 
-    Is there a cutoff in the running variable when we use the sharp net variable? Yep!
+   Is there a cutoff in the running variable when we use the sharp net variable? Yep!
 
-```{r sharp-running-var-cutoff, indent="    "}
+```{r sharp-running-var-cutoff, indent="   "}
 ggplot(rdd_data, aes(x = income, y = net_sharp, color = below_cutoff)) +
   geom_vline(xintercept = 450) +
   geom_point(alpha = 0.3, position = position_jitter(width = NULL, height = 0.2)) +
   guides(color = "none")
 ```
 
-    Is there a cutoff in the running variable when we use the fuzzy net variable? Yep! There are some richer people using the program and some poorer people not using it.
+   Is there a cutoff in the running variable when we use the fuzzy net variable? Yep! There are some richer people using the program and some poorer people not using it.
 
-```{r fuzzy-running-var-cutoff, indent="    "}
+```{r fuzzy-running-var-cutoff, indent="   "}
 ggplot(rdd_data, aes(x = income, y = net_fuzzy, color = below_cutoff)) +
   geom_vline(xintercept = 450) +
   geom_point(alpha = 0.3, position = position_jitter(width = NULL, height = 0.2)) +
@@ -1109,15 +1109,15 @@ ggplot(rdd_data, aes(x = income, y = net_fuzzy, color = below_cutoff)) +
 
 6. **Try it out!**
 
-    Let's test it! For sharp RDD we need to use this model:
+   Let's test it! For sharp RDD we need to use this model:
 
-    $$
-    \text{Malaria risk} = \beta_0 + \beta_1 \text{Income}_\text{centered} + \beta_2 \text{Net} + \varepsilon
-    $$
+   $$
+   \text{Malaria risk} = \beta_0 + \beta_1 \text{Income}_\text{centered} + \beta_2 \text{Net} + \varepsilon
+   $$
 
-    We'll use a bandwidth of ±$50, because why not. In real life you'd be more careful about bandwidth selection (or use `rdbwselect()` from the **rdrobust** package to find the optimal bandwidth)
+   We'll use a bandwidth of ±$50, because why not. In real life you'd be more careful about bandwidth selection (or use `rdbwselect()` from the **rdrobust** package to find the optimal bandwidth)
 
-```{r sharp-results, indent="    ", message=FALSE}
+```{r sharp-results, indent="   ", message=FALSE}
 ggplot(rdd_data, aes(x = income, y = malaria_risk_sharp, color = net_sharp)) +
   geom_vline(xintercept = 450) +
   geom_point(alpha = 0.2, size = 0.5) +
@@ -1134,18 +1134,18 @@ ggplot(rdd_data, aes(x = income, y = malaria_risk_sharp, color = net_sharp)) +
   theme(legend.position = "bottom")
 ```
 
-```{r indent="    "}
+```{r indent="   "}
 model_sharp <- lm(malaria_risk_sharp ~ income_centered + net_sharp,
                   data = filter(rdd_data,
                                 income_centered >= -50 & income_centered <= 50))
 tidy(model_sharp)
 ```
 
-    There's an effect! For people in the bandwidth, the local average treatment effect of nets is a 10.6 point reduction in malaria risk.
+   There's an effect! For people in the bandwidth, the local average treatment effect of nets is a 10.6 point reduction in malaria risk.
 
-    Let's check if it works with the fuzzy version where there are noncompliers:
+   Let's check if it works with the fuzzy version where there are noncompliers:
 
-```{r fuzzy-results, indent="    ", message=FALSE}
+```{r fuzzy-results, indent="   ", message=FALSE}
 ggplot(rdd_data, aes(x = income, y = malaria_risk_fuzzy, color = net_fuzzy)) +
   geom_vline(xintercept = 450) +
   geom_point(alpha = 0.2, size = 0.5) +
@@ -1162,18 +1162,18 @@ ggplot(rdd_data, aes(x = income, y = malaria_risk_fuzzy, color = net_fuzzy)) +
   theme(legend.position = "bottom")
 ```
 
-    There's a gap, but it's hard to measure since there are noncompliers on both sides. We can deal with the noncompliance if we use above/below the cutoff as an instrument (see the [fuzzy regression discontinuity guide](/example/rdd-fuzzy.qmd) for a complete example). We should run this set of models:
+    here's a gap, but it's hard to measure since there are noncompliers on both sides. We can deal with the noncompliance if we use above/below the cutoff as an instrument (see the [fuzzy regression discontinuity guide](/example/rdd-fuzzy.qmd) for a complete example). We should run this set of models:
 
-    $$
-    \begin{aligned}
-    \widehat{\text{Net}} &= \gamma_0 + \gamma_1 \text{Income}_{\text{centered}} + \gamma_2 \text{Below 450} + \omega \\\\
-    \text{Malaria risk} &= \beta_0 + \beta_1 \text{Income}\_{\text{centered}} + \beta_2 \widehat{\text{Net}} + \epsilon
-    \end{aligned}
-    $$
+   $$
+   \begin{aligned}
+   \widehat{\text{Net}} &= \gamma_0 + \gamma_1 \text{Income}_{\text{centered}} + \gamma_2 \text{Below 450} + \omega \\\\
+   \text{Malaria risk} &= \beta_0 + \beta_1 \text{Income}\_{\text{centered}} + \beta_2 \widehat{\text{Net}} + \epsilon
+   \end{aligned}
+   $$
 
-    Instead of doing these two stages by hand (ugh), we'll do the 2SLS regression with the `iv_robust()` function from the **estimatr** package:
+   Instead of doing these two stages by hand (ugh), we'll do the 2SLS regression with the `iv_robust()` function from the **estimatr** package:
 
-```{r indent="    "}
+```{r indent="   "}
 library(estimatr)
 
 model_fuzzy <- iv_robust(malaria_risk_fuzzy ~ income_centered + net_fuzzy |
@@ -1183,13 +1183,13 @@ model_fuzzy <- iv_robust(malaria_risk_fuzzy ~ income_centered + net_fuzzy |
 tidy(model_fuzzy)
 ```
 
-    The effect is slightly larger now (−11.2), but that's because we are looking at a doubly local ATE: compliers in the bandwidth. But still, it's close to −10, so that's good. And we could probably get it closer if we did other mathy shenanigans like adding squared and cubed terms or using nonparametric estimation with `rdrobust()` in the **rdrobust** package.
+   The effect is slightly larger now (−11.2), but that's because we are looking at a doubly local ATE: compliers in the bandwidth. But still, it's close to −10, so that's good. And we could probably get it closer if we did other mathy shenanigans like adding squared and cubed terms or using nonparametric estimation with `rdrobust()` in the **rdrobust** package.
 
 7. **Save the data.**
 
-    The data works, so let's get rid of the intermediate columns we don't need and save it as a CSV file. We'll make two separate CSV files for fuzzy and sharp, just because.
+   The data works, so let's get rid of the intermediate columns we don't need and save it as a CSV file. We'll make two separate CSV files for fuzzy and sharp, just because.
 
-```{r indent="    "}
+```{r indent="   "}
 rdd_data_final_sharp <- rdd_data %>%
   select(id, income, net = net_sharp, malaria_risk = malaria_risk_sharp)
 head(rdd_data_final_sharp)
@@ -1199,7 +1199,7 @@ rdd_data_final_fuzzy <- rdd_data %>%
 head(rdd_data_final_fuzzy)
 ```
 
-```{r indent="    ", eval=FALSE}
+```{r indent="   ", eval=FALSE}
 # Save data
 write_csv(rdd_data_final_sharp, "data/rdd_sharp.csv")
 write_csv(rdd_data_final_fuzzy, "data/rdd_fuzzy.csv")
@@ -1210,17 +1210,17 @@ write_csv(rdd_data_final_fuzzy, "data/rdd_fuzzy.csv")
 
 1. **Draw a DAG that maps out how all the columns you care about are related.**
 
-    As with diff-in-diff and regression discontinuity, instrumental variables are a design-based approach to causal inference and thus don't require complicated models (but you can still add control variables!), so their DAGs are simpler. Once again we'll look at the effect of mosquito nets on malaria risk, but this time we'll say that we cannot possibly measure all the confounding factors between net use and malaria risk, so we'll use an instrument to extract the exogeneity from net use.
+   As with diff-in-diff and regression discontinuity, instrumental variables are a design-based approach to causal inference and thus don't require complicated models (but you can still add control variables!), so their DAGs are simpler. Once again we'll look at the effect of mosquito nets on malaria risk, but this time we'll say that we cannot possibly measure all the confounding factors between net use and malaria risk, so we'll use an instrument to extract the exogeneity from net use.
 
-    [As we talked about in Session 11](/content/11-content.qmd), good plausible instruments are hard to find: they have to cause bed net use and *not* be related to malaria risk *except through* bed net use.
+   [As we talked about in Session 11](/content/11-content.qmd), good plausible instruments are hard to find: they have to cause bed net use and *not* be related to malaria risk *except through* bed net use.
 
-    For this example, we'll pretend that free bed nets are distributed from town halls around the country. We'll use "distance to town hall" as our instrument, since it could arguably maybe work perhaps. Being closer to a town hall makes you more likely to use a net, but being closer to a town halls doesn't make put you at higher or lower risk for malaria on its own—it does that only because it changes your likelihood of getting a net.
+   For this example, we'll pretend that free bed nets are distributed from town halls around the country. We'll use "distance to town hall" as our instrument, since it could arguably maybe work perhaps. Being closer to a town hall makes you more likely to use a net, but being closer to a town halls doesn't make put you at higher or lower risk for malaria on its own—it does that only because it changes your likelihood of getting a net.
 
-    This is where the story for the instrument falls apart, actually; in real life, if you live far away from a town hall, you probably live further from health services and live in more rural places with worse mosquito abatement policies, so you're probably at higher risk of malaria. It's probably a bad instrument, but just go with it.
+   This is where the story for the instrument falls apart, actually; in real life, if you live far away from a town hall, you probably live further from health services and live in more rural places with worse mosquito abatement policies, so you're probably at higher risk of malaria. It's probably a bad instrument, but just go with it.
 
-    Here's the DAG:
+   Here's the DAG:
 
-```{r iv-dag, indent="    "}
+```{r iv-dag, indent="   "}
 iv_dag <- dagify(mal ~ net + U,
                  net ~ dist + U,
                  coords = list(x = c(mal = 4, net = 2, U = 3, dist = 1),
@@ -1234,33 +1234,33 @@ ggdag_status(iv_dag) +
 
 2. **Specify how those nodes are measured.**
 
-    Here's how we'll measure these nodes:
+   Here's how we'll measure these nodes:
 
-    - **Malaria risk**: scale from 0–100, mostly around 60, but ranging from 30ish to 90ish. Best to use a Beta distribution.
+   - **Malaria risk**: scale from 0–100, mostly around 60, but ranging from 30ish to 90ish. Best to use a Beta distribution.
 
-    - **Net use**: binary 0/1, TRUE/FALSE variable. However, since we want to use other variables that increase the likelihood of using a net, we'll do some cool tricky stuff with a bed net score, like we did in the observational DAG example earlier.
+   - **Net use**: binary 0/1, TRUE/FALSE variable. However, since we want to use other variables that increase the likelihood of using a net, we'll do some cool tricky stuff with a bed net score, like we did in the observational DAG example earlier.
 
-    - **Distance**: distance to nearest town hall, measured in kilometers, mostly around 3, with a left skewed long tail (i.e. most people live fairly close, some people live far away). Best to use a Beta distribution (to get the skewed shape) that we then rescale.
+   - **Distance**: distance to nearest town hall, measured in kilometers, mostly around 3, with a left skewed long tail (i.e. most people live fairly close, some people live far away). Best to use a Beta distribution (to get the skewed shape) that we then rescale.
 
-    - **Unobserved**: who knows?! There are a lot of unknown confounders. We could generate columns like income, age, education, and health, make them mathematically related to malaria risk and net use, and then throw those columns away in the final data so they're unobserved. That would be fairly easy and intuitive.
+   - **Unobserved**: who knows?! There are a lot of unknown confounders. We could generate columns like income, age, education, and health, make them mathematically related to malaria risk and net use, and then throw those columns away in the final data so they're unobserved. That would be fairly easy and intuitive.
 
-        For the sake of simplicity here, we'll make a column called "risk factors," kind of like we did with the "ability" column in [the instrumental variables example](/example/iv.qmd#education-wages-and-fathers-education-fake-data)—it's a magical column that is unmeasurable, but it'll open a backdoor path between net use and malaria risk and thus create endogeneity. It'll be normally distributed around 50, with a standard deviation of 25.
+       For the sake of simplicity here, we'll make a column called "risk factors," kind of like we did with the "ability" column in [the instrumental variables example](/example/iv.qmd#education-wages-and-fathers-education-fake-data)—it's a magical column that is unmeasurable, but it'll open a backdoor path between net use and malaria risk and thus create endogeneity. It'll be normally distributed around 50, with a standard deviation of 25.
 
 3. **Specify the relationships between the nodes based on the DAG equations.**
 
-    There are two models in the DAG:
+   There are two models in the DAG:
 
-    - **`net ~ dist + U`**: Net usage is determined by both distance and our magical unobserved risk factor column. Net use is technically binomial, but in order to change the likelihood of net use based on distance to town hall and unobserved stuff, we'll do the fancy tricky stuff we did in the observational DAG section above: we'll create a bed net score, increase or decrease that score based on risk factors and distance, scale that score to a 0-1 scale of probabilities, and then draw a binomial 0/1 outcome using those probabilities.
+   - **`net ~ dist + U`**: Net usage is determined by both distance and our magical unobserved risk factor column. Net use is technically binomial, but in order to change the likelihood of net use based on distance to town hall and unobserved stuff, we'll do the fancy tricky stuff we did in the observational DAG section above: we'll create a bed net score, increase or decrease that score based on risk factors and distance, scale that score to a 0-1 scale of probabilities, and then draw a binomial 0/1 outcome using those probabilities.
 
-        We'll say that a one kilometer increase in the distance to a town halls reduces the bed net score and a one point increase in risk factors reduces the bed net score.
+       We'll say that a one kilometer increase in the distance to a town halls reduces the bed net score and a one point increase in risk factors reduces the bed net score.
 
-    - **`mal ~ net + U`**: Malaria risk is determined by both net usage and unkown stuff, or the magical column we're calling "risk factors." We'll say that a one point increase in risk factors increases malaria risk, and that using a mosquito net causes a decrease of 10 points on average. That's our causal effect.
+   - **`mal ~ net + U`**: Malaria risk is determined by both net usage and unkown stuff, or the magical column we're calling "risk factors." We'll say that a one point increase in risk factors increases malaria risk, and that using a mosquito net causes a decrease of 10 points on average. That's our causal effect.
 
 4. **Generate random columns that stand alone. Generate related columns using regression math. Consider adding random noise. This is an entirely trial and error process until you get numbers that look good. Rely *heavily* on plots as you try different coefficients and parameters. Optionally rescale any columns that go out of reasonable bounds. If you rescale, you'll need to tinker with the coefficients you used since the final effects will also get rescaled.**
 
-    Fake data time! Here's some heavily annotated code:
+   Fake data time! Here's some heavily annotated code:
 
-```{r indent="    "}
+```{r indent="   "}
 # Make this randomness consistent
 set.seed(1234)
 
@@ -1300,24 +1300,24 @@ iv_data
 
 5. **Verify all relationships with plots and models.**
 
-    Is there a relationship between unobserved risk factors and malaria risk? Yep.
+   Is there a relationship between unobserved risk factors and malaria risk? Yep.
 
-```{r check-risk-malaria, indent="    ", message=FALSE}
+```{r check-risk-malaria, indent="   ", message=FALSE}
 ggplot(iv_data, aes(x = risk_factors, y = malaria_risk)) +
   geom_point(aes(color = as.factor(net))) +
   geom_smooth(method = "lm")
 ```
 
-    Is there a relationship between distance to town hall and net use? Yeah, those who live further away are less likely to use a net.
+   Is there a relationship between distance to town hall and net use? Yeah, those who live further away are less likely to use a net.
 
-```{r check-distance-net, indent="    "}
+```{r check-distance-net, indent="   "}
 ggplot(iv_data, aes(x = distance, fill = as.factor(net))) +
   geom_density(alpha = 0.7)
 ```
 
-    Is there a relationship between net use and malaria risk? Haha, yeah, that's a huge highly significant effect. Probably too perfect. We could increase those error bars if we tinker with some of the numbers in the code, but for the sake of this example, we'll leave them like this.
+   Is there a relationship between net use and malaria risk? Haha, yeah, that's a huge highly significant effect. Probably too perfect. We could increase those error bars if we tinker with some of the numbers in the code, but for the sake of this example, we'll leave them like this.
 
-```{r check-net-risk, indent="    "}
+```{r check-net-risk, indent="   "}
 ggplot(iv_data, aes(x = as.factor(net), y = malaria_risk, color = as.factor(net))) +
   stat_summary(geom = "pointrange", fun.data = "mean_se")
 ```
@@ -1325,45 +1325,45 @@ ggplot(iv_data, aes(x = as.factor(net), y = malaria_risk, color = as.factor(net)
 
 6. **Try it out!**
 
-    Cool, let's see if this works. Remember, we can't actually use the `risk_factors` column in real life, but we will here just to make sure the effect we built in exists. Here's the true effect, where using a net causes a decrease of 10.9 malaria risk points
+   Cool, let's see if this works. Remember, we can't actually use the `risk_factors` column in real life, but we will here just to make sure the effect we built in exists. Here's the true effect, where using a net causes a decrease of 10.9 malaria risk points
 
-```{r indent="    "}
+```{r indent="   "}
 model_forbidden <- lm(malaria_risk ~ net + risk_factors, data = iv_data)
 tidy(model_forbidden)
 ```
 
-    Since we can't actually use that column, we'll use distance to town hall as an instrument. We should run this set of models:
+   Since we can't actually use that column, we'll use distance to town hall as an instrument. We should run this set of models:
 
-    $$
-    \begin{aligned}
-    \widehat{\text{Net}} &= \gamma_0 + \gamma_1 \text{Distance to town hall} + \omega \\\\
-    \text{Malaria risk} &= \beta_0 + \beta_1 \widehat{\text{Net}} + \epsilon
-    \end{aligned}
-    $$
+   $$
+   \begin{aligned}
+   \widehat{\text{Net}} &= \gamma_0 + \gamma_1 \text{Distance to town hall} + \omega \\\\
+   \text{Malaria risk} &= \beta_0 + \beta_1 \widehat{\text{Net}} + \epsilon
+   \end{aligned}
+   $$
 
-    We'll run this 2SLS model with the `iv_robust()` function from the **estimatr** package:
+   We'll run this 2SLS model with the `iv_robust()` function from the **estimatr** package:
 
-```{r indent="    "}
+```{r indent="   "}
 library(estimatr)
 
 model_iv <- iv_robust(malaria_risk ~ net | distance, data = iv_data)
 tidy(model_iv)
 ```
 
-    …and it's relatively close, I guess, at −8.2. Getting instrumental variables to find exact causal effects is tricky, but I'm fine with this for simulated data.
+   …and it's relatively close, I guess, at −8.2. Getting instrumental variables to find exact causal effects is tricky, but I'm fine with this for simulated data.
 
 7. **Save the data.**
 
-    The data works well enough, so we'll get rid of the extra intermediate columns and save it as a CSV file. We'll keep the forbidden `risk_factors` column just for fun.
+   The data works well enough, so we'll get rid of the extra intermediate columns and save it as a CSV file. We'll keep the forbidden `risk_factors` column just for fun.
 
-```{r indent="    "}
+```{r indent="   "}
 iv_data_final <- iv_data %>%
   select(id, net, distance, malaria_risk, risk_factors)
 
 head(iv_data_final)
 ```
 
-```{r indent="    ", eval=FALSE}
+```{r indent="   ", eval=FALSE}
 # Save data
 write_csv(iv_data_final, "data/bed_nets_iv.csv")
 ```

@@ -296,19 +296,19 @@ In the interest of space, we will not verify all these implied independencies, b
 
 - $\text{Health} \perp \text{Household members}$: (Read as *"Health is independent of household member count"*.) Health should be independent of the number of people in each household. In the data, the two variables should not be correlated. This is indeed the case:
 
-```{r indent="    "}
+```{r indent="  "}
 cor(mosquito_nets$health, mosquito_nets$household)
 ```
 
 - $\text{Income} \perp \text{Insecticide resistance}$: (Read as *"Income is independent of insecticide resistance"*.) Income should be independent of insecticide resistance. This is again true:
 
-```{r indent="    "}
+```{r indent="  "}
 cor(mosquito_nets$income, mosquito_nets$resistance)
 ```
 
 - $\text{Malaria risk} \perp \text{Household members}\ |\ \text{Health, Income, Bed net use, Temperature}$: (Read as *"Malaria risk is independent of house member count given health, income, bed net use, and temperature"*.) Malaria risk should be independent of the number of household members given similar levels of health, income, mosquito net use, and nighttime temperatures. We cannot use `cor()` to test this implication, since there are many variables involved, but we can use a regression model to check if the number of household members is significantly related to malaria risk. It is not significant ($t = -0.17$, $p = 0.863$), which means the two are independent, as expected.
 
-```{r indent="    "}
+```{r indent="  "}
 lm(malaria_risk ~ household + health + income + net + temperature,
    data = mosquito_nets) %>%
   broom::tidy()
