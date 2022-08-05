@@ -18,10 +18,11 @@ Policy Studies • Georgia State University
 
 ## How to build the site
 
-1.  Install version 2022.07.1 later of
-    [RStudio](https://www.rstudio.com/products/rstudio/download/#download),
-    since it has a [Quarto](https://quarto.org/) installation embedded
-    in it. Otherwise, download and install [Quarto](https://quarto.org/)
+1.  Install
+    [RStudio](https://www.rstudio.com/products/rstudio/download/#download)
+    version 2022.07.1 or later since it has a
+    [Quarto](https://quarto.org/) installation embedded in it.
+    Otherwise, download and install [Quarto](https://quarto.org/)
     separately.
 2.  Open `evalf22.Rproj` to open an [RStudio
     Project](https://r4ds.had.co.nz/workflow-projects.html).
