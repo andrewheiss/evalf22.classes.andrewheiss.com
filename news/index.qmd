@@ -18,6 +18,11 @@ listing:
 page-layout: full
 sidebar: false
 toc: false
+format:
+  html:
+    # https://github.com/quarto-dev/quarto-cli/blob/main/src/resources/formats/html/templates/title-block.html
+    template-partials:
+      - ../html/news-default/title-block.html
 ---
 
 ```{r get-vars, include=FALSE}

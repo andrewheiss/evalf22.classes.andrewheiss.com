@@ -31,7 +31,7 @@ website:
     image: "/files/social-image-f22.png"
     card-style: summary_large_image
     creator: "@andrewheiss"
-    site: "@andrewheiss"
+    # site: "@andrewheiss"
 
   open-graph:
     image: "/files/social-image-f22.png"

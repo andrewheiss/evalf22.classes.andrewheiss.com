@@ -146,18 +146,28 @@ ol {
   padding-bottom: 0.5rem;
 }
 
-.ical {
-  font-size: 90%;
-  text-align: center;
-  background-color: lighten(blue, 40%);
-  padding: 0.6rem 0 0.1rem;
-  margin-bottom: 2rem;
-}
-
 .download-btn {
   padding-top: 0.25rem;
   margin-bottom: 0;
   text-align: center;
+}
+
+
+// News stuff
+.back-nav {
+  margin-bottom: 1.5rem;
+}
+
+.news .quarto-title-meta {
+  font-size: 1.1rem;
+  border-left: 5px solid $orange;
+  padding: 0 0.5rem 1rem;
+  margin: 1rem 0 2.5rem;
+  background-color: lighten($orange, 40%);
+}
+
+.news .quarto-categories {
+  padding-top: 0.5em;
 }
 
 
