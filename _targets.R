@@ -109,6 +109,10 @@ list(
              format = "file"),
 
 
+  ## Knit the README ----
+  tar_render(readme, here_rel("README.Rmd")),
+
+
   ## Build site ----
   tar_quarto(site, path = "."),
 
