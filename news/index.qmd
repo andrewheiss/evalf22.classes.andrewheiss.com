@@ -1,0 +1,50 @@
+---
+title: "News"
+listing:
+  id: "news-table"
+  contents: .
+  sort: "date desc"
+  page-size: 100
+  type: table
+  table-hover: true
+  fields: [date, title, categories]
+  filter-ui: [title, date, categories]
+  sort-ui: true
+  date-format: "dddd MMMM D, YYYY [at] h:mm A"
+  feed: 
+    title: "Program Evaluation (PMAP 8521) News"
+    description: "Updates and FAQs for PMAP 8521 at Georgia State University"
+  categories: false
+page-layout: full
+sidebar: false
+toc: false
+---
+
+```{r get-vars, include=FALSE}
+base_url <- yaml::read_yaml(here::here("_quarto.yml"))$website$`site-url`
+feed_name <- "news/index.xml"
+feed_url <- paste0(base_url, "/", feed_name)
+```
+
+::: {#news-table}
+:::
+
+::: {.callout-tip}
+
+## Subscribe!
+
+You can use a feed reader like [Feedly](https://feedly.com/) or use an [RSS-to-email service](https://www.google.com/search?q=rss+to+email)  like [Blogtrottr](https://blogtrottr.com/) to subscribe to these updates and messages. I'll also e-mail out links to them when there are new updates.
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-2}
+<p class="download-btn"><a class="btn btn-danger btn-sm" href="`r feed_url`" role="button">{{< fa square-rss >}} RSS</a></p>
+:::
+
+::: {.g-col-12 .g-col-md-10}
+<p><input class="form-control" type="text" value="`r feed_url`" onclick="this.select()" readonly></p>
+:::
+
+:::
+
+:::

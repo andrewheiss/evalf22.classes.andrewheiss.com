@@ -1,0 +1,15 @@
+---
+title: "Important R stuff"
+date: "2022-08-08T12:10"
+categories: [getting started]
+---
+
+From reading the syllabus you'll notice that we're using R in this class (though you can certainly use Stata too if you really want). R is free (!!), and highly sought after by employers, but it has a little bit of an initial learning curve. You'll get the hang of it, though, I promise! I'm a certified RStudio instructor (see <https://education.rstudio.com/trainers/>), so I've been specially trained to teach statistical programming. Again, I promise that you'll learn a ton.
+
+You'll be doing your stats work in RStudio this semester. While R and RStudio are free and open source, they can sometimes be tricky to install. To make life simpler, you can run RStudio in your browser without having to install anything (!!!). Over the course of the semester you'll want to eventually  install everything on your actual computer, since it'll run faster there, but you won't need to install anything to get started. Click on this link to make an account and join the class workspace: TODO
+
+In the meantime, you can also install everything on your actual computer if you [follow these instructions](/resource/install.qmd) (eventually you should do this—it's best to run R on your own computer, but it's totally fine to run everything at RStudio Cloud for the first few weeks)
+
+If you have some free time over the next week and you feel like getting a head start, I would *highly* recommend going through a few of RStudio's R Primers at <https://rstudio.cloud/learn/primers>. **Don't worry if you don't have time to go through these introductory primers/tutorials!**  Your first problem set is essentially doing those primers ([see here for the ones you'll need to do](/example/rstudio-tidyverse.qmd)), so you don't have to get a head start now if you don't want to.
+
+Once again, I promise that you can do this and have a blast in this class!

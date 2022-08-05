@@ -51,6 +51,8 @@ website:
         file: example/index.qmd
       - text: "Resources"
         file: resource/index.qmd
+      - text: "News"
+        file: news/index.qmd
       - icon: slack
         href: "https://www.google.com"
         aria-label: Slack
@@ -179,6 +181,7 @@ website:
             - resource/markdown.qmd
             - resource/rmarkdown.qmd
             - resource/unzipping.qmd
+
   page-footer:
     left: |
       Content {{< fa brands creative-commons >}} {{< var course.copyright_year >}} by [{{< var instructor.name_no_title >}}]({{< var instructor.url >}}) <br>

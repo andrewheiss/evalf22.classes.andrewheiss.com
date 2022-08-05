@@ -1,0 +1,31 @@
+---
+title: "Welcome to class!"
+date: "2022-08-08T11:30"
+categories: [getting started]
+---
+
+Hello everyone!
+
+I’m Andrew Heiss, your professor for PMAP 8521 (Evaluation Research) this spring, and I’m so excited for the class! In the class you'll learn all about causal inference, or how to legally claim causation with statistics. In your past stats classes you were always taught "correlation isn't causation," which is mostly true, except when it's not. In this class you'll get to legitimately make causal claims. 
+
+We'll cover fun tools like directed acyclic graphs (DAGs), randomized controlled trials, difference-in-differences analysis, regression discontinuity analysis, and instrumental variables. You'll also learn the statistical language R, which is free (which means you can keep using it after you graduate and not have to pay for really really expensive SPSS or Stata licenses). I've had former students get jobs because of the R part of this class—tons of organizations are looking for R skills nowadays.
+
+I have a few important announcements before class:
+
+- We are meeting in person, but as you'll see in the syllabus (see the ["Masking and vaccines" section](/syllabus.qmd#pandemic-stuff) there, I'm trying to take as many precautions as possible given the rapid spread of the BA.5 variant. For instance…
+
+- …I've made the course a flipped course, which means you'll do all the readings and watch the lectures on YouTube *before* class on Mondays. We'll spend our class time answering questions, doing activities, and learning a lot of R together. This means that the bulk of the course material is fully online and asynchronous.
+
+- Before class, I'd love to get to know each you a little first, so I've created a quick survey here: TODO. Please take it at your earliest convenience.
+
+- The entire course is available at a special class website at <https://evalf22.classes.andrewheiss.com/>. Bookmark this site—it'll be your best friend for the next semester. I only use iCollege for collecting your assignments, posting answer keys, posting a couple scanned book chapters, and offering the two exams (since it's password protected). This website is the official source of dates and all other class information. Because it's not part of iCollege, you'll be able to reference it even after you graduate and lose access to GSU resources. You can even share it with others—it's just a website!
+
+- **Please read the main explanatory pages at the course website at your earliest convenience.** The instructions and expectations for the class are divided across different pages, all accessible from the menu bar at the top of the site. Please read the main pages for the syllabus, schedule, content, assignments, and examples.
+
+- We're using zero physical textbooks in this class. Every reading and book and piece of software in this class is 100% **free** (see the syllabus for more information about that).
+
+Quick background about me: I'm an assistant professor here at the Andrew Young School, where I've been teaching MPA/MPP microeconomics, program evaluation, and data visualization. I moved here from Utah in 2019, where I was a visiting professor of public management at the Marriott School of Business at Brigham Young University (BYU). While at BYU, I taught microeconomics, statistics, and data visualization (basically the same stuff I’m teaching now). I finished my PhD in public policy and political science from Duke in 2017, and before then I finished my MPA in nonprofit management from BYU in 2012.
+
+When I'm not teaching stats and evaluation, I research international nonprofits and political science. And when I’m not teaching or researching, I’m normally chilling at my house with my 6 (!!) kids (see <https://www.heissatopia.com/> for photos and hilarious stories).
+
+Again, I'm really excited to get started next week. This fall semester should be a blast!
