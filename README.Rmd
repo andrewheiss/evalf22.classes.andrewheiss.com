@@ -9,6 +9,10 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+
+withr::with_dir(here::here(), {
+  targets::tar_load(workflow_graph)
+})
 ```
 
 # Program Evaluation for Public Service <a href='https://evalf22.classes.andrewheiss.com/'><img src='files/icon-512.png' align="right" height="139" /></a>
@@ -61,16 +65,11 @@ The complete pipeline looks like this:
 
 <small>(This uses [`mermaid.js` syntax](https://mermaid-js.github.io/mermaid/) and should display as a graph on GitHub. You can also view it by pasting the code into <https://mermaid.live>.)</small>
 
-```{r include=FALSE}
-workflow <- targets::tar_mermaid(targets_only = TRUE, outdated = FALSE, 
-                                 legend = FALSE, color = FALSE)
-```
-
 ```{r echo=FALSE, results="asis"}
 # Make sure there are newlines between the code block boundaries and the output
 # from `workflow`, which also needs to be separated by newlines
 cat("``` mermaid\n")
-cat(workflow, sep = "\n")
+cat(workflow_graph, sep = "\n")
 cat("\n```")
 ```
 
