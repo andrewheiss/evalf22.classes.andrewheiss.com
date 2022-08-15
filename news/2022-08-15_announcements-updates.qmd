@@ -1,0 +1,23 @@
+---
+title: "Announcements and updates"
+date: "2022-08-15T15:31"
+categories: [getting started]
+---
+
+One last thing!
+
+Over the course of the semester, I’ll be sending you lots of updates and announcements and FAQs based on your weekly check-ins. 
+
+My philosophy for this class is to let you maintain access to as much content as possible, which is why so little of the the class material is on iCollege. 
+
+I will post all these announcements and e-mails at [the "News section](/news/index.qmd) of the course website. This means that even after you finish the class and lose access to iCollege, and even after you graduate from GSU and lose access to your @gsu.edu e-mail address, you’ll still have a searchable archive of messages and FAQs from this class.
+
+I’ll let you know when there’s a new item in the news section in a few different ways: 
+
+1. I’ll e-mail you a link to the newest message. I’ll use the e-mail address you have listed in PAWS—if you want me to use a different address, let me know and I’ll update my list,
+2. New messages should post automatically to the #general channel in Slack
+3. If you use an RSS feed reader (RIP Google Reader), you can subscribe to an RSS feed of the news section. There’s a link at the bottom of [the news page](/news/index.qmd).
+
+Phew. That should be it from me for a while. Remember to read the syllabus and the rest of the course website, answer the welcome survey, sign up for Slack, and join the RStudio.cloud workspace. Also, remember to take care of yourselves! I mean *every word* in [the "Learning during a pandemic" section of the syllabus](https://evalf22.classes.andrewheiss.com/syllabus.html#learning-during-a-pandemic). This all sucks so much, and I will try my hardest to accommodate your needs throughout the semester.
+
+Thanks!
