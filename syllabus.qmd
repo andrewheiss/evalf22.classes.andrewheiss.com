@@ -141,7 +141,7 @@ Additionally, we have a class chatroom at [Slack](https://gsuevalf2021.slack.com
 
 ## Course structure
 
-We meet weekly from 7:15–9:45 PM on Thursdays in 224 Aderhold. ***However***, despite policies and rhetoric to the contrary, we're still in the middle of a severe global pandemic, and the omicron variant of COVID-19 is raging.
+We meet weekly from 4:30–7:00 PM on Mondays in 330 Aderhold. ***However***, despite policies and rhetoric to the contrary, we're still in the middle of a severe global pandemic, and the BA.5 variant of COVID-19 is raging.
 
 Accordingly, this semester we're going to have a [flipped classroom](https://en.wikipedia.org/wiki/Flipped_classroom), which will let us maximize flexibility during this pandemic. 
 
@@ -155,9 +155,9 @@ We will do several things during our Monday in-person classes:
 
 ## Attendance and participation
 
-You're expected to come to class each Thursday prepared—having read the material and watched the videos—and ready to discuss the content and work with R. 
+You're expected to come to class each Monday prepared—having read the material and watched the videos—and ready to discuss the content and work with R. 
 
-Attendance and participation are important to your success in this course. However, again, we're still in the middle of a global pandemic. If you are sick or are incapable of participating meaningfully in class (e.g. you have stayed up all night and are going to fall asleep in class), please stay home. I will stream our in-person sessions on Thursdays via Webex (and will set up my own camera and microphone system to do it), so if you cannot attend, you can tune in if needed.
+Attendance and participation are important to your success in this course. However, again, we're still in the middle of a global pandemic. If you are sick or are incapable of participating meaningfully in class (e.g. you have stayed up all night and are going to fall asleep in class), please stay home. I will stream our in-person sessions on Mondays via Webex (and will set up my own camera and microphone system to do it), so if you cannot attend, you can tune in if needed.
 
 GSU has some new process for getting absences excused because of illness, but I don't care about that process. If you're sick, I don't need a doctor's note or anything. If a relative dies and you have to attend a funeral, do it!—don't worry about sending me confirmation or anything. If your childcare situation falls through one week, focus on your kids!—again, don't worry about sending me confirmation. You're all adults—I trust you. Given the flipped nature of the course, you'll be able to catch up on the material.
 
@@ -167,13 +167,11 @@ If you test positive for COVID-19, report it at <https://cc-gsu.force.com/s/>, h
 
 ### Masks and vaccines
 
-<small>GSU does not require this and I can't legally require this but I am allowed to urge it so here's me urging it:</small><br>Please get the COVID-19 vaccination and a booster shot ([sign up for one here!](https://covidinfo.gsu.edu/covid-19-resources/covid-19-vaccine/)). It is free. It saves lives. (I am fully vaccinated and boosted.)
+<small>GSU does not require this and I can't require this but I am allowed to urge it so here's me urging it:</small><br>Please get the COVID-19 vaccination and a booster shot ([sign up for one here!](https://covidinfo.gsu.edu/covid-19-resources/covid-19-vaccine/)). It is free. It saves lives. (I am fully vaccinated and boosted.)
 
-While the City of Atlanta has instituted a mandatory mask policy, GSU is a state-run entity that follows guidelines set by the University System of Georgia, which has no mandate, which means Atlanta's mandate is not in force in university buildings. However, I will be wearing a mask. 
+GSU and the University System of Georgia do not have a mask mandate for students or faculty. However, I personally will be wearing a mask when [the CDC's community transmission levels](https://covid.cdc.gov/covid-data-tracker/#county-view?list_select_state=Georgia&data-type=Risk&list_select_county=13121) in the Atlanta area are medium or above.
 
-Two of my children are unable to receive the COVID-19 vaccine because they are too young, and both of them are at elevated risk of complications from respiratory illness. I'm guessing many of you have friends and loved ones in similar situations.
-
-<small>GSU also does not require this and I can't legally require this but, again, I'm allowed to urge it, so:</small><br>Following [CDC guidlines](https://www.cdc.gov/coronavirus/2019-ncov/vaccines/fully-vaccinated-guidance.html), **I strongly recommend/urge/encourage you to wear a mask in class on Thursdays** regardless of your vaccination status. I will place a box of disposable masks by the door if you would like one. 
+**I strongly recommend/urge/encourage you to wear a mask in class on Mondays** regardless of your vaccination status. I will place a box of disposable masks by the door if you would like one. 
 
 Again, GSU does not require either vaccines or masks, and if you aren't vaccinated or don't wear a mask, there are no penalties.
 
@@ -214,7 +212,7 @@ Student hours are set times dedicated to all of you (most professors call these 
 
 [^studenthours]: There's fairly widespread misunderstanding about what office hours actually are! [Many students often think that they are the times I *shouldn't* be disturbed](https://www.chronicle.com/article/Can-This-Man-Change-How-Elite/245714/), which is the exact opposite of what they're for!
 
-Because of the pandemic and [my family situation](#masks-and-vaccines), it is easiest to meet with me online via Webex for student hours. [Make an appointment with me here](https://calendly.com/andrewheiss/)—the confirmation e-mail will contain a link for a Webex meeting. You can also find me through e-mail and Slack.
+Because of the pandemic, it is easiest to meet with me online via Webex for student hours. [Make an appointment with me here](https://calendly.com/andrewheiss/)—the confirmation e-mail will contain a link for a Webex meeting. You can also find me through e-mail and Slack.
 
 ### Late work
 
