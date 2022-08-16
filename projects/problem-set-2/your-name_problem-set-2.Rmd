@@ -50,7 +50,25 @@ Make a new plot that colors these points by species. What can you tell about the
 
 ```
 
-What is the relationship between flipper length and body mass? Make another plot with `flipper_length_mm` on the x-axis, `body_mass_g` on the y-axis, and points colored by `species`. Facet the plot by island (`island`)
+Add a `geom_smooth()` layer to the plot and make sure it uses a straight line (hint: include `method="lm"` in the function). What does this tell you about the relationship between bill depth and body mass?
+
+```{r plot-penguin-weight-depth-by-species-with-lines}
+
+```
+
+Change the plot so that there's a single line for all the points instead of one line per species. How does the slope of this single line differ from the slopes of the species specific lines? ***Why??***
+
+```{r plot-penguin-weight-depth-by-species-with-one-line}
+
+```
+
+What is the relationship between flipper length and body mass? Make another plot with `flipper_length_mm` on the x-axis, `body_mass_g` on the y-axis, and points colored by `species`. 
+
+```{r}
+
+```
+
+Facet the plot by island (`island`)
 
 ```{r}
 ggplot(data = penguins,
