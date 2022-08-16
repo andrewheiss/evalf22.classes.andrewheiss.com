@@ -68,6 +68,17 @@ ol {
   font-family: $font-family-serif;
 }
 
+
+// Custom active link colors
+.navbar-dark .navbar-nav .show > .nav-link, .navbar-dark .navbar-nav .active > .nav-link, .navbar-dark .navbar-nav .nav-link.active {
+  color: #FFC361;
+}
+
+div.sidebar-item-container .active, div.sidebar-item-container .show > .nav-link, div.sidebar-item-container .sidebar-link > code {
+  color: $yellow;
+}
+
+
 // Home page stuff
 .title-block {
   margin: 1em 0;
