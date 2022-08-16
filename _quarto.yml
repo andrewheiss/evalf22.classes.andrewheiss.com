@@ -54,10 +54,10 @@ website:
       - text: "News"
         file: news/index.qmd
       - icon: slack
-        href: "https://www.google.com"
+        href: "https://gsuevalf2022.slack.com"
         aria-label: Slack
       - icon: cloud-fill
-        href: "https://www.google.com"
+        href: "https://rstudio.cloud"
         aria-label: RStudio.cloud
 
   sidebar:
