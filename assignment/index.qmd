@@ -7,7 +7,7 @@ The main goals of this class are to help you design, critique, code, and run rig
 
 ## Weekly check-in
 
-Every week, after you finish working through the content, I want to hear about what you learned and what questions you still have. Because the content in thsi course is flipped, these questions are **crucial** for our weekly in-class discussions.
+Every week, after you finish working through the content, I want to hear about what you learned and what questions you still have. Because the content in this course is flipped, these questions are **crucial** for our weekly in-class discussions.
 
 To encourage engagement with the course content—and to allow me to collect the class's questions each week—you'll need to fill out a short response on iCollege. This should be ≈150 words. That's fairly short: there are ≈250 words on a typical double-spaced page in Microsoft Word (500 when single-spaced). 
 
