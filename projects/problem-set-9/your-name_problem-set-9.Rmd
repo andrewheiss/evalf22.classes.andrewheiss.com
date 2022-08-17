@@ -1,0 +1,115 @@
+---
+title: "Problem set 9: Making fake data"
+author: "YOUR NAME HERE"
+date: "DATE GOES HERE"
+output: 
+  html_document: 
+    toc: yes
+  pdf_document: 
+    latex_engine: xelatex
+    toc: yes
+  word_document: 
+    toc: yes
+---
+
+---
+
+```{r setup, warning=FALSE, message=FALSE}
+library(tidyverse)  # For ggplot, mutate(), filter(), and friends
+library(broom)      # For converting models to data frames
+library(ggdag)      # For drawing DAGs
+library(scales)     # For rescaling data with rescale()
+library(truncnorm)  # For truncated normal distributions
+
+set.seed(1234)  # Make any random stuff be the same every time you run this
+
+# Turn off the message that happens when you use group_by() and summarize()
+options(dplyr.summarise.inform = FALSE)
+```
+
+Many MPA and MPP programs offer a brief math camp in the weeks before students begin their graduate degrees, with the hope that it will help students by more prepared in math-heavy classes like statistics and microeconomics. 
+
+You're interested in evaluating the effectiveness of a hypothetical math camp program. Does attending math camp cause higher grades in statistics classes?
+
+This program is not randomized and it's not mandatory—anyone can decide to sign up (or not!), which means you have selection bias and confounding to worry about.
+
+You don't have any data for this, but that's okay! You can simulate some data and set up the infrastructure for answering this question later with real data.
+
+These two guides will be incredibly helpful for this assignment:
+
+- Generating random numbers: <https://evalf21.classes.andrewheiss.com/example/random-numbers/>
+- The ultimate guide to generating synthetic data for causal inference: <https://evalf21.classes.andrewheiss.com/example/synthetic-data/>
+
+
+## 1: Draw a DAG that maps out how all the columns you care about are related
+
+For the sake of this example, we'll think about a DAG with just four nodes. Students' GRE scores and undergraduate GPAs confound both the choice to enroll in math camp and final class grades. Additionally, undergraduate degrees help cause GRE scores.
+
+```{r math-camp-dag, fig.width=6, fig.height=4, fig.align="center"}
+math_camp_dag <- dagify(grade ~ camp + gpa + gre,
+                        camp ~ gpa + gre,
+                        gre ~ gpa,
+                        outcome = "grade",
+                        exposure = "camp",
+                        coords = list(x = c(camp = 1, gpa = 2, gre = 3, grade = 4),
+                                      y = c(camp = 1, gpa = 2, gre = 2, grade = 1)))
+
+ggdag_status(math_camp_dag) +
+  theme_dag() +
+  guides(color = "none")  # Turn off legend
+```
+
+
+## 2: Specify how those nodes are measured
+
+Here's how these columns are measured:
+
+- **GPA**: Scale from 1.5 to 4.0 with two decimals (i.e. values like 3.54 are fine). Mostly clustered around 3.5, plus or minus some amount that you decide. You'll either want to scale down whatever values you create with `rescale()`, or use `rtruncnorm()` to constrain the values within the plausible range.
+- **GRE**: Scale from 130 to 170 with no decimals (i.e. values like 145.32 are bad). Mostly clustered around 150, plus or minus some amount that you decide. You'll either want to scale down whatever values you create with `rescale()`, or use `rtruncnorm()` to constrain the values within the plausible range.
+- **Math camp**: Binary variable. Roughly 50% of students enroll in math camp.
+- **Final grade**: Final exam score in a student's statistics class. Scale from 0 to 100 with one decimal (i.e. values like 75.2 are fine), mostly clustered around 70 (it's a hard test), plus or minus some amount that you decide.
+
+## 3: Specify the relationships between the nodes based on the DAG equations
+
+In the DAG, there are three sets of relationships, or models:
+
+- **GPA is associated with GRE scores**: Every 1 point increase in GPA (i.e. moving from a 2.0 to a 3.0) increases GRE scores by 10, on average.
+- **Math camp is associated with undergraduate GPA and GRE scores**: Math camp here is a binary variable, so you can't say things like "every 1 point increase in GRE scores changes math camp by X". Instead, you'll want to do something similar to [the example for creating an effect in an observational DAG](https://evalf21.classes.andrewheiss.com/example/synthetic-data/#creating-an-effect-in-an-observational-dag): create a column named `camp_score`, have GPA and GRE *decrease* that score (since people are less likely to enroll in math camp if they have higher GPAs and GRE scores), rescale that math camp score column to be between 0 and 1 to create a `camp_probability` column, and then randomly assign people to math camp based on those probabilities. I don't care what the size of the GPA and GRE effects are (since they'll be scaled down and binary-ized anyway)—just make it so that the probability of math camp goes down as GPA and GPA go up.
+- **Final grade is caused by math camp, undergraduate GPA, and GRE scores**: Every 1 point increase in GPA increases final test scores by 10 points, on average. Every 1 point increase in GRE scores increase final test scores by 0.5 points. *Participating in math camp causes a boost of 10 points.* That's the causal effect you're building in.
+
+## 4: Generate data based on the DAG relationships
+
+Generate random columns that stand alone. Generate related columns using regression math. Consider adding random noise. This is an entirely trial and error process until you get numbers that look good. Rely heavily on plots as you try different coefficients and parameters. Optionally rescale any columns that go out of reasonable bounds. If you rescale, you'll need to tinker with the coefficients you used since the final effects will also get rescaled.
+
+Generate data for 2500 students.
+
+You'll probably want to rescale columns so you don't end up with GPAs like 6.3, etc. Rescaling distorts the causal effects you build in, so you probably won't do something like `10 * camp`—it'll likely need to be higher.
+
+```{r create-data}
+
+```
+
+
+## 5: Verify all relationships with plots and models
+
+Make sure the relationships look good. GPA and GRE should be related to each other. Higher values of GPA and GRE should decrease the likelihood of math camp. GPA, GRE, and math camp should all be positively related with final grades.
+
+Insert as many chunks as you need to here.
+
+
+## 6: Try it out!
+
+See if you can find the effect. Run two models:
+
+- `grade ~ camp`: This is the naive, unadjusted, correlation-is-not-causation estimate. It's wrong.
+- `grade ~ camp + gpa + gre`: This is the adjusted estimate. Backdoors have been closed and the coefficient for `camp` should be the causal effect. It should be around 10.
+- (If you want to be super cool, adjust for GPA and GRE with inverse probability weighting too to see if the ATE for `camp` still holds. This is entirely optional.)
+
+Insert as many chunks as you need to here.
+
+
+## 7: Save the data
+
+Make a version of your fake data that removes all the intermediate columns you made. Save the final clean data as a CSV file with `write_csv()`.
+
+Insert a chunk here to do that.

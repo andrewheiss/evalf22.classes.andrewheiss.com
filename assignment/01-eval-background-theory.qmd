@@ -15,7 +15,7 @@ You need to complete the four sections listed below. Ideally you should type thi
 
 [^citations]: And if you want to be super brave, try using [R Markdown's citation system](/resource/markdown.qmd#citations)!
 
-**I've created an R Markdown template you can use here:** [{{< fa file-archive >}} `background-theory.zip`](/projects/background-theory.zip). It's also [available on RStudio.cloud](https://rstudio.cloud/spaces/205054/project/3424197).
+**I've created an R Markdown template you can use here:** [{{< fa file-archive >}} `background-theory.zip`](/projects/background-theory.zip). It's also [available on RStudio.cloud](https://rstudio.cloud/spaces/269500/content/4357668).
 
 You can draw your impact theory and logic model charts by hand or with something like [Diagrams.net](https://www.diagrams.net/), [Lucidchart](https://www.lucidchart.com/pages/home), or [Creately](https://creately.com/). Export the image as a PNG, place it in the same directory as your R Markdown file, and include the image with Markdown.
 
