@@ -379,7 +379,7 @@ The propensity scores are in the `propensity` column. Some people, like person 3
 Next we need to convert those propensity scores into inverse probability weights, which makes weird observations more important (i.e. people who had a high probability of using a net but didn't, and vice versa). To do this, we follow this equation:
 
 $$
-\frac{\text{Treatment}}{\text{Propensity}} - \frac{1 - \text{Treatment}}{1 - \text{Propensity}}
+\frac{\text{Treatment}}{\text{Propensity}} + \frac{1 - \text{Treatment}}{1 - \text{Propensity}}
 $$
 
 This equation will create weights that provide the average treatment effect (ATE), but there are other versions that let you find the average treatment effect on the treated (ATT), average treatment effect on the controls (ATC), and a bunch of others. [You can find those equations here](https://livefreeordichotomize.com/2019/01/17/understanding-propensity-score-weighting/#how-do-we-incorporate-a-propensity-score-in-a-weight).
