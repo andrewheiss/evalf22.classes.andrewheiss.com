@@ -75,7 +75,7 @@ Here are all the materials we'll use in class:
 Hands-on R materials:
 
 - [{{< fa file-csv >}} `restaurant_inspections.csv`](https://vincentarelbundock.github.io/Rdatasets/csv/causaldata/restaurant_inspections.csv)
-- [RStudio.cloud project](#)
+- [RStudio.cloud project](https://rstudio.cloud/spaces/269500/content/4377348)
 - [Project `.zip` file](/projects/01-class.zip)
 - [Lab slides 3: Data basics](/slides/01-class_03_data-basics.html) ([PDF](/slides/01-class_03_data-basics.pdf))
 - [Lab slides 4: Visualize data with ggplot2](/slides/01-class_04_visualize-data.html) ([PDF](/slides/01-class_04_visualize-data.pdf))

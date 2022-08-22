@@ -27,7 +27,7 @@ slide_details <- tibble::tribble(
 - {{< fa brands youtube >}} DJ Patil, ["What Makes a Radical and Revolutionary Technology?"](https://www.youtube.com/watch?v=UOoMzaWOQJA) 
     - <small>(DJ Patil is the former Chief Data Scientist of the United States under President Obama. He gave this forum address at Brigham Young University on February 13, 2018.)</small>
 - {{< fa arrow-up-right-from-square >}} Stephen Goldsmith, ["Next Generation of Public Employees Must Understand Data and Policy"](http://www.govtech.com/opinion/Next-Generation-Public-Employees-Must-Understand-Data-Policy.html)
-- {{< fa arrow-up-right-from-square >}} Hadley Wickham, ["Data Science: How is it Different To Statistics?"](http://bulletin.imstat.org/2014/09/data-science-how-is-it-different-to-statistics%E2%80%89/)
+- {{< fa arrow-up-right-from-square >}} Hadley Wickham, ["Data Science: How is it Different To Statistics?"](https://imstat.org/2014/09/04/data-science-how-is-it-different-to-statistics%E2%80%89/)
 
 
 ## Slides
@@ -63,10 +63,13 @@ youtube_list(slide_details, playlist_id)
 
 Here are all the materials we'll use in class:
 
-- [RStudio.cloud project]()
+- [RStudio.cloud project](https://rstudio.cloud/spaces/269500/content/4377348)
 - [Project `.zip` file](/projects/01-class.zip)
 - [Lab slides 1: Markdown and universal writing](/slides/01-class_01_markdown-writing.html) ([PDF](/slides/01-class_01_markdown-writing.pdf))
 - [Lab slides 2: Getting started with R and RStudio](/slides/01-class_02-getting-started.html) ([PDF](/slides/01-class_02-getting-started.pdf))
+- [Lab slides 3: Data basics](/slides/01-class_03_data-basics.html) ([PDF](/slides/01-class_03_data-basics.pdf))
+- [Lab slides 4: Visualize data with ggplot2](/slides/01-class_04_visualize-data.html) ([PDF](/slides/01-class_04_visualize-data.pdf))
+- [Lab slides 5: Transform data with dplyr](/slides/01-class_05_transform-data.html) ([PDF](/slides/01-class_05_transform-data.pdf))
 
 
 ```{verbatim include=FALSE}

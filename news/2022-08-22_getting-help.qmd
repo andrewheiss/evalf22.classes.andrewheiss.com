@@ -1,0 +1,51 @@
+---
+title: "How to reach out for help"
+date: "2022-08-22T14:52"
+categories: [advice]
+---
+
+Hi everyone!
+
+You **absolutely** can (and should) reach out when you get stuck. I'm super responsive on Slack and e-mail. If you ask a question on the #help channel in Slack, others can help too. No question is too tricky or embarrassing, I promise. Computers are extraordinarily literal and tiny typos will often mess you up for a long time—I've lost countless time because of missing commas and misspelled words (curse you `lenght()`). Please feel comfortable reaching out. 
+
+### Ask early and often
+
+I'm a big believer in the 30 minute rule. **If you're stuck and not making progress on a task for 30 minutes, reach out for help from the community.**
+
+### Be nice
+
+One of the great parts about the online R community is that the team at RStudio has actually hired people to help promote community norms. Like that's their whole job—community evangelist (see [\@dataandme](https://twitter.com/dataandme) and [\@RachaelDempsey](https://twitter.com/_RachaelDempsey) for instance). The R world is probably one of the nicest corners of the programming internet because of these norms—there's an emphasis on helping beginners, being kind and respectful, and cheerfully helping as much as possible. Watch the #rstats hashtag on Twitter, look at the "r" tag on StackOverflow, and look at discussions at [the RStudio Community](https://community.rstudio.com/) and you'll see kindness in action.
+
+This was not always the case. 10ish years ago, before the RStudio people made a concerted effort to create community, the online R world was pretty mean and toxic, with forums run by a few really grumpy statisticians who'd belittle you if you asked a poorly worded question. It was awful. That kind of attitude often still persists in other languages (hooo boy try asking a beginner question about Python at StackOverflow 😬), but the R world has tried really hard to be welcoming. 
+
+I embrace that attitude when teaching R, and I encourage you all to do the same. Reach out for help early and often. Do not suffer in silence. Do not spend hours and hours stuck on an issue before reaching out for help. If you feel comfortable, reach out publicly on the #help channel rather than a Slack DM so that others can help. This helps build and strengthen the community within our class and within the R community more broadly.
+
+### Ask in a way that helps the answerer
+
+There are a few easy guidelines to remember when asking for help:
+
+1. Be kind.
+
+2. Try asking questions with as complete information as possible. Rather than saying something like "my code isn't working" and that's it, provide more background (it's hard to read your computer's mind). Say specifically what you're trying to do and provide code when possible. You can actually format R code on Slack if you click on the little lightning icon in the bottom left of the typing area and search for "text snippet"—that'll open a dialog that will let you paste in text and add R syntax highlighting. You can also paste your code between triple backticks on Slack and it'll format it in monospaced font (though not with the neat syntax highlighting that you get when using Slack's text snippet thing):
+
+   ````
+   ```
+   ggplot(blah) + geom_point()
+   ```
+   ````
+
+	 You can also take screenshots (use ⌘+shift+4 on macOS to save a screenshot to your Desktop, or ⌘+⌥+shift+4 to save a screenshot directly to the clipboard; use Windows+shift+S on Windows to save a screenshot directly to the clipboard). I've had people send photos from their phones too. The one issue with screenshots/photos is that it's harder for people to get the code out of Slack and into RStudio on their computer to troubleshoot, since you can't copy/paste from an image.
+
+3. Try making your question a **repr**oducible **ex**ample (or reprex). Reprexes are the best way to (1) get help online and (2) fix issues on your own. 
+
+   Making a good reprex is tricky, but it's a very valuable skill to know (regardless of programming language!). Here are some helpful resources for making them:
+
+   - {{< fa arrow-up-right-from-square >}} [What's a reproducible example (`reprex`) and how do I do one?](https://community.rstudio.com/t/faq-whats-a-reproducible-example-reprex-and-how-do-i-do-one/5219)
+   - {{< fa arrow-up-right-from-square >}} [So you've been asked to make a reprex](https://www.jessemaegan.com/post/so-you-ve-been-asked-to-make-a-reprex/)
+   - {{< fa brands r-project >}} [The reprex package](https://reprex.tidyverse.org/index.html)
+
+### Don't suffer in silence
+
+And that's it. **Ask questions in ways that will help answerers answer them and be nice about it. When answering questions, be nice about it. Ask lots of questions. Answer lots of questions.**
+
+Once again, *do not suffer in silence*. I've had past students tell me that's like the one thing they'll remember from my classes—do not suffer in silence. I mean it, and I'll keep saying it throughout the semester (because often in your past courses and degrees, you've been discouraged from reaching out or from building communities or whatever—that is *not* the case here).
