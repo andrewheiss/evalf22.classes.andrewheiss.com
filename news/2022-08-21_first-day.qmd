@@ -1,0 +1,19 @@
+---
+title: "Plan for the first day of class"
+date: "2022-08-21T21:05"
+categories: [getting started]
+---
+
+Hi everyone!
+
+Tomorrow’s the first day of class! Exciting!
+
+Beyond hoping that everyone is wearing a mask, I've structured the class in way that limits our exposure to each other as much as possible. As noted in the syllabus ([https://evalf22.classes.andrewheiss.com/syllabus.html#course-structure](https://evalf22.classes.andrewheiss.com/syllabus.html#course-structure)), we're using a flipped classroom this semester. What this means in practice is that you'll do all the readings *and* watch asynchronous lecture videos before class meets on Mondays. 
+
+Our in-person time will **not** involve lectures. Instead, it'll be a more hands-on lab for working with R and answering the questions that come up from doing the readings and watching the lectures. That's the point of the weekly check-in assignment ([https://evalf22.classes.andrewheiss.com/assignment/weekly-check-in.html](https://evalf22.classes.andrewheiss.com/assignment/weekly-check-in.html))—the only way this in-person time will be effective is if you do the readings + videos and ask questions in the weekly check-in.
+
+The videos for the first day of class are live and ready to watch at [https://evalf22.classes.andrewheiss.com/content/01-content.html](https://evalf22.classes.andrewheiss.com/content/01-content.html) (along with the readings). If possible, please watch them (and do the readings) before class on Monday so that we can start with the lab-like in-person time and get a good solid introduction to R and RStudio + answer the questions you have from the first session's materials.
+
+Ideally, please try to submit the first weekly check-in on iCollege by tomorrow too so that we can have some good Q&A time during our in-person time. [BUT no worries if not!](https://www.huffingtonpost.co.uk/entry/no-worries-if-not-psychology_uk_60fff90be4b0d017f838bf1a)
+
+If you don't have time to get through the materials before the first day, that's totally fine—you can do it later and there's no late penalty or anything for the first week, given that it is the first day of classes. But if you can, let's get started!
