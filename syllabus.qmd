@@ -149,7 +149,7 @@ We will **not** have lectures during our regularly scheduled class time. Instead
 
 We will do several things during our Monday in-person classes:
 
-- **Extensive Q&A**: As you do the readings and watch the videos prior to class, you will inevitably have questions. In [your weekly check-in assignment](/assignment/weekly-check-in/), you'll submit (at least) 3 of those questions to me prior to class. We'll spend a good chunk of each class answering, clarifying, debating, and discussing your questions.
+- **Extensive Q&A**: As you do the readings and watch the videos prior to class, you will inevitably have questions. In [your weekly check-in assignment](/assignment/weekly-check-in.qmd), you'll submit (at least) 3 of those questions to me prior to class. We'll spend a good chunk of each class answering, clarifying, debating, and discussing your questions.
 - **Activities**: In some weeks, we'll do some in-class activities to help solidify concepts about logic models, DAGs, and other evaluation and causal inference principles.
 - **R labs**: We'll spend a substantial time during each class learning and working with R together. You'll need to bring a computer.
 
