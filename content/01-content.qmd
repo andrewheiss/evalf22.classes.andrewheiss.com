@@ -63,6 +63,10 @@ youtube_list(slide_details, playlist_id)
 
 Here are all the materials we'll use in class:
 
+- [**Session 1 in-person slides**](/slides/01-class.html) ([PDF](/slides/01-class.pdf))
+
+RStudio labs:
+
 - [RStudio.cloud project](https://rstudio.cloud/spaces/269500/content/4377348)
 - [Project `.zip` file](/projects/01-class.zip)
 - [Lab slides 1: Markdown and universal writing](/slides/01-class_01_markdown-writing.html) ([PDF](/slides/01-class_01_markdown-writing.pdf))
