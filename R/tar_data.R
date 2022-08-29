@@ -39,6 +39,12 @@ save_data <- list(
                       here_rel("files", "data", "package_data", "penguins.csv")),
              format = "file"),
 
+  # gapminder for class 2
+  tar_target(data_gapminder,
+             save_csv(gapminder::gapminder,
+                      here_rel("files", "data", "package_data", "gapminder.csv")),
+             format = "file"),
+
   # injury for diff-in-diff example
   tar_target(data_injury,
              save_csv(wooldridge::injury,

@@ -35,6 +35,7 @@ Look through your notes on regression from your last stats class. Also, you can 
 We'll review all this regression stuff in the videos, so *don't panic* if this all looks terrifying! Also, take advantage of the videos that accompany the *OpenIntro* chapters. And *also*, the *OpenIntro* chapters are heavier on the math—don't worry if you don't understand everything.
 
 
+
 ## Slides
 
 The slides for today's lesson are available online as an HTML file. Use the buttons below to open the slides either as an interactive website or as a static PDF (for printing or storing for later). You can also click in the slides below and navigate through them with your left and right arrow keys.
@@ -74,12 +75,15 @@ Here are all the materials we'll use in class:
 
 Hands-on R materials:
 
-- [{{< fa file-csv >}} `restaurant_inspections.csv`](https://vincentarelbundock.github.io/Rdatasets/csv/causaldata/restaurant_inspections.csv)
-- [RStudio.cloud project](https://rstudio.cloud/spaces/269500/content/4377348)
-- [Project `.zip` file](/projects/01-class.zip)
+- [{{< fa brands r-project >}}RStudio.cloud project](https://rstudio.cloud/spaces/269500/content/4377348)
+- [{{< fa file-zipper >}}Project `.zip` file](/projects/01-class.zip)
+- [{{< fa file-csv >}}Gapminder data](/files/data/package_data/gapminder.csv)
+- [Lab slides 1: Markdown and universal writing](/slides/01-class_01_markdown-writing.html) ([PDF](/slides/01-class_01_markdown-writing.pdf))
+- [Lab slides 2: Getting started with R and RStudio](/slides/01-class_02-getting-started.html) ([PDF](/slides/01-class_02-getting-started.pdf))
 - [Lab slides 3: Data basics](/slides/01-class_03_data-basics.html) ([PDF](/slides/01-class_03_data-basics.pdf))
 - [Lab slides 4: Visualize data with ggplot2](/slides/01-class_04_visualize-data.html) ([PDF](/slides/01-class_04_visualize-data.pdf))
 - [Lab slides 5: Transform data with dplyr](/slides/01-class_05_transform-data.html) ([PDF](/slides/01-class_05_transform-data.pdf))
+- [{{< fa file-csv >}} `restaurant_inspections.csv`](https://vincentarelbundock.github.io/Rdatasets/csv/causaldata/restaurant_inspections.csv)
 
 
 ## Bayesian statistics resources

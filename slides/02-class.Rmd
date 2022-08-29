@@ -41,7 +41,7 @@ class: center middle main-title section-title-3
 
 .class-info[
 
-**January 20, 2022**
+**August 29, 2022**
 
 .light[PMAP 8521: Program evaluation<br>
 Andrew Young School of Policy Studies
@@ -58,19 +58,76 @@ class: title title-inv-8
 
 --
 
+.box-6.medium.sp-after-half[R FAQs]
+
+--
+
 .box-5.medium.sp-after-half[Regression FAQs]
 
 --
 
-.box-6.medium.sp-after-half[Miscellaneous R stuff]
-
---
-
-.box-1.medium.sp-after-half[Visualizing data with **ggplot2**]
-
---
-
 .box-2.medium.sp-after-half[Transforming data with **dplyr**]
+
+--
+
+.box-1.medium[Regression with R]
+
+---
+
+layout: false
+name: r-faqs
+class: center middle section-title section-title-6 animated fadeIn
+
+# R FAQs
+
+---
+
+layout: true
+class: middle
+
+---
+
+.box-6.large[RStudio fun]
+
+---
+
+.box-6.large[Column types]
+
+.box-inv-6[Numeric, continuous, count, ordinal, interval,<br>qualitative, categorical, a billion other inconsistent names]
+
+---
+
+.box-6.large[File paths, working directories,<br>and RStudio projects]
+
+???
+
+- <https://www.theverge.com/22684730/students-file-folder-directory-structure-education-gen-z>
+- Working directories and RStudio projects
+
+---
+
+.box-6.large[The hyperliterality of computers]
+
+---
+
+.box-6.large[R Markdown fun]
+
+???
+
+- Markdown metadata and outputs, figure sizes
+- Show final Rmd products. Explanatory, like blog post code through or a problem set vs. stand-alone research paper
+
+---
+
+.box-6.large[Fun with histograms]
+
+---
+
+.box-6.large[Logging]
+
+???
+
+<https://stats.stackexchange.com/a/18639/3025>
 
 ---
 
@@ -87,9 +144,15 @@ class: middle
 
 ---
 
-.box-5.large.sp-after[Histogram bin widths]
+.box-5.large[Regression equations]
 
-.box-5.large[Density plots]
+.box-inv-5[And is the intercept ever useful,<br>or should we always ignore it?]
+
+???
+
+<https://evalf22.classes.andrewheiss.com/slides/02-slides.html#38>
+
+<https://www.andrewheiss.com/blog/2022/05/20/marginalia/#regression-sliders-switches-and-mixing-boards>
 
 ---
 
@@ -191,33 +254,11 @@ class: middle
 
 ---
 
-.box-5.large[Why do we log things?]
-
----
-
 layout: false
-name: r-questions
-class: center middle section-title section-title-6 animated fadeIn
+name: dplyr
+class: center middle section-title section-title-2 animated fadeIn
 
-# Miscellaneous R stuff
-
----
-
-class: title title-6
-
-# Miscellaneous R stuff
-
-.box-inv-6.medium[File paths, working directories,<br>and RStudio projects]
-
---
-
-.box-inv-6.medium[Markdown things]
-
-???
-
-- Working directories and RStudio projects
-- Markdown metadata and outputs, figure sizes
-- Show final Rmd products. Explanatory, like blog post code through or a problem set vs. stand-alone research paper
+# Transforming<br>data with dplyr
 
 ---
 
@@ -225,12 +266,4 @@ layout: false
 name: ggplot
 class: center middle section-title section-title-1 animated fadeIn
 
-# Visualizing<br>data with ggplot2
-
----
-
-layout: false
-name: dplyr
-class: center middle section-title section-title-2 animated fadeIn
-
-# Transforming<br>data with dplyr
+# Regression with R

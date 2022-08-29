@@ -19,11 +19,11 @@ execute:
 
 bibliography: files/bib/references.bib
 csl: files/bib/chicago-author-date.csl
+description-meta: "Use modern statistical and data scientific tools to measure causal effects and evaluate public policy"
 
 website:
   title: "Program Evaluation"
   site-url: "https://evalf22.classes.andrewheiss.com"
-  description-meta: "Use modern statistical and data scientific tools to measure causal effects and evaluate public policy"
 
   favicon: "/files/icon-512.png"
 
