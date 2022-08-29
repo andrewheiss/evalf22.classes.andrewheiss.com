@@ -27,8 +27,8 @@ slide_details <- tibble::tribble(
 
 Look through your notes on regression from your last stats class. Also, you can skim through these resources:
 
-- {{< fa book >}} [6.1–6.4 in *ModernDive*](https://moderndive.com/6-regression.html) [@IsmayKim:2018]
-- {{< fa book >}} [7.1–7.4 in *ModernDive*](https://moderndive.com/7-multiple-regression.html) [@IsmayKim:2018]
+- {{< fa book >}} [5.1–5.4 in *ModernDive*](https://moderndive.com/5-regression.html) [@IsmayKim:2018]
+- {{< fa book >}} [6.1–6.4 in *ModernDive*](https://moderndive.com/6-multiple-regression.html) [@IsmayKim:2018]
 - {{< fa book >}} 7.1–7.3 in *OpenIntro Statistics* [@DiezBarrCetinkaya-Rundel:2017]
 - {{< fa book >}} 8.1 in *OpenIntro Statistics* [@DiezBarrCetinkaya-Rundel:2017]
 
