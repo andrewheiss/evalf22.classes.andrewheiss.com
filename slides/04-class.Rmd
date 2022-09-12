@@ -1,5 +1,5 @@
 ---
-title: "Class 4: Measuring stuff and DAGs"
+title: "Class 4: Logic models, measuring stuff, and DAGs"
 author: "Andrew Heiss"
 date: "`r Sys.Date()`"
 output:
@@ -42,7 +42,7 @@ class: center middle main-title section-title-3
 
 .class-info[
 
-**February 3, 2022**
+**September 12, 2022**
 
 .light[PMAP 8521: Program evaluation<br>
 Andrew Young School of Policy Studies
@@ -63,11 +63,23 @@ class: title title-inv-8
 
 --
 
+.box-1.medium.sp-after-half[Logic models]
+
+--
+
 .box-2.medium.sp-after-half[Measuring outcomes]
 
 --
 
-.box-5.medium.sp-after-half[DAGs]
+.box-5.medium[DAGs]
+
+---
+
+layout: false
+name: final-project
+class: center middle section-title section-title-6 animated fadeIn
+
+# Final project details
 
 ---
 
@@ -96,14 +108,6 @@ https://bookdown.org/yihui/rmarkdown-cookbook/figure-placement.html
 
 ---
 
-.box-4.large[Word count]
-
-???
-
-<https://github.com/benmarwick/wordcountaddin>
-
----
-
 .box-4.large[Figure and table<br>captions and numbers]
 
 ???
@@ -114,11 +118,194 @@ https://bookdown.org/yihui/rmarkdown-cookbook/figure-placement.html
 
 ---
 
-.box-4.large[DAGs in R vs. Dagitty]
+class: middle
+
+.box-4.large[Side-by-side regression tables]
+
+---
+
+```{r echo=FALSE, warning=FALSE}
+model1 <- lm(body_mass_g ~ bill_length_mm, data = penguins)
+model2 <- lm(body_mass_g ~ flipper_length_mm, data = penguins)
+model3 <- lm(body_mass_g ~ bill_length_mm + flipper_length_mm, data = penguins)
+model4 <- lm(body_mass_g ~ bill_length_mm + flipper_length_mm + sex, data = penguins)
+
+modelsummary(list(model1, model2, model3, model4),
+             table.attr = "style=\'font-size:0.5em;\'",
+             stars = TRUE,
+             output = "kableExtra")
+```
+
+---
+
+```{r echo=FALSE}
+modelsummary(list(model1, model2, model3, model4),
+             stars = TRUE,
+             output = "kableExtra")
+```
+
+---
+
+class: middle
+
+.box-4.large[See full documentation and<br>examples for `modelsummary()` [here](https://vincentarelbundock.github.io/modelsummary/articles/modelsummary.html)]
+
+---
+
+layout: true
+class: middle
+
+---
+
+.box-4.large[Make nicer tables when<br>knitting with `kable()`]
+
+.box-inv-4[(Or even fancier tables with [kableExtra](https://cran.r-project.org/web/packages/kableExtra/vignettes/awesome_table_in_html.html)!)]
+
+---
+
+layout: false
+name: logic-models
+class: center middle section-title section-title-1 animated fadeIn
+
+# Logic models
+
+---
+
+layout: true
+class: middle
+
+---
+
+.box-1.large[Logic models as managerial tools]
+
+---
+
+.box-1.large[Inputs vs. Activities vs.<br>Outputs vs. Outcomes]
+
+---
+
+.box-1.large[Impact theory vs. logic model]
+
+---
+
+layout: false
+class: title title-1
+
+# Impact theory
+
+.box-inv-1[Ensure that the theory linking activities to the outcomes is sound!]
+
+.center[
+<figure>
+  <img src="img/03/psd-impact-theory-arrow.png" alt="PSD impact theory" title="PSD impact theory" width="100%">
+</figure>
+]
+
+---
+
+.center[
+<figure>
+  <img src="img/01/psd-logic-model.png" alt="PSD logic model" title="PSD logic model" width="70%">
+</figure>
+]
+
+---
+
+layout: false
+class: title title-1
+
+# MPA/MPP at GSU
+
+.pull-left[
+<figure>
+  <img src="img/03/mpp-mission@4x.png" alt="MPP mission" title="MPP mission" width="130%">
+</figure>
+]
+
+.pull-right[
+<figure>
+  <img src="img/03/mpa-mission@4x.png" alt="MPA mission" title="MPA mission" width="100%">
+</figure>
+]
 
 ???
 
-<https://evalsp22.classes.andrewheiss.com/example/dags/>
+Inputs:
+
+- Students
+- Curriculum
+- Money (grants, tuition)
+- AYSPS itself
+- Faculty, staff
+- Technology (iCollege, PAWS)
+- Infrastructure
+- Transportation
+- State regulations
+- National accreditation standards
+- Faculty research
+
+Activities:
+
+- Classes
+- Group work
+- Exams
+- Internships
+- Job fairs
+- Commencement
+- Studying
+- Tutoring
+- Office hours
+- Advising
+- Attendance
+
+Outputs:
+
+- Assignments and projects
+- Grades
+- Degree
+- Jobs
+- Awards
+- Network
+- Debt
+
+Outcomes:
+
+- Leadership
+- AYS national ranking
+- Public service motivation
+- Critical thinking
+- Efficient workforce
+- Income
+- Better society
+
+---
+
+layout: true
+class: middle
+
+---
+
+.box-1.medium[Isn't it best to always<br>have an articulated theory?] 
+
+.box-1.medium[Should implicit theory and articulated theory<br>be the same thing in most cases?]
+
+---
+
+.box-1.medium[How much does this evaluation stuff cost?] 
+
+.box-1.medium[Can you do scaled-down versions<br>of these evaluations?]
+
+---
+
+.box-1.medium[What if a program exists already<br>and doesn't have a logic model?] 
+
+---
+
+.box-1.medium[Why would a program aim for final outcomes<br>that can't be measured?]
+
+---
+
+.box-1.medium[What should you do if you find that your<br>theory of change (or logic model in general)<br>is wrong in the middle of the program?<br>Is it ethical to stop or readjust?]
 
 ---
 
@@ -180,12 +367,6 @@ class: center middle section-title section-title-5 animated fadeIn
 
 layout: true
 class: middle
-
----
-
-.box-5.medium[You keep saying that causal inference<br>lets you "legally" make causal claims.]
-
-.box-5.medium[Are there actual legal consequences<br>if you make a causal claim without<br>specific language?]
 
 ---
 
@@ -616,7 +797,15 @@ Weight -> Cholesterol
 
 .box-5.medium[How can you be sure<br>you include everything in a DAG?]
 
+.box-5.medium[How do you know when to stop?]
+
 .box-5.medium[Is there a rule of thumb<br>for the number of nodes?]
+
+---
+
+.box-5.medium[Why can we combine nodes in a DAG if they<br>don't represent the same concept?]
+
+.box-5.medium[Why include unmeasurable things in a DAG?]
 
 ---
 
@@ -650,15 +839,6 @@ class: title title-5
 .box-5.large.sp-before[Logic models are a *managerial* tool]
 
 .box-inv-5[Oversee the inner workings of a program and its theory]
-
----
-
-class: bg-full
-background-image: url("img/01/nyt-dag2.png")
-
-???
-
-https://twitter.com/andrewheiss/status/1208836534285340673
 
 ---
 

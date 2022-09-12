@@ -45,17 +45,6 @@ slide_tabs(slide_details, "/slides/03-slides.html")
 youtube_list(slide_details, playlist_id)
 ```
 
-
-## In-class stuff
-
-Here are all the materials we'll use in class:
-
-- [**Session 3 FAQ slides**](/slides/03-class.html) ([PDF](/slides/03-class.pdf))
-- [{{< fa brands r-project >}} Live R script](https://www.dropbox.com/s/2fpzcybu3nvmwzl/live.R)
-- [{{< fa file-csv >}} `atl-weather-2019.csv`](https://datavizs21.classes.andrewheiss.com/data/atl-weather-2019.csv)
-- [{{< fa file-csv >}} `restaurant_inspections.csv`](https://vincentarelbundock.github.io/Rdatasets/csv/causaldata/restaurant_inspections.csv)
-
-
 ```{verbatim include=FALSE}
 Playlist: https://www.youtube.com/playlist?list=PLS6tnpTr39sHjKJRcD-ebQUbcaFhc0cQH
 

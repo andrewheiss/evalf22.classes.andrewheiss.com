@@ -64,20 +64,6 @@ Here are all the materials we'll use in class:
 
 - [**Session 4 FAQ slides**](/slides/04-class.html) ([PDF](/slides/04-class.pdf))
 
-You can use **bookdown** to create automatic figure, table, and equation numbers. See here for more details:
-
-- <https://bookdown.org/yihui/rmarkdown-cookbook/figure-number.html>
-- <https://rmd4sci.njtierney.com/figures-tables-captions-.html>
-- <https://rmd4sci.njtierney.com/start.html>
-
-Make sure you modify the metadata of your document to use **bookdown** when knitting:
-
-```yaml
-title: whatever
-output: 
-  bookdown::html_document2:
-    number_sections: no
-```
 
 ```{verbatim include=FALSE}
 Playlist: https://www.youtube.com/playlist?list=PLS6tnpTr39sFVrHdTifzlyS9dsJjhEhsF
