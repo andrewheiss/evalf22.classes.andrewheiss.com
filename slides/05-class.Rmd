@@ -42,7 +42,7 @@ class: center middle main-title section-title-3
 
 .class-info[
 
-**February 10, 2022**
+**September 19, 2022**
 
 .light[PMAP 8521: Program evaluation<br>
 Andrew Young School of Policy Studies
@@ -59,6 +59,10 @@ class: title title-inv-8
 
 --
 
+.box-5.medium.sp-after-half[DAGs, continued]
+
+--
+
 .box-2.medium.sp-after-half[Potential outcomes vs. do() notation]
 
 --
@@ -68,6 +72,124 @@ class: title title-inv-8
 --
 
 .box-6.medium.sp-after-half[Logic models, DAGs, and measurement]
+
+---
+
+layout: false
+name: dags
+class: center middle section-title section-title-5 animated fadeIn
+
+# DAGs, continued
+
+---
+
+layout: true
+class: middle
+
+---
+
+.center[
+<video controls loop>
+  <source src="img/05-class/video-confounding-unblocked.mp4" type="video/mp4">
+</video>
+]
+
+---
+
+.center[
+<video controls loop>
+  <source src="img/05-class/video-confounding-blocked.mp4" type="video/mp4">
+</video>
+]
+
+---
+
+.center[
+<video controls loop>
+  <source src="img/05-class/video-mediation.mp4" type="video/mp4">
+</video>
+]
+
+---
+
+.box-5.large[Effect of race on police use of force<br>using administrative data]
+
+---
+
+.box-5.medium[Effect of race on police use of force<br>using administrative data]
+
+.pull-left[
+<figure>
+  <img src="img/05-class/klm-dag.png" alt="Use of force" title="Use of force" width="100%">
+</figure>
+]
+
+.pull-right[
+<figure>
+  <img src="img/05-class/klm.png" alt="Use of force" title="Use of force" width="100%">
+</figure>
+]
+
+---
+
+layout: true
+class: middle
+
+---
+
+.box-5.large[Smoking → Cardiac arrest example]
+
+???
+
+| Person | Smoker | Cardiac arrest | Cholesterol | Weight | Lifestyle healthiness |
+|--------|--------|----------------|-------------|--------|-----------------------|
+| 1      | TRUE   | TRUE           | 150         | 170    | 6                     |
+| 2      | TRUE   | FALSE          | 170         | 180    | 3                     |
+| 3      | FALSE  | FALSE          | 130         | 110    | 9                     |
+| 4      | FALSE  | TRUE           | 140         | 140    | 8                     |
+| 5      | TRUE   | TRUE           | 120         | 150    | 2                     |
+| 6      | TRUE   | FALSE          | 130         | 230    | 3                     |
+| 7      | FALSE  | FALSE          | 140         | 250    | 10                    |
+
+```text
+dag {
+bb="0,0,1,1"
+"Cardiac arrest" [outcome,pos="0.599,0.432"]
+Cholesterol [pos="0.415,0.440"]
+Lifestyle [pos="0.156,0.317"]
+Smoking [exposure,pos="0.243,0.428"]
+Weight [adjusted,pos="0.297,0.255"]
+Cholesterol -> "Cardiac arrest"
+Lifestyle -> Smoking
+Lifestyle -> Weight
+Smoking -> Cholesterol
+Weight -> Cholesterol
+}
+```
+
+---
+
+.box-5.medium[How can you be sure<br>you include everything in a DAG?]
+
+.box-5.medium[How do you know when to stop?]
+
+.box-5.medium[Is there a rule of thumb<br>for the number of nodes?]
+
+---
+
+.box-5.medium[Why can we combine nodes in a DAG if they<br>don't represent the same concept?]
+
+.box-5.medium[Why include unmeasurable things in a DAG?]
+
+---
+
+.box-5.medium[Why do DAGs have to be acyclic?]
+
+.box-5.medium[What if there really is reverse causation?]
+
+---
+
+.box-5.large[How do we actually<br>adjust for these things?]
 
 ---
 
@@ -93,6 +215,14 @@ $$\operatorname{E}(\cdot), \mathbf{E}(\cdot), \mathbb{E}(\cdot) \quad \text{vs.}
 ]
 
 .box-inv-2.small[Basically a fancy way of saying "average"]
+
+---
+
+# Outcomes and programs
+
+<figure>
+  <img src="img/04/program-effect.png" alt="Outcomes and program effect" title="Outcomes and program effect" width="100%">
+</figure>
 
 ---
 
@@ -196,12 +326,6 @@ class: middle
 ???
 
 <https://twitter.com/RepThomasMassie/status/1491441851748204546>
-
----
-
-class: middle
-
-.box-4[.medium[What are the data requirements to use<br>do-calculus to answer a research question]<br>.small[(e.g., variables, sample size, distribution of values, etc.)?]]
 
 ---
 
@@ -372,15 +496,15 @@ bb="0,0,1,1"
 
 ---
 
-.box-4.medium[How do we know if the<br>DAG is correct or complete?]
-
----
-
 .box-4.medium[Why can't we just subtract the averages<br>between treated and untreated groups?]
 
 ---
 
 .box-4.medium[When you're making groups for CATE, how do<br>you decide what groups to put people in?]
+
+<br>
+
+.center[[Slides from lecture](https://evalf22.classes.andrewheiss.com/slides/05-slides.html#58)]
 
 ---
 
@@ -395,7 +519,7 @@ class: title title-4
 
 <br>
 
-.center[[Slides from lecture](https://evalsp22.classes.andrewheiss.com/slides/05-slides.html#58)]
+.center[[Slides from lecture](https://evalf22.classes.andrewheiss.com/slides/05-slides.html#58)]
 
 ---
 

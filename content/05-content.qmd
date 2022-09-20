@@ -55,6 +55,30 @@ Here are all the materials we'll use in class:
 
 - [**Session 5 FAQ slides**](/slides/05-class.html) ([PDF](/slides/05-class.pdf))
 
+### Confounding, unblocked
+
+<div class="ratio ratio-16x9">
+<video controls loop>
+<source src="/slides/img/05-class/video-confounding-unblocked.mp4" type="video/mp4">
+</video>
+</div>
+
+### Confounding, blocked
+
+<div class="ratio ratio-16x9">
+<video controls loop>
+<source src="/slides/img/05-class/video-confounding-blocked.mp4" type="video/mp4">
+</video>
+</div>
+
+### Mediation
+
+<div class="ratio ratio-16x9">
+<video controls loop>
+<source src="/slides/img/05-class/video-mediation.mp4" type="video/mp4">
+</video>
+</div>
+
 
 ```{verbatim include=FALSE}
 Playlist: https://www.youtube.com/playlist?list=PLS6tnpTr39sHwqEeiG5xb3zAHcQCGWZUC
