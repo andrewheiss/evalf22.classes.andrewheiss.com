@@ -42,7 +42,7 @@ class: center middle main-title section-title-3
 
 .class-info[
 
-**February 17, 2022**
+**September 26, 2022**
 
 .light[PMAP 8521: Program evaluation<br>
 Andrew Young School of Policy Studies
