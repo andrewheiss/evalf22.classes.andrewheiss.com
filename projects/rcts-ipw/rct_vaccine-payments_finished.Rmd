@@ -1,7 +1,7 @@
 ---
 title: "RCT: Vaccine payments"
 output: html_document
-date: '2022-02-24'
+date: '2022-10-03'
 ---
 
 ```{r setup, include=FALSE}
@@ -152,7 +152,7 @@ model_bayes <- brm(
   bf(vaccinated ~ treat_pay + treat_soc + treat_arg + treat_info + treat_min +
        female + covid1_2 + civilstatus + haschildren),
   data = vaccines_clean,
-  cores = 4,
+  cores = 4
 )
 ```
 

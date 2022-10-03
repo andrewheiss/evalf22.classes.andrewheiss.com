@@ -1,7 +1,7 @@
 ---
 title: "RCT: Medicaid and medical debt"
 output: html_document
-date: '2022-02-24'
+date: '2022-10-03'
 ---
 
 ```{r setup, include=FALSE}
@@ -54,9 +54,4 @@ There are two categorical columns in this dataset. It will make it easier to cal
 
 ```{r}
 # TODO: For bonus fun, try to visualize the difference in proportions
-```
-
-```{r}
-# TODO: For extra super bonus fun, run a Bayesian outcome model with the brms
-# package so that you can talk about credible intervals
 ```

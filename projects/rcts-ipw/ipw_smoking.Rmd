@@ -1,7 +1,7 @@
 ---
 title: "IPW: Smoking and weight gain"
 output: html_document
-date: '2022-02-24'
+date: '2022-10-03'
 ---
 
 ```{r setup, include=FALSE}
@@ -107,7 +107,7 @@ ggdag_status(smk_wt_dag)
 #
 # TODO: Create a new column of inverse probability weights using this formula:
 #
-# (treatment / propensity) - ((1 - treatment) / (1 - propensity))
+# (treatment / propensity) + ((1 - treatment) / (1 - propensity))
 # 
 # It should look something like this:
 # mutate(ipw = (qsmk / propensity) + ((1 - qsmk) / (1 - propensity)))

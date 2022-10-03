@@ -1,7 +1,7 @@
 ---
 title: "IPW: Job training"
 output: html_document
-date: '2022-02-24'
+date: '2022-10-03'
 ---
 
 ```{r setup, include=FALSE}
@@ -103,8 +103,4 @@ Investigate your weights. They should be clustered around 1 (with an average of 
 
 ```{r}
 # Outcome model
-```
-
-```{r warning=FALSE, message=FALSE, results="hide"}
-# Bayes stuff for fun
 ```

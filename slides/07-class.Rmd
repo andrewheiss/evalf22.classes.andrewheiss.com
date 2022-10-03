@@ -42,7 +42,7 @@ class: center middle main-title section-title-3
 
 .class-info[
 
-**February 24, 2022**
+**October 3, 2022**
 
 .light[PMAP 8521: Program evaluation<br>
 Andrew Young School of Policy Studies
@@ -106,16 +106,6 @@ class: center middle section-title section-title-2 animated fadeIn
 
 layout: true
 class: middle
-
----
-
-.box-2.large[RCTs and ethics]
-
-???
-
-Why are RCTs sometimes unethical?
-
-How exactly do drug trials work? Like in TV shows, when they tell someone that there's an experimental drug that could save their life, is there a 50% chance that it will be a placebo since there would need to be a control group and otherwise there would be self selection?
 
 ---
 
@@ -231,13 +221,3 @@ class: middle
 ---
 
 .box-4.large[Which should we use?<br>Matching or IPW?]
-
----
-
-.box-4.large[Are weights ever problematic?]
-
-???
-
-Since there's no uniform scale for inverse probability weight scales, how do you decide what's "weird?" Just by comparing to other points in the data set? Or does it not really matter since it's just a step in the overall calculations?
-
-By weighing things when there's not enough in the sample, doesn't that heavily distort the information? In the last class you had mentioned that there was a study where there was only one black man and his weigh in the survey was significantly weighted, but that is just the opinion of one person?  

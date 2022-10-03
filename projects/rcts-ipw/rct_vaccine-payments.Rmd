@@ -1,7 +1,7 @@
 ---
 title: "RCT: Vaccine payments"
 output: html_document
-date: '2022-02-24'
+date: '2022-10-03'
 ---
 
 ```{r setup, include=FALSE}
@@ -120,10 +120,4 @@ ggplot(plot_filtered, aes(x = estimate, y = fct_rev(term), color = outcome)) +
 
 ```{r}
 # fixest::feols() with robust SEs
-```
-
-# Bayesian stuff
-
-```{r warning=FALSE, message=FALSE, results="hide"}
-# For fun
 ```
