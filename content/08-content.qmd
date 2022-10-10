@@ -51,7 +51,7 @@ youtube_list(slide_details, playlist_id)
 Here are all the materials we'll use in class:
 
 - [**Session 8 FAQ slides**](/slides/08-class.html) ([PDF](/slides/08-class.pdf))
-- [Session 8 R code](/projects/week-8.zip) (on [RStudio.cloud](#))
+- [Session 8 R code](/projects/week-8.zip) (on [RStudio.cloud](https://rstudio.cloud/spaces/269500/content/4698821))
 
 
 ```{verbatim include=FALSE}

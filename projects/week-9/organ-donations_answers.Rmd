@@ -98,15 +98,15 @@ organ <- organ_donations_raw %>%
 
 ```{r}
 # TODO: Use that new data to create a TWFE model like this:
-model_twfe <- lm(Rate ~ Treated + State + Quarter, 
+model_twfe <- lm(Rate ~ Treated + State + After, 
                  data = organ)
 tidy(model_twfe)
 
-model_twfe_nice <- feols(Rate ~ Treated | State + Quarter,
+model_twfe_nice <- feols(Rate ~ Treated | State + After,
                          data = organ)
 tidy(model_twfe_nice)
 ```
 
 $$
-\text{Donation rate}\ =\ \beta_0 + \beta_1\ \text{Treatment} + \beta_2\ \text{State} + \beta_3\ \text{Quarter}
+\text{Donation rate}\ =\ \beta_0 + \beta_1\ \text{Treatment} + \beta_2\ \text{State} + \beta_3\ \text{After}
 $$

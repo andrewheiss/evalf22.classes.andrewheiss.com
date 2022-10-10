@@ -58,5 +58,5 @@ $$
 ```
 
 $$
-\text{Donation rate}\ =\ \beta_0 + \beta_1\ \text{Treatment} + \beta_2\ \text{State} + \beta_3\ \text{Quarter}
+\text{Donation rate}\ =\ \beta_0 + \beta_1\ \text{Treatment} + \beta_2\ \text{State} + \beta_3\ \text{After}
 $$

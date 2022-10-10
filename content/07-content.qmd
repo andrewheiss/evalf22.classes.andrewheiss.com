@@ -61,7 +61,6 @@ Here are all the materials we'll use in class:
 - [**Session 7 FAQ slides**](/slides/07-class.html) ([PDF](/slides/07-class.pdf))
 - [In-class `.zip` file](/projects/rcts-ipw.zip)
 - [RStudio.cloud project](https://rstudio.cloud/spaces/269500/content/4645983)
-- [Finished code from in-class example](/files/rct_vaccine-payments.R) (see also `rct_vaccine-payments_finished.Rmd` in the `.zip` file)
 
 Other helpful resources:
 
