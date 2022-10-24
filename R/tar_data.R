@@ -503,7 +503,7 @@ create_tutoring <- function() {
     entrance_exam = rbeta(num_students, shape1 = 7, shape2 = 2),
     exit_exam_base = rbeta(num_students, shape1 = 5, shape2 = 3)
   ) %>%
-    mutate(entrance_exam = entrance_exam * 100) %>%
+    mutate(entrance_exam = round(entrance_exam * 100, 1)) %>%
     mutate(tutoring_sharp = entrance_exam <= 70) %>%
     mutate(tutoring_fuzzy = case_when(
       entrance_exam >= 50 & entrance_exam <= 70 ~ sample(c(TRUE, FALSE), n(), replace = TRUE, prob = c(0.8, 0.2)),
@@ -516,7 +516,8 @@ create_tutoring <- function() {
            tutoring_fuzzy_text = factor(tutoring_fuzzy, levels = c(FALSE, TRUE),
                                         labels = c("No tutor", "Tutor"))) %>%
     mutate(exit_exam_sharp = exit_exam_base * 40 + 10 * tutoring_sharp + entrance_exam / 2) %>%
-    mutate(exit_exam_fuzzy = exit_exam_base * 40 + 10 * tutoring_fuzzy + entrance_exam / 2)
+    mutate(exit_exam_fuzzy = exit_exam_base * 40 + 10 * tutoring_fuzzy + entrance_exam / 2) %>%
+    mutate(across(starts_with("exit_exam"), ~round(., 1)))
 
   return(tutoring)
 }
@@ -524,8 +525,7 @@ create_tutoring <- function() {
 create_tutoring_sharp <- function(tutoring) {
   tutoring_sharp <- tutoring %>%
     select(id, entrance_exam, tutoring = tutoring_sharp,
-           tutoring_text = tutoring_sharp_text, exit_exam = exit_exam_sharp) %>%
-    mutate(across(c(entrance_exam, exit_exam), ~round(., 1)))
+           tutoring_text = tutoring_sharp_text, exit_exam = exit_exam_sharp)
 
   return(tutoring_sharp)
 }
@@ -533,8 +533,7 @@ create_tutoring_sharp <- function(tutoring) {
 create_tutoring_fuzzy <- function(tutoring) {
   tutoring_fuzzy <- tutoring %>%
     select(id, entrance_exam, tutoring = tutoring_fuzzy,
-           tutoring_text = tutoring_fuzzy_text, exit_exam = exit_exam_fuzzy) %>%
-    mutate(across(c(entrance_exam, exit_exam), ~round(., 1)))
+           tutoring_text = tutoring_fuzzy_text, exit_exam = exit_exam_fuzzy)
 
   return(tutoring_fuzzy)
 }
