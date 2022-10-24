@@ -13,7 +13,7 @@ This session is a continuation of [session 8](/content/08-content/).
 Here are all the materials we'll use in class:
 
 - [**Session 9 FAQ slides**](/slides/09-class.html) ([PDF](/slides/09-class.pdf))
-- [Session 9 R code](/projects/week-9.zip) (on [RStudio.cloud](#))
+- [Session 8 R code (from last week)](/projects/week-8.zip) (on [RStudio.cloud](https://rstudio.cloud/spaces/269500/content/4698821))
 
 And here are some useful blog posts and examples of the stuff we talked about today:
 

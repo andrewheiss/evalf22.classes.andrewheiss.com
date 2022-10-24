@@ -41,7 +41,7 @@ class: center middle main-title section-title-3
 
 .class-info[
 
-**March 24, 2022**
+**October 24, 2022**
 
 .light[PMAP 8521: Program evaluation<br>
 Andrew Young School of Policy Studies
@@ -100,31 +100,57 @@ class: middle
 
 ---
 
-.box-5.large[Is there a way to make<br>the date update automatically<br>in the title area?]
+.box-5.large[Searching past code]
+
+???
+
+Use Quarto search thing; use GitHub
+
+---
+
+.box-5.large[Learning with<br>the example pages]
+
+???
+
+Copy and paste! Work through the example yourself! Don't just read it.
+
+Like what I do in <https://bayesf22-notebook.classes.andrewheiss.com/>
 
 ---
 
 .box-5.large[Lines across categories]
 
----
-
-.box-5.large[What do all those things like<br>"AIC" mean in model tables?]
-
-.box-inv-5.medium[(And do we care about them?)]
-
 ???
 
-<https://evalsp22.classes.andrewheiss.com/slides/02-class.html#16>
+```r
+library(tidyverse)
 
-Goodness of fit stats focus on the outcome; good for prediction
+mpg
 
-We don’t care so much about that - we care about the one single predictor X - the point of DAGs and quasi-experiments, etc. is identification, which is a theoretical thing, not a numerical thing, so you don’t really need to try to maximize R2 or minimize AIC or whatever
+avg_hwy_by_class <- mpg %>% 
+  filter(cyl != 5) %>% 
+  mutate(cyl = factor(cyl)) %>% 
+  group_by(class, cyl) %>% 
+  summarize(avg = mean(hwy))
 
----
+ggplot(avg_hwy_by_class, aes(x = class, y = avg, color = cyl, group = cyl)) +
+  geom_point() +
+  geom_line()
 
-.box-5.large[Can we control what<br>shows up in those tables?]
+```
 
-.center[[See this](https://vincentarelbundock.github.io/modelsummary/articles/modelsummary.html)]
+```r
+terror_trends <- terror %>% 
+  group_by(month, same_block_factor) %>% 
+  summarize(avg_robberies = mean(car_theft))
+
+ggplot(terror_trends, aes(x = month, y = avg_robberies, 
+                          color = same_block_factor, group = same_block_factor)) +
+  geom_vline(xintercept = "7") +
+  geom_line(size = 2) +
+  theme_bw() +
+  theme(legend.position = "bottom")
+```
 
 ---
 
@@ -306,6 +332,14 @@ class: middle
 
 ---
 
+.box-6.medium[Why does the cutoff need<br>to be unique to the<br>program of interest?]
+
+???
+
+In theory, to take care of confounding. If the same cutoff is used for two different programs, and you're evaluating one, and the other isn't automatic, peoples' use of the second program would influence their outcomes in the first one.
+
+---
+
 .box-6.medium[What if there are multiple cutoffs?]
 
 .box-inv-6[College admission is based on GPA *and* test scores…]
@@ -419,6 +453,10 @@ ggplot(tutoring, aes(x = entrance_exam, y = exit_exam)) +
 
 ---
 
+.box-6.medium[Should we control for confounders?]
+
+---
+
 .box-6.medium[How do we decide on the right model?]
 
 .center[
@@ -444,7 +482,7 @@ ggplot(tutoring, aes(x = entrance_exam, y = exit_exam)) +
 
 ---
 
-.box-6.medium[What do we do about noncompliance?]
+.box-6.medium[What do we do about noncompliance<br>and manipulation?]
 
 .box-6.medium[What is fuzzy regression discontinuity?]
 

@@ -42,7 +42,7 @@ class: center middle main-title section-title-3
 
 .class-info[
 
-**March 10, 2022**
+**October 17, 2022**
 
 .light[PMAP 8521: Program evaluation<br>
 Andrew Young School of Policy Studies
@@ -75,7 +75,7 @@ class: title title-inv-8
 
 --
 
-.box-2.medium[Sensitivity analysis]
+.box-2.medium[Clusters and sensitivity]
 
 ---
 
@@ -132,7 +132,7 @@ class: middle
 
 ---
 
-.box-3.large[How does moving time back<br>let us check for parallel trends?]'
+.box-3.large[How does moving time back<br>let us check for parallel trends?]
 
 ---
 
@@ -146,9 +146,16 @@ class: middle
 
 .box-3.large[Can you conduct diff-in-diff<br>with a binary outcome?]
 
+???
+
+- <https://www.andrewheiss.com/blog/2021/11/08/beta-regression-guide/#1-linear-probability-models>
+- <https://bayesf22-notebook.classes.andrewheiss.com/bayes-rules/13-chapter.html#prelude-ii-how-to-interpret-logistic-regression-coefficients>
+
 ---
 
-.box-3.large[I keep reading about estimates, estimands, and estimators.<br>What are these and are they the same thing?]
+.box-3.large[I keep reading about estimates, estimands, and estimators.]
+
+.box-3.large[What are these and<br>are they the same thing?]
 
 ---
 
@@ -157,13 +164,19 @@ class: title title-3
 
 # Estima(and|or|ate)s
 
+--
+
 .box-inv-3.less-medium[Estimand]
 
 .box-3.sp-after[Theoretical thing you want to know (β)]
 
+--
+
 .box-inv-3.less-medium[Estimator]
 
 .box-3.sp-after[Process for guessing the thing .small[(e.g., diff-in-diff with interaction term)]]
+
+--
 
 .box-inv-3.less-medium[Estimate]
 
@@ -182,20 +195,6 @@ class: middle
 ???
 
 <https://twitter.com/WomenInStat/status/1449068312873287682>
-
----
-
-class: middle
-
-.center[
-<figure>
-  <img src="img/09-class/estimands-methods.png" alt="Estimand methods" title="Estimand methods" width="75%">
-</figure>
-]
-
-???
-
-<https://arxiv.org/abs/2106.10577>
 
 ---
 
@@ -375,12 +374,18 @@ layout: false
 name: sensitivity
 class: center middle section-title section-title-2 animated fadeIn
 
-# Sensitivity analysis
+# Clusters<br>and sensitivity
 
 ---
 
 layout: true
 class: middle
+
+---
+
+.box-2.medium.sp-after[What are robust standard errors?]
+
+.box-2.medium.sp-after[What are clustered standard errors?]
 
 ---
 

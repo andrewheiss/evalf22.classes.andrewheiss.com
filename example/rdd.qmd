@@ -17,7 +17,7 @@ If you want to follow along with this example, you can download the data below:
 - [{{< fa table >}} `tutoring_program.csv`](/files/data/generated_data/tutoring_program.csv)
 
 :::{.callout-warning}
-**Important**: The results will be slightly different here than they were in the video. That's because in the data I used in the video, I didn't round any values, so people could score a 71.8392403 on the entrance exam, which is kind of an excessive number of decimals. In this data, I rounded everything to one decimal point (e.g. 71.8), so the gaps and lines will be a tiny bit different here.
+**Important**: The results will be slightly different here than they were in the video. That's because in the data I used in the video, I didn't round any values, so people could score a 71.8392402 on the entrance exam, which is kind of an excessive number of decimals. In this data, I rounded everything to one decimal point (e.g. 71.8), so the gaps and lines will be a tiny bit different here.
 :::
 
 ```{r show-youtube-list, echo=FALSE, results="asis"}
