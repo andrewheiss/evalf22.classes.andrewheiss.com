@@ -5,7 +5,7 @@ date: "2022-10-31"
 
 For this problem set, you'll practice doing regression discontinuity analysis with simulated data from a hypothetical program. This example page will be incredibly useful for you:
 
-- [Regression discontinuity](/example/rdd,qmd)
+- [Regression discontinuity](/example/rdd.qmd)
 
 You'll be doing all your R work in R Markdown. You can download a zipped file of a pre-made project here:
 
