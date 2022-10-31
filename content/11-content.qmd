@@ -54,7 +54,7 @@ youtube_list(slide_details, playlist_id)
 Here are all the materials we'll use in class:
 
 - [**Week 11 FAQ slides**](/slides/11-class.html) ([PDF](/slides/11-class.pdf))
-- [Week 11 R code](/projects/week-11.zip) (on [RStudio.cloud](#))
+- [Week 11 R code](/projects/week-11.zip) (on [RStudio.cloud](https://rstudio.cloud/spaces/269500/content/4853201))
 
 
 ```{verbatim include=FALSE}

@@ -61,7 +61,7 @@ class: center middle main-title section-title-3
 
 .class-info[
 
-**March 31, 2022**
+**October 31, 2022**
 
 .light[PMAP 8521: Program evaluation<br>
 Andrew Young School of Policy Studies
@@ -100,6 +100,29 @@ class: center middle section-title section-title-5 animated fadeIn
 
 class: middle
 
+.box-5.large[Why did my nonparametric<br>plot look wrong??]
+
+???
+
+- <https://gist.github.com/andrewheiss/158f51f46711f8e7dea346e58a18ad87>
+- <https://github.com/rdpackages/rdrobust/commit/4daccff8ffbed58a9890212d18e234e443b0007e>
+
+---
+
+class: middle
+
+.box-5.large[Reprexes!]
+
+???
+
+- <https://datavizs22.classes.andrewheiss.com/slides/08-slides.html#15>
+- <https://gist.github.com/andrewheiss/b85c72e2cadb496fed0b8715ef5cacf5>
+- <https://gist.github.com/andrewheiss/542e2882f21f155d52bdd7fecf24b487>
+
+---
+
+class: middle
+
 .box-5.large[Why can't we use `rdrobust()`<br>with `tidy()` or `modelsummary()`?]
 
 ---
@@ -125,7 +148,7 @@ class: middle
 
 ---
 
-.box-2.medium[Is there like a “bank” of good IVs?<br>Finding the right IV seems like<br>taking a bunny out of a magician’s hat.]
+.box-2.medium[Is there like a “bank” of good IVs?]
 
 .box-2.medium[Do you have a method that helps you think of instruments, or a popular process that people usually use to come up with ideas?]
 

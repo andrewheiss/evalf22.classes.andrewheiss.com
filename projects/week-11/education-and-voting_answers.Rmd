@@ -3,8 +3,6 @@ title: "Does education increase civic engagement?"
 date: '`r format(Sys.time(), "%B %e, %Y")`'
 bibliography: references.bib
 link-citations: true
-editor_options: 
-  chunk_output_type: console
 ---
 
 Social scientists have long been interested in the causal effects of education. We've seen a ton of examples of economists looking at the causal effect of education on wages or income. Political scientists, not surprisingly, are less interested in income and more interested in the effect of education on civil behavior. For instance, does education make people vote more?
@@ -83,10 +81,9 @@ exp(0.805)
 plogis((0.298 + 0.805)) - plogis(0.298)
 # College attendance leads to a 17.6 percentage point increase in the probability of registering to vote
 
-library(emmeans)
-model_logit %>% 
-  emmeans(~ college, transform = "response") %>% 
-  contrast(method = "revpairwise")
+library(marginaleffects)
+model_logit |> 
+  comparisons(by = "college")
 
 # "Divide by 4" trick/rule
 0.805 / 4

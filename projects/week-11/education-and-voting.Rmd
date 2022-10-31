@@ -3,8 +3,6 @@ title: "Does education increase civic engagement?"
 date: '`r format(Sys.time(), "%B %e, %Y")`'
 bibliography: references.bib
 link-citations: true
-editor_options: 
-  chunk_output_type: console
 ---
 
 Social scientists have long been interested in the causal effects of education. We've seen a ton of examples of economists looking at the causal effect of education on wages or income. Political scientists, not surprisingly, are less interested in income and more interested in the effect of education on civil behavior. For instance, does education make people vote more?
