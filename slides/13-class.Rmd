@@ -41,7 +41,7 @@ class: center middle main-title section-title-3
 
 .class-info[
 
-**April 14, 2022**
+**November 14, 2022**
 
 .light[PMAP 8521: Program evaluation<br>
 Andrew Young School of Policy Studies
@@ -55,10 +55,6 @@ name: outline
 class: title title-inv-8
 
 # Plan for today
-
---
-
-.box-1.medium[Exam and final project stuff]
 
 --
 
@@ -79,14 +75,6 @@ class: title title-inv-8
 ---
 
 layout: false
-name: exam
-class: center middle section-title section-title-1 animated fadeIn
-
-# Exam and<br>final project stuff
-
----
-
-layout: false
 name: controls-confounding
 class: center middle section-title section-title-5 animated fadeIn
 
@@ -100,6 +88,62 @@ class: middle
 ---
 
 .box-5.large[Do we really not need to<br>interpret every coefficient?!]
+
+---
+
+.box-5.less-medium[Is there any harm in<br>interpreting the coefficients anyway?]
+
+.box-5.less-medium[Should they be significant at least?<br>Or have the expected ± sign?]
+
+???
+
+Signs can reverse!
+
+---
+
+.box-5.large[Table 2 fallacy]
+
+<br>
+
+.small[
+
+Daniel Westreich and Sander Greenland, "The Table 2 Fallacy: Presenting and Interpreting Confounder and Modifier Coefficients," *American Journal of Epidemiology* 177, no. 4 (February 2013): 292--98, <https://doi.org/10.1093/aje/kws412>.
+
+Luke Keele, Randolph T. Stevenson, and Felix Elwert, "The Causal Interpretation of Estimated Associations in Regression Models," *Political Science Research and Methods* 8, no. 1 (January 2020): 1--13, <https://doi.org/10.1017/psrm.2019.31>.
+
+]
+
+---
+
+.center[
+<figure>
+  <img src="img/02-class/prediction-vs-estimation.jpg" alt="R2 estimation vs prediction" title="R2 estimation vs prediction" width="100%">
+</figure>
+]
+
+???
+
+You can't interpret coefficients when focused on causal inference because the focus is on the X, not the Y. In prediction world, where you want to look at the overall variance of Y, you can interpret each of the Xs while holding the others constant. When you care more about the X itself, though, the other covariates only serve to get that X as accurate as possible, not to explain the overall variation in Y
+
+---
+
+.center[
+<figure>
+  <img src="img/13-class/dc-scaffolding.jpg" alt="Washington Monument in scaffolding, by Adam Fagen on Flickr" title="Washington Monument in scaffolding, by Adam Fagen on " width="80%">
+</figure>
+]
+
+???
+
+<https://www.flickr.com/photos/afagen/8583949203>
+
+---
+
+.center[
+<figure>
+  <img src="img/13-class/barrel-dag-observational.png" alt="Barrel DAG" title="Barrel DAG" width="80%">
+</figure>
+]
 
 ---
 
@@ -119,7 +163,9 @@ class: middle
 
 ---
 
-.box-5.medium[Design-based inference seems easier since<br>there's no unobserved confounding?<br><br>Why don't we just do that all the time?]
+.box-5.less-medium[Design-based inference seems easier since<br>there's no unobserved confounding?<br><br>Why don't we just do that all the time?]
+
+.box-5.less-medium[Model-based inference seems easier since<br>there's no need for a special situation?<br><br>Why don't we just do that all the time?]
 
 ???
 
@@ -233,9 +279,9 @@ class: title title-2
 
 --
 
-.box-inv-2.sp-before[Medium-est: [Distill](https://rstudio.github.io/distill/)]
+.box-inv-2.sp-before[What all the cool kids are starting to use: [Quarto websites](https://quarto.org/docs/websites/)]
 
-.center.small[[Example](https://www.pipinghotdata.com/)]
+.center.small[[Example](https://evalf22.classes.andrewheiss.com/); [example](https://bayesf22-notebook.classes.andrewheiss.com/); [example](https://stats.andrewheiss.com/mountainous-mackerel/)]
 
 --
 
@@ -245,8 +291,52 @@ class: title title-2
 
 ---
 
+class: middle
+
+.box-2.large[Quarto<br>.small[(R Markdown 2.0)]]
+
+.center[[Quarto](https://quarto.org/)]
+
+.center.small[[Example PDF and Word templates](https://github.com/andrewheiss/hikmah-academic-quarto)]
+
+---
+
 layout: false
 name: fake-data
 class: center middle section-title section-title-6 animated fadeIn
 
 # Simulating data
+
+---
+
+class: title title-6
+
+# Poisson in real life
+
+.center[
+<figure>
+  <img src="img/13-class/household-size.png" alt="US household sizes, 2020" title="US household sizes, 2020" width="50%">
+</figure>
+]
+
+???
+
+https://twitter.com/andrewheiss/status/1397193876830576643
+
+---
+
+class: title title-6
+
+# Basic process
+
+.box-inv-6.less-medium[1: Draw a DAG]
+
+.box-inv-6.less-medium[2: Create standalone exogenous columns]
+
+.box-inv-6.less-medium[3: Connect endogenous columns<br>.small[Baseline + effect]]
+
+.box-inv-6.less-medium[4: Polish columns]
+
+--
+
+.box-6.large.sp-before-half[Iterate. Iterate so so much.]

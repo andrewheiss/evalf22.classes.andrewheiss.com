@@ -50,7 +50,7 @@ youtube_list(slide_details, playlist_id)
 Here are all the materials we'll use in class:
 
 - [**Week 12 FAQ slides**](/slides/12-class.html) ([PDF](/slides/12-class.pdf))
-- [{{< fa brands r-project >}} Live R script](https://www.dropbox.com/s/ezk2cujsx8lmval/synthetic-data.R)
+- [{{< fa brands r-project >}} Live R script](https://www.dropbox.com/s/f1a04qzvmhelwcs/synthetic-data-f22.R)
 
 
 ```{verbatim include=FALSE}

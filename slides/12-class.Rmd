@@ -41,7 +41,7 @@ class: center middle main-title section-title-3
 
 .class-info[
 
-**April 7, 2022**
+**November 7, 2022**
 
 .light[PMAP 8521: Program evaluation<br>
 Andrew Young School of Policy Studies
@@ -58,11 +58,23 @@ class: title title-inv-8
 
 --
 
+.box-1.medium[Exam 2]
+
+--
+
 .box-5.medium[FAQs]
 
 --
 
 .box-3.medium[Synthetic data fun times!]
+
+---
+
+layout: false
+name: faqs
+class: center middle section-title section-title-1 animated fadeIn
+
+# Exam 2
 
 ---
 
